@@ -1,0 +1,53 @@
+.contenedor{
+    display: flex;
+    background: #5C258D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2D31FA, #41ACDA,#5D8BF4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2D31FA, #41ACDA,#5D8BF4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.card_imagen img{
+ height: 500px;
+ width: 700px;
+ 
+}
+.card {
+    
+background: #5C258D;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #2D31FA, #41ACDA,#5D8BF4);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #2D31FA, #41ACDA,#5D8BF4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+margin: 0px, 60px;
+align-items: center;
+padding-right: 60px;
+padding-left: 60px;
+align-items: center;
+text-align: center;
+
+}
+.card-header{
+    color: white;
+}
+.card_login{
+margin-top: 70px;
+align-items: center;
+text-align: center;
+margin-left: 60px;
+color: white;
+}
+.card_login a{
+    color: white;
+    text-decoration: none;
+}
+.componentes_login{
+    align-items: center;
+    text-align: center;
+    justify-content:center ; 
+    margin-left: 100px;
+}
+.btn{
+    margin-top: 30px;
+    border-radius: 30px;
+    background: #2D31FA;
+    color:white;
+
+}

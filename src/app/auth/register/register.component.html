@@ -1,0 +1,35 @@
+<div class="contenedor">
+    <div class="card_imagen">
+        <img src="https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+
+
+    </div>
+<div class="componentes_login">
+    <div class="card-header">
+     Registrarse
+    </div>
+    <div class="card_login p-4 ">
+        <form  [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <input  class="form-control m-2" type="email" placeholder="correo electrónico"  formControlName="email"  name="email">
+      
+        <input class="form-control m-2" type="password" placeholder="contraseña" formControlName="password"  name="password">
+      
+        <br>
+        <button class="btn" type="submit" >Registrarse</button>
+        <br>
+        <br>
+    </form>
+        
+      
+      
+        
+      
+
+        
+
+     
+    </div>
+   
+  </div>
+
+</div>

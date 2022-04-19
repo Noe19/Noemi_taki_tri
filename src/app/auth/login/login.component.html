@@ -1,0 +1,27 @@
+<div class="contenedor">
+    <div class="card_imagen">
+        <img src="https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+</div>
+<div class="componentes_login">
+    <div class="card-header">
+      Inicio de Sesión
+    </div>
+  
+    </div>
+   
+    <div class="card_login p-4 ">
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">       
+        <input  class="form-control m-2" type="email" placeholder="correo electrónico" formControlName="email">
+        <input class="form-control m-2" type="password" placeholder="contraseña" formControlName="password">
+        <label><a href="#">Recuperar contraseña</a></label>
+        <br>
+        <button class="btn" type="submit">Inicio de Sesión</button>
+        <br>
+        <br>
+      </form>
+        
+        <label>Aún no tienes cuenta? <a [routerLink]="['/register']">Registrate</a></label>
+     
+    </div>
+   
+  </div>

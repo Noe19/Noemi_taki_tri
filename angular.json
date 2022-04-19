@@ -101,6 +101,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Taki-Tri:build:production",
+            "firebaseProject": "takitesis",
+            "firebaseHostingSite": "takitesis"
+          }
         }
       }
     }

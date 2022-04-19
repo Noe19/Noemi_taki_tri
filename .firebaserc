@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "takitesis": {
+      "hosting": {
+        "Taki-Tri": [
+          "takitesis"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "takitesis"
+  }
+}
