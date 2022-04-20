@@ -13,11 +13,21 @@
       <img src="#" alt="" width="30" height="24" class="d-inline-block align-text-top">
     <a class="home" routerLink="home">Taki-Tri</a>
       <ul class="nav">
-        <li  routerLinkActive ="active" class="nav-item">
+        <li  routerLinkActive ="active" class="nav-item" *ngIf="!isLogged">
           <a class="nav-link" [routerLink]="['/login']">Inicio de Sesión</a>
         </li>
-        <li routerLinkActive ="active" class="nav-item">
+        <li routerLinkActive ="active" class="nav-item" *ngIf="!isLogged">
           <a class="nav-link" [routerLink]="['/register']">Registro</a>
+        </li>
+
+        <li routerLinkActive ="active" class="nav-item" *ngIf="isLogged" >
+          <a class="nav-link" [routerLink]="['/dashboard']">dashboard</a>
+        </li>
+
+       
+
+        <li routerLinkActive ="active" class="nav-item" *ngIf="isLogged" >
+          <a class="nav-link" [routerLink]="['/home']">salir</a>
         </li>
         
       </ul>

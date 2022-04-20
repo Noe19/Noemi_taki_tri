@@ -10,9 +10,11 @@
     </div>
    
     <div class="card_login p-4 ">
-      <form [formGroup]="loginForm" (ngSubmit)="onLogin()">       
-        <input  class="form-control m-2" type="email" placeholder="correo electrónico" formControlName="email">
-        <input class="form-control m-2" type="password" placeholder="contraseña" formControlName="password">
+      <form [formGroup]="loginForm"  (ngSubmit)="onLogin()">       
+        <input  class="form-control m-2" type="email" placeholder="correo electrónico" formControlName="email" name="email" required>
+       
+
+        <input class="form-control m-2" type="password" placeholder="contraseña" formControlName="password" name="email" required>
         <label><a href="#">Recuperar contraseña</a></label>
         <br>
         <button class="btn" type="submit">Inicio de Sesión</button>

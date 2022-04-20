@@ -32,7 +32,8 @@ export class RegisterComponent implements OnInit {
  
   
   onRegister(){
-      console.log('form->',this.registerForm.value);
+      console.log('registrado->',this.registerForm.value);
+     
       
       const{email,password} = this.registerForm.value;
       this.authSvc.register(email,password);
