@@ -11,9 +11,13 @@
     </thead>
     <tbody>
      <tr *ngFor="let perfil of Perfil">
+          <td>{{perfil.id}}</td>
          <td>{{perfil.name}}</td>
-         <td>{{perfil.apellido</td>
+         <td>{{perfil.apellido}}</td>
          <td>{{perfil.nickname}}</td>
+         <td><button routerLink="/edit/{{perfil.id}}" class="btn btn-outline-secondary">editar</button></td>
      </tr>
     </tbody>
   </table>
+ 
+  

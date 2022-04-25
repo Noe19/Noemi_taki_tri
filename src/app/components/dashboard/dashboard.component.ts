@@ -3,7 +3,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 
-import {FormControl, Validators} from '@angular/forms';
+
+import { Perfil } from './perfil.model';
+import { PerfilService } from '../perfil.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,16 +16,14 @@ import {FormControl, Validators} from '@angular/forms';
 
 })
 export class DashboardComponent implements OnInit {
- public usuario : any;
+  Perfil: Perfil[]
+  public usuario : any;
+  perfilResf:any;
+ 
  //public usuario_nuevo :any;
   
 
-  contacto={
-    email:'',
-    password :''
-
-  }
-  constructor(public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore) { }
+  constructor(private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore) { }
   ngOnInit(): void {
     //obtener el dato getItem
     this.usuario = localStorage.getItem('usuario')
@@ -50,15 +51,9 @@ export class DashboardComponent implements OnInit {
 
  }
 
- email = new FormControl('', [Validators.required, Validators.email]);
+ 
 
- getErrorMessage() {
-   if (this.email.hasError('required')) {
-     return 'You must enter a value';
-   }
 
-   return this.email.hasError('email') ? 'Not a valid email' : '';
- }
 
 
 }

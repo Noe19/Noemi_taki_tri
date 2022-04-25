@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireAction } from '@angular/fire/compat/database';
 import { FormGroup,FormControl,FormBuilder, Validators } from '@angular/forms';
@@ -14,6 +14,8 @@ import { User } from '@firebase/auth';
   providers:[AuthService]
 })
 export class RegisterComponent implements OnInit {
+
+
   
   
   
@@ -181,11 +183,13 @@ getErrorMessage_contrasena() {
       if(user ){ 
         console.log('usurio_nombre',this.registerForm.get('name')?.value)
         console.log('usurio_id',user?.user?.uid)
+       
+      
         // usuario de forma global, solo vale hacer una sola (setItem)-> 
-        localStorage.setItem('usuario', user?.user?.email);
+        localStorage.setItem('usuario', user?.user?.uid);
         //enviar a firestore
         //this.speakerCollection.doc(user?.user?.uid).set({ });
-        this.firestore.collection("artist").doc(user?.user?.uid).set({"id_autenticado":user?.user?.uid,"nombre": this.registerForm.get('name')?.value,"apellido":this.registerForm.get('apellido')?.value,"nickname":this.registerForm.get('nickname')?.value,
+        this.firestore.collection("artist").doc(user?.user?.uid).set({"id_autenticado":user?.user?.uid,"name": this.registerForm.get('name')?.value,"apellido":this.registerForm.get('apellido')?.value,"nickname":this.registerForm.get('nickname')?.value,
         "fecha_nacimiento":this.registerForm.get('fecha_nacimiento')?.value,"email":this.registerForm.get('email')?.value,"id_artista":id}).then(()=>{
         // si se registro correctamente y se paso los datos al firestore se le dirige al dashboard
           this.router.navigate(['/dashboard']);

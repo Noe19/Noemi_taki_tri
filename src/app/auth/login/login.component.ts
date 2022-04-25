@@ -79,7 +79,7 @@ getErrorMessage_contrasena() {
         console.log('usurio',user)
         console.log('usurio_unico',user?.user?.email)
         // usuario de forma global, solo vale hacer una sola (setItem)-> 
-        localStorage.setItem('usuario', user?.user?.email);
+        localStorage.setItem('usuario', user?.user?.uid);
       
         this.router.navigate(['/dashboard']);
        // this.router.onSameUrlNavigation = 'reload';

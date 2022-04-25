@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SobrenosotrosComponent } from './pages/sobrenosotros/sobrenosotros.component';
 import { WelcomeComponent } from './shared/welcome/welcome.component';
@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { MisionVisionComponent } from './pages/mision-vision/mision-vision.component';
 import { ShowComponent } from './components/perfil/show/show.component';
 import { EditComponent } from './components/perfil/edit/edit.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
 
 const routes: Routes = [
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'mision-vision', component: MisionVisionComponent },
   {path : 'show',component: ShowComponent},
   {path:'edit/:id',component:EditComponent},
+  {path:'perfil',component:PerfilComponent},
 
   { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule) },
 
