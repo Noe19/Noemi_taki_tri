@@ -1,3 +1,7 @@
+
+
+
+
 <div class="contenedor">
     <div class="card_imagen">
         <img src="https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
@@ -8,26 +12,36 @@
     <div class="card-header">
      Registrarse
     </div>
+    <img class="imagen" src="assets/imagenes/oficial_logo.png" alt="" width="120px" height="120px">
+
     <div class="card_login p-4 ">
         <form  [formGroup]="registerForm" (ngSubmit)="onRegister()">
-        <input  class="form-control m-2" type="email" placeholder="correo electrónico"  formControlName="email"  name="email">
+      <input maxlength="10" class="form-control m-2" type="name" placeholder="name" formControlName="name" name="name" required [class.red]="nombre_no_valido" [class.green]="nombre" >
+      <label class="error_mensaje" id="email" [class.red]="nombre_no_valido" *ngIf="nombre_no_valido">{{getErrorMessage_nombre()}}</label>
       
-        <input class="form-control m-2" type="password" placeholder="contraseña" formControlName="password"  name="password">
+      <input  maxlength="10"class="form-control m-2" type="name" placeholder="apellido" formControlName="apellido" name="apellido" required [class.red]="apellido_no_valido"[class.green]="apellido" >
+      <label class="error_mensaje" id="email" [class.red]="apellido_no_valido" *ngIf="apellido_no_valido">{{getErrorMessage_apellido()}}</label>
       
+      <input maxlength="10" class="form-control m-2" type="name" placeholder="nickname" formControlName="nickname" name="nickname" required  [class.red]="nickname_no_valido" [class.green]="nickname">
+      <label class="error_mensaje" id="email" [class.red]="nickname_no_valido" *ngIf="nickname_no_valido">{{getErrorMessage_nickname()}}</label>
+      
+      <input maxlength="10"  class="form-control m-2" type="date" placeholder="fecha_nacimiento" formControlName="fecha_nacimiento" name="fecha_nacimiento" required [class.red]="fecha_no_valido" [class.green]="fecha">
+      <label  class="error_mensaje" id="email" [class.red]="fecha_no_valido" *ngIf="fecha_no_valido">{{getErrorMessage_fecha()}}</label>
+      
+      <input maxlength="50" required class="form-control m-2" type="email" placeholder="correo electronico"  formControlName="email"  name="email" value="email" value="email" [class.red]="correo_no_valido" [class.green]="correo" >
+      <label class="error_mensaje" id="email" [class.red]="correo_no_valido" *ngIf="correo_no_valido">{{getErrorMessage_correo()}}</label>
+   
+      <input class="error_mensaje"  maxlength="30" required class="form-control m-2" type="password" placeholder="contraseña" formControlName="password"  name="password" value="password"  required [class.red]="contrasena_no_valido" [class.green]="contrasena">
+      <label class="error_mensaje"  id="email" [class.red]="contrasena_no_valido" *ngIf="contrasena_no_valido">{{getErrorMessage_contrasena()}}</label>
+             
         <br>
-        <button class="btn" type="submit" >Registrarse</button>
+        <button  class="btn" type="submit" [disabled]="registerForm.invalid" >Registrarse</button>
+        
         <br>
         <br>
     </form>
-        
-      
-      
-        
-      
-
-        
-
-     
+    <label>Si ya tienes cuenta en Taki-tri <a [routerLink]="['/login']">Inicio de Sesión</a></label>
+           
     </div>
    
   </div>

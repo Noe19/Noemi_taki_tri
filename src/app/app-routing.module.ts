@@ -4,13 +4,19 @@ import { SobrenosotrosComponent } from './pages/sobrenosotros/sobrenosotros.comp
 import { WelcomeComponent } from './shared/welcome/welcome.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { MisionVisionComponent } from './pages/mision-vision/mision-vision.component';
+import { ShowComponent } from './components/perfil/show/show.component';
+import { EditComponent } from './components/perfil/edit/edit.component';
 
 const routes: Routes = [
 
-  {path:'home',component:WelcomeComponent},
+  {path:'home',component:WelcomeComponent,},
   {path:'sobrenosotros',component:SobrenosotrosComponent},
   {path: 'dashboard', component: DashboardComponent },
   {path: 'forgot-password', component: ForgotPasswordComponent },
+  {path: 'mision-vision', component: MisionVisionComponent },
+  {path : 'show',component: ShowComponent},
+  {path:'edit/:id',component:EditComponent},
 
   { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule) },
 

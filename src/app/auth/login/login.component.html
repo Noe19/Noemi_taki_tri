@@ -1,3 +1,6 @@
+
+
+
 <div class="contenedor">
     <div class="card_imagen">
         <img src="https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
@@ -6,24 +9,32 @@
     <div class="card-header">
       Inicio de Sesión
     </div>
+    <img class="imagen" src="assets/imagenes/oficial_logo.png" alt="" width="120px" height="120px">
   
-    </div>
+   
    
     <div class="card_login p-4 ">
       <form [formGroup]="loginForm"  (ngSubmit)="onLogin()">       
-        <input  class="form-control m-2" type="email" placeholder="correo electrónico" formControlName="email" name="email" required>
-       
+        <input maxlength="50"   class="form-control m-2" type="email" placeholder="correo electrónico" formControlName="email" name="email" required value="email" [class.green]="correo" [class.red]="correo_no_valido">
+        <label class="error_mensaje"  id="email" [class.red]="correo_no_valido" *ngIf="correo_no_valido">{{getErrorMessage_correo()}}</label>
+      
 
-        <input class="form-control m-2" type="password" placeholder="contraseña" formControlName="password" name="email" required>
+        <input maxlength="30" class="form-control m-2" type="password" placeholder="contraseña" formControlName="password" name="password" required value="password"  required [class.green]="contrasena" [class.red]="contrasena_no_valido">
+        <label class="error_mensaje"  id="email" [class.red]="contrasena_no_valido" *ngIf="contrasena_no_valido">{{getErrorMessage_contrasena()}}</label>
+      <br>
+
         <label><a href="#">Recuperar contraseña</a></label>
         <br>
-        <button class="btn" type="submit">Inicio de Sesión</button>
+        <button class="btn" type="submit" [disabled]="loginForm.invalid">Inicio de Sesión</button>
+        
         <br>
         <br>
       </form>
-        
+      
         <label>Aún no tienes cuenta? <a [routerLink]="['/register']">Registrate</a></label>
      
-    </div>
+       </div>
    
   </div>
+
+</div>

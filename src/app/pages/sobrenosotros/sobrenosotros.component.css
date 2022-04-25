@@ -1,0 +1,50 @@
+.row{
+    display: flex;
+}
+.rounded {
+    border-radius: none;
+}
+.figure img{
+    border-radius: 60px;
+    margin-left: 125px;
+    height: 250px;
+
+}
+.teams_equip{
+    background: #5C258D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2D31FA, #41ACDA,#5D8BF4);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2D31FA, #41ACDA,#5D8BF4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.titulo{
+    font-size: 375% ;
+    text-align: center;
+    color:white;
+}
+.mensaje{
+    color:white;
+    font-size: 150% ;
+    text-align: center;
+}
+.figure p{
+    
+    padding-left: 30px;
+   text-align: justify;
+   color: white;
+}
+.figure-caption {
+    
+    padding-left: 30px;
+}
+.nombre_programador{
+    text-align: center;
+}
+
+
+.navbar-brand{
+    display:contents;
+  
+  }
+  .home{
+      text-decoration: none;
+    }

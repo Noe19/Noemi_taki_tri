@@ -23,6 +23,11 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { MisionVisionComponent } from './pages/mision-vision/mision-vision.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { ShowComponent } from './components/perfil/show/show.component';
+
+import { EditComponent } from './components/perfil/edit/edit.component';
 
 
 
@@ -36,6 +41,10 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     WelcomeComponent,
     DashboardComponent,
     ForgotPasswordComponent,
+    MisionVisionComponent,
+    PerfilComponent,
+    ShowComponent,
+    EditComponent,
     
   ],
   imports: [
@@ -56,4 +65,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+
+
+}

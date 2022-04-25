@@ -10,6 +10,7 @@ export const environment = {
   firebaseConfig : {
     apiKey: "AIzaSyDwXPCKY12Zj1qwGbYPFTYIgRGH3qwkxGc",
     authDomain: "takitesis.firebaseapp.com",
+    databaseURL: "https://takitesis-default-rtdb.firebaseio.com",
     projectId: "takitesis",
     storageBucket: "takitesis.appspot.com",
     messagingSenderId: "116911246151",

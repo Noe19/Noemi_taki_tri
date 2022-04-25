@@ -6,14 +6,14 @@ import * as auth from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import { OperationType, User } from '@firebase/auth';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 
 @Injectable()
 export class AuthService {
 
  // public user : User;
-  constructor(private afAuth :AngularFireAuth) { }
+  constructor(public afAuth :AngularFireAuth,private router : Router) { }
 
   
  async login(email:string,password:string)
@@ -27,33 +27,47 @@ export class AuthService {
       
     } catch (error) {
       console.log('No se ha podido  realizar el login correctamente',error,'login');
-      alert("No se ha podido  realizar el login correctamente "+ error);
+      alert("No se ha podido  realizar el login correctamente ");
+      
+      //window.location.reload();
       return null;
       
     }
    
    }
  
-   async register(email:string,password:string):
+   async register(email:string,password:string,name:string):
    Promise<any>{
     try {
       const result = await this.afAuth.createUserWithEmailAndPassword(
         email,
-        password
+        password,
+        
+        
       );
       return result;
     } catch (error) {console.log(error,'register')
+    alert('No se creo el usuario correctamnete o el usuario ya exite, por favor intente nuevamente');
+  
+   this.router.navigate(['/register']);
+    // window.location.reload();
+    
+
     
     }
 
   }
+  
   async logout(){
 
+    console.log('saliendo' ) ;
     await this.afAuth.signOut();
+   
   }
   //obtener el usuario que inicio sesion en el sistema
   getCurrentUser(){
 
-    return this.afAuth.authState.pipe(first());
+    return localStorage.getItem('usuario');
   }
+    
 }

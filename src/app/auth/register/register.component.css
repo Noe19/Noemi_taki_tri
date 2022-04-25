@@ -7,7 +7,7 @@
 }
 
 .card_imagen img{
- height: 500px;
+ height: 100%;
  width: 700px;
  
 }
@@ -28,10 +28,10 @@ text-align: center;
     color: white;
 }
 .card_login{
-margin-top: 70px;
+margin-top: 30px;
 align-items: center;
 text-align: center;
-margin-left: 60px;
+margin-left: 10px;
 color: white;
 }
 .card_login a{
@@ -42,12 +42,35 @@ color: white;
     align-items: center;
     text-align: center;
     justify-content:center ; 
-    margin-left: 100px;
+    margin-left: 50px;
 }
 .btn{
     margin-top: 30px;
     border-radius: 30px;
     background: #2D31FA;
     color:white;
-
 }
+.imagen{
+    margin-top: 50px;
+ border-radius: 10px;   
+}
+.green{
+    border-color: green;
+}
+.red{
+    border-color: red; 
+}
+
+
+.navbar-brand{
+    display:contents;
+  
+  }
+.home{
+      text-decoration: none;
+    }
+.error_mensaje{
+    color:red
+}    
+
+    

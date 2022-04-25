@@ -1,0 +1,14 @@
+.btn{
+    margin-top: 30px;
+    border-radius: 30px;
+    background: #2D31FA;
+    color:white;
+}
+
+.navbar-brand{
+    display:contents;
+  
+  }
+  .home{
+      text-decoration: none;
+    }

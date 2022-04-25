@@ -1,0 +1,39 @@
+.mision_vision{
+  background: #2D31FA;;
+}
+.col-derecho h2{
+    margin-top: 30px;
+    font-size: 375% ;
+    color: aliceblue;
+}
+.col-izquierdo{
+    text-align: right;
+}
+.col-izquierdo h2{
+    margin-top: 30px;
+    font-size: 375% ; 
+    color: aliceblue;
+}
+.container_izquierdo{
+ 
+    padding-right: 150px;
+}
+.parrafo_mision{
+    font-size: 205% ; 
+    color: aliceblue;  
+}
+.parrafo_vision{
+    font-size: 205% ;  
+    color: aliceblue;    
+    margin-left: 100px;
+    margin-right: 50px;
+
+    
+}
+.navbar-brand{
+    display:contents;
+  
+  }
+  .home{
+      text-decoration: none;
+    }

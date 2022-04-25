@@ -1,0 +1,7 @@
+.parte_principal{
+    display: flex;
+}
+.parte_principal img{
+    border: 0ex;
+    border-radius: 30px;
+}
