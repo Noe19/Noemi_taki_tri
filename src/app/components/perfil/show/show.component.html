@@ -1,23 +1,27 @@
-<p>Perfil</p>
+<h2> Perfil </h2>
+<hr>
+<form [formGroup]="ediForm"  novalidate>
 
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Apellido</th>
-        <th scope="col">Nickname</th>
-      </tr>
-    </thead>
-    <tbody>
-     <tr *ngFor="let perfil of Perfil">
-          <td>{{perfil.id}}</td>
-         <td>{{perfil.name}}</td>
-         <td>{{perfil.apellido}}</td>
-         <td>{{perfil.nickname}}</td>
-         <td><button routerLink="/edit/{{perfil.id}}" class="btn btn-outline-secondary">editar</button></td>
-     </tr>
-    </tbody>
-  </table>
+    <div class="mb-3">
+        <label class="form-label"></label>
+        <input formControlName="name" type="text" class="form-control"  required  >      
+    </div>
+    <div class="mb-3">
+        <label class="form-label">apellido</label>
+        <input formControlName="apellido" type="text" class="form-control" required >      
+    </div>
+    <div class="mb-3">
+        <label class="form-label">nickname</label>
+        <input formControlName="nickname" type="text" class="form-control" required >       
+    </div>
+    
+    <button routerLink="/edit/{{usuario}}" class="btn btn-outline-secondary">Editar</button>
+
+</form>
+<hr>
+
+
+
+
  
   

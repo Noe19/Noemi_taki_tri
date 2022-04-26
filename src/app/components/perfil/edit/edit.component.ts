@@ -40,8 +40,9 @@ public usuario : any;
   }
 */
 ngOnInit(): void {
-  const id = this.activeRoute.snapshot.paramMap.get('id')
-  this.perfilService.getPostbyId(id).subscribe( res =>{
+  this.usuario = localStorage.getItem('usuario')
+  const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
+  this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
     this.perfilRef = res;
     this.ediForm = this.formBuilder.group({
       name: [this.perfilRef.name],
@@ -53,9 +54,9 @@ ngOnInit(): void {
 }
   onSubmit (){
     this.usuario = localStorage.getItem('usuario')
-    const id =this.activeRoute.snapshot.paramMap.get('id');
-    this.perfilService.updatePost(this.ediForm.value,id);
-    this.router.navigate(['/show']);
+    const id =this.activeRoute.snapshot.paramMap.get(this.usuario);
+    this.perfilService.updatePost(this.ediForm.value,this.usuario);
+    this.router.navigate(['/dashboard']);
   }
 
 }

@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent },
   {path: 'forgot-password', component: ForgotPasswordComponent },
   {path: 'mision-vision', component: MisionVisionComponent },
-  {path : 'show',component: ShowComponent},
+  {path : 'show/:id',component: ShowComponent},
   {path:'edit/:id',component:EditComponent},
   {path:'perfil',component:PerfilComponent},
 

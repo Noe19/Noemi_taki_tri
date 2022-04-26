@@ -26,6 +26,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { MisionVisionComponent } from './pages/mision-vision/mision-vision.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ShowComponent } from './components/perfil/show/show.component';
+//menu lateral libreria de material angular
 
 import { EditComponent } from './components/perfil/edit/edit.component';
 
@@ -61,6 +62,7 @@ import { EditComponent } from './components/perfil/edit/edit.component';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
