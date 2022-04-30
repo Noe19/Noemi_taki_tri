@@ -20,7 +20,8 @@ public usuario : any;
       this.ediForm = this.formBuilder.group({
         name: [''],
         apellido: [''],
-        nickname: ['']
+        nickname: [''],
+        imagen:['']
       })
     }
 /*
@@ -44,18 +45,27 @@ ngOnInit(): void {
   const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
   this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
     this.perfilRef = res;
+    
     this.ediForm = this.formBuilder.group({
+      
+   
       name: [this.perfilRef.name],
-
       apellido: [this.perfilRef.apellido],
-      nickname: [this.perfilRef.nickname]
+      nickname: [this.perfilRef.nickname],    
+      imagen:[this.perfilRef.imagen],
+     
     })
+    
+    
   })
 }
   onSubmit (){
+    
     this.usuario = localStorage.getItem('usuario')
     const id =this.activeRoute.snapshot.paramMap.get(this.usuario);
-    this.perfilService.updatePost(this.ediForm.value,this.usuario);
+    console.log('imagen',this.ediForm.value)
+   this.perfilService.updatePost(this.ediForm.value,this.usuario);
+
     this.router.navigate(['/dashboard']);
   }
 

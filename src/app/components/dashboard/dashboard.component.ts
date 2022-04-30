@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Perfil } from './perfil.model';
 import { PerfilService } from '../perfil.service';
 import { FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/auth/service/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
   Perfil: Perfil[]
   public usuario : any;
   perfilResf:any;
+  public rol_admin:any;
  
  //public usuario_nuevo :any;
   
@@ -27,6 +29,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     //obtener el dato getItem
     this.usuario = localStorage.getItem('usuario')
+    this.rol_admin = localStorage.getItem('roles')
     
     //this.usuario_nuevo=localStorage.getItem('usuario_nuevo')
     
@@ -35,12 +38,14 @@ export class DashboardComponent implements OnInit {
   salir(){
     //limpiando de la cache
    localStorage.clear();
+   //this.auth.logout();
    this.router.navigate(['/home']);   
    console.log('saliendo_inicio' ) ;
-   return this.afAuth.signOut();
+   
    
   
  }
+ /*
  ingresar(){
    this.firestore.collection("usuario").add({"email":this.usuario = localStorage.getItem('usuario')}).then(()=>{
     alert("usuario ingresado con exito");
@@ -50,7 +55,7 @@ export class DashboardComponent implements OnInit {
    })
 
  }
-
+*/
  
 
 

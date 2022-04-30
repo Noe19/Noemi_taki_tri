@@ -1,0 +1,13 @@
+.formulario_editar_completo{
+    display: flex;
+  
+}
+.btn{
+    height: 50px;
+    margin: 20px;
+}
+.formulario_editar_perfil{
+    margin-left: 350px;
+    text-align: center;  
+    margin-top: 30px; 
+}

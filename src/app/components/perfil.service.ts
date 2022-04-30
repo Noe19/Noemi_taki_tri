@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 // importar los modulos de  la DB firebase
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
 
 import { Perfil } from './dashboard/perfil.model';
@@ -15,11 +16,13 @@ export class PerfilService {
   //metodos del crud
 //traer todos de la base de datos
   getPost (){
-  return this.angularfirestore.collection("artist").snapshotChanges()
+   
+  return this.angularfirestore.collection("request",ref => ref.where('rol', '==', 'no artist')).snapshotChanges()
 
   }
   // un solo documento
   getPostbyId(id){
+   
  return this.angularfirestore.collection("artist").doc(id).valueChanges()
   }
   
@@ -39,6 +42,7 @@ export class PerfilService {
   name:perfil.name,
   apellido:perfil.apellido,
   nickname:perfil.nickname,
+  imagen:'https://ui-avatars.com/api/?name='+perfil.name+'+'+perfil.apellido,
 
 });
   }

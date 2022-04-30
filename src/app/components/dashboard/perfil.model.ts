@@ -8,5 +8,7 @@ export interface Perfil {
     apellido:string;
     nickname:string;
     fecha_nacimiento:Date;
+    imagen:string;
+    rol:string;
   
 }

@@ -1,0 +1,46 @@
+
+
+
+<div class="Visualizacion_artistas_completa">
+    <app-sidenav></app-sidenav>
+<div class="formulario_completo_artistas">
+    <h2>Candidatos a artistas</h2>
+
+<table class="table table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>N.-</th>
+            <th>Nombre Artistico</th>
+            <th>Nacionalidad</th>
+            <th>Rol</th>
+            <th>Estado</th>
+           
+
+           
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let administrador of Administrador | slice:desde:hasta let i= index" >
+            <td>{{desde+i+1}}</td>
+            <td>{{administrador.nombre_artistico}}</td>
+            <td>{{administrador.nacionalidad}}</td>
+            <td>{{administrador.rol}}</td>
+           
+            <td>
+               
+                <button (click)="convertToArtist(administrador)" class="btn btn-outline-danger"><mat-icon>check_circle</mat-icon></button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+<mat-paginator [length]="Administrador.length"
+              [pageSize]="pageSize"
+              (page)="cambiarpagina($event)"
+            
+              aria-label="Select page">
+              
+</mat-paginator>
+</div>
+</div>
+

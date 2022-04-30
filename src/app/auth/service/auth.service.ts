@@ -36,6 +36,8 @@ export class AuthService {
    
    }
  
+     
+   
    async register(email:string,password:string,name:string):
    Promise<any>{
     try {
@@ -61,7 +63,9 @@ export class AuthService {
   async logout(){
 
     console.log('saliendo' ) ;
-    await this.afAuth.signOut();
+  await this.afAuth.signOut();
+  //this.auth.logout();
+  
    
   }
   //obtener el usuario que inicio sesion en el sistema

@@ -1,0 +1,20 @@
+.perfil_completo{
+    display: flex;
+}
+.mb-12{
+    width: 350px;
+}
+.formulario_show_perfil{
+ text-align: center;
+ margin-left: 300px;
+
+}
+.btn{
+    margin-top: 20px;
+}
+.imagen_perfil{
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 10px;
+}

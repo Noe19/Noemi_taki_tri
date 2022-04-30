@@ -1,24 +1,40 @@
-<h2> Perfil </h2>
-<hr>
-<form [formGroup]="ediForm"  novalidate>
 
-    <div class="mb-3">
-        <label class="form-label"></label>
-        <input formControlName="name" type="text" class="form-control"  required  >      
+   
+   
+<div class="perfil_completo">
+          
+    <app-sidenav></app-sidenav>
+   
+       
+    
+<form [formGroup]="ediForm"  novalidate class="formulario_show_perfil">
+    <h2> Perfil </h2>
+    <hr>
+
+ 
+   
+    
+   <img [src]="this.url" alt="">
+    
+    <div class="mb-12">
+        <label class="form-label">Nombre</label>
+        <input formControlName="name" type="text" class="form-control"  required [readonly]="true" >      
     </div>
-    <div class="mb-3">
-        <label class="form-label">apellido</label>
-        <input formControlName="apellido" type="text" class="form-control" required >      
+    <div class="mb-12">
+        <label class="form-label">Apellido</label>
+        <input formControlName="apellido" type="text" class="form-control" required [readonly]="true" >      
     </div>
-    <div class="mb-3">
-        <label class="form-label">nickname</label>
-        <input formControlName="nickname" type="text" class="form-control" required >       
+    <div class="mb-12">
+        <label class="form-label">Nickname</label>
+        <input formControlName="nickname" type="text" class="form-control" required [readonly]="true"  >       
     </div>
     
     <button routerLink="/edit/{{usuario}}" class="btn btn-outline-secondary">Editar</button>
 
 </form>
+
 <hr>
+</div>
 
 
 

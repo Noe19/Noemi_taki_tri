@@ -3,12 +3,20 @@
     border-radius: 30px;
     background: #2D31FA;
     color:white;
+    height: 50px;
+   
+  
+   
+}
+.id_usuario_perfil{
+  margin-left: 450px;
 }
 
-.navbar-brand{
-    display:contents;
-  
-  }
-  .home{
-      text-decoration: none;
-    }
+.d-flex {
+  height: 100%;
+  width: 300px;
+ 
+}
+.dasboard_completo{
+  display: flex;
+}

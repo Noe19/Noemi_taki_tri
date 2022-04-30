@@ -19,14 +19,18 @@
     padding-right: 150px;
 }
 .parrafo_mision{
-    font-size: 205% ; 
-    color: aliceblue;  
+    font-size: 250% ; 
+    color: aliceblue; 
+    margin-top: 50px; 
+    line-height:normal;
 }
 .parrafo_vision{
-    font-size: 205% ;  
+    font-size: 250% ;  
     color: aliceblue;    
     margin-left: 100px;
     margin-right: 50px;
+    margin-top: 50px;
+    line-height:normal;
 
     
 }

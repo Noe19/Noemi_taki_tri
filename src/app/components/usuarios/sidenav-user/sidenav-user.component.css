@@ -1,0 +1,14 @@
+.sidebar-header{
+    background: rebeccapurple;
+    width: 250px;
+}
+.list-unstyled {
+    background: red;
+    width: 250px;
+    height: 100%;
+}
+.d-flex {
+    height: 100%;
+    width: 300px;
+    display: flex;
+}

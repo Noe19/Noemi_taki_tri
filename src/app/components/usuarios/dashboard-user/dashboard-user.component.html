@@ -1,0 +1,14 @@
+
+
+<div class="dasboard_completo">
+    <app-sidenav-user></app-sidenav-user>
+   
+   <p class="id_usuario_perfil">Bienvenido a Taki-Tri usuario
+    
+       {{ usuario }}
+       </p>
+       
+       <button class="btn" (click)="salir()">salir</button>
+       <button routerLink="/show/{{usuario}}" class="btn btn-outline-secondary">ver Perfil</button>
+       
+   </div>

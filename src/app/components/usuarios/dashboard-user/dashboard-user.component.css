@@ -1,0 +1,22 @@
+.btn{
+    margin-top: 30px;
+    border-radius: 30px;
+    background: #2D31FA;
+    color:white;
+    height: 50px;
+   
+  
+   
+}
+.id_usuario_perfil{
+  margin-left: 450px;
+}
+
+.d-flex {
+  height: 100%;
+  width: 300px;
+ 
+}
+.dasboard_completo{
+  display: flex;
+}

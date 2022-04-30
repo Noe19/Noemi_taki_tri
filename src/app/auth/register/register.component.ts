@@ -190,7 +190,7 @@ getErrorMessage_contrasena() {
         //enviar a firestore
         //this.speakerCollection.doc(user?.user?.uid).set({ });
         this.firestore.collection("artist").doc(user?.user?.uid).set({"id_autenticado":user?.user?.uid,"name": this.registerForm.get('name')?.value,"apellido":this.registerForm.get('apellido')?.value,"nickname":this.registerForm.get('nickname')?.value,
-        "fecha_nacimiento":this.registerForm.get('fecha_nacimiento')?.value,"email":this.registerForm.get('email')?.value,"id_artista":id}).then(()=>{
+        "fecha_nacimiento":this.registerForm.get('fecha_nacimiento')?.value,"email":this.registerForm.get('email')?.value,"id_artista":id,"imagen":"https://ui-avatars.com/api/?name="+this.registerForm.get('name')?.value+'+'+this.registerForm.get('apellido')?.value}).then(()=>{
         // si se registro correctamente y se paso los datos al firestore se le dirige al dashboard
           this.router.navigate(['/dashboard']);
 
