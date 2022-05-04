@@ -16,7 +16,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from 'src/environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-
+//perfil editado por mi
+import { EditartistComponent } from './components/usuarios/perfil-artist/edit-artist/edit-artist.component';
+import { ShowartistComponent } from './components/usuarios/perfil-artist/show-artist/show-artist.component';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -24,7 +26,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 //login
 
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { MisionVisionComponent } from './pages/mision-vision/mision-vision.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ShowComponent } from './components/perfil/show/show.component';
@@ -46,7 +48,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { SolicitudAceptadasComponent } from './components/administrador/solicitud-aceptadas/solicitud-aceptadas.component';
 import { DashboardUserComponent } from './components/usuarios/dashboard-user/dashboard-user.component';
-import { SidenavUserComponent } from './components/usuarios/sidenav-user/sidenav-user.component'
+import { SidenavUserComponent } from './components/usuarios/sidenav-user/sidenav-user.component';
+import { SendEmailComponent } from './auth/send-email/send-email.component'
 
 
 
@@ -76,6 +79,9 @@ import { SidenavUserComponent } from './components/usuarios/sidenav-user/sidenav
     SolicitudAceptadasComponent,
     DashboardUserComponent,
     SidenavUserComponent,
+    EditartistComponent,
+    ShowartistComponent,
+    SendEmailComponent,
    
     
   

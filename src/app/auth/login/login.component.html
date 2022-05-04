@@ -23,7 +23,7 @@
         <label class="error_mensaje"  id="email" [class.red]="contrasena_no_valido" *ngIf="contrasena_no_valido">{{getErrorMessage_contrasena()}}</label>
       <br>
 
-        <label><a href="#">Recuperar contraseña</a></label>
+        <label><a [routerLink]="['/forgot-password']">Recuperar contraseña</a></label>
         <br>
         <button class="btn" type="submit" [disabled]="loginForm.invalid">Inicio de Sesión</button>
         

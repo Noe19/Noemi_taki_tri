@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
@@ -8,11 +8,13 @@ import { Perfil } from './perfil.model';
 import { PerfilService } from '../perfil.service';
 import { FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/auth/service/auth.service';
+import { NgLocaleLocalization } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
+  providers:[AuthService],
   
 
 })
@@ -23,7 +25,16 @@ export class DashboardComponent implements OnInit {
   public rol_admin:any;
  
  //public usuario_nuevo :any;
-  
+ // nuevo intento sobre la navegacion
+
+
+ mostrar_enviar_solicitud:String=""
+ mostrar_solicitud_Nuevas:String=""
+ mostrar_solicitud_Aprobadas:String=""
+ mostrar_solicitud_Rechazadas:String=""
+
+
+ // termino
 
   constructor(private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore) { }
   ngOnInit(): void {
@@ -32,15 +43,29 @@ export class DashboardComponent implements OnInit {
     this.rol_admin = localStorage.getItem('roles')
     
     //this.usuario_nuevo=localStorage.getItem('usuario_nuevo')
+
+
+
+
+
+
+    
+ 
     
   }
+
+
+
   
-  salir(){
+  async salir(){
     //limpiando de la cache
+  // localStorage.clear();
    localStorage.clear();
    //this.auth.logout();
+   await this.afAuth.signOut();
    this.router.navigate(['/home']);   
-   console.log('saliendo_inicio' ) ;
+   console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
+   console.log('usuario que salio',this.usuario)
    
    
   

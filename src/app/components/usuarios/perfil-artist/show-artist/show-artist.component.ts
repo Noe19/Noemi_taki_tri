@@ -1,6 +1,6 @@
 import { Component, OnInit,Output } from '@angular/core';
-import { Perfil } from '../../dashboard/perfil.model';
-import { PerfilService } from '../../perfil.service';
+import { Perfil } from 'src/app/components/dashboard/perfil.model';
+import { PerfilService } from 'src/app/components/perfil.service';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { FormGroup,FormBuilder, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,12 +9,12 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Component({
-  selector: 'app-show',
-  templateUrl: './show.component.html',
-  styleUrls: ['./show.component.css']
+  selector: 'app-show-edit',
+  templateUrl: './show-artist.component.html',
+  styleUrls: ['./show-artist.component.css']
 })
-export class ShowComponent implements OnInit {
-  public ediForm : FormGroup;
+export class ShowartistComponent implements OnInit {
+public ediForm : FormGroup;
 perfilRef:any;
 public usuario : any;
  Perfil: Perfil[]

@@ -7,15 +7,31 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import { OperationType, User } from '@firebase/auth';
 import { Router, RouterLink } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 @Injectable()
 export class AuthService {
 
  // public user : User;
-  constructor(public afAuth :AngularFireAuth,private router : Router) { }
+  constructor(public afAuth :AngularFireAuth,private router : Router, public angularfirestore:AngularFirestore) { }
+// verificacion de email al registrarse en la aplicacion
+  async sendVerificationEmail():Promise<void>{
+    return  (await this.afAuth.currentUser).sendEmailVerification();
+  }
 
+// verificacion de email para restaurar contraseña
+async resetPassword(email:string):Promise<void>{
+try {
+  return this.afAuth.sendPasswordResetEmail(email);
+} catch (error) {
+  console.log('error d everificacion de email de contraseña',error)
   
+}
+}
+
+
+
  async login(email:string,password:string)
  {
     try {
@@ -47,6 +63,8 @@ export class AuthService {
         
         
       );
+      // verificacion de email
+      this.sendVerificationEmail();
       return result;
     } catch (error) {console.log(error,'register')
     alert('No se creo el usuario correctamnete o el usuario ya exite, por favor intente nuevamente');
@@ -73,5 +91,9 @@ export class AuthService {
 
     return localStorage.getItem('usuario');
   }
+  getPostbyId(id){
+   
+    return this.angularfirestore.collection("artist").doc(id).valueChanges()
+     }
     
 }

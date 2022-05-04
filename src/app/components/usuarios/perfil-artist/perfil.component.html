@@ -1,0 +1,20 @@
+
+<p>perfil works!</p>
+<form [formGroup]="perfilForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <div class="mb-3">
+        <label class="form-label">nombre</label>
+        <input formControlName="name" type="text" class="form-control" required>      
+    </div>
+    <div class="mb-3">
+        <label class="form-label">apellido</label>
+        <input formControlName="apellido" type="text" class="form-control" required>      
+    </div>
+    <div class="mb-3">
+        <label class="form-label">nickname</label>
+        <input formControlName="nickname" type="text" class="form-control" required>       
+    </div>
+    
+    <button [disabled]="!perfilForm.valid" type="submit" class="btn btn-primary">Store</button>
+
+</form>

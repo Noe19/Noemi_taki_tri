@@ -1,0 +1,27 @@
+<div class="formulario_editar_completo">
+    <app-sidenav-user></app-sidenav-user>
+
+<form [formGroup]="ediForm" (ngSubmit)="onSubmit()" novalidate class="formulario_editar_perfil">
+    <h2>Editar tu Perfil </h2>
+    <hr>
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input formControlName="name" type="text" class="form-control" required>      
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Apellido</label>
+        <input formControlName="apellido" type="text" class="form-control" required>      
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nickname</label>
+        <input formControlName="nickname" type="text" class="form-control" required>       
+    </div>
+   
+
+    
+    <button type="submit" class="btn btn-primary">Update</button>
+    <button  routerLink="/show-artist/{{usuario}}" type="submit" class="btn btn-primary">Regresar</button>
+
+</form>
+
+</div>

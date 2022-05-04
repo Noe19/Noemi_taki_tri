@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/service/auth.service';
 import { Perfil } from '../../dashboard/perfil.model';
 import { PerfilService } from '../../perfil.service';
 
 @Component({
   selector: 'app-dashboard-user',
   templateUrl: './dashboard-user.component.html',
-  styleUrls: ['./dashboard-user.component.css']
+  styleUrls: ['./dashboard-user.component.css'],
+  providers:[AuthService],
 })
 export class DashboardUserComponent implements OnInit {
   Perfil: Perfil[]
@@ -21,12 +23,16 @@ export class DashboardUserComponent implements OnInit {
     this.usuario = localStorage.getItem('usuario')
     this.rol_admin = localStorage.getItem('roles')
   }
-  salir(){
+  // salir de usuario
+  async salir(){
     //limpiando de la cache
+  // localStorage.clear();
    localStorage.clear();
    //this.auth.logout();
+   await this.afAuth.signOut();
    this.router.navigate(['/home']);   
-   console.log('saliendo_inicio' ) ;
+   console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
+   console.log('usuario que salio',this.usuario)
    
    
   

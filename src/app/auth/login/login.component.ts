@@ -84,16 +84,45 @@ getErrorMessage_contrasena() {
         console.log('usurio_unico',user?.user?.email)
         // usuario de forma global, solo vale hacer una sola (setItem)-> 
         localStorage.setItem('usuario', user?.user?.uid);
-        //intento     
-        this.router.navigate(['/dashboard']);
+        //intento 
+        
+        
+
+
+       // this.router.navigate(['/dashboard']);
+
+
+
         /*
+        para que si es Administrador nos diriga a dashboard del Administrador
         if(user?.user?.uid=='FE1Uu1rE6NWRyCaNPIU81zNhSst1'){
           this.router.navigate(['/dashboard']);
         }else{
           this.router.navigate(["/dashboard-user"]); 
         }
          */ 
-        this.router.navigate(['/dashboard']);      
+       // this.router.navigate(['/dashboard']);  
+       // para saber que Rol es 
+       this.usuario = localStorage.getItem('usuario')
+        this.authSvc.getPostbyId(this.usuario).subscribe( res =>{ 
+        this.perfilResf = res ;
+        // Genero la variable global para saber que usuario soy 
+         localStorage.setItem('roles',this.perfilResf.rol) 
+         this.roles_admin=localStorage.getItem('roles')
+         
+         console.log('permiso_artista_login:',this.perfilResf.rol)
+// dependiendo si es artista o es Administrador para que le redirija al dashboard correspondiente.
+         if(this.roles_admin=="artista"){
+          this.router.navigate(["/dashboard-user"]);
+        }else if(this.roles_admin=="administrador"){
+          this.router.navigate(['/dashboard']); 
+        }
+       
+      })
+
+      
+       
+       // Termina el rol 
       } else{
         this.loginForm.reset();
         this.router.navigate(['/login']);
