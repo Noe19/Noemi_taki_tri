@@ -69,8 +69,12 @@ color: white;
 .home{
       text-decoration: none;
     }
+
 .error_mensaje{
     color:red
-}    
+}
+.nav-link{
+    color: aliceblue;
+  }    
 
     

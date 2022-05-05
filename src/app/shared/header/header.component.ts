@@ -6,7 +6,7 @@ import {NavigationEnd,ActivatedRoute} from '@angular/router';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  providers:[AuthService]
+  providers:[AuthService],
 })
 export class HeaderComponent implements OnInit {
   public user :any;

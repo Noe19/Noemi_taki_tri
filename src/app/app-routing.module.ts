@@ -18,13 +18,14 @@ import { EditartistComponent } from './components/usuarios/perfil-artist/edit-ar
 import { ShowartistComponent } from './components/usuarios/perfil-artist/show-artist/show-artist.component';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 
+
 const routes: Routes = [
 
   {path:'home',component:WelcomeComponent,},
   {path:'sobrenosotros',component:SobrenosotrosComponent},
   {path: 'dashboard', component: DashboardComponent ,canActivate:[PermisosGuard]},
   {path: 'forgot-password', component:ForgotPasswordComponent },
-  {path: 'mision-vision', component: MisionVisionComponent,canActivate:[PermisosGuard]  },
+  {path: 'mision-vision', component: MisionVisionComponent  },
   {path : 'show/:id',component: ShowComponent,canActivate:[PermisosGuard] },
   {path:'edit/:id',component:EditComponent,canActivate:[PermisosGuard] },
   {path:'perfil',component:PerfilComponent,canActivate:[PermisosGuard] },
@@ -32,9 +33,9 @@ const routes: Routes = [
   {path:'administrador',component:AdministradorComponent,canActivate:[PermisosGuard,PermisosAdministradorGuard]},
   {path:'solicitud-aceptadas',component:SolicitudAceptadasComponent,canActivate:[PermisosGuard,PermisosAdministradorGuard]},
   {path:'dashboard-user',component:DashboardUserComponent,canActivate:[PermisosGuard] },
-  {path:'edit-artist/:id',component:EditartistComponent},
-  {path:'show-artist/:id',component:ShowartistComponent},
-  {path:'send-email',component:SendEmailComponent   },
+  {path:'edit-artist/:id',component:EditartistComponent,canActivate:[PermisosGuard] },
+  {path:'show-artist/:id',component:ShowartistComponent,canActivate:[PermisosGuard] },
+  {path:'send-email',component:SendEmailComponent},
 
   { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule) },
 

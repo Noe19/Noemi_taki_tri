@@ -20,7 +20,8 @@ export class SolicitudComponent  {
         
         nacionalidad:['',[Validators.required]],
         rol:['no artist'],
-        id_usuario: [this.usuario]
+        id_usuario: [this.usuario],
+        
         })
        }
   ngOnInit(): void {

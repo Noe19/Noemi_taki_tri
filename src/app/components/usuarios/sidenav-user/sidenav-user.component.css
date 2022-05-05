@@ -12,3 +12,14 @@
     width: 300px;
     display: flex;
 }
+.navbar-brand{
+    display:contents;
+  
+  }
+  .home{
+      text-decoration: none;
+      color: aliceblue;
+    }
+    .nav-link{
+      color: aliceblue;
+    }

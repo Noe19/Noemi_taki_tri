@@ -1,3 +1,4 @@
+<app-header-artist></app-header-artist>
 <div class="formulario">
     <app-sidenav-user></app-sidenav-user>
 <div class="formulario_solicitud">
@@ -12,9 +13,13 @@
         <label class="form-label">Nacionalidad</label>
         <input formControlName="nacionalidad" type="text" class="form-control" required>
     </div>
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="customCheck1" required>
-        <label class="custom-control-label" for="customCheck1">Acepto Terminos y Condiciones</label>
+   
+
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled required  >
+        <label class="form-check-label" for="flexCheckChecked">
+            Acepto Terminos y Condiciones
+        </label>
       </div>
 
     

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../service/auth.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,8 +10,12 @@ import { Router } from '@angular/router';
   providers:[AuthService],
 })
 export class ForgotPasswordComponent implements OnInit {
-userEmail = new FormControl('');
-  constructor(private authSvc:AuthService,private router:Router) { }
+
+userEmail = new FormControl('',[Validators.email]);
+  constructor(private authSvc:AuthService,private router:Router) { 
+
+    
+  }
 
   ngOnInit(): void {
   }

@@ -24,6 +24,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 //login
 
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
@@ -49,7 +50,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { SolicitudAceptadasComponent } from './components/administrador/solicitud-aceptadas/solicitud-aceptadas.component';
 import { DashboardUserComponent } from './components/usuarios/dashboard-user/dashboard-user.component';
 import { SidenavUserComponent } from './components/usuarios/sidenav-user/sidenav-user.component';
-import { SendEmailComponent } from './auth/send-email/send-email.component'
+import { SendEmailComponent } from './auth/send-email/send-email.component';
+import { HeaderAdminComponent } from './shared/header-admin/header-admin.component';
+import { HeaderArtistComponent } from './shared/header-artist/header-artist.component';
+import { FooterSistemComponent } from './shared/footer-sistem/footer-sistem.component'
 
 
 
@@ -82,6 +86,9 @@ import { SendEmailComponent } from './auth/send-email/send-email.component'
     EditartistComponent,
     ShowartistComponent,
     SendEmailComponent,
+    HeaderAdminComponent,
+    HeaderArtistComponent,
+    FooterSistemComponent,
    
     
   

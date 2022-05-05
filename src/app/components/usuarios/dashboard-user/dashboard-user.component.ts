@@ -30,7 +30,7 @@ export class DashboardUserComponent implements OnInit {
    localStorage.clear();
    //this.auth.logout();
    await this.afAuth.signOut();
-   this.router.navigate(['/home']);   
+   this.router.navigate(['/register']);   
    console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
    console.log('usuario que salio',this.usuario)
    

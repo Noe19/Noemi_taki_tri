@@ -210,6 +210,7 @@ getErrorMessage_contrasena() {
          })
          */
         alert('Usted se ha registrado con exito, revisaremos sus datos , para que pueda ingresar debe esperara 24h');
+        this.router.navigate(['/send-email']);
         
       } else{
         this.router.navigate(['/register']);

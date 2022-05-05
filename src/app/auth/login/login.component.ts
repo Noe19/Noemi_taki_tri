@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   //constructor(){}
  //constructor(private authSvc : AuthService,private router : Router) { }
+ public verificado:any;
  public user :any;
  public usuario:any;
  public perfilResf:any;
@@ -79,12 +80,13 @@ getErrorMessage_contrasena() {
     try {
       const user:any = await this.authSvc.login(email,password);
       if(user ){ 
-        
-        console.log('usurio',user)
+        this.verificado = user?.user?.emailVerified
+        console.log('usurio_verificado',this.verificado)
         console.log('usurio_unico',user?.user?.email)
         // usuario de forma global, solo vale hacer una sola (setItem)-> 
         localStorage.setItem('usuario', user?.user?.uid);
-        //intento 
+        //valor de verifivacion
+
         
         
 
@@ -112,16 +114,13 @@ getErrorMessage_contrasena() {
          
          console.log('permiso_artista_login:',this.perfilResf.rol)
 // dependiendo si es artista o es Administrador para que le redirija al dashboard correspondiente.
-         if(this.roles_admin=="artista"){
+         if(this.roles_admin=="artista" &&  user?.user?.emailVerified==true ){
           this.router.navigate(["/dashboard-user"]);
-        }else if(this.roles_admin=="administrador"){
+        }else if(this.roles_admin=="administrador" && user?.user?.emailVerified===true ){
           this.router.navigate(['/dashboard']); 
         }
-       
-      })
-
-      
-       
+              
+      })       
        // Termina el rol 
       } else{
         this.loginForm.reset();
@@ -129,15 +128,6 @@ getErrorMessage_contrasena() {
       
       }
    
-     
-      
-
-
-
-
-
-
-
 // termino la idea
     }
      catch (error) {

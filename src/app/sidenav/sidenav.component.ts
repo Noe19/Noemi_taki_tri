@@ -9,13 +9,13 @@ import { Sidenav } from './sidenav.model';
 export class SidenavComponent implements OnInit {
   public usuario : any;
   sidenav: Sidenav []
-  public Mensaje:any;
+  //public Mensaje:any;
   public roles_admin:any;
   //mensaje que se enviaran dependiendo que Rol es 
-  mostrar_enviar_solicitud:String=""
+ /* mostrar_enviar_solicitud:String=""
   mostrar_solicitud_Nuevas:String=""
   mostrar_solicitud_Aprobadas:String=""
-  mostrar_solicitud_Rechazadas:String=""
+  mostrar_solicitud_Rechazadas:String=""*/
   //otro intento
  
   constructor() { }
@@ -23,11 +23,11 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = localStorage.getItem('usuario')
-    this.roles_admin=localStorage.getItem('roles')
+  this.roles_admin=localStorage.getItem('roles')
     console.log('donde estoy',this.roles_admin)
     // los diferentes rutas
   
-
+/*
     // rutas dependiendo donde estoy 
     if(this.roles_admin=='artista'){
      // window.location.reload();
@@ -51,7 +51,7 @@ export class SidenavComponent implements OnInit {
       this.mostrar_solicitud_Rechazadas=""
       this.mostrar_enviar_solicitud="Enviar Solicitud "
       
-    }
+    }*/
   }
 
 }

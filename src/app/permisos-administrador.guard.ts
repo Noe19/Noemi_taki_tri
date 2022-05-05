@@ -38,11 +38,11 @@ export class PermisosAdministradorGuard implements CanActivate {
       if( this.roles_admin=='administrador'){
 
         return true;
-        this.router.navigate(['/dashboard'])
+      //  this.router.navigate(['/dashboard'])
 
       }
       return false
-      this.router.navigate(['/dashboard-user'])
+     // this.router.navigate(['/dashboard-user'])
       
       /*
       if(this.perfilResf.name=='admi'){
