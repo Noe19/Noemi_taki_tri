@@ -4,7 +4,7 @@
 <form class="formulario_generos" (ngSubmit)="onSubmit()" [formGroup]="ediForm">
   <div class="input-group mb-3">
     <input type="text" class="form-control" placeholder="Generos" required formControlName="Genero_nuevo">
-    <input type="text" class="form-control" placeholder="Generos" required formControlName="artista_id">
+    
  
     
   </div>
@@ -14,7 +14,7 @@
     <input 
         type="file"
         #file
-        class="input-file"
+        class="input-file" accept="image/*"
         (change)="onFilesAdded($event.target)"
     />
     <img (click)="addFiles()" class="upload" [src]="this.url" alt="" />
@@ -28,4 +28,7 @@
  
 </div>
 </form>
+
+
+
 </div>

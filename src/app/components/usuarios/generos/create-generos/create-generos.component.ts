@@ -32,7 +32,8 @@ export class CreateGenerosComponent implements OnInit {
   
       Genero_nuevo:['',[Validators.required]],
       artista_id:[localStorage.getItem('usuario'),[Validators.required]],
-      referencia:[''] 
+      referencia:[''] ,
+      
     })
    }
 
@@ -70,13 +71,14 @@ export class CreateGenerosComponent implements OnInit {
     
     let  cargar:any={
       Genero_nuevo:this.generosforms.value.Genero_nuevo,
-      
+     
       
 
     };
     this.GenerosImg.cargarimagenesGeneroFirebase(this.imagenes,cargar);
     this.router.navigate(['/generos']);
     console.log(this.generosforms.value,'url',cargar)
+    console.log(this.generosforms.value.Genero_nuevo)
    
   }
 /*

@@ -86,28 +86,36 @@ export class GenerosService {
       }, () => {
         //obtener la url
         getDownloadURL(uploadImg.snapshot.ref).then((downloadURL) => {
-          this.usuario = localStorage.getItem('usuario')
+          this.usuario = localStorage.getItem('usuario');
           item.url = downloadURL;
           console.log('url', item.url)
-
-          if (path==`${this.CarpetaImagenes}/${this.usuario}/${generos.Genero_nuevo}`){
-            console.log('son iguales')
+          console.log('url_name', generos.id)
+         
+          if (generos.id) {
+            // console.log(this.update(generosImg, url,filePath))
+            console.log('entre')
+             //this.update(generos, item.url,path);
+            // console.log('datos update',this.update(generosImg, url,filePath))
             
-            
-          }
+           } else {
+             
+             
+           const  id = this.db.createId(); 
           this.guadarImagenGeneros({
 // aqui estan los datos que se enviar a la base de datos con la imagen
-                    
+   
             Genero_nuevo: generos.Genero_nuevo,
             imagenUrl: item.url,
             artista_id: this.usuario,
             referencia:path,
+            id:id,
            
            
             
 
-          })
+          } )}
           console.log('ruta de imagen ', path)
+          
         })
 
       })
@@ -118,7 +126,7 @@ export class GenerosService {
   }
 
     
-  async guadarImagenGeneros(generos: { Genero_nuevo: string, imagenUrl: string, artista_id: string,referencia:string}): Promise<any> {
+  async guadarImagenGeneros(generos: { Genero_nuevo: string, imagenUrl: string, artista_id: string,referencia:string,id:string}): Promise<any> {
   
     try {
 
@@ -137,8 +145,14 @@ export class GenerosService {
         }
 
       })
+      const  id = this.db.createId(); 
+      return await this.db.collection('generos').doc(id).set({id,
+        Genero_nuevo: generos.Genero_nuevo,
+        imagenUrl:generos.imagenUrl,
+        artista_id:generos.artista_id,
+        referencia:generos.referencia});
 
-      return await this.db.collection('generos').add(generos)
+        
 
 
     } catch (error) {
@@ -197,7 +211,7 @@ export class GenerosService {
       this.usuario1 = localStorage.getItem('usuario')
       console.log('lll',this.usuario1)
       const filePath = this.CarpetaImagenes1+this.usuario1+'/'+generosImg.Genero_nuevo;
-      console.log("imagenGeneros/"+this.usuario+generosImg.Genero_nuevo)
+      console.log("imagenGeneros/"+this.usuario+'/'+generosImg.Genero_nuevo)
       const ref = this.storage.ref(filePath);
       ref.put(_file).then(() => {
         ref.getDownloadURL().subscribe(url => {
@@ -205,10 +219,10 @@ export class GenerosService {
           generosImg.id
           console.log('id',generosImg.Genero_nuevo)
           */
-          console.log('id',generosImg.artista_id)
+          console.log('id',generosImg.id)
           this.url2=url
           
-          if (generosImg.artista_id) {
+          if (generosImg.id) {
            // console.log(this.update(generosImg, url,filePath))
            
             this.update(generosImg, url,filePath);
@@ -224,8 +238,8 @@ export class GenerosService {
   }
 
 
-  update(albumImg: Generos, urlImg,referencia) {
-    console.log('id_update',urlImg)
+   update(albumImg: Generos, urlImg,referencia) {
+    console.log('id_update',albumImg.id)
    
   if(albumImg.referencia===referencia){
     
@@ -233,6 +247,7 @@ export class GenerosService {
     .doc(albumImg.id)
     .update({ Genero_nuevo: albumImg.Genero_nuevo, imagenUrl: urlImg, artista_id: albumImg.artista_id,referencia:albumImg.referencia });
    console.log('datos abtes de enviar1' ,albumImg.Genero_nuevo  )  
+
 
   }else{
     this.speakerCollection

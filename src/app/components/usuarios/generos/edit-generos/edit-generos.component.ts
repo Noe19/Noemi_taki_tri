@@ -16,7 +16,7 @@ export class EditGenerosComponent implements OnInit {
   public imagen:any;
   todoslosgeneros:Generos[];
   imagenes:ImagenesGeneros[]=[];
-  //imgURL="../assets/imagenes/camera.png";
+ // imgURL="../assets/imagenes/camera.png";
   //file:any;
   public url:any;
   public imagenes_generos:any;
@@ -36,6 +36,7 @@ export class EditGenerosComponent implements OnInit {
         Genero_nuevo: [''],
         imagenUrl:[''],
         artista_id:[''],
+        id:[''],
       
         
       
@@ -85,8 +86,8 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
  console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'))
 // this.usuario = localStorage.getItem('usuario')
  
- const id = this.activeRoute.snapshot.paramMap.get('id');
- this.GenerosImg.getgenerosbyId(id).subscribe(res =>{
+ const id2 = this.activeRoute.snapshot.paramMap.get('id');
+ this.GenerosImg.getgenerosbyId(id2).subscribe(res =>{
    this. generosRef = res;
    this.url = this.generosRef.imagenUrl
    this.ediForm = this.formBuilder.group({
@@ -94,9 +95,7 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
      Genero_nuevo: [this.generosRef.Genero_nuevo],
      imagenUrl: [this.generosRef.imagenUrl],
     artista_id:[this.generosRef.artista_id],
-    
-    
-    
+    id:[this.generosRef.id],    
   
    })
    console.log('valueid',this.generosRef.id)
@@ -105,10 +104,10 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
    
   }
 
-  /*
+ /* 
   selectChange(event:any){
     //traer la imagens
-    //console.log(event.target.files);
+    console.log('edit_mio',event.target.files);
     //para visualizar la imagen que vamos a subir
     if(event.target.files.length>0){
       this.file=event.target.files;
@@ -131,7 +130,7 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
   }
 */
   onSubmit(){
-    /*
+ /*   
  console.log('dato',this.ediForm.value);
    // los datos String del formulario
    let  cargar:any={
@@ -141,9 +140,11 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
   };
   this.GenerosImg.cargarimagenesGeneroFirebase(this.imagenes,cargar);
   this.router.navigate(['/generos']);
-  console.log(this.ediForm.value,'url',cargar)
+  console.log('2segunda',this.ediForm.value,'url',cargar)
   */
   // datos de editar
+
+  
   this.GenerosImg.add(this.ediForm.value, this._file)
   console.log(this.ediForm.value)
   this.isChanged = false;
