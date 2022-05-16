@@ -10,11 +10,14 @@
 
 }
 .btn{
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .imagen_perfil{
     height: 50px;
     text-align: center;
     align-items: center;
     margin-bottom: 10px;
+}
+.form-label{
+    margin-top: 20px;
 }

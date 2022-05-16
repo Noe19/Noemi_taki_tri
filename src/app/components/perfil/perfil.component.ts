@@ -27,7 +27,7 @@ export class PerfilComponent implements OnInit {
    
     }
     onSubmit() {
-      this.perfilService.createPost(this.perfilForm.value)
+     // this.perfilService.createPost(this.perfilForm.value)
       this.router.navigate(['/show'])
     }
       

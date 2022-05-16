@@ -13,9 +13,22 @@
 
  
    
-    
-   <img [src]="this.url" alt="">
-    
+   
+   <!-- <img [src]="this.url" alt="">-->
+   <br>
+   <br>
+  
+
+    <img (click)="addFiles()" class="upload" [src]="this.url" alt="" />
+    <br>
+    <input 
+    type="file"
+    #file
+    class="input-file"
+    (change)="onFilesAdded($event.target)"
+  />
+<br>
+    <button class="button" (click)="add()">Agregar</button>
     <div class="mb-12">
         <label class="form-label">Nombre</label>
         <input formControlName="name" type="text" class="form-control"  required [readonly]="true" >      

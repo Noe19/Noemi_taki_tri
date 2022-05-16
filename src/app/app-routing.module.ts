@@ -17,15 +17,23 @@ import { DashboardUserComponent } from './components/usuarios/dashboard-user/das
 import { EditartistComponent } from './components/usuarios/perfil-artist/edit-artist/edit-artist.component';
 import { ShowartistComponent } from './components/usuarios/perfil-artist/show-artist/show-artist.component';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
+import { SolicitudRechazadasComponent } from './components/administrador/solicitud-rechazadas/solicitud-rechazadas.component';
+import { GenerosComponent } from './components/usuarios/generos/generos.component';
+import { CreateGenerosComponent } from './components/usuarios/generos/create-generos/create-generos.component';
+import { EditGenerosComponent } from './components/usuarios/generos/edit-generos/edit-generos.component';
+import { ShowAlbumesComponent } from './components/usuarios/Albumes/show-albumes/show-albumes.component';
+import { CreateAlbumesComponent } from './components/usuarios/Albumes/create-albumes/create-albumes.component';
+import { EditAlbumesComponent } from './components/usuarios/Albumes/edit-albumes/edit-albumes.component';
+import { PermisoUsuarioGuard } from './permiso-usuario.guard';
 
 
 const routes: Routes = [
 
-  {path:'home',component:WelcomeComponent,},
-  {path:'sobrenosotros',component:SobrenosotrosComponent},
+  {path:'home',component:WelcomeComponent,canActivate:[PermisoUsuarioGuard]},
+  {path:'sobrenosotros',component:SobrenosotrosComponent,canActivate:[PermisoUsuarioGuard]},
   {path: 'dashboard', component: DashboardComponent ,canActivate:[PermisosGuard]},
-  {path: 'forgot-password', component:ForgotPasswordComponent },
-  {path: 'mision-vision', component: MisionVisionComponent  },
+  {path: 'forgot-password', component:ForgotPasswordComponent ,canActivate:[PermisoUsuarioGuard]},
+  {path: 'mision-vision', component: MisionVisionComponent ,canActivate:[PermisoUsuarioGuard] },
   {path : 'show/:id',component: ShowComponent,canActivate:[PermisosGuard] },
   {path:'edit/:id',component:EditComponent,canActivate:[PermisosGuard] },
   {path:'perfil',component:PerfilComponent,canActivate:[PermisosGuard] },
@@ -36,10 +44,17 @@ const routes: Routes = [
   {path:'edit-artist/:id',component:EditartistComponent,canActivate:[PermisosGuard] },
   {path:'show-artist/:id',component:ShowartistComponent,canActivate:[PermisosGuard] },
   {path:'send-email',component:SendEmailComponent},
+  {path:'solicitud-rechazadas',component:SolicitudRechazadasComponent,canActivate:[PermisosGuard,PermisosAdministradorGuard]},
+  {path:'generos',component:GenerosComponent},
+  {path:'crear-generos',component:CreateGenerosComponent},
+  {path:'edit-generos/:id',component:EditGenerosComponent},
+  {path:'Albumes',component:ShowAlbumesComponent},
+  {path:'crear-Albumes',component:CreateAlbumesComponent},
+  {path:'edit-Albumes/:id',component:EditAlbumesComponent},
 
-  { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule) },
+  { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule,),canActivate:[PermisoUsuarioGuard] },
 
-  { path: 'register', loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule) },
+  { path: 'register', loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule),canActivate:[PermisoUsuarioGuard] },
   {path:'**',pathMatch: 'full',redirectTo:'home'}
 ];
 

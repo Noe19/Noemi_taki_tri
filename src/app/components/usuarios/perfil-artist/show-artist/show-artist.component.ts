@@ -17,7 +17,7 @@ export class ShowartistComponent implements OnInit {
 public ediForm : FormGroup;
 perfilRef:any;
 public usuario : any;
- Perfil: Perfil[]
+ Perfil: Perfil[];
 public url:any;
 public roles_admin:any;
 // variable de administrador 

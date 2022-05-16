@@ -43,7 +43,7 @@ import { SolicitudComponent } from './components/usuarios/solicitud/solicitud.co
 import { GenerosComponent } from './components/usuarios/generos/generos.component';
 // material angular
 import {MatTableModule} from '@angular/material/table';
-import {  MatPaginatorModule } from '@angular/material/paginator';
+import {  MatPaginatorModule ,MatPaginatorIntl} from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
@@ -53,7 +53,13 @@ import { SidenavUserComponent } from './components/usuarios/sidenav-user/sidenav
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { HeaderAdminComponent } from './shared/header-admin/header-admin.component';
 import { HeaderArtistComponent } from './shared/header-artist/header-artist.component';
-import { FooterSistemComponent } from './shared/footer-sistem/footer-sistem.component'
+import { FooterSistemComponent } from './shared/footer-sistem/footer-sistem.component';
+import { SolicitudRechazadasComponent } from './components/administrador/solicitud-rechazadas/solicitud-rechazadas.component';
+import { CreateGenerosComponent } from './components/usuarios/generos/create-generos/create-generos.component';
+import { EditGenerosComponent } from './components/usuarios/generos/edit-generos/edit-generos.component';
+import { CreateAlbumesComponent } from './components/usuarios/Albumes/create-albumes/create-albumes.component';
+import { ShowAlbumesComponent } from './components/usuarios/Albumes/show-albumes/show-albumes.component';
+import { EditAlbumesComponent } from './components/usuarios/Albumes/edit-albumes/edit-albumes.component';
 
 
 
@@ -89,6 +95,13 @@ import { FooterSistemComponent } from './shared/footer-sistem/footer-sistem.comp
     HeaderAdminComponent,
     HeaderArtistComponent,
     FooterSistemComponent,
+    SolicitudRechazadasComponent,
+    CreateGenerosComponent,
+    EditGenerosComponent,
+    CreateAlbumesComponent,
+    ShowAlbumesComponent,
+    EditAlbumesComponent,
+  
    
     
   
@@ -116,6 +129,7 @@ import { FooterSistemComponent } from './shared/footer-sistem/footer-sistem.comp
     MatPaginatorModule,
     MatFormFieldModule,
     MatIconModule,
+    
     
 
     

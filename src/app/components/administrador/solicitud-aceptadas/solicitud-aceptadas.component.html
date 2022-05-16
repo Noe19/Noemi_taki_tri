@@ -4,9 +4,20 @@
 <div class="formulario_completo_artistas_aceptados">
     <h2>Candidatos Aceptados</h2>
 
-<table class="table table-hover table-striped">
-    <thead class="bg-dark text-white">
+<table class="table table-hover ">
+    <thead class=" text-white">
         <tr>
+            <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
+            <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
+            <th> <a class="nav-link" routerLink="//administrador">Solicitud </a></th>
+            
+           
+
+           
+        </tr>
+    </thead>
+    <thead class=" text-white">
+        <tr class="nombre_list">
             <th>N.-</th>
             <th>Nombre Artistico</th>
             <th>Nacionalidad</th>
@@ -26,13 +37,13 @@
            
             <td>
                
-                <button (click)="convertToArtist(administrador)" class="btn btn-outline-danger"><mat-icon style="color: black;">delete</mat-icon></button>
+                <button (click)="convertToArtist(administrador)" class="btn btn-outline-danger">Rechazar</button>
             </td>
 
         </tr>
     </tbody>
 </table>
-<mat-paginator [length]="Administrador.length"
+<mat-paginator [length]="cantidad_aprobadas"
               [pageSize]="pageSize"
               (page)="cambiarpagina($event)"
             

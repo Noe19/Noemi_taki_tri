@@ -1,2 +1,39 @@
 <app-header-artist></app-header-artist>
-<p>generos works!</p>
+<div class="Contenedos_todos_los_generos ">
+  <app-sidenav-user></app-sidenav-user>
+  <div class="container col-lg-12 col-sm-12 col-md-12">
+    
+    <h2>Todos tus Géneros </h2>
+    <a [routerLink]="['/crear-generos']"><button type="button" class="btn_generos btn-primary mb-3" (click)=" limpiarform()"
+      data-toggle="modal" data-target="#productosModal"> Crear Géneros</button> </a>
+    <div class="container">
+      <div class="row">
+    <div class="card col-lg-12 col-sm-12 col-md-12" style="width: 18rem;" *ngFor="let generos of todoslosgeneros">
+      <div class="card-body col-lg-12 col-sm-12 col-md-12   ">
+        <img class="imagenes_generos" [src]="generos.imagenUrl" alt="">
+        <h3>Genero ecuatoriano</h3>
+        <h2 class="card-title">{{generos.Genero_nuevo}}</h2>
+        
+        <a [routerLink]="['/crear-Albumes']" class="btn btn-success">Crear Álbum</a>
+        <button routerLink="/edit-generos/{{generos.id}}" class="btn btn-primary">Editar</button>
+        
+
+        <button type="button" class="btn btn-danger"
+          (click)="eliminar_genero(generos.id,generos.Genero_nuevo)">Eliminar</button>
+
+
+
+      </div>
+    </div>
+    <br>
+
+  
+
+  </div>
+
+
+</div>
+</div>
+
+
+</div>

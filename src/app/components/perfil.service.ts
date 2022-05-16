@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 // importar los modulos de  la DB firebase
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AnyForUntypedForms } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
 
@@ -10,7 +12,9 @@ import { Perfil } from './dashboard/perfil.model';
 })
 export class PerfilService {
 
-  constructor(private angularfirestore :AngularFirestore) { }
+  constructor(private angularfirestore :AngularFirestore,private storage:AngularFireStorage) { }
+public usuario:any;
+public url:any;
 
 
   //metodos del crud
@@ -25,7 +29,8 @@ export class PerfilService {
    
  return this.angularfirestore.collection("artist").doc(id).valueChanges()
   }
-  
+ // crear un nuevo perfil
+ /*
   createPost(perfil:Perfil){
     return new Promise<any>((resolve,reject) =>{
       this.angularfirestore.collection("artist").add(perfil).then((response)=>{
@@ -35,7 +40,11 @@ export class PerfilService {
       })
     })
 
-  }
+  }*/
+
+
+
+
 //actualizar
   updatePost(perfil:Perfil,id){
   return this.angularfirestore.collection("artist").doc(id).update({
@@ -46,10 +55,19 @@ export class PerfilService {
 
 });
   }
+
+ 
+
+    
+
+
+
 // eliminar
   delete(perfil){
     return this.angularfirestore.collection("artist").doc(perfil.id).delete();
 
   }
+
+
 
 }

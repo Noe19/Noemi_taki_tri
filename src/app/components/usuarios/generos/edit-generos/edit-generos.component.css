@@ -1,0 +1,12 @@
+.contenedos_edit_generos{
+    display: flex;
+}
+.imagenes_generos{
+    height: 150px;
+    width: 150px;
+}
+.card{
+    margin: 30px;
+    height: 320px;
+   
+}

@@ -1,0 +1,31 @@
+<app-header-artist></app-header-artist>
+<div class="contenedos_edit_generos">
+  <app-sidenav-user></app-sidenav-user>
+<form class="formulario_generos" (ngSubmit)="onSubmit()" [formGroup]="ediForm">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Generos" required formControlName="Genero_nuevo">
+    <input type="text" class="form-control" placeholder="Generos" required formControlName="artista_id">
+ 
+    
+  </div>
+<div class="form-group">
+  
+
+    <input 
+        type="file"
+        #file
+        class="input-file"
+        (change)="onFilesAdded($event.target)"
+    />
+    <img (click)="addFiles()" class="upload" [src]="this.url" alt="" />
+
+
+</div>
+
+
+<div class="modal-footer">
+  <button  class="btn btn-secondary" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
+ 
+</div>
+</form>
+</div>

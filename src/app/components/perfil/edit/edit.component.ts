@@ -3,7 +3,7 @@ import { FormGroup,FormControl,Validators,FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { PerfilService } from '../../perfil.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
@@ -12,7 +12,22 @@ import { PerfilService } from '../../perfil.service';
 export class EditComponent implements OnInit {
 public ediForm : FormGroup;
 perfilRef:any;
+
 public usuario : any;
+Swal = require('sweetalert2');
+
+//alerta de que se edito el perfil del usuario 
+ Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+});
   constructor(private perfilService:PerfilService,public formBuilder:FormBuilder,
     private activeRoute: ActivatedRoute,
     private router: Router) { 
@@ -60,12 +75,27 @@ ngOnInit(): void {
   })
 }
   onSubmit (){
-    
-    this.usuario = localStorage.getItem('usuario')
-    const id =this.activeRoute.snapshot.paramMap.get(this.usuario);
-    console.log('imagen',this.ediForm.value)
-   this.perfilService.updatePost(this.ediForm.value,this.usuario);
-
+    try {
+      this.usuario = localStorage.getItem('usuario')
+      const id =this.activeRoute.snapshot.paramMap.get(this.usuario);
+      console.log('imagen',this.ediForm.value)
+     this.perfilService.updatePost(this.ediForm.value,this.usuario);
+     
+     this.Toast.fire({
+      icon: 'success',
+      title: 'Perfil Actualizado correctamente'
+      
+    });
+    } 
+    catch (error) {
+      this.Toast.fire({
+        icon: 'error',
+        title: 'El perfil no se actualizo correctamente'
+        
+      }); 
+      
+    }
+   
     this.router.navigate(['/dashboard']);
   }
 

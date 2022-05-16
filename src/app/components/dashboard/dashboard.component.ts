@@ -23,24 +23,30 @@ export class DashboardComponent implements OnInit {
   public usuario : any;
   perfilResf:any;
   public rol_admin:any;
- 
+  public cantidad_aprobadas:any;
+ public cantidad_de_solicitud:any;
+ public cantidad_solicitud_rechazadas:any;
  //public usuario_nuevo :any;
  // nuevo intento sobre la navegacion
 
-
+/*
  mostrar_enviar_solicitud:String=""
  mostrar_solicitud_Nuevas:String=""
  mostrar_solicitud_Aprobadas:String=""
  mostrar_solicitud_Rechazadas:String=""
-
+*/
 
  // termino
 
   constructor(private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore) { }
   ngOnInit(): void {
     //obtener el dato getItem
-    this.usuario = localStorage.getItem('usuario')
-    this.rol_admin = localStorage.getItem('roles')
+ 
+    this.usuario = localStorage.getItem('usuario');
+    this.rol_admin = localStorage.getItem('roles');
+    this.cantidad_aprobadas=localStorage.getItem('cantidad_aprobadas');
+    this.cantidad_de_solicitud=localStorage.getItem('cantidad');
+    this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
     
     //this.usuario_nuevo=localStorage.getItem('usuario_nuevo')
 
@@ -61,11 +67,13 @@ export class DashboardComponent implements OnInit {
     //limpiando de la cache
   // localStorage.clear();
    localStorage.clear();
+   
    //this.auth.logout();
    await this.afAuth.signOut();
    this.router.navigate(['/register']);   
    console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
    console.log('usuario que salio',this.usuario)
+   console.log('rol',this.rol_admin)
    
    
   

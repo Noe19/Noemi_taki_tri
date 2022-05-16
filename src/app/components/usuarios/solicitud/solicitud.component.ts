@@ -30,7 +30,7 @@ export class SolicitudComponent  {
 
   async onSubmit() {
     this.solicitudService.createPost(this.solicitudlForm.value)
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/dashboard-user'])
   }
     
 

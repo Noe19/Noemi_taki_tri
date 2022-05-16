@@ -1,0 +1,19 @@
+.componente_generos{
+   display:flex ; 
+}
+.input-group{
+   text-align: center;
+ 
+}
+.crear_generos h2{
+   text-align: center;
+   align-items: center;
+}
+.formulario_generos{
+   margin-top: 50px;
+   margin-left: 250px;   
+
+}
+.form-group{
+   margin-top: 50px;
+}

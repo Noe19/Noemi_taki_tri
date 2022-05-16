@@ -6,6 +6,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 import { AuthService } from '../service/auth.service';
 import { Router } from '@angular/router';
 import { User } from '@firebase/auth';
+// alerta con estilos
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -14,9 +16,20 @@ import { User } from '@firebase/auth';
   providers:[AuthService]
 })
 export class RegisterComponent implements OnInit {
+  Swal = require('sweetalert2');
 
-
-  
+ //alerta de ingreso correctamente
+ Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.addEventListener('mouseenter', Swal.stopTimer)
+    toast.addEventListener('mouseleave', Swal.resumeTimer)
+  }
+}); 
   
   
 /*
@@ -34,7 +47,7 @@ registerForm : FormGroup;
 public user :any;
 public isLogged = false;
  // constructor(private authSvc: AuthService) {}
- constructor(private authSvc : AuthService,private router : Router,private fb :FormBuilder,private firestore :AngularFirestore) {
+ constructor(private authSvc : AuthService,private router : Router,private fb :FormBuilder,private firestore :AngularFirestore,public afAuth :AngularFireAuth) {
 //id artista   
   this.speakerCollection = firestore.collection("artist");
   
@@ -190,10 +203,12 @@ getErrorMessage_contrasena() {
         //enviar a firestore
         //this.speakerCollection.doc(user?.user?.uid).set({ });
         this.firestore.collection("artist").doc(user?.user?.uid).set({"id_autenticado":user?.user?.uid,"name": this.registerForm.get('name')?.value,"apellido":this.registerForm.get('apellido')?.value,"nickname":this.registerForm.get('nickname')?.value,
-        "fecha_nacimiento":this.registerForm.get('fecha_nacimiento')?.value,"email":this.registerForm.get('email')?.value,"id_artista":id,"imagen":"https://ui-avatars.com/api/?name="+this.registerForm.get('name')?.value+'+'+this.registerForm.get('apellido')?.value,"rol":'artista'}).then(()=>{
+        "fecha_nacimiento":this.registerForm.get('fecha_nacimiento')?.value,"email":this.registerForm.get('email')?.value,"id_artista":id,"imagen":"https://ui-avatars.com/api/?name="+this.registerForm.get('name')?.value+'+'+this.registerForm.get('apellido')?.value,"rol":'artista'}).then(async ()=>{
         // si se registro correctamente y se paso los datos al firestore se le dirige al dashboard
-          this.router.navigate(['/send-email']);
-          
+          // si se registra sale de la funcion e ingresa 
+          await this.afAuth.signOut();
+          localStorage.clear();
+          this.router.navigate(['/register']);
 
         }).catch(err =>{
            console.log(err)
@@ -209,11 +224,23 @@ getErrorMessage_contrasena() {
       
          })
          */
-        alert('Usted se ha registrado con exito, revisaremos sus datos , para que pueda ingresar debe esperara 24h');
-        this.router.navigate(['/send-email']);
+       // alert('Usted se ha registrado con exito, revisaremos sus datos , para que pueda ingresar debe esperara 24h');
+       this.Toast.fire({
+        icon: 'success',
+        title: 'Se ha registrado con exito'
+        
+      });
+       this.router.navigate(['/login']);
         
       } else{
+        this.Toast.fire({
+          icon: 'error',
+          title: 'No se registro con exito ,intente nuevamente'
+          
+        });
         this.router.navigate(['/register']);
+
+        
       }
       this.registerForm.reset();
     } catch (error) {

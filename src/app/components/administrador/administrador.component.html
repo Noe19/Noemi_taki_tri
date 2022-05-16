@@ -5,8 +5,42 @@
     <app-sidenav></app-sidenav>
 <div class="formulario_completo_artistas">
     <h2>Candidatos a artistas</h2>
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="//administrador">Solicitud</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 <table class="table table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
+            <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
+            <th> <a class="nav-link" routerLink="//administrador">Solicitud </a></th>
+            
+            
+           
+
+           
+        </tr>
+    </thead>
+      <br>
     <thead class="bg-dark text-white">
         <tr>
             <th>N.-</th>
@@ -28,13 +62,13 @@
            
             <td>
                
-                <button (click)="convertToArtist(administrador)" class="btn btn-outline-danger"><mat-icon>check_circle</mat-icon></button>
+                <button (click)="convertToArtist(administrador)" class="btn btn-primary">Aceptar</button>
             </td>
 
         </tr>
     </tbody>
 </table>
-<mat-paginator [length]="Administrador.length"
+<mat-paginator [length]="cantidad_de_solicitud"
               [pageSize]="pageSize"
               (page)="cambiarpagina($event)"
             

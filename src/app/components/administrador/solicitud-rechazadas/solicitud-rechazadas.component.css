@@ -1,0 +1,18 @@
+.Visualizacion_artistas_completa_aceptados{
+    display: flex;
+}
+.formulario_completo_artistas_aceptados{
+
+    margin-top: 30px;
+    margin-left: 100px;
+    width: 600px; 
+}
+.nav-link{
+    color: black;
+}
+.text-white{
+    color: black;
+}
+.nombre_list{
+    color: black;
+}

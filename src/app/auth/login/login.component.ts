@@ -85,12 +85,8 @@ getErrorMessage_contrasena() {
         console.log('usurio_unico',user?.user?.email)
         // usuario de forma global, solo vale hacer una sola (setItem)-> 
         localStorage.setItem('usuario', user?.user?.uid);
+       // localStorage.setItem('verificacion',user?.user?.emailVerified);
         //valor de verifivacion
-
-        
-        
-
-
        // this.router.navigate(['/dashboard']);
 
 
@@ -109,16 +105,18 @@ getErrorMessage_contrasena() {
         this.authSvc.getPostbyId(this.usuario).subscribe( res =>{ 
         this.perfilResf = res ;
         // Genero la variable global para saber que usuario soy 
+        //localStorage.removeItem('roles');
          localStorage.setItem('roles',this.perfilResf.rol) 
          this.roles_admin=localStorage.getItem('roles')
          
          console.log('permiso_artista_login:',this.perfilResf.rol)
 // dependiendo si es artista o es Administrador para que le redirija al dashboard correspondiente.
-         if(this.roles_admin=="artista" &&  user?.user?.emailVerified==true ){
+        if(this.roles_admin=="artista" /*&&  user?.user?.emailVerified==true*/ ){
           this.router.navigate(["/dashboard-user"]);
-        }else if(this.roles_admin=="administrador" && user?.user?.emailVerified===true ){
+        }else if(this.roles_admin=="administrador"  ){
           this.router.navigate(['/dashboard']); 
         }
+        
               
       })       
        // Termina el rol 
@@ -144,7 +142,7 @@ async ngOnInit(){
   this.user = await this.authSvc.getCurrentUser();
   console.log('usuario_devuelto',this.user)
 
-  if(this.user){
+  if(this.user ){
     this.isLogged=true;
     this.router.onSameUrlNavigation = 'reload';
   }else{

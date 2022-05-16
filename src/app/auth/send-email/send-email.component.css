@@ -9,3 +9,61 @@
     .nav-link{
       color: aliceblue;
     }
+    .sin_register{
+      display: flex;
+    }
+    .sin_register h2{
+      font-size: 375% ; 
+      line-height:normal;
+    }
+    .card-body{
+      display: flex;   
+    
+    }
+    .card-body img{
+      height: 550px;
+      width: 550px;
+    }
+    .card-title{
+      margin-top: 80px;
+      text-align: center;
+     align-items: center;
+    }
+    
+
+.send_email{
+  height:510px;
+}
+.send_email h2{
+  text-align: center;
+     align-items: center;
+   
+     margin-top: 50px; 
+}
+  
+
+    .loader {
+     text-align: center;
+     align-items: center;
+     margin-left: 560px;
+     margin-top: 50px;
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 180px;
+      height: 180px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+    
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { Router } from '@angular/router';
 import {NavigationEnd,ActivatedRoute} from '@angular/router';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,16 +11,19 @@ import {NavigationEnd,ActivatedRoute} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   public user :any;
+  public verificado:any;
   public isLogged = false;
 
   constructor(private authSvc: AuthService,public router : Router) { }
   
    async ngOnInit(){
-     console.log ('Navar');
+    this.verificado = localStorage.getItem('verificacion')
+     console.log ('very',this.verificado);
      this.user = await this.authSvc.getCurrentUser();
      console.log('usuario_devuelto',this.user)
 
-     if(this.user){
+     if(this.user ){
+       
        this.isLogged=true;
        this.router.onSameUrlNavigation = 'reload';
      }else{
