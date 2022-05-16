@@ -95,7 +95,8 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
      Genero_nuevo: [this.generosRef.Genero_nuevo],
      imagenUrl: [this.generosRef.imagenUrl],
     artista_id:[this.generosRef.artista_id],
-    id:[this.generosRef.id],    
+    id:[this.generosRef.id], 
+    referencia:[this.generosRef.referencia]   
   
    })
    console.log('valueid',this.generosRef.id)
@@ -145,7 +146,7 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
   // datos de editar
 
   
-  this.GenerosImg.add(this.ediForm.value, this._file)
+  this.GenerosImg.add(this.ediForm.value, this._file,this.isChanged)
   console.log(this.ediForm.value)
   this.isChanged = false;
   this.file.nativeElement.value = "";

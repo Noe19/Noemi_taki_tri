@@ -165,9 +165,9 @@ export class GenerosService {
   
 
   // eliminar generos en storage y firestore
-  public eliminar_generos_total(id:any,nomgeneri:string):Promise<any>{
+  public eliminar_generos_total(gen:Generos):Promise<any>{
   const storage = getStorage();
-  const refgeneros = ref(storage, `${this.CarpetaImagenes}/${this.usuario}/${nomgeneri}`)
+  const refgeneros = ref(storage, gen.referencia)
   deleteObject(refgeneros).then(()=>{
     Swal.fire('EXITO','la imagen se elimino correctamente','success');
 
@@ -175,7 +175,7 @@ export class GenerosService {
     console.log('no se elimino la imagen',error)
 
   });
-  return this.generosCollection.doc(id).delete();
+  return this.generosCollection.doc(gen.id).delete();
 
   }
 
@@ -206,8 +206,11 @@ export class GenerosService {
         
       });
       
-    }add(generosImg: Generos, _file) {
+    }add(generosImg: Generos, _file,isChanged) {
+      console.log('cambio',isChanged)
+      if (isChanged){
 
+    
       this.usuario1 = localStorage.getItem('usuario')
       console.log('lll',this.usuario1)
       const filePath = this.CarpetaImagenes1+this.usuario1+'/'+generosImg.Genero_nuevo;
@@ -221,12 +224,12 @@ export class GenerosService {
           */
           console.log('id',generosImg.id)
           this.url2=url
-          
+         //  esto es para que se edite la imagen
           if (generosImg.id) {
            // console.log(this.update(generosImg, url,filePath))
            
             this.update(generosImg, url,filePath);
-           // console.log('datos update',this.update(generosImg, url,filePath))
+           // console.log('datos_existen',filePath)
            
           } else {
             this.create(generosImg, url,filePath);
@@ -234,19 +237,26 @@ export class GenerosService {
           }
         });
       });
+    } // cieere del if 
+    else{
+      this.update(generosImg,generosImg.imagenUrl,generosImg.referencia)
+      console.log('ubiaccion',generosImg.referencia)
+    }
+     
     
   }
 
 
    update(albumImg: Generos, urlImg,referencia) {
-    console.log('id_update',albumImg.id)
+    console.log('id_update',albumImg.id,albumImg.imagenUrl)
+    console.log('referencia',referencia)
    
-  if(albumImg.referencia===referencia){
+  if(albumImg.referencia==referencia){
     
     this.speakerCollection
     .doc(albumImg.id)
-    .update({ Genero_nuevo: albumImg.Genero_nuevo, imagenUrl: urlImg, artista_id: albumImg.artista_id,referencia:albumImg.referencia });
-   console.log('datos abtes de enviar1' ,albumImg.Genero_nuevo  )  
+   .update({ Genero_nuevo: albumImg.Genero_nuevo, imagenUrl: urlImg, artista_id: albumImg.artista_id,referencia:albumImg.referencia });
+    console.log('datos abtes de enviar1' ,albumImg.imagenUrl  )  
 
 
   }else{
@@ -256,6 +266,7 @@ export class GenerosService {
     console.log('datos abtes de enviar' ,albumImg.Genero_nuevo  )  
 
   }
+ 
  
 
 

@@ -13,7 +13,7 @@ export class GenerosComponent implements OnInit {
   public usuario: any;
   generos:Generos[]=[];
   imagenes:ImagenesGeneros[]=[];
-  imgURL="../assets/imagenes/camera.png";
+ imgURL="../assets/imagenes/camera.png";
   file:any;
  
   //generos:Generos[];
@@ -59,8 +59,8 @@ export class GenerosComponent implements OnInit {
     });
   }
   
-  eliminar_genero(id:any,nombreGenero:string){
-    this.GenerosImg.eliminar_generos_total(id,nombreGenero);
+  eliminar_genero(Generos){
+    this.GenerosImg.eliminar_generos_total(Generos);
 
   }
   limpiarform(){

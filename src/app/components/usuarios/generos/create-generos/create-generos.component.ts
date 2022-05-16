@@ -17,6 +17,7 @@ export class CreateGenerosComponent implements OnInit {
   imagenes:ImagenesGeneros[]=[];
   imgURL="../assets/imagenes/camera.png";
   file:any;
+  
   public generosforms : FormGroup;
   //editar
   public albumForm: FormGroup;
@@ -46,7 +47,9 @@ export class CreateGenerosComponent implements OnInit {
     //traer la imagens
     //console.log(event.target.files);
     //para visualizar la imagen que vamos a subir
+     this.isChanged=false;
     if(event.target.files.length>0){
+      
       this.file=event.target.files;
       // para que pueda leer el ti`po de dato
       let reader= new FileReader();
