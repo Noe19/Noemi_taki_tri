@@ -1,17 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PermisoUsuarioGuard } from './permiso-usuario.guard';
+import { PermisoArtistaGuard } from './permiso-artista.guard';
 
-describe('PermisoUsuarioGuard', () => {
-  let guard: PermisoUsuarioGuard;
+describe('PermisoArtistaGuard', () => {
+  let guard: PermisoArtistaGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(PermisoUsuarioGuard);
+    guard = TestBed.inject(PermisoArtistaGuard);
   });
 
   it('should be created', () => {
     expect(guard).toBeTruthy();
   });
 });
-

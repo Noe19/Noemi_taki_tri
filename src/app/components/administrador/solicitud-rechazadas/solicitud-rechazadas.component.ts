@@ -34,6 +34,8 @@ export class SolicitudRechazadasComponent implements OnInit {
             ...(e.payload.doc.data() as Administrador)
           };
         });
+        //para saber si exiten 
+        
         this.arreglo=this.Administrador.length
         localStorage.setItem('cantidad_rechazadas',this.arreglo)
         console.log(this.arreglo)

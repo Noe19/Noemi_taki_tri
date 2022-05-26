@@ -1,62 +1,46 @@
 <app-header-artist></app-header-artist>
 <div class="Contenedos_todos_los_albumes">
-  <app-sidenav></app-sidenav>
+  <app-sidenav-user></app-sidenav-user>
 <div class="container">
     
-  <h2>Todos tus Albumes </h2>
-  <div class="card" style="width: 18rem;">
-    <img src="https://images.pexels.com/photos/33597/guitar-classical-guitar-acoustic-guitar-electric-guitar.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h2 class="card-title">Guerra</h2> 
-     
-      <a [routerLink]="['/']"class="btn btn-primary">Crear Canciones</a>
-     
-      <a [routerLink]="['/edit-Albumes']" class="btn btn-primary">Editar</a>
-     
-    </div>
-  </div>
-  <br>
+  <div class="container col-lg-12 col-sm-12 col-md-12">
    
-  <a [routerLink]="['/crear-Albumes']"><button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#productosModal"> <i
-    class="fa fa-plus"></i>Crear Albumes</button> </a>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="productosModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-dark">
-          <h5 class="modal-title"><i class="fa fa-cubes"></i> Agregar Productos</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+
+
+
+    <h2>Todos tus Albumes </h2>
+ 
+    <div class="container">
+      <div class="row">
+    <div class="card col-lg-12 col-sm-12 col-md-12" style="width: 18rem;" *ngFor="let albumes of todoslosalbumes">
+      <div class="card-body col-lg-12 col-sm-12 col-md-12   ">
+        <img class="imagenes_generos" [src]="albumes.imagen" alt="">
+       
+        <h3>Album Genero : </h3>
+        <label >Nombre:{{albumes.name}}</label><br>
+        <label > Año:{{albumes.year}}</label><br>
+        <label >Autor:{{albumes.author}}</label><br>
+        
      
-          <form>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Producto" required>
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Precio Bs." required>
-            </div>
-            <div class="form-group">
-  
-              <input type="file" class="form-control-file" accept="image/*"><br>
-  
-              <img [src]="" with="100" height="100">
-  
-            </div>
-  
-  
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
-            </div>
-          </form>
-        </div>
-  
+        
+        <a routerLink="/crear-canciones/" class="btn btn-success">Crear Canción</a>
+        <button routerLink="/edit-Albumes/{{albumes.id}}" class="btn btn-primary" >Editar</button>
+        <button type="button" class="btn btn-danger"
+        (click)="eliminar_genero(albumes)">Eliminar</button>
+
+
+
       </div>
     </div>
+    <br>
+
+  
+
   </div>
+
+
+</div>
+</div>
+</div>
 </div>
 

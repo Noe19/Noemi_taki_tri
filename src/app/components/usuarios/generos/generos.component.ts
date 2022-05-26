@@ -4,10 +4,12 @@ import { Router } from '@angular/router';
 import { ImagenesGeneros } from './create-generos/imagenesGeneros.modal';
 import { Generos } from './generos.modal';
 import { GenerosService } from './generos.service';
+import { AlbumesService } from '../Albumes/albumes.service';
 @Component({
   selector: 'app-generos',
   templateUrl: './generos.component.html',
-  styleUrls: ['./generos.component.css']
+  styleUrls: ['./generos.component.css'],
+  providers:[AlbumesService]
 })
 export class GenerosComponent implements OnInit {
   public usuario: any;
@@ -28,7 +30,7 @@ export class GenerosComponent implements OnInit {
   
   
 
-  constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService) {
+  constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService,private albumService:AlbumesService) {
     this.generosforms=this.fb.group({
   
       Genero_nuevo:['',[Validators.required]],
@@ -43,7 +45,7 @@ export class GenerosComponent implements OnInit {
       
       this.todoslosgeneros = res.map((e) =>{
         this.url=this.todoslosgeneros
-        //console.log(this.url)
+       // console.log('url_generos',this.url)
         return {
           
           id: e.payload.doc.id,      
@@ -66,6 +68,12 @@ export class GenerosComponent implements OnInit {
   limpiarform(){
     this.generosforms.reset();
     this.imgURL="../assets/imagenes/camera.png";
+  }
+
+  // pasar datos a Album
+  ge(Generos){
+    console.log('genero,pasado',Generos.id)
+
   }
  
 

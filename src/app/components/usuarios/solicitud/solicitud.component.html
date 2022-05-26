@@ -6,15 +6,19 @@
 <h2>Enviar Solicitud</h2>
 <form [formGroup]="solicitudlForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="mb-3">
-        <label class="form-label">Name</label>
+        <label class="form-label">Nombre Artistico</label>
         <input formControlName="nombre_artistico" type="text" class="form-control" required>
     </div>
     <div class="mb-3">    
-        <label class="form-label">Nacionalidad</label>
-        <input formControlName="nacionalidad" type="text" class="form-control" required>
+        <label class="form-label">Numero de Cédula</label>
+        <input maxlength="10" minlength="10" formControlName="nacionalidad" type="text" class="form-control" required>
     </div>
-   
+    <div class="form-group">
+        
 
+    <input type="file" class="form-control-file" accept="application/pdf" (change)="selectChange($event)" ><br>      
+
+      </div>
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled required  >
         <label class="form-check-label" for="flexCheckChecked">

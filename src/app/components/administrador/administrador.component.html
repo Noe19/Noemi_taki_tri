@@ -5,34 +5,15 @@
     <app-sidenav></app-sidenav>
 <div class="formulario_completo_artistas">
     <h2>Candidatos a artistas</h2>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="//administrador">Solicitud</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-<table class="table table-hover table-striped">
-    <thead class="bg-dark text-white">
+    
+<table class="table table-hover ">
+    <thead class="text-white">
         <tr>
+            <th> <a class="nav-link" routerLink="/administrador">Solicitud </a></th>
             <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
             <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
-            <th> <a class="nav-link" routerLink="//administrador">Solicitud </a></th>
+       
+          
             
             
            
@@ -41,28 +22,32 @@
         </tr>
     </thead>
       <br>
-    <thead class="bg-dark text-white">
-        <tr>
+    <thead class=" text-white">
+        <tr class="nombre_list">
             <th>N.-</th>
             <th>Nombre Artistico</th>
-            <th>Nacionalidad</th>
-            <th>Rol</th>
-            <th>Estado</th>
-           
-
-           
+            <th>Numero de Cédula</th>   
+             <th>Documento</th>          
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let administrador of Administrador | slice:desde:hasta let i= index" >
+ 
+
+        <tr *ngFor="let administrador of Administrador | slice:desde:hasta let i= index  "  >
             <td>{{desde+i+1}}</td>
             <td>{{administrador.nombre_artistico}}</td>
             <td>{{administrador.nacionalidad}}</td>
-            <td>{{administrador.rol}}</td>
+        
+          <td> <a [href]="administrador.document" target="_blank"  rel="noopener noreferrer" ><img src="https://www.science.co.il/internet/browsers/PDF-doc-256.png" style="height:50px" alt=""></a></td>
+             
+
+
+          <!-- <td>{{administrador.rol}}</td>!-->
            
             <td>
                
                 <button (click)="convertToArtist(administrador)" class="btn btn-primary">Aceptar</button>
+                <button (click)="convertToArtist_rechazado(administrador)"  class="btn btn-outline-danger">Rechazar</button>
             </td>
 
         </tr>

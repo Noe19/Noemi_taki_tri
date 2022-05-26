@@ -98,6 +98,40 @@ export class AdministradorComponent implements OnInit  {
 
     alert("No se puedo acepta la solicitud , intente más luego"); 
   }
+
+
+    //rechazar
+     async convertToArtist_rechazado (administrador) {
+      const { value: text } = await Swal.fire({
+        input: 'textarea',
+        inputLabel: '¿Por qué no aceptas al usuario artista?',
+        inputPlaceholder: 'Type your message here...',
+        inputAttributes: {
+          'aria-label': 'Type your message here'
+        },
+        showCancelButton: true
+      })
+      
+      if (text) {
+        Swal.fire(text)
+        this.administradorService.updateRol_no_artist(administrador);
+        Swal.fire({
+          title: 'Rechazo correctamente al Artista , no es parte de Taki-Tri',
+          icon: 'success',     
+          showCloseButton: true, 
+          cancelButtonAriaLabel: 'Thumbs down',
+        })
+      }
+     
+     // this.administradorService.updateRol_no_artist(administrador);
+      //alert("usted ha cambia el rol correctamente");
+      
+    }
+
+ 
+
+
+
  
  
 

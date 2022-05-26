@@ -1,12 +1,5 @@
-export interface ImagenesGeneros {
-
-      
-   
-  
+export interface ImagenesGeneros { 
     imagen:File;
     url?:string;
-    
-    
 
- 
 }

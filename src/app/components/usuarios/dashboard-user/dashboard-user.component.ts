@@ -17,11 +17,13 @@ export class DashboardUserComponent implements OnInit {
   public usuario : any;
   perfilResf:any;
   public roles_admin:any;
+  public valor_aceptacion:any;
   constructor(private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore) { }
 
   ngOnInit(): void {
     this.usuario = localStorage.getItem('usuario')
     this.roles_admin = localStorage.getItem('roles')
+    this.valor_aceptacion=localStorage.getItem('artista_aceptado');
   }
   // salir de usuario
   async salir(){

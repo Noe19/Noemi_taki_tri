@@ -69,4 +69,7 @@ export class SolicitudAceptadasComponent implements OnInit {
     alert("No se puedo acepta la solicitud , intente más luego"); 
   }
 
+  //rechazar
+  
+
 }

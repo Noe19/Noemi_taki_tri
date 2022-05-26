@@ -18,7 +18,7 @@ public usuario:any;
 // traer los datos  del usuario que son parte e taki-tri y poder sancionar si violan  las politicas y se le niega ser parte de Taki-tri
 getPost_no_artista (){
    
-  return this.angularfirestore.collection("request",ref => ref.where('rol', '==', 'artist')).snapshotChanges()
+  return this.angularfirestore.collection("request",ref => ref.where('rol', '==', 'artist') ).snapshotChanges()
 
   }
 
@@ -28,6 +28,12 @@ getPost_rechazadas (){
   return this.angularfirestore.collection("request",ref => ref.where('rol', '==', 'rechazado')).snapshotChanges()
 
   }
+
+  getPost_artistas_guard_aceptados(){
+    this.usuario = localStorage.getItem('usuario')
+    return this.angularfirestore.collection("request",ref => ref.where('rol', '==', 'artist').where('artista_id', '==', this.usuario) ).snapshotChanges()
+  
+    }
 
 
 

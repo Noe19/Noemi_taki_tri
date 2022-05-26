@@ -7,9 +7,10 @@
 <table class="table table-hover ">
     <thead class=" text-white">
         <tr>
+            <th> <a class="nav-link" routerLink="//administrador">Solicitud </a></th>
             <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
             <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
-            <th> <a class="nav-link" routerLink="//administrador">Solicitud </a></th>
+           
             
            
 
@@ -21,8 +22,8 @@
             <th>N.-</th>
             <th>Nombre Artistico</th>
             <th>Nacionalidad</th>
-            <th>Rol</th>
-            <th>Estado</th>
+          
+        
            
 
            
@@ -33,11 +34,12 @@
             <td>{{desde+i+1}}</td>
             <td>{{administrador.nombre_artistico}}</td>
             <td>{{administrador.nacionalidad}}</td>
-            <td>{{administrador.rol}}</td>
+           <!-- <td>{{administrador.rol}}</td> !-->
            
             <td>
                
-                <button (click)="convertToArtist(administrador)" class="btn btn-outline-danger">Rechazar</button>
+              <!--  <button (click)="convertToArtist(administrador)" class="btn btn-outline-danger">Rechazar</button>!-->
+               
             </td>
 
         </tr>

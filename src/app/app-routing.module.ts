@@ -25,6 +25,7 @@ import { ShowAlbumesComponent } from './components/usuarios/Albumes/show-albumes
 import { CreateAlbumesComponent } from './components/usuarios/Albumes/create-albumes/create-albumes.component';
 import { EditAlbumesComponent } from './components/usuarios/Albumes/edit-albumes/edit-albumes.component';
 import { PermisoUsuarioGuard } from './permiso-usuario.guard';
+import { PermisoArtistaGuard } from './permiso-artista.guard';
 
 
 const routes: Routes = [
@@ -43,14 +44,14 @@ const routes: Routes = [
   {path:'dashboard-user',component:DashboardUserComponent,canActivate:[PermisosGuard] },
   {path:'edit-artist/:id',component:EditartistComponent,canActivate:[PermisosGuard] },
   {path:'show-artist/:id',component:ShowartistComponent,canActivate:[PermisosGuard] },
-  {path:'send-email',component:SendEmailComponent},
+  {path:'send-email',component:SendEmailComponent,canActivate:[PermisoArtistaGuard]},
   {path:'solicitud-rechazadas',component:SolicitudRechazadasComponent,canActivate:[PermisosGuard,PermisosAdministradorGuard]},
-  {path:'generos',component:GenerosComponent},
-  {path:'crear-generos',component:CreateGenerosComponent},
-  {path:'edit-generos/:id',component:EditGenerosComponent},
-  {path:'Albumes',component:ShowAlbumesComponent},
-  {path:'crear-Albumes',component:CreateAlbumesComponent},
-  {path:'edit-Albumes/:id',component:EditAlbumesComponent},
+  {path:'generos',component:GenerosComponent,canActivate:[PermisosGuard,PermisoArtistaGuard] },
+  {path:'crear-generos',component:CreateGenerosComponent,canActivate:[PermisosGuard,PermisoArtistaGuard ]},
+  {path:'edit-generos/:id',component:EditGenerosComponent,canActivate:[PermisosGuard,PermisoArtistaGuard] },
+  {path:'Albumes',component:ShowAlbumesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
+  {path:'crear-Albumes/:id',component:CreateAlbumesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
+  {path:'edit-Albumes/:id',component:EditAlbumesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
 
   { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule,),canActivate:[PermisoUsuarioGuard] },
 

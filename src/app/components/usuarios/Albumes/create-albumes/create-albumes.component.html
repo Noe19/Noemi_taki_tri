@@ -1,1 +1,49 @@
-<p>create-albumes works!</p>
+<app-header-artist></app-header-artist>
+<div class="Contenedos_todos_los_albumes ">
+  <app-sidenav-user></app-sidenav-user>
+  <div class="container col-lg-12 col-sm-12 col-md-12">
+   
+
+
+
+    <h2>Crea todos tus Albumes</h2>
+
+   
+   
+    <br>
+    <div class="form-group " >
+
+ 
+      <form class="formulario_generos" (ngSubmit)="crear_Albumes()" [formGroup]="Albumesforms">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Albumes" required formControlName="name">
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Autor" required formControlName="author">
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Año" required formControlName="year">
+        </div>
+      <div class="form-group">
+        
+
+        <input type="file" class="form-control-file" accept="image/*" (change)="selectChange($event)" ><br>
+
+        <img [src]="imgURL" with="100" height="100">
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button  class="btn btn-secondary" [disabled]="!Albumesforms.valid"   type="submit" >Crear</button>
+       
+      </div>
+    </form>
+
+  </div>
+
+</div>
+
+ 
+
+</div>
