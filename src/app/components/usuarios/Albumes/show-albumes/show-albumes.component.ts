@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { GenerosService } from '../../generos/generos.service';
 import { AlbumesService } from '../albumes.service';
 import { Albumes } from '../create-albumes/albumes.modal';
@@ -54,7 +55,27 @@ export class ShowAlbumesComponent implements OnInit {
     });
   }
   eliminar_genero(Albumes){
-    this.AlbumImg.eliminar_generos_total(Albumes);
+    Swal.fire({
+      title: 'Estas seguro en eliminar ?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Estoy seguro,eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        Swal.fire(
+          'Eliminado!',
+          'Informacion eliminado correctamente',
+          'success'
+        )
+        this.AlbumImg.eliminar_generos_total(Albumes);
+        
+      }
+    })
+  
 
   }
 

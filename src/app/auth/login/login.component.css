@@ -1,14 +1,46 @@
+.navbar-brand{
+    display:contents;
+  
+  }
+  .navbar-brand img{
+    width:90px;
+    height:60px;
+    
+  }
+
+
+  .home{
+      text-decoration: none;
+      color: aliceblue;
+    }
+    .home img{
+      width:60px;
+    height:60px;
+    border-radius:150px;
+    }
+    .nav-link{
+      color: aliceblue;
+    }
 .contenedor{
     display: flex;
     background: #5C258D;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #2D31FA, #41ACDA,#5D8BF4);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #2D31FA, #41ACDA,#5D8BF4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: auto;
+}
+.card_imagen{
+    width: 50%;
+    max-height: 3250px;
+    background-color: aqua;
 
+    background-position-x: center;
+    background-image: url("https://images.pexels.com/photos/12311203/pexels-photo-12311203.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 }
 
 .card_imagen img{
-height: 100%;
- width: 700px;
+    height: 100%;
+    width:auto;
+    background-color: red;
  
 }
 .card {

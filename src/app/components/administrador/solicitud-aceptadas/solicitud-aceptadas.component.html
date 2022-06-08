@@ -3,26 +3,35 @@
     <app-sidenav></app-sidenav>
 <div class="formulario_completo_artistas_aceptados">
     <h2>Candidatos Aceptados</h2>
+    <p>En esta sección se visualiza, todas las solicitudes Acepatadas por el administrador.
+        Para que una solicitud sea aceptada ,los datos enviados deben ser  correctos, ademas que en el documento
+        PDF, debe estar correctamente lleno y firmado por el titular.
+    </p>
+    <tr>
+        <th> <a class="nav-link" routerLink="//administrador">Solicitud </a></th>
+        <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
+        <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
+      
+       
+        
+       
+
+       
+    </tr>
 
 <table class="table table-hover ">
     <thead class=" text-white">
-        <tr>
-            <th> <a class="nav-link" routerLink="//administrador">Solicitud </a></th>
-            <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
-            <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
-           
-            
-           
-
-           
-        </tr>
+        <input type="text" class="form-control " placeholder="Buscar Solicitud" #textSearch (keyup)="onSearchSolicitud_Aceptadas(textSearch.value)"/>    
     </thead>
     <thead class=" text-white">
         <tr class="nombre_list">
             <th>N.-</th>
             <th>Nombre Artistico</th>
-            <th>Nacionalidad</th>
-          
+            <th>Cédula</th>
+            <th>Documento</th>   
+           
+
+           
         
            
 
@@ -30,10 +39,12 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let administrador of Administrador | slice:desde:hasta let i= index" >
+        <tr *ngFor="let administrador of Administrador | filtroSolicitudAceptadas:page:search let i= index" >
             <td>{{desde+i+1}}</td>
             <td>{{administrador.nombre_artistico}}</td>
             <td>{{administrador.nacionalidad}}</td>
+            <td> <a [href]="administrador.document" target="_blank"  rel="noopener noreferrer" ><img src="https://www.science.co.il/internet/browsers/PDF-doc-256.png" style="height:50px" alt=""></a></td>
+          
            <!-- <td>{{administrador.rol}}</td> !-->
            
             <td>

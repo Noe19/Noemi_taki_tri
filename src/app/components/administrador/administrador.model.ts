@@ -6,7 +6,8 @@ export interface Administrador {
     nacionalidad:string;
     id:string;
     rol:string;
-    document:string
+    document:string;
+    razon:string;
     
   
 }

@@ -8,6 +8,7 @@ export interface Solicitud {
     id_usuario:string;
     rol:string;
     documentos:string;
+   razon:string;
  
     
   

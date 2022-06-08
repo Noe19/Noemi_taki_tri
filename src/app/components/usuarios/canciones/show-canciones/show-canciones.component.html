@@ -1,0 +1,49 @@
+<app-header-artist></app-header-artist>
+<div class="Contenedos_todos_los_canciones">
+  <app-sidenav-user></app-sidenav-user>
+<div class="container">
+    
+  <div class="container col-lg-12 col-sm-12 col-md-12">
+   
+
+
+
+    <h2>Todos tus canciones </h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cancion</th>
+          <th scope="col">Mp3</th>
+          <th scope="col">Eliminar</th>
+      
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let CancionesSolicitud of  todoslascanciones let i= index ">
+          <td>{{page+i+1}}</td>
+          <td>{{CancionesSolicitud.song_nombre}}</td>
+   
+          <td><audio [src]="CancionesSolicitud.imageURL" controls></audio></td>
+          <td><button type="button" class="btn btn-danger"
+            (click)="eliminar_cancion(CancionesSolicitud)">Eliminar</button></td>
+          
+        </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+   
+</div>
+</div>
+</div>

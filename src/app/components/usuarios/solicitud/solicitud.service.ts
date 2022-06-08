@@ -6,17 +6,26 @@ import { getStorage } from 'firebase/storage';
 import { Solicitud } from './solicitud.model';
 import {ref, uploadBytesResumable, getDownloadURL, deleteObject } from '@angular/fire/storage';
 import { DocumentosSolicitud } from './documentos.modal';
+import { MensajeSolicitud } from './mensaje.modal';
 import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
 export class SolicitudService {
+   
   public usuario:any;
   private CarpetaImagenes = "solicitud";
   private solicitudCollection: AngularFirestoreCollection<Solicitud>
   constructor(private db: AngularFirestore, private router: Router,private storage: AngularFireStorage) {
     this.solicitudCollection = db.collection<Solicitud>('solicitud');
    }
+
+   gettodos_los_mensajes_de_rechazados (){
+    this.usuario = localStorage.getItem('usuario');
+    console.log('soli',this.usuario)
+    return this.db.collection("mensaje",ref => ref.where('id_usuario', '==', this.usuario)).snapshotChanges()
+    }
+  
   /*
   createPost(solicitud:Solicitud){
    // this.usuario = localStorage.getItem('usuario')
@@ -80,7 +89,11 @@ export class SolicitudService {
              id:id,
              nacionalidad:solicitud.nacionalidad,
             documentos:item.url,
-            rol:solicitud.rol 
+            rol:solicitud.rol ,
+            razon:solicitud.razon
+         
+            
+
           } )
           console.log('nacion',item.url)
           
@@ -94,7 +107,7 @@ export class SolicitudService {
   }
 
       
-  async guadarPDF_solicitud(solicitud: { nombre_artistico: string, documentos: string, artista_id: string,nacionalidad:string,id:string,rol:string}): Promise<any> {
+  async guadarPDF_solicitud(solicitud: { nombre_artistico: string, documentos: string, artista_id: string,nacionalidad:string,id:string,rol:string,razon:string}): Promise<any> {
   
     try {
 
@@ -120,7 +133,9 @@ export class SolicitudService {
         artista_id:solicitud.artista_id,
         nacionalidad:solicitud.nacionalidad,
         document:solicitud.documentos,
-      rol:solicitud.rol});
+       
+      rol:solicitud.rol,
+    razon:solicitud.razon});
 
         
 
@@ -130,6 +145,34 @@ export class SolicitudService {
       console.log('error al guadar imagen', error)
 
     }
+
+  }
+
+  //eliminar
+  
+  delete(administrador){
+
+    Swal.fire({
+      title: 'Estas seguro en eliminar ?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Estoy seguro,eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        Swal.fire(
+          'Eliminado!',
+          'Informacion eliminado correctamente',
+          'success'
+        )
+        this.db.collection("mensaje").doc(administrador).delete();
+        
+      }
+    })
+  
 
   }
   

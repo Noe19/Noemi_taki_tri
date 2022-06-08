@@ -23,7 +23,7 @@
         
      
         
-        <a routerLink="/crear-canciones/" class="btn btn-success">Crear Canción</a>
+        <a routerLink="/crear-canciones/{{albumes.id}}" class="btn btn-success">Crear Canción</a>
         <button routerLink="/edit-Albumes/{{albumes.id}}" class="btn btn-primary" >Editar</button>
         <button type="button" class="btn btn-danger"
         (click)="eliminar_genero(albumes)">Eliminar</button>

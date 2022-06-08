@@ -18,6 +18,8 @@ export class SolicitudRechazadasComponent implements OnInit {
   hasta: number=5;
   public arreglo:any;
   public cantidad_solicitud_rechazadas:any;
+  public page:number=0;
+  public search:string="";
   // alertas diseñadas 
   Swal = require('sweetalert2');
   constructor(private administradorService:AdministradorService,public formBuilder:FormBuilder,
@@ -66,6 +68,13 @@ export class SolicitudRechazadasComponent implements OnInit {
   } catch (error) {
 
     alert("No se puedo acepta la solicitud , intente más luego"); 
+  }
+
+  onSearchSolicitud_Rechazadas(search:string){
+    this.page=0;
+    this.search=search;
+    console.log(search);
+
   }
   
 

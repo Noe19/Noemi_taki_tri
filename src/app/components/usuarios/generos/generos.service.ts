@@ -3,7 +3,7 @@ import { snapshotChanges } from '@angular/fire/compat/database';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } from '@angular/fire/storage';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
@@ -164,17 +164,23 @@ export class GenerosService {
 
   
 
+  
+
   // eliminar generos en storage y firestore
   public eliminar_generos_total(gen:Generos):Promise<any>{
   const storage = getStorage();
   const refgeneros = ref(storage, gen.referencia)
   deleteObject(refgeneros).then(()=>{
-    Swal.fire('EXITO','la imagen se elimino correctamente','success');
+    
+    //Swal.fire('EXITO','la imagen se elimino correctamente','success');
 
   }).catch((error)=>{
     console.log('no se elimino la imagen',error)
 
   });
+
+
+ 
   return this.generosCollection.doc(gen.id).delete();
 
   }
@@ -250,7 +256,9 @@ export class GenerosService {
    update(albumImg: Generos, urlImg,referencia) {
     console.log('id_update',albumImg.id,albumImg.imagenUrl)
     console.log('referencia',referencia)
+ try {
    
+  
   if(albumImg.referencia==referencia){
     
     this.speakerCollection
@@ -267,11 +275,27 @@ export class GenerosService {
 
   }
  
- 
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Genero Editado correctamente'+':'+albumImg.Genero_nuevo,
+    showConfirmButton: false,
+    timer: 1500
+  })
 
+  this.router.navigate(['/generos']);
 
- 
-console.log('aqui es el problema')
+//
+} catch (error) {
+  Swal.fire({
+    position: 'top-end',
+    icon: 'error',
+    title: 'Genero no editado'+':'+albumImg.Genero_nuevo,
+    showConfirmButton: false,
+    timer: 1500
+  }) 
+} 
+
   }
 
 

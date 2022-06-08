@@ -1,37 +1,112 @@
-<app-header></app-header>
-<div class="mision_vision">
-<div class="container">
-    <div class="row">
-      <div class="col-derecho">
-        <h2>Misión</h2>
-      </div>
-      <div class="parrafo_mision">
-          <p>
-            Brindar a los artistas la oportunidad de llegar a más personas mediante la  música , 
-            construyendo una identidad musical en los niños, jóvenes y adultos ecuatorianos.  
-            </p>
-      </div>
-      
-      
-    </div>
-  </div>
-  <hr>
 
-  <div class="container_izquierdo">
-    <div class="row">
-      <div class="col-izquierdo">
-        <h2>Visión</h2>
+<body id="page-top">
+  <!-- Navigation-->
+  <app-header></app-header>
+  <!-- Masthead-->
+  <header class="masthead bg-primary text-white text-center">
+      <div class="container d-flex align-items-center flex-column">
+          <!-- Masthead Avatar Image-->
+          <img class="masthead-avatar mb-5" src="assets/imagenes/oficial_logo.png" alt="..." />
+          <!-- Masthead Heading-->
+          <h1 class="masthead-heading text-uppercase mb-0">TAKI-TRI</h1>
+          <!-- Icon Divider-->
+          <div class="divider-custom divider-light">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+          </div>
+          <!-- Masthead Subheading-->
+          <p class="masthead-subheading font-weight-light mb-0">Tu talento más cerca de tus fans</p>
       </div>
-      <div class="parrafo_vision">
-          <p>Comunicar mediante la música,
-              donde el respeto en cada uno de los artistas se refleja en cada canción de Taki-tri,
-              donde la humildad del ecuatoriano se escucha en los versos y la sinceridad en cada estrofa,
-              sin dejar a un lado la  honestidad en cada nota musical que  da vida y coraje al talento ecuatoriano.
-          </p>
-          
+  </header>
+  <!-- Portfolio Section-->
+  <section class="page-section portfolio" id="portfolio">
+      <div class="container">
+          <!-- Portfolio Section Heading-->
+          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Misión y Visión</h2>
+          <!-- Icon Divider-->
+          <div class="divider-custom">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+          </div>
+          <!-- Portfolio Grid Items-->
+          <div class="row3 justify-content-center">
+              <!-- Portfolio Item 1-->
+              <div class="col-md-6 col-lg-3 mb-5">
+                  <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                      <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                          <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                      </div>
+                     
+                      <img class="img-fluid" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUSFRgVFRYYGRgZGhoaGBoZGhgZGRoYGRoZHBgcGBgcIS4lHB4rIRgZJzgmLC8xNTU1HCQ7QDs0Py40NjEBDAwMEA8QHxISHj8sJSw0PTQ2NjQ0MTQ0NDY0ND00NDQ0ND00NDQ9NDY2PzE0NjQ0NDQ2NDQ0NDE0NDQ9NDQ0NP/AABEIAMABBgMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABQEDBAYHAgj/xAA/EAACAQIDBQYDBQcDBAMAAAABAgADEQQSIQUGMUFREyJhcYGRBzKhUnKxwdEUI0JigpKyFeHwJDPC8XOiw//EABoBAQADAQEBAAAAAAAAAAAAAAABAwQCBQb/xAAnEQADAAICAQQCAgMBAAAAAAAAAQIDERIhBCIxQVEFE4HBMmHRcf/aAAwDAQACEQMRAD8A7NERIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIlIBWIiAIiIAiJ5LAQCsS0awng4pRxgGTEx6la3CWQ5ve8E6M6JZp1geOhnqq9hpxgguRMAuepl7CVswPOxtfyA/WCdGTERBAiIgFJg7T2pRwy5qrqo5X1J8lGp9J425tRMJRes/BRoObMdFUeZnGsZtlq7NUqnM7eyjkqjkB0l+LDz7fsVZMnHpe50Gr8Q8ODZadVh17i+wLXknsze7DVyFzGmx4LUAW56BgSp8r3nHHc8ZdD9oLW1A5TS/GjWkUrNR9AROffDzeRnP7LWYlgCaTE6kDihPMgajwB6ToMxXDh6Zpm1S2isRE4OhERAPMoTaVM0DffbxLHDUzYD/ALhHMn+G/QDj7TjJaidsv8bx6z5FE/y/onNob34ekSqlqhHHIAR/cSB7XmFR38ok2am4HUZT7i4nPRF5ifk3vo96fxWBTp7f+zs2z9pUsQuak4Yc7cR4EHUTMnGdnbQfDuKiGxHEcmHNW6idb2ZjlxFNaq8GF7cweBB8QbiasObn0/c8jzfCfjtNPaZmSsRLjCIiIBarVAoLHlIt8XfnL+3Hy07/AMw/Oa22KkMlEw2KkRtDaLUyGGtje0l8HhLC7i7HkeC+HnLe1NlLVXu2VuRtofBgPxkEmDgN5O0bKUN/5dTpqdJPI4YBhqDqJquzNg16VZHOQKrAkhr3AOoAtNkxNbsxmCkrclsv8C2Zi2Xi2o4DXWSlsN6Le0cctKi9UDOFBIy3a5GmtuAvxPLWWMFiawZRUCOji6VKQIUaXs6knTowNjztIOq9P94Q9UMSWw3ZlyjBgGGQL3GJcvmDcPATZMBhFpJZRlzHMygnKrEDNkHBRe5sNNTLmlKKpbqi5VwTVWsXKoBqF0Zj97kJI0KK01CqLAcBMO89iqw5yot0Z8TBGJNwNDcgfr9LzOg5EREA5r8X8WVXD0xwZnc+JQKo/wAzOZdoROq/FvAF6FKuov2TkN4JUsL/ANyqPWczrkMLWtNuB+kyZf8AIsNibgCesPiSjAgy1UpgAmYoeWO2n2cqdk7sXGlMRRdTqtVD6FwCPUEj1n0JPnrcvAticbRQC4Dio/glMhjfzIA/qE+hZlz1yaL8K0mViIlBcIiUgHlzpODV8YXZnPFmZj5sSfznepwPbGFOGxFWiR8rnL9095T6qRM/kTtI9P8AGWppr7AxEdvI8vPLVbTNwPYeZr5JEYg3nSfhpiC1KqvJXBHhmUX/AA+s5L20698NcCaeEzsLGs5cfdsAvvYnyIl2GNVswefmVYXL+0blERNZ4YiIgGJtLD9rTdBxI7vmNR9RNI2ZXRKt6pyhL6H7Y0AI8Nfab7WqhRf2mjbdytVDFQGbQ2vZjyuOvlIZKNipbRpP8rr7zKVgeBvNQpbANQhn/dr4fMfIcvWbDgcLQojulvNnY/S9pJJl1nKqxVcxAJC3tmIGgvyvNcr4pqnYMz5R8yVSl0Z2HyugYBKinRb3BN+eklMequc6Yh6ZAt3WUpb+ZHBB89DLexsG6K4d0dHbOoCZbFtXBUkixPe8yZZLlLfyVUqp6PWw8IyKzuGV3LFl0UHvHK7IpKq5Fr2/GZ9auEtfn+UuzHxWGFQWvYjUHp6cxK6p09lkzxWjFo4muwLLTR0BIsr97TwIHLxmZh8QtRcw9QdCCOII5GV2VSFBWVmvma97WHADX2lNp4Ch3qtRjTH8ZD5FP3v14yNbG9HrBN2lQkfKgIvyztyHkPxElZpG1d88PhqSjCZajBgCtnAC2JLXt3jcAceLXmx7C2xTxlIVKZ8GU/Mrcw35HmJ28dJbaOFct6TLm29ojC0HrFc2QDu3te7ADXlxmqU/iVR/joVB90o34kS78TcbkoJSHGo9z91NfxK+05eRNWDBNzuijLlqa0jqbb6bPxKNSqllV1KsHQ5SGFjcrcDznM959j1cBZ1IrYZ/+1XUgix4K5GgblfgeXQYddgqljwH4y9g9sVxh6tBXVaVX5lIDG1tbX4X0vbXQayaxcH6WQr5f5I1l8STL+zcLVxNRaVFGd24Ko5cyTwVRzJ0mQNn3/hH0End29vVtnM3YqlntnVkvmtw7wIYcetvCcvHfudK4Oo7h7pDZ1MlyGr1Ldow4KBwRPAczzPpbbpqW7O+SYthTdclQi663RrcQp4g87H3M22ZrVJ6oulprooYkXj9vYeg2WpVAboLkjzCg29ZBbM3yWpiGpuAiFiKT6i9jZc1+GbiOFr2MreSU9NmifGy1LpS9JbNxE1XbO9ww1ZqRpFsoF2DAakA2sR49ZtJM43tbF9tXqVPtOSPujRfoBKs+RxPp9zX+O8ac9vmukjdqe/lE/NTqDyCn/ykRvNg6G1QHwtRRiUUgK917RRrkN+Y1IIva5vxuNTmBidoZGAQ2dSCG+yRqLeMzxnqnprZ6OX8fixrnDafx8kNjazozJUUo6nKysLMD4iY37RNg2riKmNrdpWKu5ULoqgBRcgC3mfeWV2aEN8o0168JY7lFM4M1LZN7k7mVcay1qylMNcHXRqo6IOSHm3Th1Ha0QKAFAAAAAGgAHAATm2yN+q62FZVdRzUZWt6d0+wnQdnY5MRTFRDdT7g8wRyIl2OofU+55/lYs06eRdfH0ZsREtMYiIgEftFwpS/DvflNexuPp0zmsLjgTqR5dJP7YwLVksjBWBupPDxBtynNNpYWrnKuRoSO7cjQ24mQzpGdit4HcEJcDqfyEmqew1qIrM7sSATZrC/OwE1BcOQJl4batakMqvp4yASW2UTBlMq5nOveJa1udiZ62dvab2qKLdRPWytgf6gprVKzghimUKDa1jxPnJA7g07aVql/JLe1pOhsmcNikqKGRgRLlRwoJY2A5mRWy902w4YriGLfw90BR95bm/uJJYbZbMQ9chiOCLfILczf5j56SRstYam2IINitIG+ujPbhYcl8ec1r4qGqEokA9iC/aEcA/dyZvC2exnQp4dAwIIBB4g6gjynUVxpMrpclo+e1dTwImdsvadXDVBVpNlbgRxV1+yy8x9ZtHxH3eFLJXoUkVLZKioqJlJJyvoNb3t4WE0u09OKWSezFScUTu0zXxVJsZXe9mVEUAAZSWzEDkARa/M36SGag4CsVIDAlTY6gaEjqPGStLbIyuHpq+YUhTTUU0FPNlDLe5XvXtfU3uesviitV1LVT38mGp1ENhkRf3r2Flys7ZADpqekhNz1roh99mk4qh2iFb21uD4jr7zApYGoumlut9JtFbZ4CsUV2zPkpqRZ86AGqGQA5gt8twRrMPE4U0yAxXMRcqL5k8HFtD4SeM09hU0tGMq2AHQAe09Fb8dZWD/AO5Zo5GHzIwdGsVIZTzVwbqfHWdv2BtQYrDpWGhYWYfZcaMPf6WnBqyVXcKq90WbiOYBBJB0OvDiOc3z4b7X7Ou2HY92rqvQVEGtvNQf7RMueVU7XwX4q41p/Jr2IqMrste61bnOG0ObmdeIJ4ERcEdROx7U2bTxCMrqpJUhWKqxUkEArccRxnHquDajUam6hWU5Tb5TbUMvgQR7zwM+Lh2j7HwPN/f6WtNEvgds4hlTDdocrMEzaFwrELYMel/+CRpw7WZlBKK2XNoBqe6PE21sPPhGFrdm6va+UqbHS9iDx9JLYCqlaysVFiQFITs6aABrhHBLE65iGDcOula9fTZda/RTqJ6+f7IOQ+N2UzOXQix4g6EHnYzbsRs8ZQVypdib1GIKh9aVLn3stma/DMLkSLdCpIIsQSGB4gg2I9DI9WN9He8fkTp/BgYDCNT1Yi9rWH6zMlYnNU6e2XzClaR4NMcRoZte4e1ezqmkT3anDwcDT3GnoJqOJqMFOQZmAva4GlwOfE68Brx6Txs7tEszGzghgQdQwNwZZjbjVFHkROWXi17r3+vo73EjdhbRGIoJU6jUdGGjD3BiekmmfI1LluWScREkgtVqmRSx5AmaLiaVySec3Paik0nt9m/tqfwmo1GkMlEVXp2kfUSZ+OqWkaXvIOjd9wj+7qD+cH3UfpNrmn7iVNKq8+6w+oP5TcJ0jliIiCCkjtsbWpYRO0qtYcFH8TN0UczJGR+19k0cWhp1kDDiORU9VYaqfESVrfZD3ro5FvFt+rjXzN3UX5UB0XxP2m8faRE2TeLcyvhLvTvWo9QO+g/nUfMP5h7Cawrg6giepiqOPpMNzW/UUq1lQXY2l/AbSamxNN8pIAIIBvYgi6sCDYgEaaWnR/h3sOkKQxTIGqOWCsQDkRWK93oSQSTxNx0kvvpg6FTC1DWABVTkbTMHt3Mp46m2nOUvyPVx10WLD6d7Ob0NrZ1dHfIWRURwGIFnLvntdu+WJYi+oHKX8W9E0ld81Uqi0EIJRmZWLu+oJyqrqguNb8NNNfnqjVZGV1NmUhlNgbEG40Oh1l7hfBVsydrYZaNZ6akkKQNbEg2BZSRoSpJW/hMLPfu+voP9yJgbRxr5jY63JJPEseP1nmhjCRmAubWYc+IPtpOf2LfEng9bJrDHKDbjNk+H2wGr1lxbNlSk5sBxd8vDwUZgfHhNCTHuxyqpBOg5m507oHE9J3/dnBmhhaFMqEZaa5wPtkAtfqb3uesp8jKuOpLMUersgN5t7Aualh2BbUM41CngQvVvHl+GiMSTckknUk6kk8STOi7f3Op171KJFKqdTp3HP86jgf5hr1vOe47DVMO2SupR+V/lbxVuDCeF5E3vb9j678bl8fhxjqvnfuy3LJxSa63txIBIHmRoJJbHwQxNenRJOV21sdcqgswB5XC2v4zr2GwtOkoRFVVAsFAAAHkJGHBzW2zvzfP/AEUolbfucdw+ONtQtRc2YZrkBrAXuGBOgUEG4OUaSVw+JFfMjXKqAQmUFnqMc1SoQpDfMxJVSDY8xcFvjQopiW7HKLqDUVbZQ9zfQcCRa/63kEZXTcU59y6Mc54WRLi33/4SlfZerFCMoIWxzXzBAzAEgWAOZRexOUjUiRRMuYjazUqLCykFcgJHeyk5soN7EXudQSLm1prSbYct3rZT05Sf181uR+94nwyPf1/1mw0zcX66y7RpF2VVFyzBQOFyxsJCjaZUAZCehBFjNx+GlJ6+JaqyDIiEX4gOxW1j9q2bhwB8ZMYadaZGbzJjG2vdI3/drZX7JQWkWzNdmZrWuWNzYcgNB6SslpWeipSPlbqqp0ysREkg8VEzAjqCPeaK032aPjVtUdejt7X0kMlGv7XNlMxMGl5O0KCvWRHF1ZsrD7wI99ZhbQ2W2Eqmm2qnVG+0v6jgf95BJIbBxPY1lY6Ke63k3P0Nj6ToU5kgm97Cxfa0VJPeXut5jgfUWkohknERJIEREApIHae6OCxLZqlBS3ElSyFvvZCM3rJ6JKbXsQ0mWcNQWkioihVUBVUCwAGgAE5BvxtCrUxbpUuqo1qaHhl5OBzzDW/pynZZGbX2Hh8WuWvTVrcDwYfdYaiWYsiittHOSeU6Rw2FNtelz7C8lN/tjLs2qi0mZldGazWJXKwFgQNR3pqv+pNYiw1BHvp+c3LNLWzI8dJklj9hvRoYaszZkxNPtFNvkc6lf7WUj+rpIJkKt0/5rOw7Q2aK+wqBA71GhSqr1/doM4HmhcTk2JXn6/rMkvZfXTOrfCTD0Hou5pJ2yVCM5VS+RlBXvHUa5h6TpE5B8Hsblr1aROj0ww86bfo59p1+V5FqiyH0Jj4vCJWUpURXU8QwBHsZkRKztPRD7L3cwuGcvRpBWYWLXYm3MAsTYaDQdJY3yxVSjhXene9wGYcVUnVh+vK9+UnpQi8hz00jucjVqq719nDw19Qb358YnRds7l4aoGdA1F7E3pmykgc0N19gJx2ntd7C4U6A9J59+PSZ9Jg/I48i9micobIfHVloI2VslSop5FkChFbwLMLzU61Mg6ixuQwPFWGhB8bgj0m9fDPFmptAEi1qFUf/AHpn8pgfEPZv7PjalhZalqy9LvcOP7lY/wBU0444wjz8+VX5D17a6Ifd8oK9I1FVkzpmVwGUqWAa4Oh0Jn0LhaCU1Coqqo4KoCgeQGk+b8NoZ9D7DxXbYelU5sik+dhf63neN9tGfzF6Zr+CRiIlpgERKEwCs0bbWKXtnI629hb8pudasEUseAE5fj6hLG/WQyUSGy2z4mkq8c4b0XvH6CbjvBs9a9FgfmUFkPMMB+B4HzkBuLgfnrt9xPoXPvYehm4sQdDCDOY4erdRNh3QxBNR15Fb+oIH/lNbeiabvTP8DMvoDp9LSc3Ta2I80YfgfykEs3iJ4zRmnRye4njNKloB6ieM0rmgHqJ5zSmaAcs+M1O74c/yVv8AKlOWCdg+MdG9Cg/2XZPR0zf/AJzkIE0R3KKK6pn0NuWgOzsMrC4NBAR1BX9Jw3amDNGrUoH+B3p68wpIU+oAPrO97rplweFXpQpf4LOa/FPZPZ4gVlHdrrr4VEAB91yn0acxXqZ3a6Rru4eO7DHUGJsC+Q/1gr+LD2n0HPl7AVTTqI/2XRv7WB/KfT4N5GX4Yj5R7iUBlZUWCUlYgFuqND5H8J8zZLWHgJ9NmfOe1cPkxFVPsVHX0V2A+glWX4N3h97RsPwsH/Xj/wCKp+Kf7TZvi/gM1GjiANUco33XFxf+pAP6pBfCqn/1rHpQb6vTE6bvHs0YvDVKOl2Xuk8nXvIfRgJMdwc5q45kz58pnhO1/DXGCpgwt9abup9TmH+X0nEq6sGsRY8CDxDDQg+IM6l8H611xC9DTb3DA/4icT1Rf5HqxP8A1p/0dKiIl55hSWXe0vGY9dLwSiN2szMoy62Oq8yOo626eM1zEYag+p+k2LE4EtzPoSJEVd2FYls7gno36iQSNk7TWhlpKO4W06qW/K/4ydOPHWQCbshTfO5I4XI/ITJ/0c/ab3kA1/EVlrVXqcMxvbw4D6ATKwL9m4dTYi9ufEWMzTuzT+z7Ej8IXdxRwLj+owDNwO2yzZGtwuDw4dZIjHCQ1HYaocwzX8WJmWMI0kGcMbK/tokeMK0ocM0Akf20Sv7aOsjDh2ng4d4BLfto6yoxo6yGbDvLL4VzzIgGi7574jGg0FULSR7h+LsVzKGHIA3OnlNNamBpx6G/KdDxO4COxId1vfQBSBfWw04RQ+H1NfmZ3+9a3sLTQssytJGd46b22bfuZtoV8HRc6FV7NhyvT7lx4GwPrIL4r48DD0lABLVbg/ZCo17eJzfjM3D7HdFCqSFGgA0AHgBPGM3dWsuWoCw6G/HqOhlKrVbLnO50ceREbUki/G3j0neN0d41xlG9sr08qOORNtGHgbHysZq5+H2HJv3x5P8AqLyf2Hu+mDUrSDAMbsSSSSOFyZZeSanWuziYcvZtqNeXZhYZSOMzBKixlYiW6i3BANrjjBBrm9u9C4FFKgO7sVUXsBYXZmPMC40HWcfx9bt6j1jYM7FmA0W7G5yzpe8O7DYiwcsMpJVltpca8R/y0gh8Pur1beSj65ZVc1TN/jZsWNdrsitwtoDD4xBbSqrUz1F7MCPVR6GddXGL1mkbP3SFE3QNm+1qW95Jf6PUPHP9Z1MuVooz5JyXyS0cp21WFbEVmsFDVajADldz9eZ8ZsW4+20wNU3BK1Aqsfs2OjeIFzcTY6+41KoSzIwY8SpZb+J6mXMNuBSVg2VzYggM5tp1Gl5w4re0zSvIxcHNI6EJWYODwzqNWPveJcecZ08sJ6lDALRWUyy4RFoJLXZx2cu2i0AtdnBpiXbRaAWuzEp2Yl60WgFnsxBpiXssZYBZ7MSnZiX7RlgFjsh0jsh0l+0ZYBY7IdI7EdJfyxlgFjsR0leyEvWi0AtdmOkCnLtoAgFFWXJQCVggREQBERAEREAREQBERAEREAREQBKWlYgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIB//9k=" alt="..." />
+                 
+                    </div>
+              </div>
+              <!-- Portfolio Item 2-->
+                       
+          </div>
       </div>
+  </section>
+  <!-- About Section-->
+  <section class="page-section bg-primary text-white mb-0" id="about">
+      <div class="container">
+          <!-- About Section Heading-->
+          <h2 class="page-section-heading text-center text-uppercase text-white">Misión y Visión </h2>
+          <!-- Icon Divider-->
+          <div class="divider-custom divider-light">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+          </div>
+          <!-- About Section Content-->
+          <div class="row">
+            <h3>Misión</h3>
+              <div class="col-lg-4 ms-auto"><p class="lead">            Brindar a los artistas la oportunidad de llegar a más personas mediante la  música , 
+                construyendo una identidad musical en los niños, jóvenes y adultos ecuatorianos.  
+    </p></div>
+              <h3>Visión</h3> 
+              <div class="col-lg-4 me-auto"><p class="lead">Comunicar mediante la música,
+                donde el respeto en cada uno de los artistas se refleja en cada canción de Taki-tri,
+                donde la humildad del ecuatoriano se escucha en los versos y la sinceridad en cada estrofa,
+                sin dejar a un lado la  honestidad en cada nota musical que  da vida y coraje al talento ecuatoriano.
+   </p></div>
+          </div>
+          <!-- About Section Button-->
+          <div class="text-center mt-4">
+              <a class="btn btn-xl btn-outline-light" routerLink="/home">
+                  <i class="fas fa-download me-2"></i>
+                  Inicio
+              </a>
+          </div>
+      </div>
+  </section>
+  <!-- Contact Section-->
+
+  <!-- Footer-->
+
       
-      
-    </div>
+
+  <!-- Copyright Section-->
+  <div class="copyright py-4 text-center text-white ">
+    <app-footer></app-footer>
+      <div class="container"><small>Copyright &copy; Taki-Tri 2022</small></div>
   </div>
-</div>
+
+
+ 
+ 
+ 
+
+  
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <!-- * *                               SB Forms JS                               * *-->
+  <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  
+</body>

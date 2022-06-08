@@ -1,36 +1,109 @@
-<app-header></app-header>
-<div class="teams_equip col-lg-12 col-md-12 col-sm-12">
 
-    <h2 class="titulo">¿Quiénes Somos?</h2>
-    <h3 class="mensaje">Si lo puedes imaginar lo puedes programar </h3>
-    <div class="row col-lg-12 col-md-12 col-sm-12">
-      <div class="col desarrollador_backend col-lg-4 col-md-12 col-sm-12">
-        <figure class="figure col-lg-12 col-md-12 col-sm-12">
-            <img src="assets/imagenes/ivan_fraga.JPG" class="figure-img img-fluid rounded" alt="20px" height="20px">
-            <p class="nombre_programador">Ivan Fraga</p>
+<body id="page-top">
+  <!-- Navigation-->
+  <app-header></app-header>
+  <!-- Masthead-->
+  <header class="masthead bg-primary text-white text-center">
+      <div class="container d-flex align-items-center flex-column">
+          <!-- Masthead Avatar Image-->
+          <img class="masthead-avatar mb-5" src="assets/imagenes/oficial_logo.png" alt="..." />
+          <!-- Masthead Heading-->
+          <h1 class="masthead-heading text-uppercase mb-0">TAKI-TRI</h1>
+          <!-- Icon Divider-->
+          <div class="divider-custom divider-light">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+          </div>
+          <!-- Masthead Subheading-->
+          <p class="masthead-subheading font-weight-light mb-0">Tu talento más cerca de tus fans</p>
+      </div>
+  </header>
+  <!-- Portfolio Section-->
+  <section class="page-section portfolio" id="portfolio">
+      <div class="container">
+          <!-- Portfolio Section Heading-->
+          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Programador</h2>
+          <!-- Icon Divider-->
+          <div class="divider-custom">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+          </div>
+          <!-- Portfolio Grid Items-->
+          <div class="row3 justify-content-center">
+              <!-- Portfolio Item 1-->
+              <div class="col-md-6 col-lg-3 mb-5">
+                  <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                      <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                          <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
+                      </div>
+                      <h3 class="titulo_h3">Denisse Cumbal </h3>
+                      <img class="img-fluid" src="assets/imagenes/denisse_cumbal.JPG" alt="..." />
+                 
+                    </div>
+              </div>
+              <!-- Portfolio Item 2-->
+             
+             
            
-            <p>Es un estudiante de la Carrera de Desarrollo de Software, disfruta de los nuevos lenguajes de programación, que los numer y la programación son sus aliados 
-                para crear o actualizar programas. </p>
-          </figure>
-    </div>
-    <div class="col desarrollador_frondend col-lg-4 col-md-12 col-sm-12">
-        <figure class="figure col-lg-12 col-md-12 col-sm-12">
-            <img src="assets/imagenes/denisse_cumbal.JPG"class="figure-img img-fluid rounded" alt="20px" height="20px">
-            <p class="nombre_programador">Denisse Cumbal</p>
-             <p>Es una estudiante de la Carrera de Desarrollo de Software, que le gusta tener nuevos retos,
-                que la programacion es el lugar en donde puede dar vida a sus ideas y soluciones a los problemas del mañana. 
-            </p>
-          </figure>
-    </div>
-    <div class="col desarrollador_movil col-lg-4 col-md-12 col-sm-12">
-        <figure class="figure col-lg-12 col-md-12 col-sm-12">
-            <img src="assets/imagenes/david_cacuango.JPG"class="figure-img img-fluid rounded" alt="20px" >
-            <p class="nombre_programador">David Cacuango</p>
             
-            <p>Es un estudiante de la Carrera de Desarrollo de Software, disfruta de la Investigacion de nuevos lenguajes de programacion
-                Donde sus talentos se perciben en sus proyectos, laborales o estudiantiles. 
-            </p>
-          </figure>
-    </div>
-    </div>
+           
+            
+          </div>
+      </div>
+  </section>
+  <!-- About Section-->
+  <section class="page-section bg-primary text-white mb-0" id="about">
+      <div class="container">
+          <!-- About Section Heading-->
+          <h2 class="page-section-heading text-center text-uppercase text-white">¿Quién es? </h2>
+          <!-- Icon Divider-->
+          <div class="divider-custom divider-light">
+              <div class="divider-custom-line"></div>
+              <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+              <div class="divider-custom-line"></div>
+          </div>
+          <!-- About Section Content-->
+          <div class="row">
+              <div class="col-lg-4 ms-auto"><p class="lead">Soy una persona que le gusta ponerse retos, poder ver la programacion con la forma de crear el futuro en cada etiqueta plasmada</p></div>
+              <div class="col-lg-4 me-auto"><p class="lead">Mediante la creacion de TAKI-TRI, se procura darle una oportunidad a los artista de subir sus canciones a la web de forma gratuita y asi darse a conocer a nivel nacional </p></div>
+          </div>
+          <!-- About Section Button-->
+          <div class="text-center mt-4">
+              <a class="btn btn-xl btn-outline-light" routerLink="/mision-vision">
+                  <i class="fas fa-download me-2"></i>
+                  Mision y Vision!
+              </a>
+          </div>
+      </div>
+  </section>
+  <!-- Contact Section-->
+
+  <!-- Footer-->
+
+      
+
+  <!-- Copyright Section-->
+  <div class="copyright py-4 text-center text-white ">
+    <app-footer></app-footer>
+      <div class="container"><small>Copyright &copy; Taki-Tri 2022</small></div>
   </div>
+
+
+ 
+ 
+ 
+
+  
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <!-- * *                               SB Forms JS                               * *-->
+  <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+  <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  
+</body>

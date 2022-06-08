@@ -49,15 +49,7 @@ export class DashboardComponent implements OnInit {
     this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
     
     //this.usuario_nuevo=localStorage.getItem('usuario_nuevo')
-
-
-
-
-
-
-    
- 
-    
+  
   }
 
 

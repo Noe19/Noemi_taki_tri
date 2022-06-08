@@ -20,6 +20,7 @@ export class PermisoArtistaGuard implements CanActivate {
   public permiso:any;
   public permiso_artista_rol:any;
   perfilResf:any;
+  public arreglos:any;
   public rol_artista="artist";
   Administrador: Administrador[]
   constructor (
@@ -78,33 +79,24 @@ this.permiso_artista_rol=localStorage.getItem('artista_rol');
           ...(e.payload.doc.data() as Administrador)
         };
       });
+
+      this.arreglos=this.Administrador.length;
       //para saber si exiten
      
-      if(this.Administrador.length>0){
-    
-      this.aceptacion="true";
-    //  console.log('valor1:',this.aceptacion)
-        localStorage.setItem('artista_aceptado',this.aceptacion)
-
-        }else{
- 
-        this.aceptacion=='false';
-   
-        this.router.navigate(['/dashboard-user'])
-        localStorage.setItem('artista_aceptado',this.aceptacion)
-      }
+     
       
     } );
-    this.valor_aceptacion=localStorage.getItem('artista_aceptado');
+
+   // this.valor_aceptacion=localStorage.getItem('artista_aceptado');
   //  console.log('valor',this.valor_aceptacion)
-    
+ /*   
     if(this.valor_aceptacion==='true'){
  
       return true;
   
     }
     else{
-      this.router.navigate(['/dashboard-user'])
+      
       Swal.fire({
         icon: 'warning',
         title: 'Envia tu solicitud para tener acceso completo de Taki-Tri',
@@ -112,8 +104,30 @@ this.permiso_artista_rol=localStorage.getItem('artista_rol');
         allowOutsideClick: false,
 
       })
+      this.router.navigate(['/dashboard-user'])
       return false
     }
+*/
+
+ 
+if(this.arreglos>0){
+     
+ 
+
+     return true;
+     
+
+  }
+  Swal.fire({
+    icon: 'warning',
+    title: 'Envia solicitud para ser parte de taki-tri',
+    confirmButtonText: 'Aceptar',
+    allowOutsideClick: false,
+
+  })
+  this.router.navigate(['/solicitud'])
+  return false; 
+
     
    
   

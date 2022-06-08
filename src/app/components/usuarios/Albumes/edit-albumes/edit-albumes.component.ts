@@ -17,7 +17,7 @@ export class EditAlbumesComponent implements OnInit {
 
   public usuario: any;
   //generos:Generos[];
-  public ediForm : FormGroup;
+  public albumForm : FormGroup;
   public imagen:any;
   todoslosalbumes:Albumes[];
   imagenes:ImagenesAlbumes[]=[];
@@ -34,15 +34,15 @@ export class EditAlbumesComponent implements OnInit {
   files: Set<File> = new Set();
   
   _file;
-  AlbumService: any;
+  //AlbumService: any;
 
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService, private activeRoute: ActivatedRoute
-    ,public formBuilder:FormBuilder,AlbumService :AlbumesService) {
-      this.ediForm = this.formBuilder.group({
+    ,public formBuilder:FormBuilder, private Alb:AlbumesService) {
+      this.albumForm = this.formBuilder.group({
         name: [''],
         imagen:[''],
         year:[''],
-        autor:[''],
+        author:[''],
         id:[''],
         referencia:['']
 
@@ -61,11 +61,11 @@ export class EditAlbumesComponent implements OnInit {
  
  const id2 = this.activeRoute.snapshot.paramMap.get('id');
  console.log('pasar',id2)
- this.AlbumService.getPostbyId_album(id2).subscribe(res =>{
+ this.Alb.getPostbyId_album(id2).subscribe(res =>{
    this. generosRef = res;
    this.url = this.generosRef.imagen
    console.log(this.generosRef.imagen)
-   this.ediForm = this.formBuilder.group({
+   this.albumForm = this.formBuilder.group({
     
      name: [this.generosRef.name],  
     id:[this.generosRef.id], 
@@ -88,8 +88,8 @@ export class EditAlbumesComponent implements OnInit {
   // datos de editar
 
   
-  this.AlbumService.add(this.ediForm.value, this._file,this.isChanged)
-  console.log(this.ediForm.value)
+  this.Alb.add(this.albumForm.value, this._file,this.isChanged)
+  console.log('datos para editar',this.albumForm.value)
   this.isChanged = false;
   this.file.nativeElement.value = "";
 

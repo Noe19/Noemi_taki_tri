@@ -1,0 +1,30 @@
+<app-header-artist></app-header-artist>
+<div class="componente_canciones">
+    <app-sidenav-user></app-sidenav-user>
+    <div class="crear_canciones">
+    <h2>Crear Nuevos Género</h2>
+    <div class="form-group " >
+
+
+      <form class="formulario_generos" (ngSubmit)="crear_canciones()" [formGroup]="cancionesforms">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Nombre_cancion" required formControlName="song_nombre">
+        </div>
+      <div class="form-group">
+        
+
+        <input type="file" class="form-control-file" accept="audio/*" (change)="selectChange($event)" ><br>
+
+          <audio [src]="imgURL" with="100" height="100"></audio>
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button  class="btn btn-secondary" [disabled]="!cancionesforms.valid"   type="submit">Crear</button>
+       
+      </div>
+    </form>
+
+  </div>
+</div>

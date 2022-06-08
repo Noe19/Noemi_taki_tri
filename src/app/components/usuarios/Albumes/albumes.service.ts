@@ -21,11 +21,14 @@ export class AlbumesService {
   private CarpetaImagenes_Albumes = "imagenAlbumes";
   private albumesCollection: AngularFirestoreCollection<Albumes>
   public usuario: any;
-  id = null;  
-  CarpetaImagenes: any;
+ 
   constructor(private db: AngularFirestore, private router: Router,private storage: AngularFireStorage) {
      // menciona que me traiga la coleccion que esta en base de datos llamado..
     this.albumesCollection = db.collection<Albumes>('albumes');
+    //
+    //this.generosCollection = db.collection<Generos>('generos');
+    this.speakerCollection = db.collection("albumes");
+    this.speakerList = this.speakerCollection.valueChanges();
    }
 
    // traer todos los albumes del artista
@@ -38,7 +41,8 @@ export class AlbumesService {
  // un solo documento
  getPostbyId_album(id){
    
-  return this.db.collection("artist").doc(id).valueChanges()
+  return this.db.collection("albumes").doc(id).valueChanges()
+  
    }
    
  
@@ -48,7 +52,7 @@ export class AlbumesService {
     const storage = getStorage();
     const refgeneros = ref(storage, gen.referencia)
     deleteObject(refgeneros).then(()=>{
-      Swal.fire('EXITO','la imagen se elimino correctamente','success');
+     // Swal.fire('EXITO','la imagen se elimino correctamente','success');
   
     }).catch((error)=>{
       console.log('no se elimino la imagen',error)
@@ -201,8 +205,8 @@ export class AlbumesService {
     
       this.usuario = localStorage.getItem('usuario')
       console.log('lll',this.usuario)
-      const filePath = this.CarpetaImagenes+this.usuario+'/'+albumImg.name;
-      console.log("imagenGeneros/"+this.usuario+'/'+albumImg.name)
+      const filePath = 'imagenAlbumes'+'/'+this.usuario+'/'+albumImg.name;
+      //console.log("imagenGeneros/"+this.usuario+'/'+albumImg.name)
       const ref = this.storage.ref(filePath);
       ref.put(_file).then(() => {
         ref.getDownloadURL().subscribe(url => {
@@ -221,6 +225,7 @@ export class AlbumesService {
            
           } else {
             this.create(albumImg, url,filePath);
+            console.log('estoy aqui creando')
             
           }
         });
@@ -240,11 +245,15 @@ export class AlbumesService {
     console.log('referencia',referencia)
    
   if(albumImg.referencia==referencia){
-    
+    console.log('id_para ediatr',albumImg.id)
+    /*
     this.speakerCollection
     .doc(albumImg.id)
    .update({ name: albumImg.name, imagen: urlImg,year:albumImg.year,author:albumImg.author });
-    console.log('datos abtes de enviar1' ,albumImg.imagen  )  
+    console.log('datos abtes de enviar1' ,albumImg.imagen  )*/
+    
+    this.speakerCollection.doc(albumImg.id).update({  name: albumImg.name, imagen: urlImg,year:albumImg.year,author:albumImg.author,referencia:albumImg.referencia });
+    console.log('datos abtes de enviar1' ,albumImg.name  )   
 
 
   }else{
@@ -254,7 +263,16 @@ export class AlbumesService {
     console.log('datos abtes de enviar' ,albumImg.name  )  
 
   }
- 
+  // mensaje de alerta que se edito el album
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Albumes Editado correctamente'+':'+albumImg.name,
+    showConfirmButton: false,
+    timer: 1500
+  })
+
+  this.router.navigate(['/Albumes']);
  
 
 

@@ -5,6 +5,7 @@ import { ImagenesGeneros } from './create-generos/imagenesGeneros.modal';
 import { Generos } from './generos.modal';
 import { GenerosService } from './generos.service';
 import { AlbumesService } from '../Albumes/albumes.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-generos',
   templateUrl: './generos.component.html',
@@ -62,7 +63,28 @@ export class GenerosComponent implements OnInit {
   }
   
   eliminar_genero(Generos){
-    this.GenerosImg.eliminar_generos_total(Generos);
+    
+    Swal.fire({
+      title: 'Estas seguro en eliminar ?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Estoy seguro,eliminar!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        Swal.fire(
+          'Eliminado!',
+          'Informacion eliminado correctamente',
+          'success'
+        )
+        this.GenerosImg.eliminar_generos_total(Generos);
+        
+      }
+    })
+   // this.GenerosImg.eliminar_generos_total(Generos);
 
   }
   limpiarform(){

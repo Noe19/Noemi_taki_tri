@@ -1,34 +1,44 @@
 <app-header-artist></app-header-artist>
+
 <div class="contenedos_edit_generos">
   <app-sidenav-user></app-sidenav-user>
-<form class="formulario_generos" (ngSubmit)="onSubmit()" [formGroup]="ediForm">
-  <div class="input-group mb-3">
+ 
+<form class="formulario_albumes_completo" (ngSubmit)="onSubmit()" [formGroup]="albumForm">
+ 
+  <div class="imagenes_albumes">
+  <img (click)="addFiles()" class="upload" [src]="this.url" with="100" height="100" alt="" />
+ <br> 
+  <input 
+  type="file"
+  #file
+  class="input-file" accept="image/*"
+  (change)="onFilesAdded($event.target)"
+/>
+</div>
+ <div class="formulario_albumes">
+  <h3>Editar Álbumes</h3>
+  <div class="input-group mb-5">
     <input type="text" class="form-control" placeholder="Album" required formControlName="name">    
   </div>
-  <div class="input-group mb-3">
+  <div class="input-group mb-5">
     <input type="text" class="form-control" placeholder="Autor" required formControlName="author">
   </div>
-  <div class="input-group mb-3">
+  <div class="input-group mb-5">
     <input type="text" class="form-control" placeholder="Año" required formControlName="year">
   </div>
 <div class="form-group">
   
 
-    <input 
-        type="file"
-        #file
-        class="input-file" accept="image/*"
-        (change)="onFilesAdded($event.target)"
-    />
-    <img (click)="addFiles()" class="upload" [src]="this.url" alt="" />
+ 
 
 
 </div>
 
 
 <div class="modal-footer">
-  <button  class="btn btn-secondary" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
+  <button  class="btn btn-secondary" [disabled]="!albumForm.valid"   type="submit">EDITAR</button>
  
+</div>
 </div>
 </form>
 

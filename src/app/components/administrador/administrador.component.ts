@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-administrador',
@@ -18,12 +19,17 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 export class AdministradorComponent implements OnInit  {
+  public hora:any;
   pageSize=5;
   desde:number=0;
   hasta: number=5;
   public arreglo:any;
   public cantidad_de_solicitud:any;
-
+  public usuario:any;
+  public rechazar:"rechazado";
+  public mensaje:any;
+  public page:number=0;
+  public search:string="";
 
  
  
@@ -36,7 +42,7 @@ export class AdministradorComponent implements OnInit  {
   
   constructor(private administradorService:AdministradorService,public formBuilder:FormBuilder,
     private activeRoute: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,private firestore :AngularFirestore) { }
  
 
   ngOnInit(): void {
@@ -69,16 +75,16 @@ export class AdministradorComponent implements OnInit  {
 
     this.cantidad_de_solicitud=localStorage.getItem('cantidad');
     console.log('cantidad',this.cantidad_de_solicitud) 
+    localStorage.removeItem('cantidad');
   }
   //this.cantidad_de_solicitud=localStorage.getItem('cantidad');
     
-      
-     
+
 
   //cantidad_de_solicitud:number=localStorage.getItem('cantidad_de_solicitud');
  
   cambiarpagina(e:PageEvent){
-    this.desde = e.pageIndex * e.pageSize;
+    this.page = e.pageIndex * e.pageSize;
     this.hasta = this.desde + e.pageSize;
       
   }
@@ -113,8 +119,22 @@ export class AdministradorComponent implements OnInit  {
       })
       
       if (text) {
+
+
         Swal.fire(text)
-        this.administradorService.updateRol_no_artist(administrador);
+       //administrador.razon==text;
+      
+        this.mensaje=text
+       console.log('hola',administrador.razon,text)
+     
+        this.administradorService.updateRol_no_artist(administrador,text)
+        
+    
+        
+        const  id = this.firestore.createId(); 
+        this.hora=new Date().toLocaleDateString();;
+        console.log('usuario_mensaje',administrador.artista_id)
+        this.firestore.collection("mensaje").doc(id).set({"id_usuario":administrador.artista_id,"mensaje":text,"hora": this.hora})
         Swal.fire({
           title: 'Rechazo correctamente al Artista , no es parte de Taki-Tri',
           icon: 'success',     
@@ -125,11 +145,18 @@ export class AdministradorComponent implements OnInit  {
      
      // this.administradorService.updateRol_no_artist(administrador);
       //alert("usted ha cambia el rol correctamente");
+
+      
       
     }
 
  
-
+   // buscador 
+   onSearchMensaje(search:string){
+    this.page=0;
+      this.search=search;
+      //console.log(search);
+  }
 
 
  

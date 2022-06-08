@@ -4,19 +4,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SolicitudService } from './solicitud.service';
 import { DocumentosSolicitud } from './documentos.modal';
 import { Solicitud } from './solicitud.model';
+import { MensajeSolicitud } from './mensaje.modal';
+import { Administrador } from '../../administrador/administrador.model';
 
 @Component({
   selector: 'app-solicitud',
   templateUrl: './solicitud.component.html',
   styleUrls: ['./solicitud.component.css']
 })
-export class SolicitudComponent  {
+export class SolicitudComponent   {
+  public page:number=0;
   public usuario: any;
+  public hora:any;
+  public search:string="";
   url:any; 
   solicitud:Solicitud[]=[];
+  MensajeSolicitud:MensajeSolicitud[]=[];
   document:DocumentosSolicitud[]=[];
   imgURL="../assets/imagenes/camera.png";
   file:any;
+  Administrador: Administrador[]
   
 
 
@@ -31,11 +38,34 @@ export class SolicitudComponent  {
         nacionalidad:['',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
         rol:['no artist'],
         id_usuario: [this.usuario],
+        razon:['Ninguna'],
+      
         
         })
        }
   ngOnInit(): void {
+  
+      this.solicitudService.gettodos_los_mensajes_de_rechazados().subscribe((res) =>{
+        
+        this.MensajeSolicitud = res.map((e) =>{
+        
+        
+          return {
+          
+            id: e.payload.doc.id,
+            ...(e.payload.doc.data() as MensajeSolicitud)
+          };
+         
+        });
+        
+
+      
+      });
+      
+      
+     //console.log('array')
     
+  
   }
 /*
   async onSubmit() {
@@ -78,7 +108,10 @@ export class SolicitudComponent  {
        nombre_artistico:this.solicitudlForm.value.nombre_artistico,
        nacionalidad:this.solicitudlForm.value.nacionalidad,
        rol:this.solicitudlForm.value.rol,
-       id_usuario:this.solicitudlForm.value.id_usuario, 
+       id_usuario:this.solicitudlForm.value.id_usuario,
+       razon:this.solicitudlForm.value.razon,
+       
+       
      };
      console.log('cargar',cargar)
     
@@ -89,6 +122,32 @@ export class SolicitudComponent  {
     
    }
 
+
+   eliminar(mensaje:MensajeSolicitud){
+     this.solicitudService.delete(mensaje.id)
+     
+
+   }
+
+   // paginacion de paginas
+   siguiente_pagina_mensaje_solicitud(){
+    this.page+=2;
+   }
+
+   atras_pagina_mensaje_solicitud(){
+     if(this.page>0){
+      this.page-=2;
+     }
+    
+
+   }
+
+   // buscador 
+   onSearchMensaje(search:string){
+     this.page=0;
+       this.search=search;
+       //console.log(search);
+   }
  
 
 }

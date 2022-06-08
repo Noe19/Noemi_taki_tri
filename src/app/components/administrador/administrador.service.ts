@@ -7,6 +7,7 @@ import { Administrador } from './administrador.model';
 })
 export class AdministradorService {
 public usuario:any;
+public mensaje:any;
   constructor(private angularfirestore :AngularFirestore) { }
 // traer los datos del usuario no artista que envio la solicitud
   getPostsolicitud (){
@@ -38,14 +39,7 @@ getPost_rechazadas (){
 
 
       //traer un perfil en especifico
-  getPostById(id){
-   
-    return this.angularfirestore
-      .collection("request")
-      .doc(id)
-      .valueChanges()
 
-  }
 
   // saber que el usuario es  rol usuario
   getPost_rol_usuario (){
@@ -71,21 +65,40 @@ getPost_rechazadas (){
 
    //cambiar de rol a artista
    updateRol(administrador: Administrador){
+
     return this.angularfirestore
       .collection("request")
       .doc(administrador.id)
       .update({
-        rol: administrador.rol= 'artist'
+        rol: administrador.rol= 'artist',
+      
       })
   }
+//
+/*
+getPostById_re(administrador: Administrador){
+   
+  return this.angularfirestore
+    .collection("request")
+    .doc(administrador.id).update({
+      rol: administrador.rol= 'rechazado',
+    })
+    
 
-  // cambiar rol a rechazado
-  updateRol_no_artist(administrador: Administrador){
+}
+ */ // cambiar rol a rechazado
+  
+  updateRol_no_artist(administrador: Administrador,mensaje){
     return this.angularfirestore
       .collection("request")
       .doc(administrador.id)
       .update({
-        rol: administrador.rol= 'rechazado'
+        rol: administrador.rol= 'rechazado',
+        razon:mensaje,
+       
+       
+      
+       
       })
   }
 

@@ -60,7 +60,13 @@ import { EditGenerosComponent } from './components/usuarios/generos/edit-generos
 import { CreateAlbumesComponent } from './components/usuarios/Albumes/create-albumes/create-albumes.component';
 import { ShowAlbumesComponent } from './components/usuarios/Albumes/show-albumes/show-albumes.component';
 import { EditAlbumesComponent } from './components/usuarios/Albumes/edit-albumes/edit-albumes.component';
-
+import { FiltroPipe } from './components/usuarios/solicitud/filtro.pipe';
+import { FiltroSolicitudPipe } from './components/pipe/filtro-solicitud.pipe';
+import { FiltroSolicitudAceptadasPipe } from './components/administrador/solicitud-aceptadas/filtro-solicitud-aceptadas.pipe';
+import { FiltroSolicitudRechazadasPipe } from './components/administrador/solicitud-rechazadas/pipe/filtro-solicitud-rechazadas.pipe';
+import { CreateCancionesComponent } from './components/usuarios/canciones/create-canciones/create-canciones.component';
+import { ShowCancionesComponent } from './components/usuarios/canciones/show-canciones/show-canciones.component';
+import { EditCancionesComponent } from './components/usuarios/canciones/edit-canciones/edit-canciones.component';
 
 
 
@@ -101,6 +107,14 @@ import { EditAlbumesComponent } from './components/usuarios/Albumes/edit-albumes
     CreateAlbumesComponent,
     ShowAlbumesComponent,
     EditAlbumesComponent,
+    FiltroPipe,
+    FiltroSolicitudPipe,
+    FiltroSolicitudAceptadasPipe,
+    FiltroSolicitudRechazadasPipe,
+    CreateCancionesComponent,
+    ShowCancionesComponent,
+    EditCancionesComponent,
+    
   
    
     
