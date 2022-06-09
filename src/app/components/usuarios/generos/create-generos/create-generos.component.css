@@ -9,6 +9,21 @@
    text-align: center;
    align-items: center;
 }
+.crear_generos p{
+   color:black;
+   border-style: solid;
+   border-width: 3px;
+   border-left-width: 10px;
+   border-right-width: 10px;
+   border-top-color:black;
+   border-right-color:black;
+   border-left-color:black;
+   border-bottom-color:black;
+   padding: 5px;
+   margin-bottom: 20px;
+   margin-left: 3%;
+   margin-right: 2%;
+}
 .formulario_generos{
    margin-top: 50px;
    margin-left: 250px;   

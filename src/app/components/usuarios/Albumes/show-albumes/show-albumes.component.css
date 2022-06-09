@@ -1,5 +1,9 @@
 .Contenedos_todos_los_albumes{
     display: flex;
+    width: auto;
+    height: auto;
+    max-height: 8024px;
+    min-width: 80%;
 }
 .btn{
     margin: 10px;
@@ -12,4 +16,80 @@
 .btn{
     margin: 2px;
     font-size: 80% ;     
+}
+.container1{
+  
+    width:75%;
+    height: auto;
+    padding-left: 3%;
+}
+.container1 p{
+    color:black;
+    border-style: solid;
+    border-width: 3px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-color:black;
+    border-right-color:black;
+    border-left-color:black;
+    border-bottom-color:black;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.container{
+    padding-left: 9%;
+   
+   
+}
+.container1 h2{
+    text-align: center;
+    font-size: 180% ;  
+}
+.btn{
+    margin: 2px;
+    font-size: 80% ;     
+}
+.imagenes_generos{
+    width: 220px;
+    height: 200px;
+    text-align: center;
+}
+.imagenes_generos h3{
+    text-align: center;  
+}
+.card{
+    display: flex !important;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .Contenedos_todos_los_albumes{
+        display: flex;
+        width: 80%;
+        height: auto;
+      
+        }
+        .card{
+            
+            width: 10rem; 
+            margin-bottom: 10px;
+        }
+        .container{
+            width:65%;
+            height: auto;
+           
+        
+          
+        } 
+        .imagenes_generos{
+            width: 120px;
+            height: 200px;
+            text-align: center;
+        }
+
 }

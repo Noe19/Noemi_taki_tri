@@ -3,16 +3,18 @@
 }
 .formulario_albumes_completo{
    
-    width: auto;
- 
+width: auto;
+
+ display: flex;
 }
 
 .formulario_albumes{
   
    width: 450px;
     margin-top: 15%;
+   
   
-    margin-left: 16%;
+  
  
 }
 .input-group{
@@ -34,9 +36,44 @@
 }
 .imagenes_albumes{
     margin-left: 7%;  
-    width: 70%;
+    width: 40%;
 }
 .input-file{
     margin-top: 5%;
     margin-left: 10%; 
+}
+.parrafo_informativo p{
+    color:black;
+    border-style: solid;
+    border-width: 3px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-color:black;
+    border-right-color:black;
+    border-left-color:black;
+    border-bottom-color:black;
+    padding: 5px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+.parrafo_informativo h2{
+    text-align: center;
+    font-size: 180% ;
+}
+.input_label_edit{
+    display: inline;
+    margin-bottom: 30px;
+}
+.input-group{
+    display: inline;
+    width: 80%;
+}
+.form-control{
+width: 80%;
+}
+.btn{
+    margin-top: 3%;
 }

@@ -7,12 +7,17 @@
 
 
     <h2>Todos tus Géneros </h2>
-    <a [routerLink]="['/crear-generos']"><button type="button" class="btn_generos btn-primary mb-3" (click)=" limpiarform()"
+
+    <p>
+      En esta seccion se visualizan todos los géneros creados por el artista,
+       además de generar nuevos ,en donde tiene acceso a eliminarlos editarlos una vez creado.
+ </p>
+    <a [routerLink]="['/crear-generos']"><button type="button" class="btn_generos btn-primary " (click)=" limpiarform()"
       data-toggle="modal" data-target="#productosModal"> Crear Géneros</button> </a>
     <div class="container">
       <div class="row">
-    <div class="card col-lg-12 col-sm-12 col-md-12" style="width: 18rem;" *ngFor="let generos of todoslosgeneros">
-      <div class="card-body col-lg-12 col-sm-12 col-md-12   ">
+    <div class="card col-lg-12 col-sm-8 col-md-12" style="width: 18rem;" *ngFor="let generos of todoslosgeneros">
+      <div class="card-body col-lg-12 col-sm-8 col-md-12   ">
         <img class="imagenes_generos" [src]="generos.imagenUrl" alt="">
        
         <h3>Genero ecuatoriano</h3>
@@ -41,3 +46,4 @@
 
 
 </div>
+<app-footer-sistem></app-footer-sistem>

@@ -19,8 +19,9 @@
     border-radius:150px;
     }
     .nav-link{
-      color: aliceblue;
-    }
+     
+      color: aliceblue; 
+      font-family: var(--bs-body-font-family); }
     
 
 

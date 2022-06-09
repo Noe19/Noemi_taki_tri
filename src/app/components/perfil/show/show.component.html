@@ -4,31 +4,25 @@
 <div class="perfil_completo">
           
     <app-sidenav></app-sidenav>
-   
-       
-    
-<form [formGroup]="ediForm"  novalidate class="formulario_show_perfil">
-    <h2> Perfil </h2>
-    <hr>
+   <div
+   class="parrafo_informativo">
 
  
-   
-   
-   <!-- <img [src]="this.url" alt="">-->
-   <br>
-   <br>
+    <h2> Perfil Artista</h2>
+    <p>
+        En esta seccion se puede visualizar el perfil del usuario artista,el cual cuenta con  información  exclusiva del autor, el cual tiene  un avatar y sus datos personales.
+   </p>    
+    
+<form [formGroup]="ediForm"  novalidate class="formulario_show_perfil">
+ 
+    
   
 
     <img (click)="addFiles()" class="upload" [src]="this.url" alt="" />
     <br>
-    <input 
-    type="file"
-    #file
-    class="input-file"
-    (change)="onFilesAdded($event.target)"
-  />
+  
 <br>
-    <button class="button" (click)="add()">Agregar</button>
+    
     <div class="mb-12">
         <label class="form-label">Nombre</label>
         <input formControlName="name" type="text" class="form-control"  required [readonly]="true" >      
@@ -45,9 +39,10 @@
     <button routerLink="/edit/{{usuario}}" class="btn btn-outline-secondary">Editar</button>
 
 </form>
-
+</div>
 <hr>
 </div>
+<app-footer-sistem></app-footer-sistem>
 
 
 

@@ -1,5 +1,9 @@
 .Contenedos_todos_los_generos{
 display: flex;
+width: auto;
+height: auto;
+max-height: 8024px;
+min-width: 80%;
 }
 .container h2{
     text-align: center;
@@ -7,11 +11,32 @@ display: flex;
 }
 .container{
     
-    width:600px;
+    width:75%;
+    height: auto;
+    padding-left: 3%;
+
+    
    
 }
+.container p{
+    color:black;
+    border-style: solid;
+    border-width: 3px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-color:black;
+    border-right-color:black;
+    border-left-color:black;
+    border-bottom-color:black;
+    padding: 5px;
+    margin-bottom: 20px;
+}
 .btn_generos{
-    border-radius: 10px;
+    
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius:5px ;
+    border-bottom-right-radius: 5px;
     height: 35px;
     margin-left: 40px;
 }
@@ -29,7 +54,33 @@ display: flex;
     text-align: center;  
 }
 .card{
-    display: flex;
+    display: flex ;
     margin-left: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 1200px) {
+    .Contenedos_todos_los_generos{
+        display: flex;
+        width: 80%;
+        height: auto;
+      
+        }
+        .card{
+            
+            width: 10rem; 
+            margin-bottom: 10px;
+        }
+        .container{
+            width:65%;
+            height: auto;
+           
+        
+          
+        } 
+        .imagenes_generos{
+            width: 120px;
+            height: 200px;
+            text-align: center;
+        }
+
 }

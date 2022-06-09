@@ -10,3 +10,111 @@
     height: 320px;
    
 }
+
+.modal-footer{
+    margin-left: 50% !important; 
+    display: inline;  
+}
+.formulario_generos{
+ 
+  
+    
+    width: 80%;
+ 
+    margin-left: 15%;
+    display: flex;
+    margin-top: 7%;
+}
+
+.edit_label{
+    display: inline;
+}
+.input-file{
+    margin-top: 3%;
+    
+    
+
+}
+.form-control{
+    margin-top: 5px;
+    margin-left: 2%;
+    width: 100%;
+}
+
+.avatar_perfil{
+    width:150px;
+    height:150px;
+    border-radius:150px;
+    border:5px solid #666;
+    margin-right: 0.1%;
+}
+.btn{
+    margin-top: 3%;
+}
+.input-group{
+    height: 30px;
+    margin-top: 10%;
+    margin-right: 0px;
+    width: 30%;
+    display: inline;
+    margin-left: 10%;
+}
+.form-group{
+    margin-top: 2%;
+    width: 40%;
+    margin-left: 1% !important;
+}
+.contenedor_flex_editar{
+  
+    
+ width: 80%;
+ 
+ margin-left: 5%;
+
+ margin-top: 7%; 
+}
+
+.parrafo_informativo p{
+    color:black;
+    border-style: solid;
+    border-width: 3px;
+    border-left-width: 10px;
+    border-right-width: 10px;
+    border-top-color:black;
+    border-right-color:black;
+    border-left-color:black;
+    border-bottom-color:black;
+    padding: 5px;
+    margin-bottom: 20px;
+
+    margin-left: 5%;
+    margin-right: 4%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    
+}
+.parrafo_informativo h2{
+    text-align: center;
+    font-size: 180% ;  
+}
+
+@media only screen and (max-width: 1200px) {
+
+    .formulario_generos{
+     
+        width: auto;
+        display: inline;
+     
+        
+       
+        margin-top: 7%;
+       
+     
+    } 
+   
+   
+   
+    
+        
+}
+

@@ -1,34 +1,41 @@
 <app-header-artist></app-header-artist>
 <div class="contenedos_edit_generos">
   <app-sidenav-user></app-sidenav-user>
+  <div class="parrafo_informativo">
+    <h2> Editar Perfil Artista</h2>
+    <p>
+      En esta sección se edita el perfil del artista en los campos permitidos,que son nombre,apellido,alias entre otros los cuales son informacion personal
+      de su autoria  .
+  </p>
 <form class="formulario_generos" (ngSubmit)="onSubmit()" [formGroup]="ediForm">
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Generos" required formControlName="Genero_nuevo">
-    
- 
-    
-  </div>
-<div class="form-group">
+
+  <div class="form-group">
   
 
+   
+    <img (click)="addFiles()" class="avatar_perfil" [src]="this.url"  with="100" height="100" alt="" />
     <input 
-        type="file"
-        #file
-        class="input-file" accept="image/*"
-        (change)="onFilesAdded($event.target)"
-    />
-    <img (click)="addFiles()" class="upload" [src]="this.url" alt="" />
-
+    type="file"
+    #file
+    class="input-file" accept="image/*"
+    (change)="onFilesAdded($event.target)"
+/>
 
 </div>
+  <div class="input-group mb-3">
+ <label class="label_edit">Género</label>
+    <input type="text" class="form-control" placeholder="Generos" required formControlName="Genero_nuevo">
+    
+    <button  class="btn btn-primary" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
+  </div>
 
 
-<div class="modal-footer">
-  <button  class="btn btn-secondary" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
  
-</div>
+
 </form>
 
 
 
 </div>
+</div>
+<app-footer-sistem></app-footer-sistem>

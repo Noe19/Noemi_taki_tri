@@ -1,23 +1,24 @@
 <app-header-artist></app-header-artist>
 <div class="Contenedos_todos_los_albumes">
   <app-sidenav-user></app-sidenav-user>
-<div class="container">
-    
+<div class="container1">
+  
+  <h2>Todos tus Albumes </h2>
+    <p>En esta seccion se visualiza todos los álbumes creados con anteioridad de forma correcta, mediante un formulario</p>
   <div class="container col-lg-12 col-sm-12 col-md-12">
    
 
 
 
-    <h2>Todos tus Albumes </h2>
  
     <div class="container">
       <div class="row">
-    <div class="card col-lg-12 col-sm-12 col-md-12" style="width: 18rem;" *ngFor="let albumes of todoslosalbumes">
+    <div class="card col-lg-12 col-sm-8 col-md-12" style="width: 18rem;" *ngFor="let albumes of todoslosalbumes">
       <div class="card-body col-lg-12 col-sm-12 col-md-12   ">
         <img class="imagenes_generos" [src]="albumes.imagen" alt="">
        
         <h3>Album Genero : </h3>
-        <label >Nombre:{{albumes.name}}</label><br>
+        <label>Nombre:{{albumes.name}}</label><br>
         <label > Año:{{albumes.year}}</label><br>
         <label >Autor:{{albumes.author}}</label><br>
         
@@ -43,4 +44,5 @@
 </div>
 </div>
 </div>
+<app-footer-sistem></app-footer-sistem>
 

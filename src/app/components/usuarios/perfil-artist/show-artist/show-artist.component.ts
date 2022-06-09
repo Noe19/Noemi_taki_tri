@@ -35,6 +35,7 @@ constructor(private perfilService:PerfilService,public formBuilder:FormBuilder,
         apellido: [''],
         nickname: [''],
         imagen:[''],
+        fecha_nacimiento:[''],
       })
    
   }
@@ -74,7 +75,8 @@ this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
       name: [this.perfilRef.name],
       apellido: [this.perfilRef.apellido],
       nickname: [this.perfilRef.nickname],
-      imagen:[this.perfilRef.imagen]
+      imagen:[this.perfilRef.imagen],
+      fecha_nacimiento:[this.perfilRef.fecha_nacimiento]
      
       
     })

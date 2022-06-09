@@ -3,6 +3,9 @@
     <app-sidenav-user></app-sidenav-user>
     <div class="crear_generos">
     <h2>Crear Nuevos Género</h2>
+    <p>
+      En esta sección se puede crear generos musicales, simpre y cuando no hallan sigo creados con anterioridad,si se llenan correctamente se crearan en la ruta generos
+    </p>
     <div class="form-group " >
 
 
@@ -21,10 +24,13 @@
 
 
       <div class="modal-footer">
-        <button  class="btn btn-secondary" [disabled]="!generosforms.valid"   type="submit">Crear</button>
+        <button  class="btn btn-primary" [disabled]="!generosforms.valid"   type="submit">Crear</button>
        
       </div>
     </form>
 
   </div>
+
 </div>
+</div>
+<app-footer-sistem></app-footer-sistem>
