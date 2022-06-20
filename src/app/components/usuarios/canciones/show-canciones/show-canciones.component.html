@@ -11,10 +11,25 @@
     <h2>Todos tus canciones </h2>
   
     <p>
-      En esta sección se edita el álbum creado por el artista en los campos permitidos,que son nombre del Álbum,autor y año del mismo los cuales son llenados por el artista.
+      En esta sección se visualizan las canciones del Artista.
   </p>
-
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-4">
+       
+      </div>
+      <div class="col col-lg-6">
+        
+      </div>
+      <div class="col1 col-lg-2">
+        <button  routerLink="/dashboard-user" type="submit" class=" regesar btn btn-primary w-100">Regresar</button>
+      </div>
+    </div>
+  </div>
+  <input type="text" class="hola" placeholder="Buscar por nombre de la Canción " #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
     <table class="table">
+      
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -25,13 +40,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let CancionesSolicitud of  todoslascanciones let i= index ">
+        
+        <tr *ngFor="let CancionesSolicitud of   todoslascanciones | filtrarCanciones:page:search  let i= index ">
           <td>{{page+i+1}}</td>
           <td>{{CancionesSolicitud.song_nombre}}</td>
    
           <td><audio [src]="CancionesSolicitud.imageURL" controls></audio></td>
           <td><button type="button" class="btn btn-danger"
             (click)="eliminar_cancion(CancionesSolicitud)">Eliminar</button></td>
+
+            <td><button routerLink="/edit-Canciones/{{CancionesSolicitud.id}}" class="btn btn-primary" >Editar</button></td>
           
         </tr>
       </tbody>

@@ -5,8 +5,12 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { AnyForUntypedForms } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
-
+import { map } from 'rxjs/operators';
 import { Perfil } from './dashboard/perfil.model';
+interface Country {
+  name: string;
+  value: number;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -67,6 +71,31 @@ public url:any;
     return this.angularfirestore.collection("artist").doc(perfil.id).delete();
 
   }
+// datos  barras 
+private data: Country[] = [
+  {
+    "name": "Artista",
+    "value": 15
+  },
+  {
+    "name": "Géneros",
+    "value": 20
+  },
+  {
+    "name": "Albumes",
+    "value": 29
+  },
+    {
+    "name": "Canciones",
+    "value": 36
+  }
+];
+
+
+get countryData() {
+  return this.data;
+}
+
 
 
 

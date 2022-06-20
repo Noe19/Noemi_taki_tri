@@ -1,17 +1,44 @@
 .perfil_completo{
     display: flex;
-    height: 600px;
+    width: auto;
+   
 }
 .mb-12{
-    width: 350px;
+    width: auto;
 }
 .formulario_show_perfil{
- text-align: center;
- margin-left: 300px;
+ 
 
+ width: 80%;
+ 
+ margin-left: 15%;
+ display: flex;
+ margin-top: 7%;
 }
+.imagen_avatar{
+    margin-top: 2%;
+    width: 40%;
+    margin-left: 0.5% !important;
+  
+}
+
+.form_perfil{
+    width: 60%;
+  
+}
+
+.texto{
+    padding-left: 5%;
+    padding-right: 5%;
+    
+}
+.texto h2{
+    text-align: center;
+    font-size: 180% ;
+}
+
 .btn{
-    margin-top: 10px;
+    margin-top: 20px;
 }
 .imagen_perfil{
     height: 50px;
@@ -19,30 +46,32 @@
     align-items: center;
     margin-bottom: 10px;
 }
-.form-label{
-    margin-top: 20px;
+.avatar_perfil{
+    width:150px;
+    height:150px;
+    border-radius:150px;
+    border:5px solid #666;
 }
-.parrafo_informativo p{
-    color:black;
-    border-style: solid;
-    border-width: 3px;
-    border-left-width: 10px;
-    border-right-width: 10px;
-    border-top-color:black;
-    border-right-color:black;
-    border-left-color:black;
-    border-bottom-color:black;
-    padding: 5px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 5%;
+.imagen_avatar h2{
+    margin-right: 80px;
 }
-.upload{
-    margin-right: 50%;
-}
-.parrafo_informativo h2{
+.form-control{
     text-align: center;
-    font-size: 180% ;
+   
+}
+.form-label{
+    margin-top: 0.5%;
+}
+@media only screen and (max-width: 1200px) {
+
+    .formulario_show_perfil{
+     
+        width: auto;
+        display: inline;
+     
+        margin-left: 10%;
+       
+        margin-top: 7%;
+     
+    }  
 }

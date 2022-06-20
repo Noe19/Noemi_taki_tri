@@ -22,7 +22,9 @@ export class ShowAlbumesComponent implements OnInit {
   //generos:Generos[];
   public imagen:any;
   todoslosalbumes:Albumes[];
- 
+ //buscador
+ public page:number=0;
+ public search:string="";
  
   
   public url:any;
@@ -79,7 +81,12 @@ export class ShowAlbumesComponent implements OnInit {
 
   }
 
-  
+   // // buscador 
+   onSearchMensaje(search:string){
+    this.page=0;
+      this.search=search;
+      //console.log(search);
+  }
 
  
 

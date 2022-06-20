@@ -33,7 +33,7 @@ export class EditGenerosComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService, private activeRoute: ActivatedRoute
     ,public formBuilder:FormBuilder) {
       this.ediForm = this.formBuilder.group({
-        Genero_nuevo: [''],
+        Genero_nuevo:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         imagenUrl:[''],
         artista_id:[''],
         id:[''],
@@ -168,5 +168,18 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
   addFiles() {
     this.file.nativeElement.click();
   }
+
+    // VALIDACIONES DE CREAR GENEROS
+    generomio() {
+      if (this.ediForm.get('Genero_nuevo')?.hasError('required')) {
+        return 'El campo es obligatorio';
+      }
+     
+      return this.ediForm.get('Genero_nuevo')? 'El campo no permite números' : '';  
+    }
+
+get genero_nuevo_no_valido(){
+  return this.ediForm.get('Genero_nuevo')?.invalid && this.ediForm.get('Genero_nuevo')?.touched
+}
 
 }

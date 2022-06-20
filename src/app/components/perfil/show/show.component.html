@@ -1,28 +1,28 @@
-
-   
-<app-header-admin></app-header-admin>   
+<app-header-admin></app-header-admin>  
 <div class="perfil_completo">
           
     <app-sidenav></app-sidenav>
-   <div
-   class="parrafo_informativo">
-
- 
-    <h2> Perfil Artista</h2>
+   
+       
+ <div class="texto">
+    <h2> Perfil Aministrador</h2>
     <p>
-        En esta seccion se puede visualizar el perfil del usuario artista,el cual cuenta con  información  exclusiva del autor, el cual tiene  un avatar y sus datos personales.
-   </p>    
-    
+        En esta seccion se puede visualizar el perfil del administrador,el cual cuenta con  información  personal, como es un  avatar y sus datos.
+   </p>
+   <hr>
 <form [formGroup]="ediForm"  novalidate class="formulario_show_perfil">
- 
+   
     
-  
+   
 
-    <img (click)="addFiles()" class="upload" [src]="this.url" alt="" />
-    <br>
-  
-<br>
+ 
+   
+    <div class="imagen_avatar">
     
+   <img [src]="this.url" class="avatar_perfil">
+       <h2>Administrador</h2>
+    </div>
+    <div class="form_perfil">
     <div class="mb-12">
         <label class="form-label">Nombre</label>
         <input formControlName="name" type="text" class="form-control"  required [readonly]="true" >      
@@ -32,17 +32,23 @@
         <input formControlName="apellido" type="text" class="form-control" required [readonly]="true" >      
     </div>
     <div class="mb-12">
-        <label class="form-label">Nickname</label>
+        <label class="form-label">Alias</label>
         <input formControlName="nickname" type="text" class="form-control" required [readonly]="true"  >       
     </div>
+   
     
-    <button routerLink="/edit/{{usuario}}" class="btn btn-outline-secondary">Editar</button>
+    <button routerLink="/edit/{{usuario}}" class="btn btn-primary w-100">Editar</button>
+</div>
+
 
 </form>
 </div>
 <hr>
 </div>
 <app-footer-sistem></app-footer-sistem>
+
+
+
 
 
 

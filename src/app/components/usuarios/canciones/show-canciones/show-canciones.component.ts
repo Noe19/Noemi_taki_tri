@@ -13,14 +13,18 @@ import { Mp3Solicitud } from '../mp3.modal';
 })
 export class ShowCancionesComponent implements OnInit {
   public usuario: any;
-  cancion:cancionSolicitud[]=[];
+ // cancion:cancionSolicitud[]=[];
   imagenes:Mp3Solicitud[]=[];
  imgURL="../assets/imagenes/camera.png";
-  file:any;
+
+  //buscador
+  //buscador
   public page:number=0;
+  public search:string="";
+
   //generos:Generos[];
   public imagen:any;
-  todoslascanciones:cancionSolicitud[];
+  todoslascanciones:cancionSolicitud[]=[];
  
  
   
@@ -55,6 +59,13 @@ export class ShowCancionesComponent implements OnInit {
     });
  
    
+  }
+  //
+  // // buscador 
+   onSearchMensaje(search:string){
+    this.page=0;
+      this.search=search;
+      //console.log(search);
   }
 
   eliminar_cancion(cancionSolicitud){

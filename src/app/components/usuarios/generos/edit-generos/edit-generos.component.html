@@ -2,11 +2,12 @@
 <div class="contenedos_edit_generos">
   <app-sidenav-user></app-sidenav-user>
   <div class="parrafo_informativo">
-    <h2> Editar Perfil Artista</h2>
+    <h2> Editar Género Artista</h2>
     <p>
-      En esta sección se edita el perfil del artista en los campos permitidos,que son nombre,apellido,alias entre otros los cuales son informacion personal
-      de su autoria  .
+      Este módulo se te permite editar los géneros creados
+      
   </p>
+  <hr>
 <form class="formulario_generos" (ngSubmit)="onSubmit()" [formGroup]="ediForm">
 
   <div class="form-group">
@@ -24,9 +25,9 @@
 </div>
   <div class="input-group mb-3">
  <label class="label_edit">Género</label>
-    <input type="text" class="form-control" placeholder="Generos" required formControlName="Genero_nuevo">
-    
-    <button  class="btn btn-primary" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
+    <input type="text" class="form-control" placeholder="Generos"  value="Genero_nuevo" required formControlName="Genero_nuevo"  ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="genero_nuevo_no_valido" >
+    <label class="error" *ngIf="genero_nuevo_no_valido"  >{{generomio()}}</label> 
+    <button  class="btn btn-primary w-100" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
   </div>
 
 

@@ -3,15 +3,49 @@
 <div class="dasboard_completo">
   <app-sidenav-user></app-sidenav-user>
     
+  <div class="container col-12">
+    <div class="row">
+      <div class="col-6">
+        <div class="barras">
+          <h2>Datos de TAKI-TRI</h2>
+          <div class="barras2">
+           <ngx-charts-advanced-pie-chart 
+           [view]="view"
+           scheme="cool"
+           [results]="single"
+           
+           [gradient]="gradient"
+           (select)="onSelect($event)"
+           (activate)="onActivate($event)"
+           (deactivate)="onDeactivate($event)"
+           >
+         </ngx-charts-advanced-pie-chart>   
+        </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="chart-wrapper">
+        <canvas baseChart>
+   [datasets]="lineChartData"
+   [labels]="lineChartlabels"
+   [options]="lineChartOptions"
+   [colors]="lineChartColors"
+   [legend]="lineChartLegend"
+   [chartType]="lineChartType"
+   [plugins]="lineChartPlugins"
+
+        </canvas>
+      </div>
+      </div>
+      <div class="col">
+        Column
+      </div>
+    </div>
+  </div>
+
+
    
-   <p class="id_usuario_perfil">Bienvenido a Taki-Tri usuario
-    
-       {{ usuario }}
-       </p>
-    
-       
- 
- 
+   
        
    
   </div>

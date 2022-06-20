@@ -55,6 +55,13 @@ export class GenerosService {
     return this.db.collection("generos",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
   
     }
+    
+
+    getodosgeneros(refi){
+      this.usuario = localStorage.getItem('usuario')
+   console.log('path',refi)
+    console.log( this.db.collection("generos",ref => ref.where('referencia', '==', refi)).snapshotChanges() )
+    }
 
     getgenerosbyId(id){
    
@@ -73,7 +80,13 @@ export class GenerosService {
       
       // para que la imagen se guarde con el nombre del generos y si hay espacio se unan y no halla problemas
      
-      const path=`${this.CarpetaImagenes}/${this.usuario}/${generos.Genero_nuevo}`;      
+      const path=`${this.CarpetaImagenes}/${this.usuario}/${generos.Genero_nuevo}`;
+   
+      this.getodosgeneros(path)
+
+      
+
+       
       const storageResf = ref(storage, path);
       // a cargar la imagen
       const uploadImg = uploadBytesResumable(storageResf, item.imagen);
@@ -101,7 +114,9 @@ export class GenerosService {
              
              
            const  id = this.db.createId(); 
+         
           this.guadarImagenGeneros({
+          
 // aqui estan los datos que se enviar a la base de datos con la imagen
    
             Genero_nuevo: generos.Genero_nuevo,
@@ -120,19 +135,21 @@ export class GenerosService {
 
       })
 
-    }
-
+    
 
   }
+  }
 
-    
+  todos_generos(){
+
+  }  
   async guadarImagenGeneros(generos: { Genero_nuevo: string, imagenUrl: string, artista_id: string,referencia:string,id:string}): Promise<any> {
   
     try {
 
       Swal.fire({
         icon: 'success',
-        title: '',
+        title: 'Se creó correctamente el género',
         confirmButtonText: 'Aceptar',
         allowOutsideClick: false,
 
@@ -146,6 +163,7 @@ export class GenerosService {
 
       })
       const  id = this.db.createId(); 
+  
       return await this.db.collection('generos').doc(id).set({id,
         Genero_nuevo: generos.Genero_nuevo,
         imagenUrl:generos.imagenUrl,

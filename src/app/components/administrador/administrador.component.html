@@ -10,28 +10,19 @@
         Para que una solicitud sea rechazada ,los datos enviados no son correctos, o el documento PDF, no cuenta con los datos solicitados,
          o se encuentra con datos no correctos del Artista.
     </p>
+    <hr>
     <tr>
         <th> <a class="nav-link" routerLink="/administrador">Solicitud </a></th>
         <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
         <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
-      
-    
-   
-      
-        
-        
-       
-
        
     </tr>
-    
+    <input type="text" class="hola" placeholder="Buscar por numero de cédula " #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>  
 <table class="table table-hover ">
-    <thead class="text-white">
-  
-    </thead>
+   
       <br>
     <thead class=" text-white">
-        <input type="text" class="form-control " placeholder="Buscar Solicitud" #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
+      
    
         <tr class="nombre_list">
             <th>N.-</th>
@@ -72,5 +63,4 @@
 </mat-paginator>
 </div>
 </div>
-
 <app-footer-sistem></app-footer-sistem>

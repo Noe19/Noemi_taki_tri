@@ -8,13 +8,10 @@
     height: 100%;
 }
 .d-flex {
-    height: 100%;
+    height: 100vh;
     width: 300px;
     display: flex;
 }
 .bi{
   text-align: center;
-}
-.d-flex{
-    height: 100%;
 }

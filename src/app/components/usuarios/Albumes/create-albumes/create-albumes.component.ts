@@ -28,9 +28,9 @@ export class CreateAlbumesComponent implements OnInit {
 
     this.Albumesforms=this.fb.group({
   
-      name:['',[Validators.required]],
-      author:['',[Validators.required]],
-      year:['',[Validators.required]] ,
+      name:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+      author:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+      year:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]] ,
       
     })
   }
@@ -84,4 +84,43 @@ selectChange(event:any){
        
     }
 }
+ // VALIDACIONES DE CREAR GENEROS
+ //VALIDACIONES DE NOMBRE DEL ALBUMES
+ albumesmio() {
+  if (this.Albumesforms.get('name')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.Albumesforms.get('name')? 'El campo no permite números' : '';  
+}
+
+get albumes_nuevo_no_valido(){
+return this.Albumesforms.get('name')?.invalid && this.Albumesforms.get('name')?.touched
+}
+
+// VALIDACIONES DE AUTOR ALBUMES
+autormio() {
+  if (this.Albumesforms.get('author')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.Albumesforms.get('author')? 'El campo no permite números' : '';  
+}
+
+get autor_nuevo_no_valido(){
+return this.Albumesforms.get('author')?.invalid && this.Albumesforms.get('author')?.touched
+}
+//VALIDACIONES DE AÑO DE ALBUMES
+aniomio() {
+  if (this.Albumesforms.get('year')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.Albumesforms.get('year')? 'El campo no permite números' : '';  
+}
+
+get anio_nuevo_no_valido(){
+return this.Albumesforms.get('year')?.invalid && this.Albumesforms.get('year')?.touched
+}
+
 }

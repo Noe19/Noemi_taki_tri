@@ -11,11 +11,12 @@
 .home{
     text-decoration: none;
     color: aliceblue;
+    margin-left: 4%;
   }
   .home img{
-    width:60px;
+    width:90;
   height:60px;
-  border-radius:150px;
+
   }
   .nav-link{
     color: aliceblue;

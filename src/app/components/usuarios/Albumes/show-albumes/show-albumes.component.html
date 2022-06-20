@@ -3,30 +3,45 @@
   <app-sidenav-user></app-sidenav-user>
 <div class="container1">
   
-  <h2>Todos tus Albumes </h2>
-    <p>En esta seccion se visualiza todos los álbumes creados con anteioridad de forma correcta, mediante un formulario</p>
-  <div class="container col-lg-12 col-sm-12 col-md-12">
-   
+  <h2>Todos tus Álbumes </h2>
+    <p>Este módulo te permite visualizar todos los Álbumes creados 
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-4">
+       
+      </div>
+      <div class="col col-lg-5">
+        
+      </div>
+      <div class="col1 col-lg-3">
+        <button  routerLink="/dashboard-user" type="submit" class=" regesar btn_regresar btn-primary w-100">Regresar</button>
+      </div>
+    </div>
+  </div>
+    <div class="container col-lg-12 col-sm-12 col-md-12">
+      <input type="text" class="hola" placeholder="Buscar por nombre de Álbumes " #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
 
 
 
  
     <div class="container">
       <div class="row">
-    <div class="card col-lg-12 col-sm-8 col-md-12" style="width: 18rem;" *ngFor="let albumes of todoslosalbumes">
+    <div class="card col-lg-12 col-sm-8 col-md-12" style="width: 16.5rem;" *ngFor="let albumes of todoslosalbumes | filtrarAlbumes:page:search let i= index">
       <div class="card-body col-lg-12 col-sm-12 col-md-12   ">
         <img class="imagenes_generos" [src]="albumes.imagen" alt="">
        
-        <h3>Album Genero : </h3>
+        <h2>{{albumes.name}}</h2><br>
         <label>Nombre:{{albumes.name}}</label><br>
         <label > Año:{{albumes.year}}</label><br>
         <label >Autor:{{albumes.author}}</label><br>
         
      
         
-        <a routerLink="/crear-canciones/{{albumes.id}}" class="btn btn-success">Crear Canción</a>
-        <button routerLink="/edit-Albumes/{{albumes.id}}" class="btn btn-primary" >Editar</button>
-        <button type="button" class="btn btn-danger"
+        <a routerLink="/crear-canciones/{{albumes.id}}" class="btn btn-success w-80"> Crear Canción</a>
+        <a routerLink="/crear-canciones/{{albumes.id}}" class="btn btn-secondary w-80"> Ver Canciones</a>
+        <button routerLink="/edit-Albumes/{{albumes.id}}" class="gg btn btn-primary " >Editar</button>
+        <button type="button" class=" gg btn btn-danger"
         (click)="eliminar_genero(albumes)">Eliminar</button>
 
 

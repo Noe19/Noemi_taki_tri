@@ -3,10 +3,24 @@
     <app-sidenav-user></app-sidenav-user>
 <div class="formulario_solicitud">
   <h2>Enviar Solicitud</h2>
-  <p>En esta sección los artistas pueden enviar una solicitud, para poder tener acceso a los modulos de generos,albumes y canciones, ademas de poder ver las respuestas por parte del administrador si la solicitud fue rechazada.
-    Además puede descargar el documento para la solicitud solicitada en TAKI-TRI
+  <p>
+    En este módulo puedes enviar una solicitud para que puedas gestionar tu contenido como artista
+   
   </p>
-
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-2">
+       
+      </div>
+      <div class="col col-lg-5">
+        
+      </div>
+      <div class="col1 col-lg-3">
+        <button  routerLink="/dashboard-user" type="submit" class=" regesar btn_regresar btn-primary w-100">Regresar</button>
+      </div>
+    </div>
+  </div>
  
 
 
@@ -16,17 +30,21 @@
     
    
     <img src="https://www.science.co.il/internet/browsers/PDF-doc-256.png" alt="" class="avatar_perfil">
-    <h4> <u>Descargar aquí </u></h4>
+    <h4><a href="https://docs.google.com/document/d/1cV-RGKrnK7ly0Rnc8Mr_VBR38qppJ_UoRxtUOoxE7Wk/edit?usp=sharing" target="_blank"  rel="noopener noreferrer" > <u>Descargar aquí </u></a></h4>
+    
      </div>
   <div class="form_soli">
     <div class="mb-3">
         <label class="form-label">Nombre Artistico</label>
-        <input formControlName="nombre_artistico" type="text" class="form-control" required placeholder="Nombre Artistico">
-    </div>
+        <input formControlName="nombre_artistico" type="text" class="form-control" required placeholder="Nombre Artistico" ngModel pattern="[a-zA-Z-ñ ]*"  [class.red]="nombreArtistico_no_valido">
+        <label class="error"  *ngIf="nombreArtistico_no_valido" >{{getErrorMessage_nombre()}}</label>  
+      </div>
     <div class="mb-3">    
         <label class="form-label">Número de Cédula</label>
-        <input maxlength="10" minlength="10" formControlName="nacionalidad" type="text" class="form-control" required placeholder="Cédula">
-    </div>
+       
+        <input maxlength="10" minlength="10" formControlName="nacionalidad" type="text" class="form-control" required placeholder="Cédula" ngModel pattern="^0[1-9]|[1-9]\d$" [class.red]="cedula_no_valido">
+        <label class="error"  *ngIf="cedula_no_valido" >{{getErrorMessage_cedula()}}</label>  
+      </div>
     <div class="form-group">
         
 
@@ -42,7 +60,7 @@
 
     
        
-    <button [disabled]="!solicitudlForm.valid" type="submit" class="btn btn-primary">Save</button>
+    <button [disabled]="!solicitudlForm.valid" type="submit" class="btn btn-primary w-100">Save</button>
         
   </div>  
 </form>
@@ -50,30 +68,26 @@
 <div class=" contenedor_mensaje_solicitud"  >
  
 <h4>Mensajes de estado de Solicitud</h4> 
-<input type="text" class="form-control mb-2" placeholder="Buscar..." #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
+<p>
+  En este módulo puedes visualizar los mensajes de el estado de tu solicitud
+<hr>
+<input type="text" class="form-control mb-2" placeholder="Buscar por mensaje" #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
        
         <div *ngFor="let administrador of MensajeSolicitud  | filtro:page:search" class="mensaje" >
          
         <thead >
+         
+        </thead>
+          <table class="table ">
+        <tbody>
           <tr >
             <th scope="col">Solicitud rechazada el  {{administrador.hora}}   
             </th>
-            
-          </tr>
-        </thead>
-          <table class="table table-striped">
-        <tbody>
-          <tr >
-            
             <td>Motivo : {{administrador.mensaje}}</td>
-          
-           
-      
-               <button type="button" class="btn1 btn-danger" (click)="eliminar(administrador)">Eliminar</button>
-           
-              
+            <td class="botoneseliminarSolicitud col-3">    <button type="button" class="btn1  btn btn-danger w-50" (click)="eliminar(administrador)">Eliminar</button></td>
+
           </tr>
-       
+      
         </tbody>
       </table> 
   

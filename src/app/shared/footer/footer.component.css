@@ -6,4 +6,26 @@
 .page-top{
     height: auto;
 }
+.final_de_pagina{
+      
+    background-color:#1a252f;
+    color:white; 
+    position: inherit;
+    z-index: 1;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: hidden;
+   
+  }
+  .final_de_pagina a{
+    color:white;
+    font-size: large; 
+    
+  }
+  .nav-link active {
+
+    text-align: left;
+    color:aliceblue
+  }
 

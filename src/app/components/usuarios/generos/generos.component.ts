@@ -22,7 +22,9 @@ export class GenerosComponent implements OnInit {
   //generos:Generos[];
   public imagen:any;
   todoslosgeneros:Generos[];
- 
+ //buscador
+ public page:number=0;
+ public search:string="";
  
   
   public url:any;
@@ -62,6 +64,14 @@ export class GenerosComponent implements OnInit {
     });
   }
   
+
+  // // buscador 
+   onSearchMensaje(search:string){
+    this.page=0;
+      this.search=search;
+      //console.log(search);
+  }
+
   eliminar_genero(Generos){
     
     Swal.fire({

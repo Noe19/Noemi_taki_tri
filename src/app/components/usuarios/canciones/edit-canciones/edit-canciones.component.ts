@@ -67,7 +67,7 @@ export class EditCancionesComponent implements OnInit {
   onSubmit(){
         
      this.CancionService.add(this.ediForm.value, this._file,this.isChanged)
-     console.log(this.ediForm.value)
+     console.log('datos_para editar',this.ediForm.value,this._file)
      this.isChanged = false;
      this.file.nativeElement.value = "";
    

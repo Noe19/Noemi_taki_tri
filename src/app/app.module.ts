@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+
 import { AuthService } from './auth/service/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -67,6 +69,10 @@ import { FiltroSolicitudRechazadasPipe } from './components/administrador/solici
 import { CreateCancionesComponent } from './components/usuarios/canciones/create-canciones/create-canciones.component';
 import { ShowCancionesComponent } from './components/usuarios/canciones/show-canciones/show-canciones.component';
 import { EditCancionesComponent } from './components/usuarios/canciones/edit-canciones/edit-canciones.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { PipeGenerosPipe } from './components/usuarios/generos/pipe-generos.pipe';
+import { FiltrarAlbumesPipe } from './components/usuarios/Albumes/filtrar-albumes.pipe';
+import { FiltrarCancionesPipe } from './components/usuarios/canciones/filtrar-canciones.pipe';
 
 
 
@@ -114,6 +120,9 @@ import { EditCancionesComponent } from './components/usuarios/canciones/edit-can
     CreateCancionesComponent,
     ShowCancionesComponent,
     EditCancionesComponent,
+    PipeGenerosPipe,
+    FiltrarAlbumesPipe,
+    FiltrarCancionesPipe,
     
   
    
@@ -143,6 +152,9 @@ import { EditCancionesComponent } from './components/usuarios/canciones/edit-can
     MatPaginatorModule,
     MatFormFieldModule,
     MatIconModule,
+    NgxChartsModule,
+   
+    
     
     
 

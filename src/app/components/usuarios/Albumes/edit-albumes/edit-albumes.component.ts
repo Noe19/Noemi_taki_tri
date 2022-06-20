@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenerosService } from '../../generos/generos.service';
 import { AlbumesService } from '../albumes.service';
@@ -39,10 +39,10 @@ export class EditAlbumesComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService, private activeRoute: ActivatedRoute
     ,public formBuilder:FormBuilder, private Alb:AlbumesService) {
       this.albumForm = this.formBuilder.group({
-        name: [''],
+        name: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         imagen:[''],
-        year:[''],
-        author:[''],
+        year:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+        author:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         id:[''],
         referencia:['']
 
@@ -89,7 +89,7 @@ export class EditAlbumesComponent implements OnInit {
 
   
   this.Alb.add(this.albumForm.value, this._file,this.isChanged)
-  console.log('datos para editar',this.albumForm.value)
+  console.log('datos para editar',this.albumForm.value,'file',this._file)
   this.isChanged = false;
   this.file.nativeElement.value = "";
 
@@ -110,5 +110,46 @@ export class EditAlbumesComponent implements OnInit {
   addFiles() {
     this.file.nativeElement.click();
   }
+   // VALIDACIONES DE EDITAR ALBUMES
+ //VALIDACIONES DE NOMBRE DEL ALBUMES
+ albumesmio() {
+  if (this.albumForm.get('name')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.albumForm.get('name')? 'El campo no permite números' : '';  
+}
+
+get albumes_nuevo_no_valido(){
+return this.albumForm.get('name')?.invalid && this.albumForm.get('name')?.touched
+}
+
+ //VALIDACIONES DE AUTOR ALBUMES
+ autormio() {
+  if (this.albumForm.get('author')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.albumForm.get('author')? 'El campo no permite números' : '';  
+}
+
+get autor_nuevo_no_valido(){
+return this.albumForm.get('author')?.invalid && this.albumForm.get('author')?.touched
+}
+//
+ //VALIDACIONES DE AUTOR ALBUMES
+ aniomio() {
+  if (this.albumForm.get('year')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.albumForm.get('year')? 'El campo no permite números' : '';  
+}
+
+get anio_nuevo_no_valido(){
+return this.albumForm.get('year')?.invalid && this.albumForm.get('year')?.touched
+}
+
+
 
 }

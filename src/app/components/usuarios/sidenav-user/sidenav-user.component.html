@@ -2,29 +2,27 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" >
     <a href="#" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-      Artista
+      <h2 class="titulo">Artista</h2>
+ <br>
+        <img [src]="this.imagen" class="avatar_perfil">
+        <h4 class="nombre">{{this.name}}</h4>
+       
+     
       </a>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li>
+   
         <a routerLink="/show-artist/{{usuario}}" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="60"></svg>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
           </svg>
          Perfil Artista
+         
         </a>
       </li>
 
-    <li>
-        <a routerLink="/dashboard-user" class="nav-link text-white">
-          <svg class="bi me-2" width="16" height="60"></svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
-          </svg>
-         Hogar
-        </a>
-      </li>
     
     <li>
       <a routerLink="/generos" class="nav-link text-white">
@@ -32,7 +30,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-disc-fill" viewBox="0 0 16 16">
           <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-6 0a2 2 0 1 0-4 0 2 2 0 0 0 4 0zM4 8a4 4 0 0 1 4-4 .5.5 0 0 0 0-1 5 5 0 0 0-5 5 .5.5 0 0 0 1 0zm9 0a.5.5 0 1 0-1 0 4 4 0 0 1-4 4 .5.5 0 0 0 0 1 5 5 0 0 0 5-5z"/>
         </svg>
-        Generos
+        Géneros
       </a>
     </li>
     <li>
@@ -42,7 +40,7 @@
           <path d="M8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
           <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm1 2h6a1 1 0 0 1 1 1v2.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm3 12a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
         </svg>
-        Albumes
+        Álbumes
       </a>
     </li>
     <li>
@@ -57,16 +55,7 @@
       Canciones
       </a>
     </li>
-    <li>
-      <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="60"><use xlink:href="#people-circle"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search-heart-fill" viewBox="0 0 16 16">
-          <path d="M6.5 13a6.474 6.474 0 0 0 3.845-1.258h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.008 1.008 0 0 0-.115-.1A6.471 6.471 0 0 0 13 6.5 6.502 6.502 0 0 0 6.5 0a6.5 6.5 0 1 0 0 13Zm0-8.518c1.664-1.673 5.825 1.254 0 5.018-5.825-3.764-1.664-6.69 0-5.018Z"/>
-        </svg>
-      Buscar
-      </a>
-      
-    </li>
+
     <li>
       <a routerLink="/solicitud" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="60"></svg>
@@ -89,8 +78,6 @@
   
   <li>
   </ul>
-  <br>
-  
 
-  <hr>
 </div>
+

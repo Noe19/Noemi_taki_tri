@@ -33,9 +33,9 @@ export class SolicitudComponent   {
     private router: Router)  {
       this.usuario = localStorage.getItem('usuario')
         this.solicitudlForm = this.formBuilder.group({
-        nombre_artistico:['',[Validators.required]],
+        nombre_artistico:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         
-        nacionalidad:['',[Validators.required,Validators.minLength(10),Validators.maxLength(10)]],
+        nacionalidad:['',[Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern(/[0-9].*/)]],
         rol:['no artist'],
         id_usuario: [this.usuario],
         razon:['Ninguna'],
@@ -148,6 +148,28 @@ export class SolicitudComponent   {
        this.search=search;
        //console.log(search);
    }
+ //VALIDACIONES DE SOLICITUD 
+ //VALIDACIONES DE NOMBRE DEL ARTISTA
+ getErrorMessage_nombre(){
+  if (this.solicitudlForm.get('nombre_artistico')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
  
+  return this.solicitudlForm.get('nombre_artistico')? 'No se aceptan numeros' : '';
+}
+get nombreArtistico_no_valido(){
+  return this.solicitudlForm.get('nombre_artistico')?.invalid && this.solicitudlForm.get('nombre_artistico')?.touched
+}
+// VALIDACIONES DE LA CEDULA DEL ARTISTA
+getErrorMessage_cedula(){
+  if (this.solicitudlForm.get('nacionalidad')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.solicitudlForm.get('nacionalidad')? 'El campo debe tener 10 numeros' : '';
+}
+get cedula_no_valido(){
+  return this.solicitudlForm.get('nacionalidad')?.invalid && this.solicitudlForm.get('nacionalidad')?.touched
+}
 
 }

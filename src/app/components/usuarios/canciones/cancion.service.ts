@@ -237,15 +237,14 @@ console.log('referencia_cancionnnn',albumImg.song_reference)
 console.log('pasar_referecia',referencia)
 if(albumImg.song_reference==referencia){
 console.log('entre',albumImg.id)
-this.speakerCollection
-.doc(albumImg.id)
-.update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id});
+console.log('que pasa',this.speakerCollection.doc(albumImg.id).update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id}))
+//this.speakerCollection.doc(albumImg.id).update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id});
 console.log('datos abtes de enviar1' ,albumImg.imageURL  )  
 
 
 }else{
-this.speakerCollection
-.doc(albumImg.id)
+  console.log('se creo nuevo')
+this.speakerCollection.doc(albumImg.id)
 .update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id });
 console.log('datos abtes de enviar' ,albumImg.song_nombre )  
 

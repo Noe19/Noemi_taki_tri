@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormBuilder } from '@angular/forms';
+import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { PerfilService } from 'src/app/components/perfil.service';
@@ -33,9 +33,9 @@ Toast = Swal.mixin({
     private router: Router) { 
 
       this.ediForm = this.formBuilder.group({
-        name: [''],
-        apellido: [''],
-        nickname: [''],
+        name: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+        apellido: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+        nickname: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         imagen:['']
       })
     }
@@ -98,5 +98,39 @@ ngOnInit(): void {
     this.router.navigate(['/dashboard-user']); 
    
   }
+
+  //VALIDACIONES DE NOMBRE DE PERFIL 
+  getErrorMessage_correo(){
+    if (this.ediForm.get('name')?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.ediForm.get('name')? 'No se aceptan numeros' : '';
+  }
+  get nombre_no_valido(){
+    return this.ediForm.get('name')?.invalid && this.ediForm.get('name')?.touched
+  }
+// VALIDACIONES DE APELLIDO DE PERFIL
+getErrorMessage_apellido(){
+  if (this.ediForm.get('apellido')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.ediForm.get('apellido')? 'No se aceptan numeros' : '';
+}
+get apellido_no_valido(){
+  return this.ediForm.get('apellido')?.invalid && this.ediForm.get('apellido')?.touched
+}
+// VALIDACIONES DE APODO O ALIAS DEL PERFIL
+getErrorMessage_Alias(){
+  if (this.ediForm.get('nickname')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.ediForm.get('nickname')? 'No se aceptan numeros' : '';
+}
+get alias_no_valido(){
+  return this.ediForm.get('nickname')?.invalid && this.ediForm.get('apellido')?.touched
+}
 
 }

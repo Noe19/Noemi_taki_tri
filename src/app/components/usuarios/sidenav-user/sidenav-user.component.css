@@ -17,6 +17,15 @@
     display:contents;
   
   }
+  .avatar_perfil{
+    width:80px;
+    height:80px;
+    border-radius:150px;
+    border:5px solid #666;
+    text-align: center;
+    margin-left: 40px;
+ 
+  }
   .home{
       text-decoration: none;
       color: aliceblue;
@@ -24,11 +33,18 @@
     .nav-link{
       color: aliceblue;
     }
+    .titulo{
+      margin-left: 50px;
+    }
+    .nombre{
+      padding: 2px;
+      margin-left: 57px; 
+    }
 
     @media only screen and (min-width: 1500px) {
 
       .d-flex{
-        height: 1500px;
+        height: 100vh;
          background-color: blueviolet;
          color: red; 
        

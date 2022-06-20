@@ -32,7 +32,7 @@ export class CreateCancionesComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private cancionService:CancionService,private activeRoute: ActivatedRoute) {
     this.cancionesforms=this.fb.group({
   
-      song_nombre:['',[Validators.required]],
+      song_nombre:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
       artista_id:[localStorage.getItem('usuario'),[Validators.required]],
       song_reference:[''] ,
 
@@ -91,5 +91,17 @@ export class CreateCancionesComponent implements OnInit {
     this.cancionesforms.reset();
     this.imgURL="../assets/imagenes/camera.png";
   }
+  //VALIDACIONES DE AÑO DE ALBUMES
+cancionmio() {
+  if (this.cancionesforms.get('song_nombre')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.cancionesforms.get('song_nombre')? 'El campo no permite números' : '';  
+}
+
+get canciones_nuevo_no_valido(){
+return this.cancionesforms.get('song_nombre')?.invalid && this.cancionesforms.get('song_nombre')?.touched
+}
 
 }

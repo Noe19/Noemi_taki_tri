@@ -1,3 +1,44 @@
 .componente_canciones{
     display: flex;
 }
+.crear_canciones{
+    width: 100%;
+
+    display: inline;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.crear_canciones h2{
+    text-align: center;
+    align-items: center;
+}
+.formulario_generos{
+    display: flex;
+    width: 80%;
+    margin-top: 20%;
+    margin-left: 10%;
+}
+.btn{
+    margin-top: 3%;
+    display: inline-block;
+}
+.form-control{
+    width: 100%;
+}
+.input-group{
+    width: 60%;
+    display: inline-block;   
+    padding-left: 5%;
+
+}
+.form-control-file{
+    margin-top: 10%;
+}
+.error{
+    color: red;
+    
+   
+ }
+ .red{
+    border-color: red; 
+ }

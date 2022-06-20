@@ -1,3 +1,43 @@
 .Contenedos_todos_los_albumes {
     display: flex;
 }
+.container{
+    width: 75%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.container h2{
+    text-align: center;
+    font-size: 180% ;
+}
+.formulario_generos{
+    display: flex;
+}
+.imagenes_albumes{
+    margin-top: 30%;
+    margin-left: 10%;
+    height: 150px;
+    width: 150px;
+    align-items: center;
+    text-align: center;
+    
+    
+  
+    border-radius:150px;
+    border:2px solid #666;
+}
+.formulario_crear_albumes{
+
+    width: 50%;
+    margin-top: 10%;
+    padding-left: 5%;
+   
+}
+.error{
+    color: red;
+    
+   
+ }
+ .red{
+    border-color: red; 
+ }

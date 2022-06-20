@@ -31,7 +31,7 @@ export class CreateGenerosComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService) {
     this.generosforms=this.fb.group({
   
-      Genero_nuevo:['',[Validators.required]],
+      Genero_nuevo:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
       artista_id:[localStorage.getItem('usuario'),[Validators.required]],
       referencia:[''] ,
       
@@ -105,6 +105,18 @@ export class CreateGenerosComponent implements OnInit {
     this.generosforms.reset();
     this.imgURL="../assets/imagenes/camera.png";
   }
+
+  // VALIDACIONES DE CREAR GENEROS
+getErrorMessage_genero_nuevo(){
+  if (this.generosforms.get('Genero_nuevo')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.generosforms.get('Genero_nuevo')? 'El campo no permite números' : '';
+}
+get genero_nuevo_no_valido(){
+  return this.generosforms.get('Genero_nuevo')?.invalid && this.generosforms.get('Genero_nuevo')?.touched
+}
 
 }
 

@@ -7,20 +7,41 @@
    
        
  <div class="texto">
+    <div>
     <h2> Perfil Artista</h2>
+    
     <p>
-        En esta seccion se puede visualizar el perfil del usuario artista,el cual cuenta con  información  exclusiva del autor, el cual tiene  un avatar y sus datos personales.
+   
+Este módulo te permite visualizar el perfil Artista
    </p>
+   <hr>
+   <div class="container">
+    <div class="row">
+      <div class="col col-lg-5">
+      
+      </div>
+      <div class="col col-lg-4">
+        
+      </div>
+      <div class="col1 col-lg-2">
+        <button  routerLink="/dashboard-user" type="submit" class="btn btn-primary w-100 ">Regresar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <form [formGroup]="ediForm"  novalidate class="formulario_show_perfil">
    
     
-    <hr>
+   
 
  
    
     <div class="imagen_avatar">
     
    <img [src]="this.url" class="avatar_perfil">
+
+ <h2>Artista</h2>
     </div>
     <div class="form_perfil">
     <div class="mb-12">
@@ -40,7 +61,7 @@
         <input formControlName="fecha_nacimiento" type="text" class="form-control" required [readonly]="true"  >       
     </div>
     
-    <button routerLink="/edit-artist/{{usuario}}" class="btn btn-primary">Editar</button>
+    <button routerLink="/edit-artist/{{usuario}}" class="btn btn-primary w-100">Editar</button>
 </div>
 
 
