@@ -1,11 +1,19 @@
 .Contenedos_todos_los_generos{
-    display: flex;
-    width: auto;
+
+    width: 100%;
     height: auto;
-    max-height: 8024px;
-    min-width: 80%;
 
 
+
+
+}
+.col1{
+    margin-left: 25%;
+ }
+.Completo_generos{
+    display: flex;
+    
+    width: 100%;
 }
 .container1 h2{
     text-align: center;
@@ -13,7 +21,7 @@
 }
 .container1{
     
-    width:80%;
+     width: 100%;
     height: auto;
    
     padding-left: 7%;
@@ -72,8 +80,8 @@
 }
 @media only screen and (max-width: 1200px) {
     .Contenedos_todos_los_generos{
-        display: flex;
-        width: 80%;
+        
+        width: 100%;
         height: auto;
       
         }

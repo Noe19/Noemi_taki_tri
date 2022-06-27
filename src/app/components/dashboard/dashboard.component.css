@@ -1,33 +1,67 @@
 .btn{
-  margin-top: 90%;
-  margin-left: 3%;
   margin-top: 30px;
-  margin-right: 1%;
-  
-   
-  
-    height: 50px;
-   
+  border-radius: 30px;
+  background: #2D31FA;
+  color:white;
+  height: 50px;
+ 
 
-    background: #2D31FA;
-    color:white;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border-top-right-radius: 5px;
-  
-   
-}
-.id_usuario_perfil{
-  margin-left: 20%;
-}
-
-.d-flex {
-  height: 100%;
-  width: 300px;
  
 }
+.id_usuario_perfil{
+margin-left: 5px;
+}
+.barras{
+  margin-left: 30px;
+ margin-top: 20px;
+  height: 50px;
+  line-height: 50px;
+  
+}
+.barras_canciones{
+  margin-left: 30px;
+  margin-top: 20px;
+  height: auto;
+  line-height: 50px;  
+}
+.barras_canciones1 h2{
+  text-align: center; 
+}
+
+.barras h2{
+text-align: center;
+}
+.barras2{
+
+border:5px solid #666;
+
+}
+.container{
+width: 75%;
+margin-bottom: 20px;
+padding-bottom: 100px;
+
+}
+.barras_canciones{
+height: 310px;
+border:5px solid #666;
+}
+.datos_albumes{
+margin-top: 20px;
+margin-left: 30px;
+}
+.table{
+border:5px solid #666; 
+}
+.d-flex {
+height: 100%;
+width: 300px;
+
+}
 .dasboard_completo{
-  display: flex;
-  height: 90%;
+display: flex;
+}
+.legend-items{
+margin-top: 20px;
+margin-bottom: 20px;
 }

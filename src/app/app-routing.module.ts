@@ -30,6 +30,7 @@ import { ButtonSolicitudGuard } from './button-solicitud.guard';
 import { CreateCancionesComponent } from './components/usuarios/canciones/create-canciones/create-canciones.component';
 import { ShowCancionesComponent } from './components/usuarios/canciones/show-canciones/show-canciones.component';
 import { EditCancionesComponent } from './components/usuarios/canciones/edit-canciones/edit-canciones.component';
+import { CancionPorAlbumComponent } from './components/usuarios/canciones/cancion-por-album/cancion-por-album.component';
 
 
 const routes: Routes = [
@@ -59,6 +60,7 @@ const routes: Routes = [
 {path:'crear-canciones/:id',component:CreateCancionesComponent},
 {path:'Canciones',component:ShowCancionesComponent},
 {path:'edit-Canciones/:id',component:EditCancionesComponent},
+{path:'Canciones-Albumes/:id',component:CancionPorAlbumComponent},
   { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule,),canActivate:[PermisoUsuarioGuard] },
 
   { path: 'register', loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule),canActivate:[PermisoUsuarioGuard] },

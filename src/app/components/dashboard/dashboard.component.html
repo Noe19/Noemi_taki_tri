@@ -3,18 +3,66 @@
 <app-header-admin></app-header-admin>
 <div class="dasboard_completo">
   <app-sidenav></app-sidenav>
-<div class="dashboard">
-<p class="id_usuario_perfil">Bienvenido a Taki-Tri 
-    {{ usuario }}
-    </p>
-    
-   
-  
+  <div class="containertotal col-12">
+    <div class="row">
+      <div class="col-7">
+        <div class="barras">
+          <h2>Datos de TAKI-TRI</h2>
+          <div class="barras2">
+           <ngx-charts-advanced-pie-chart 
+           [view]="view3"
+           scheme="cool"
+           [results]="single"
+           
+           [gradient]="gradient"
+           (select)="onSelect($event)"
+           (activate)="onActivate($event)"
+           (deactivate)="onDeactivate($event)"
+           >
+         </ngx-charts-advanced-pie-chart>   
+        </div>
+        </div>
+      </div> 
+        
+    </div>
+<br>
+<br>
+    <div class="row">
+        
+      <div class="col-6">
+        
+        <div class="barras_canciones1">
+          <h2>Datos de Canciones</h2>
+          <div class="barras_canciones">
+           
+  <ngx-charts-bar-vertical
+  [view]="view"
 
-    
-  </div>   
+  [results]="data"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [legendTitle]="legendTitle"
+  (select)="onSelect($event)"
+  (activate)="onActivate($event)"
+  (deactivate)="onDeactivate($event)">
+</ngx-charts-bar-vertical>
+        </div>
+       
+        </div>
+      
+      </div>
+     
+    </div>
+  </div>
+   
 </div>
-<app-footer-sistem></app-footer-sistem>
+
 
 
 

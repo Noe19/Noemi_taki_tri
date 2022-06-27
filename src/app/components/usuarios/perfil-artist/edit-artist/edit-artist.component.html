@@ -1,6 +1,9 @@
-<app-header-artist></app-header-artist>
+<div class="Completo_edit_perfil">
+<div class="menu">
+  <app-sidenav-user></app-sidenav-user>
+</div>
 <div class="formulario_editar_completo">
-    <app-sidenav-user></app-sidenav-user>
+  <app-header-artist></app-header-artist>
     <div class="contenedor_editar_perfil">
 <div>
         <h2>Editar Perfil</h2>
@@ -18,7 +21,7 @@
         
       </div>
       <div class="col1 col-lg-2">
-        <button  routerLink="/dashboard-user" type="submit" class=" regesar btn btn-primary w-100 ">Regresar</button>
+        <button  routerLink="/show-artist/{{this.usuario}}" type="submit" class=" regesar btn btn-primary w-100 ">Regresar</button>
       </div>
     </div>
   </div>
@@ -55,4 +58,6 @@
 </div>
 
 </div>
-<app-footer-sistem></app-footer-sistem>
+</div>
+
+

@@ -33,7 +33,7 @@ export class PermisoArtistaGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-
+// Este modulo es para dar permiso si ya tiene la solicitud aprobada 
       /*
       const usuario_ingresado =  this.activeRoute.snapshot.paramMap.get(this.usuario)
       this.usuario = localStorage.getItem('usuario')

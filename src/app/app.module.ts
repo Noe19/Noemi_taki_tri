@@ -73,6 +73,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PipeGenerosPipe } from './components/usuarios/generos/pipe-generos.pipe';
 import { FiltrarAlbumesPipe } from './components/usuarios/Albumes/filtrar-albumes.pipe';
 import { FiltrarCancionesPipe } from './components/usuarios/canciones/filtrar-canciones.pipe';
+import { CancionPorAlbumComponent } from './components/usuarios/canciones/cancion-por-album/cancion-por-album.component';
 
 
 
@@ -123,6 +124,7 @@ import { FiltrarCancionesPipe } from './components/usuarios/canciones/filtrar-ca
     PipeGenerosPipe,
     FiltrarAlbumesPipe,
     FiltrarCancionesPipe,
+    CancionPorAlbumComponent,
     
   
    

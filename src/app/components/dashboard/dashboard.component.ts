@@ -9,6 +9,10 @@ import { PerfilService } from '../perfil.service';
 import { FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/auth/service/auth.service';
 import { NgLocaleLocalization } from '@angular/common';
+import { MensajeSolicitud } from '../usuarios/solicitud/mensaje.modal';
+import { IbaChart } from '../usuarios/dashboard-user/IbaChart.modal';
+import { datos } from '../usuarios/dashboard-user/datos.modal';
+import { SolicitudService } from '../usuarios/solicitud/solicitud.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,65 +26,95 @@ export class DashboardComponent implements OnInit {
   Perfil: Perfil[]
   public usuario : any;
   perfilResf:any;
-  public rol_admin:any;
-  public cantidad_aprobadas:any;
- public cantidad_de_solicitud:any;
- public cantidad_solicitud_rechazadas:any;
- //public usuario_nuevo :any;
- // nuevo intento sobre la navegacion
+  MensajeSolicitud:MensajeSolicitud[]
+  public roles_admin:any;
+  public valor_aceptacion:any;
 
-/*
- mostrar_enviar_solicitud:String=""
- mostrar_solicitud_Nuevas:String=""
- mostrar_solicitud_Aprobadas:String=""
- mostrar_solicitud_Rechazadas:String=""
-*/
-
- // termino
-
-  constructor(private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore) { }
-  ngOnInit(): void {
-    //obtener el dato getItem
- 
-    this.usuario = localStorage.getItem('usuario');
-    this.rol_admin = localStorage.getItem('roles');
-    this.cantidad_aprobadas=localStorage.getItem('cantidad_aprobadas');
-    this.cantidad_de_solicitud=localStorage.getItem('cantidad');
-    this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
-    
-    //this.usuario_nuevo=localStorage.getItem('usuario_nuevo')
-  
+  //segundo ejemplo
+  data: IbaChart[]=[];
+  view: [number, number] = [590, 200];
+  colorScheme = {
+    domain: ['#5AA454', '#C7B42C', '#AAAAAA']
   }
 
+  // options
+  showXAxis: boolean = true;
+  showYAxis: boolean = true;
+  gradient: boolean = true;
+  showLegend: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Country';
+  showYAxisLabel: boolean = true;
+  yAxisLabel: string = 'Population';
+  legendTitle: string = 'Years';
 
+ 
+  constructor(public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore,private solicitud:SolicitudService,private perfil :PerfilService) { 
+    Object.assign(this, {datos })
+  }
 
-  
+  ngOnInit(): void {
+    this.data=datos
+    this.usuario = localStorage.getItem('usuario')
+    this.roles_admin = localStorage.getItem('roles')
+    this.valor_aceptacion=localStorage.getItem('artista_aceptado');
+  }
+  // salir de usuario
   async salir(){
+   
     //limpiando de la cache
   // localStorage.clear();
    localStorage.clear();
-   
    //this.auth.logout();
    await this.afAuth.signOut();
    this.router.navigate(['/register']);   
    console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
    console.log('usuario que salio',this.usuario)
-   console.log('rol',this.rol_admin)
    
    
   
  }
- /*
- ingresar(){
-   this.firestore.collection("usuario").add({"email":this.usuario = localStorage.getItem('usuario')}).then(()=>{
-    alert("usuario ingresado con exito");
-   }).catch(err =>{
-     console.log(err)
 
-   })
+ 
 
- }
-*/
+
+//
+view3: [number, number] = [550, 300];
+view1: [number, number] = [450, 300];
+// options
+
+showLabels: boolean = true;
+isDoughnut: boolean = false;
+
+
+
+
+get single() {
+  return this.perfil.countryData;
+}
+
+get single1(){
+  return this.perfil.countryData1;
+}
+
+
+onSelect(data: any): void {
+  console.log('Item clicked', JSON.parse(JSON.stringify(data)));
+}
+
+onActivate(data: any): void {
+  console.log('Activate', JSON.parse(JSON.stringify(data)));
+}
+
+onDeactivate(data: any): void {
+  console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+}
+
+///////////////
+
+
+
+
  
 
 

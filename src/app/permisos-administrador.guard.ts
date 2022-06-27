@@ -22,6 +22,10 @@ export class PermisosAdministradorGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       this.usuario = localStorage.getItem('usuario')
+
+      // este guard es para  que solo puedan entrar a la ruta de administrador 
+
+      
       //const usuario_ingresado =  this.activeRoute.snapshot.paramMap.get(this.usuario) 
     /* const rol = this.perfilService.getPostbyId(this.usuario).subscribe( res =>{ 
         this.perfilResf = res ;

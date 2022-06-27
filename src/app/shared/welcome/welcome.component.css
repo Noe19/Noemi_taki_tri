@@ -17,6 +17,9 @@
   display:contents;
 
 }
+.navbar{
+  color: beige;
+}
 .navbar-brand img{
   width:90px;
   height:60px;
@@ -24,19 +27,31 @@
 }
 
 
+.navbar-brand{
+  display:contents;
+
+}
+.navbar-brand img{
+  width:90px;
+  height:60px;
+  
+}
+
 .home{
     text-decoration: none;
     color: aliceblue;
+    margin-left: 1%;
   }
   .home img{
     width:60px;
-  height:60px;
-  border-radius:150px;
+    height:60px;
+    border-radius:150px;
+
   }
   .nav-link{
-   
-    color: aliceblue; 
-    font-family: var(--bs-body-font-family); }
+    color: aliceblue !important;
+  }
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;

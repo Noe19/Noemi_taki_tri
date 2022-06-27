@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { cancionSolicitud } from '../cancion.modal';
 import { CancionService } from '../cancion.service';
@@ -33,7 +33,7 @@ export class EditCancionesComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private CancionService:CancionService, private activeRoute: ActivatedRoute
     ,public formBuilder:FormBuilder) {
       this.ediForm = this.formBuilder.group({
-        song_nombre: [''],
+        song_nombre: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         imageURL:[''],
         id_artista:[''],
         song_reference:['']
@@ -57,7 +57,8 @@ export class EditCancionesComponent implements OnInit {
          imageURL: [this.generosRef.imageURL],
         artista_id:[this.generosRef.artista_id],
         id:[this.generosRef.id], 
-        song_reference:[this.generosRef.song_reference]   
+        song_reference:[this.generosRef.song_reference],
+        album_id:[this.generosRef.album_id]   
       
        })
        console.log('valueid',this.generosRef.song_reference)
@@ -88,5 +89,16 @@ export class EditCancionesComponent implements OnInit {
      addFiles() {
        this.file.nativeElement.click();
      }
+// Validaciones de editar canciones 
+cancionmio() {
+  if (this.ediForm.get('song_nombre')?.hasError('required')) {
+    return 'El campo es obligatorio';
+  }
+ 
+  return this.ediForm.get('song_nombre')? 'El campo no permite números' : '';  
+}
 
+get cancion_nombre_nuevo_no_valido(){
+return this.ediForm.get('song_nombre')?.invalid && this.ediForm.get('song_nombre')?.touched
+}
 }

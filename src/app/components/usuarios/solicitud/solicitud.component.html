@@ -1,106 +1,113 @@
-<app-header-artist></app-header-artist>
-<div class="formulario">
+
+<div class="Completo_solicitud">
+  <div class="menu">
     <app-sidenav-user></app-sidenav-user>
-<div class="formulario_solicitud">
-  <h2>Enviar Solicitud</h2>
-  <p>
-    En este módulo puedes enviar una solicitud para que puedas gestionar tu contenido como artista
-   
-  </p>
-  <hr>
-  <div class="container">
-    <div class="row">
-      <div class="col col-lg-2">
-       
-      </div>
-      <div class="col col-lg-5">
-        
-      </div>
-      <div class="col1 col-lg-3">
-        <button  routerLink="/dashboard-user" type="submit" class=" regesar btn_regresar btn-primary w-100">Regresar</button>
+  </div>
+  <div class="formulario">
+    <app-header-artist></app-header-artist>
+  <div class="formulario_solicitud">
+    <h2>Enviar Solicitud</h2>
+    <p>
+      En este módulo puedes enviar una solicitud para que puedas gestionar tu contenido como artista
+     
+    </p>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col col-lg-2">
+         
+        </div>
+        <div class="col col-lg-5">
+          
+        </div>
+        <div class="col1 col-lg-3">
+          <button  routerLink="/dashboard-user" type="submit" class=" regesar btn_regresar btn-primary w-100">Regresar</button>
+        </div>
       </div>
     </div>
-  </div>
- 
-
-
-
-<form [formGroup]="solicitudlForm" (ngSubmit)="onSubmit()" novalidate class="form_solicitud_completo">
-  <div class="imagen_avatar">
-    
    
-    <img src="https://www.science.co.il/internet/browsers/PDF-doc-256.png" alt="" class="avatar_perfil">
-    <h4><a href="https://docs.google.com/document/d/1cV-RGKrnK7ly0Rnc8Mr_VBR38qppJ_UoRxtUOoxE7Wk/edit?usp=sharing" target="_blank"  rel="noopener noreferrer" > <u>Descargar aquí </u></a></h4>
-    
-     </div>
-  <div class="form_soli">
-    <div class="mb-3">
-        <label class="form-label">Nombre Artistico</label>
-        <input formControlName="nombre_artistico" type="text" class="form-control" required placeholder="Nombre Artistico" ngModel pattern="[a-zA-Z-ñ ]*"  [class.red]="nombreArtistico_no_valido">
-        <label class="error"  *ngIf="nombreArtistico_no_valido" >{{getErrorMessage_nombre()}}</label>  
-      </div>
-    <div class="mb-3">    
-        <label class="form-label">Número de Cédula</label>
-       
-        <input maxlength="10" minlength="10" formControlName="nacionalidad" type="text" class="form-control" required placeholder="Cédula" ngModel pattern="^0[1-9]|[1-9]\d$" [class.red]="cedula_no_valido">
-        <label class="error"  *ngIf="cedula_no_valido" >{{getErrorMessage_cedula()}}</label>  
-      </div>
-    <div class="form-group">
-        
-
-    <input type="file" class="form-control-file" accept="application/pdf" (change)="selectChange($event)" ><br>      
-
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled required  >
-        <label class="form-check-label" for="flexCheckChecked">
-            Acepto Terminos y Condiciones
-        </label>
-      </div>
-
-    
-       
-    <button [disabled]="!solicitudlForm.valid" type="submit" class="btn btn-primary w-100">Save</button>
-        
-  </div>  
-</form>
-<hr>
-<div class=" contenedor_mensaje_solicitud"  >
- 
-<h4>Mensajes de estado de Solicitud</h4> 
-<p>
-  En este módulo puedes visualizar los mensajes de el estado de tu solicitud
-<hr>
-<input type="text" class="form-control mb-2" placeholder="Buscar por mensaje" #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
-       
-        <div *ngFor="let administrador of MensajeSolicitud  | filtro:page:search" class="mensaje" >
-         
-        <thead >
-         
-        </thead>
-          <table class="table ">
-        <tbody>
-          <tr >
-            <th scope="col">Solicitud rechazada el  {{administrador.hora}}   
-            </th>
-            <td>Motivo : {{administrador.mensaje}}</td>
-            <td class="botoneseliminarSolicitud col-3">    <button type="button" class="btn1  btn btn-danger w-50" (click)="eliminar(administrador)">Eliminar</button></td>
-
-          </tr>
-      
-        </tbody>
-      </table> 
   
-
+  
+  
+  <form [formGroup]="solicitudlForm" (ngSubmit)="onSubmit()" novalidate class="form_solicitud_completo">
+    <div class="imagen_avatar">
+      
+     
+      <img src="https://www.science.co.il/internet/browsers/PDF-doc-256.png" alt="" class="avatar_perfil">
+      <h4><a href="https://docs.google.com/document/d/1cV-RGKrnK7ly0Rnc8Mr_VBR38qppJ_UoRxtUOoxE7Wk/edit?usp=sharing" target="_blank"  rel="noopener noreferrer" > <u>Descargar aquí </u></a></h4>
+      
+       </div>
+    <div class="form_soli">
+      <div class="mb-3">
+          <label class="form-label">Nombre Artístico</label>
+          <input formControlName="nombre_artistico" type="text" class="form-control" required placeholder="Nombre Artístico" ngModel pattern="[a-zA-Z-ñ ]*"  [class.red]="nombreArtistico_no_valido">
+          <label class="error"  *ngIf="nombreArtistico_no_valido" >{{getErrorMessage_nombre()}}</label>  
+        </div>
+      <div class="mb-3">    
+          <label class="form-label">Número de Cédula</label>
+         
+          <input maxlength="10" minlength="10" formControlName="nacionalidad" type="text" class="form-control" required placeholder="Cédula" ngModel pattern="^0[1-9]|[1-9]\d$" [class.red]="cedula_no_valido">
+          <label class="error"  *ngIf="cedula_no_valido" >{{getErrorMessage_cedula()}}</label>  
+        </div>
+      <div class="form-group">
+          
+  
+      <input type="file" class="form-control-file" accept="application/pdf" (change)="selectChange($event)" ><br>      
+  
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled required  >
+          <label class="form-check-label" for="flexCheckChecked">
+              Acepto Terminos y Condiciones
+          </label>
+        </div>
+  
+      
+         
+      <button [disabled]="!solicitudlForm.valid" type="submit" class="btn btn-primary w-100">Guardar</button>
+          
+    </div>  
+  </form>
+  <hr>
+  <div class=" contenedor_mensaje_solicitud"  >
+   
+  <h4>Mensajes de estado de Solicitud</h4> 
+  <p>
+    En este módulo puedes visualizar los mensajes de el estado de tu solicitud
+  <hr>
+  <input type="text" class="form-control mb-2" placeholder="Buscar por mensaje" #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
+         
+          <div *ngFor="let administrador of MensajeSolicitud  | filtro:page:search" class="mensaje" >
+           
+          <thead >
+           
+          </thead>
+            <table class="table ">
+          <tbody>
+            <tr >
+              <th scope="col">Solicitud rechazada el  {{administrador.hora}}   
+              </th>
+              <td>Motivo : {{administrador.mensaje}}</td>
+              <td class="botoneseliminarSolicitud col-3">    <button type="button" class="btn1  btn btn-danger w-50" (click)="eliminar(administrador)">Eliminar</button></td>
+  
+            </tr>
+        
+          </tbody>
+        </table> 
+    
+  
+       
+      </div>
      
     </div>
+    <button class="btn btn-primary" (click)="atras_pagina_mensaje_solicitud()" >Anterior</button>
+    <button class="btn btn-primary" (click)="siguiente_pagina_mensaje_solicitud() " [disabled]="(MensajeSolicitud  | filtro:page:search).length<1">Siguiente</button> 
    
   </div>
-  <button class="btn btn-primary" (click)="atras_pagina_mensaje_solicitud()" >Anterior</button>
-  <button class="btn btn-primary" (click)="siguiente_pagina_mensaje_solicitud() " [disabled]="(MensajeSolicitud  | filtro:page:search).length<1">Siguiente</button> 
- 
+  
+  </div>
 </div>
 
-</div>
-<app-footer-sistem></app-footer-sistem>
+
+
 

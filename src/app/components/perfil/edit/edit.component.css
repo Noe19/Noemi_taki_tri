@@ -1,6 +1,7 @@
 .formulario_editar_completo{
-    display: flex;
-  
+    width: 100%;
+
+    height: 100vh;
 }
 .btn{
     height: 50px;
@@ -13,6 +14,7 @@
     margin-left: 10%;
     text-align: center;  
     margin-top: 5%; 
+    margin-bottom: 10%;
 }
 .contenedor_editar_perfil{
     padding-left: 5%;
@@ -31,4 +33,7 @@
 }
 .red{
     border-color: red; 
+}
+.Completo_edit_pefil_administrador{
+    display: flex;
 }

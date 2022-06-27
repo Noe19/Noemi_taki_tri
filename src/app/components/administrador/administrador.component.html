@@ -1,23 +1,23 @@
 
-
-<app-header-admin></app-header-admin>
-<div class="Visualizacion_artistas_completa">
+<div class="Completo_administrador">
+<div class="menu">
     <app-sidenav></app-sidenav>
+</div>
+<div class="Visualizacion_artistas_completa">
+    <app-header-admin></app-header-admin>
 <div class="formulario_completo_artistas">
-    <h2>Candidatos a artistas</h2>
-    <p>En esta sección se visualiza, todas las solicitudes enviadas por los artista para ser parte de Taki-Tri,las mismas que son analizadas 
-         por el administrador, quien evalua los datos enviados y procede aceptar o rechazar las solicitudes respectivas.
-        Para que una solicitud sea rechazada ,los datos enviados no son correctos, o el documento PDF, no cuenta con los datos solicitados,
-         o se encuentra con datos no correctos del Artista.
+    <h2>Gestionamiento de Solicitudes</h2>
+    <p>Este módulo te permite visualizar todas las solicitudes de los artistas 
     </p>
     <hr>
     <tr>
-        <th> <a class="nav-link" routerLink="/administrador">Solicitud </a></th>
-        <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
-        <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
+        <th> <a class="nav-link" routerLink="/administrador"><u>Solicitud </u></a></th>
+        <th> <a class="nav-link" routerLink="/solicitud-aceptadas"><u>Aceptadas</u> </a></th>
+        <th> <a class="nav-link" routerLink="/solicitud-rechazadas"><u>Rechazadas</u> </a></th>
        
     </tr>
     <input type="text" class="hola" placeholder="Buscar por numero de cédula " #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>  
+    <div class="table-responsive">
 <table class="table table-hover ">
    
       <br>
@@ -48,19 +48,21 @@
             <td>
                
                 <button (click)="convertToArtist(administrador)" class="btn btn-primary">Aceptar</button>
-                <button (click)="convertToArtist_rechazado(administrador)"  class="btn btn-outline-danger">Rechazar</button>
+                <button (click)="convertToArtist_rechazado(administrador)"  class="btn btn-danger">Rechazar</button>
             </td>
 
         </tr>
     </tbody>
 </table>
-<mat-paginator [length]="cantidad_de_solicitud"
-              [pageSize]="pageSize"
-              (page)="cambiarpagina($event)"
-            
-              aria-label="Select page">
-              
-</mat-paginator>
+<button class="btn btn-secondary" (click)="atras_pagina_Solicitud()" >Anterior</button>
+<button class="btn btn-secondary" (click)="  siguiente_pagina_solicitud() " [disabled]="(Administrador | filtroSolicitudAceptadas:page:search).length<1">Siguiente</button> 
+</div>
+
+
 </div>
 </div>
-<app-footer-sistem></app-footer-sistem>
+
+</div>
+
+
+

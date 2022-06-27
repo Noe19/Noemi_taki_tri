@@ -1,28 +1,26 @@
 .navbar-brand{
-    display:contents;
+  display:contents;
+
+}
+.navbar-brand img{
+  width:90px;
+  height:60px;
   
-  }
-  .navbar-brand img{
-    width:90px;
-    height:60px;
-    
-  }
+}
 
+.home{
+    text-decoration: none;
+    color: aliceblue;
+    margin-left: 1%;
+  }
+  .home img{
+    width:90;
+  height:60px;
 
-  .home{
-      text-decoration: none;
-      color: aliceblue;
-    }
-    .home img{
-      width:60px;
-    height:60px;
-    border-radius:150px;
-    }
-    .nav-link{
-     
-      color: aliceblue; 
-      font-family: var(--bs-body-font-family); }
-    
+  }
+  .nav-link{
+    color: aliceblue;
+  }
 
 
 

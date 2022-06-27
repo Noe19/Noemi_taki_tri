@@ -1,24 +1,26 @@
-<app-header-admin></app-header-admin>
-<div class="Visualizacion_artistas_completa_aceptados">
+<div class="Completo_solicitud_rechazada">
+<div class="menu">
     <app-sidenav></app-sidenav>
+</div>
+<div class="Visualizacion_artistas_completa_aceptados">
+    <app-header-admin></app-header-admin>  
 <div class="formulario_completo_artistas_aceptados">
-    <h2>Artista Rechazados </h2>
-    <p>En esta sección se visualiza, todas las solicitudes Rechazadas por el administrador.
-        Para que una solicitud sea rechazada ,los datos enviados no son correctos, o el documento PDF, no cuenta con los datos solicitados,
-         o se encuentra con datos no correctos del Artista.
+    <h2>Solicitudes Rechazados </h2>
+    <p>Este módulo te permite visualizar las solicitudes rechazadas de los artistas
     </p>
     <hr>
     <tr>
-        <th> <a class="nav-link" routerLink="//administrador">Solicitud </a></th> 
-        <th> <a class="nav-link" routerLink="/solicitud-aceptadas">Aceptadas </a></th>
-        <th> <a class="nav-link" routerLink="/solicitud-rechazadas">Rechazadas </a></th>
+        <th> <a class="nav-link" routerLink="/administrador"><u>Solicitud </u></a></th>
+        <th> <a class="nav-link" routerLink="/solicitud-aceptadas"><u>Aceptadas</u> </a></th>
+        <th> <a class="nav-link" routerLink="/solicitud-rechazadas"><u>Rechazadas</u> </a></th>
                  
     </tr>
+    <input type="text" class="hola " placeholder="Buscar Solicitud por número de cédula" #textSearch (keyup)="onSearchSolicitud_Rechazadas(textSearch.value)"/>    
 <table class="table table-hover ">
 
 
     <thead class=" text-white">
-        <input type="text" class="form-control " placeholder="Buscar Solicitud" #textSearch (keyup)="onSearchSolicitud_Rechazadas(textSearch.value)"/>    
+       
        
   
         <tr class="nombre_list">
@@ -47,14 +49,15 @@
         </tr>
     </tbody>
 </table>
-<mat-paginator [length]="cantidad_solicitud_rechazadas"
-              [pageSize]="pageSize"
-              (page)="cambiarpagina($event)"
-            
-              >
-              
-</mat-paginator>
+<button class="btn btn-secondary" (click)=" atras_pagina_Solicitud_rechazas()" >Anterior</button>
+<button class="btn btn-secondary" (click)="  siguiente_pagina_solicitud_rechazadas() " [disabled]="(Administrador | filtroSolicitudRechazadas:page:search).length<1">Siguiente</button> 
 </div>
 </div>
-<app-footer-sistem></app-footer-sistem>
+
+</div>
+
+
+
+
+
 

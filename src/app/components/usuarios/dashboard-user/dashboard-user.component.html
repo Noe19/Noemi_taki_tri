@@ -1,53 +1,142 @@
+<div class="todo_dashboard">
+  <div class="menu">
+    <app-sidenav-user></app-sidenav-user>
+  </div>
 
-<app-header-artist></app-header-artist> 
-<div class="dasboard_completo">
-  <app-sidenav-user></app-sidenav-user>
-    
-  <div class="container col-12">
-    <div class="row">
-      <div class="col-6">
-        <div class="barras">
-          <h2>Datos de TAKI-TRI</h2>
-          <div class="barras2">
-           <ngx-charts-advanced-pie-chart 
-           [view]="view"
-           scheme="cool"
-           [results]="single"
+  <div class="dasboard_completo">
+    <app-header-artist></app-header-artist> 
+      
+    <div class="container col-lg-12 col-md-10 col-sm-10 ">
+      <div class="row">
+        <div class="col-lg-7 col-md-10 col-sm-10 ">
+          <div class="barras">
+            <h2>Datos de TAKI-TRI</h2>
+            <div class="barras2 col-7 col-md-10 col-sm-10">
+             <ngx-charts-advanced-pie-chart 
+             [view]="view3"
+             scheme="cool"
+             [results]="single"
+             
+             [gradient]="gradient"
+             (select)="onSelect($event)"
+             (activate)="onActivate($event)"
+             (deactivate)="onDeactivate($event)"
+             >
+           </ngx-charts-advanced-pie-chart>   
+          </div>
+          </div>
+        </div> 
+        <div class=" datos_albumes col-3">
+          
+          <h2>Datos de Álbumes</h2>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Año</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Categoria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>2012</td>
+                <td>Muerte Súbita</td>
+                <td>Rock</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>2001</td>
+                <td>Sal Mileto</td>
+                <td>Rock y Folk</td>
+              </tr>
            
-           [gradient]="gradient"
-           (select)="onSelect($event)"
-           (activate)="onActivate($event)"
-           (deactivate)="onDeactivate($event)"
-           >
-         </ngx-charts-advanced-pie-chart>   
+              <tr>
+                <th scope="row">3</th>
+                <td>1988</td>
+                <td>Piedad</td>
+                <td>Rock</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>1986</td>
+                <td>Promesas Temporales</td>
+                <td>Jazz</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>1986</td>
+                <td>Promesas Temporales</td>
+                <td>Jazz</td>
+              </tr>
+  
+              
+             
+            </tbody>
+          </table>
+        </div>    
+      </div>
+  <br>
+  <br>
+      <div class="row">
+        
+        <div class="col-6">
+          
+          <div class="barras">
+            <h2>Datos de Géneros</h2>
+            <div class="barras2">
+             <ngx-charts-advanced-pie-chart 
+             [view]="view1"
+             scheme="cool"
+             [results]="single1"
+             
+             [gradient]="gradient"
+             (select)="onSelect($event)"
+             (activate)="onActivate($event)"
+             (deactivate)="onDeactivate($event)"
+             >
+           </ngx-charts-advanced-pie-chart>   
+          </div>
+         
+          </div>
+        
         </div>
+        <div class="col-6">
+          
+          <div class="barras">
+            <h2>Datos de Canciones</h2>
+            <div class="barras_canciones">
+             
+    <ngx-charts-bar-vertical
+    [view]="view"
+  
+    [results]="data"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [legendTitle]="legendTitle"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)">
+  </ngx-charts-bar-vertical>
+          </div>
+         
+          </div>
+        
         </div>
-      </div>
-      <div class="col-4">
-        <div class="chart-wrapper">
-        <canvas baseChart>
-   [datasets]="lineChartData"
-   [labels]="lineChartlabels"
-   [options]="lineChartOptions"
-   [colors]="lineChartColors"
-   [legend]="lineChartLegend"
-   [chartType]="lineChartType"
-   [plugins]="lineChartPlugins"
-
-        </canvas>
-      </div>
-      </div>
-      <div class="col">
-        Column
-      </div>
-    </div>
-  </div>
-
-
-   
-   
        
-   
-  </div>
+      </div>
+    </div>     
+    </div>
+</div>
 
-  <app-footer-sistem></app-footer-sistem>
+
+
+
+ 

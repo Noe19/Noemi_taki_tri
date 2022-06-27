@@ -8,10 +8,36 @@
     height: 100%;
 }
 .d-flex {
-    height: 100vh;
+    height: 100%;
     width: 300px;
     display: flex;
+    
 }
-.bi{
-  text-align: center;
-}
+.navbar-brand{
+    display:contents;
+  
+  }
+  .avatar_perfil{
+    width:80px;
+    height:80px;
+    border-radius:150px;
+    border:5px solid #666;
+    text-align: center;
+    margin-left: 40px;
+ 
+  }
+  .home{
+      text-decoration: none;
+      color: aliceblue;
+    }
+    .nav-link{
+      color: aliceblue;
+    }
+    .titulo{
+      margin-left: 50px;
+    }
+    .nombre{
+      padding: 2px;
+      margin-left: 57px; 
+    }
+

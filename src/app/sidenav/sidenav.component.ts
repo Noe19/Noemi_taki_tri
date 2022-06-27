@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilService } from '../components/perfil.service';
 import { Sidenav } from './sidenav.model';
 
@@ -27,53 +28,46 @@ export class SidenavComponent implements OnInit {
   //mostrar_solicitud_Aprobadas:String=""
   //mostrar_solicitud_Rechazadas:String=""
   //otro intento
+  public fotoperfil : FormGroup;
+  public imagen:any;
+
+  public name:any;
+constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router) { 
+  this.fotoperfil = this.fb.group({   
+    imagen:[''],
+    name: [''],
  
-  constructor(private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore) { 
-    this.usuario = localStorage.getItem('usuario')
-  this.roles_admin=localStorage.getItem('roles')
-    console.log('donde estoy',this.roles_admin)
-  }
-  
+  })
+
+}
 
   ngOnInit(): void {
-
-    
+    const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
     this.usuario = localStorage.getItem('usuario');
-    this.rol_admin = localStorage.getItem('roles');
-    this.cantidad_aprobadas=localStorage.getItem('cantidad_aprobadas');
-    this.cantidad_de_solicitud=localStorage.getItem('cantidad');
-    this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
-    // los diferentes rutas
+    //console.log('ggggdsss',this.usuario)
+    this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
+  
+      this.perfilResf = res;
+      //console.log('permiso', this.perfilRef.name)
+      //if(this.perfilRef.rol=='administrador'){
+        
+        this.imagen = this.perfilResf.imagen
+        this.name=this.perfilResf.name
+        console.log('this.ima',this.imagen)
+    
+    
+     // }
+    })
+
+   
+  this.rol_admin = localStorage.getItem('roles');
+  this.cantidad_aprobadas=localStorage.getItem('cantidad_aprobadas');
+  this.cantidad_de_solicitud=localStorage.getItem('cantidad');
+  this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
+}
+
   
 
-    // rutas dependiendo donde estoy 
-    /*
-    if(this.roles_admin=='artista'){
-     // window.location.reload();
-
-      this.mostrar_enviar_solicitud="funciona"
-    
-      this.mostrar_solicitud_Nuevas=" "
-      this.mostrar_solicitud_Aprobadas=" "
-      this.mostrar_solicitud_Rechazadas=" "
-
-    }
-    if (this.roles_admin=='administrador') {
-      //window.location.reload();
-      this.mostrar_solicitud_Nuevas="Solicitud Nuevas "
-      this.mostrar_solicitud_Aprobadas=" Solicitud Aprobadas"
-      this.mostrar_solicitud_Rechazadas="Solicitud Rechazadas "
-      this.mostrar_enviar_solicitud=" jijifunciona"
-    } else {
-      this.mostrar_solicitud_Nuevas=" "
-      this.mostrar_solicitud_Aprobadas=" "
-      this.mostrar_solicitud_Rechazadas=""
-      this.mostrar_enviar_solicitud="funciona1 "
-      
-    }
-  }
-*/
-}
 async salir(){
   //limpiando de la cache
 // localStorage.clear();

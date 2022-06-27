@@ -20,7 +20,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 export class AdministradorComponent implements OnInit  {
   public hora:any;
-  pageSize=5;
+ 
   desde:number=0;
   hasta: number=5;
   public arreglo:any;
@@ -59,9 +59,8 @@ export class AdministradorComponent implements OnInit  {
          
         });
         this.arreglo=this.Administrador.length
-       localStorage.setItem('cantidad',this.arreglo);
-       //this.cantidad_de_solicitud=localStorage.getItem('cantidad')
-      // console.log('ttt',this.cantidad_de_solicitud)
+       
+    
 
       
       });
@@ -73,9 +72,6 @@ export class AdministradorComponent implements OnInit  {
       
     }
 
-    this.cantidad_de_solicitud=localStorage.getItem('cantidad');
-    console.log('cantidad',this.cantidad_de_solicitud) 
-    localStorage.removeItem('cantidad');
   }
   //this.cantidad_de_solicitud=localStorage.getItem('cantidad');
     
@@ -83,11 +79,7 @@ export class AdministradorComponent implements OnInit  {
 
   //cantidad_de_solicitud:number=localStorage.getItem('cantidad_de_solicitud');
  
-  cambiarpagina(e:PageEvent){
-    this.page = e.pageIndex * e.pageSize;
-    this.hasta = this.desde + e.pageSize;
-      
-  }
+
  
 
   convertToArtist  (administrador) {
@@ -158,7 +150,18 @@ export class AdministradorComponent implements OnInit  {
       //console.log(search);
   }
 
+//paginas de solicitud
+siguiente_pagina_solicitud(){
+  this.page+=4;
+ }
 
+ atras_pagina_Solicitud(){
+   if(this.page>0){
+    this.page-=4;
+   }
+  
+
+ }
  
  
 

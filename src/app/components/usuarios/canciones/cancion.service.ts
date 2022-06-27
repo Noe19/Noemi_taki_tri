@@ -94,6 +94,7 @@ export class CancionService {
            
           } )}
           console.log('ruta de imagen ', path)
+          console.log('guardar',cancion.album_id)
           
         })
 
@@ -202,7 +203,7 @@ create(albumImg:cancionSolicitud, urlImg,referencia1) {
       generosImg.id
       console.log('id',generosImg.Genero_nuevo)
       */
-      console.log('id',generosImg.id)
+     // console.log('id_llll',generosImg.album_id)
      // this.url2=url
      //  esto es para que se edite la imagen
       if (generosImg.id) {
@@ -229,23 +230,30 @@ else{
 
 
 update(albumImg: cancionSolicitud, urlImg,referencia) {
-console.log('id_update',albumImg.id,urlImg)
-console.log('referencia',referencia)
+//console.log('id_update',albumImg.id,urlImg)
+//console.log('referencia',referencia)
 try {
 
-console.log('referencia_cancionnnn',albumImg.song_reference)
-console.log('pasar_referecia',referencia)
+//console.log('referencia_cancionnnn',albumImg.song_reference)
+//console.log('pasar_referecia',referencia)
 if(albumImg.song_reference==referencia){
-console.log('entre',albumImg.id)
-console.log('que pasa',this.speakerCollection.doc(albumImg.id).update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id}))
-//this.speakerCollection.doc(albumImg.id).update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id});
+  this.usuario = localStorage.getItem('usuario');
+console.log('entre1',albumImg.id)
+console.log('entre2',albumImg.song_nombre)
+console.log('entre3',urlImg)
+console.log('entre6',albumImg.album_id)
+console.log('entre4',this.usuario)
+console.log('entre5',albumImg.song_reference)
+//console.log('que pasa',this.speakerCollection.doc(albumImg.id).update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id}))
+this.speakerCollection.doc(albumImg.id).update({ song_nombre: albumImg.song_nombre, imageURL: urlImg, id_artista: this.usuario,song_reference:albumImg.song_reference,album_id:albumImg.album_id});
 console.log('datos abtes de enviar1' ,albumImg.imageURL  )  
 
 
 }else{
+  this.usuario = localStorage.getItem('usuario');
   console.log('se creo nuevo')
 this.speakerCollection.doc(albumImg.id)
-.update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id });
+.update({ song_nombre: albumImg.song_nombre, imageURL: urlImg, id_artista: this.usuario,song_reference:albumImg.song_reference,album_id:albumImg.id });
 console.log('datos abtes de enviar' ,albumImg.song_nombre )  
 
 }
@@ -258,7 +266,7 @@ showConfirmButton: false,
 timer: 1500
 })
 
-this.router.navigate(['/generos']);
+this.router.navigate(['/Canciones']);
 
 //
 } catch (error) {
@@ -274,8 +282,10 @@ timer: 1500
 
 }
 
+todas_las_canciones_por_albumes(id_album){
+  this.usuario = localStorage.getItem('usuario')
+  return this.db.collection("canciones",ref => ref.where('album_id', '==', id_album).where('artista_id', '==', this.usuario) ).snapshotChanges()
 
-
-
-  
+  }
+ 
 }

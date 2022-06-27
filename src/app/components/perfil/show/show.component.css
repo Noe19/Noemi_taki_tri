@@ -1,14 +1,16 @@
 .perfil_completo{
-    display: flex;
-    width: auto;
+    width: 100%;
+
+    height: 100vh;
    
 }
 .mb-12{
     width: auto;
 }
 .formulario_show_perfil{
- 
 
+height: 
+390px;
  width: 80%;
  
  margin-left: 15%;
@@ -61,6 +63,9 @@
 }
 .form-label{
     margin-top: 0.5%;
+}
+.Completo_perfil_administrador{
+    display: flex;
 }
 @media only screen and (max-width: 1200px) {
 

@@ -1,11 +1,14 @@
 .Visualizacion_artistas_completa{
-    display: flex;
+    width: 100%;
+
+    height: 100%;
+    
 }
 .formulario_completo_artistas{
  margin-top: 30px;
 
  width: 100%;
- height: 100%;
+
 
  margin-bottom: 0% !important;
  padding-left: 5%;
@@ -45,6 +48,11 @@
 .nombre_list{
     color: black;
     
+}
+.Completo_administrador{
+    display: flex;
+
+    height: 100vh;
 }
 
 

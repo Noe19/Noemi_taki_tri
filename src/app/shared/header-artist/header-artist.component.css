@@ -21,4 +21,8 @@
   .nav-link{
     color: aliceblue;
   }
+  .container-fluid{
+    justify-content: end;
+  
+  }
   

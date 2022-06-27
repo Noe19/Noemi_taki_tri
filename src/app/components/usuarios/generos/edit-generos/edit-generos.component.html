@@ -1,42 +1,64 @@
-<app-header-artist></app-header-artist>
-<div class="contenedos_edit_generos">
-  <app-sidenav-user></app-sidenav-user>
-  <div class="parrafo_informativo">
-    <h2> Editar Género Artista</h2>
-    <p>
-      Este módulo se te permite editar los géneros creados
-      
-  </p>
-  <hr>
-<form class="formulario_generos" (ngSubmit)="onSubmit()" [formGroup]="ediForm">
+<div class="Completo_edit_genero">
 
-  <div class="form-group">
+  <div class="menu">
+    <app-sidenav-user></app-sidenav-user>
+  </div>
+  <div class="contenedos_edit_generos">
+
+    <app-header-artist></app-header-artist>
+    <div class="parrafo_informativo">
+      <h2> Editar Género Artista</h2>
+      <p>
+        Este módulo se te permite editar los géneros creados
+        
+    </p>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <div class="col col-lg-5">
+        
+        </div>
+        <div class="col col-lg-4">
+          
+        </div>
+        <div class="col1 col-lg-2">
+          <button  routerLink="/generos" type="submit" class="btn btn-primary w-100 ">Regresar</button>
+        </div>
+      </div>
+    </div>
+  <form class="formulario_generos" (ngSubmit)="onSubmit()" [formGroup]="ediForm">
+  
+    <div class="form-group">
+    
+  
+     
+      <img (click)="addFiles()" class="avatar_perfil" [src]="this.url"  with="100" height="100" alt="" />
+      <input 
+      type="file"
+      #file
+      class="input-file" accept="image/*"
+      (change)="onFilesAdded($event.target)"
+  />
+  
+  </div>
+    <div class="input-group w-100">
+   <label class="label_edit">Género</label>
+      <input type="text" class="form-control" placeholder="Generos"  value="Genero_nuevo" required formControlName="Genero_nuevo"  ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="genero_nuevo_no_valido" >
+      <label class="error" *ngIf="genero_nuevo_no_valido"  >{{generomio()}}</label> 
+      <button  class="btn btn-primary w-100" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
+    </div>
+  
+  
+   
+  
+  </form>
+  
+  
+  
+  </div>
+  </div>
   
 
-   
-    <img (click)="addFiles()" class="avatar_perfil" [src]="this.url"  with="100" height="100" alt="" />
-    <input 
-    type="file"
-    #file
-    class="input-file" accept="image/*"
-    (change)="onFilesAdded($event.target)"
-/>
-
 </div>
-  <div class="input-group mb-3">
- <label class="label_edit">Género</label>
-    <input type="text" class="form-control" placeholder="Generos"  value="Genero_nuevo" required formControlName="Genero_nuevo"  ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="genero_nuevo_no_valido" >
-    <label class="error" *ngIf="genero_nuevo_no_valido"  >{{generomio()}}</label> 
-    <button  class="btn btn-primary w-100" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
-  </div>
 
 
- 
-
-</form>
-
-
-
-</div>
-</div>
-<app-footer-sistem></app-footer-sistem>

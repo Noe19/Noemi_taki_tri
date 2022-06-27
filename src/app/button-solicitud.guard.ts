@@ -18,7 +18,7 @@ export class ButtonSolicitudGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  
+  // Este modulo es para que puedan entrar a la solicitud 
      // this.estado_solicitud=localStorage.getItem('artista_aceptado');
       //console.log(this.estado_solicitud)
 

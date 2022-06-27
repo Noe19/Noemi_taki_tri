@@ -91,9 +91,33 @@ private data: Country[] = [
   }
 ];
 
+// datos
+private dataGeneros: Country[] = [
+  {
+    "name": "San Juanito",
+    "value": 15
+  },
+  {
+    "name": "Bachata",
+    "value": 20
+  },
+  {
+    "name": "Pasillo",
+    "value": 29
+  },
+    {
+    "name": "Pop",
+    "value": 36
+  }
+];
+
 
 get countryData() {
   return this.data;
+}
+
+get countryData1(){
+  return this.dataGeneros;
 }
 
 

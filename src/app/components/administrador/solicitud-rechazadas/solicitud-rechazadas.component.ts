@@ -15,7 +15,7 @@ export class SolicitudRechazadasComponent implements OnInit {
   Administrador: Administrador[];
   pageSize=5;
   desde:number=0;
-  hasta: number=5;
+  hasta: number=4;
   public arreglo:any;
   public cantidad_solicitud_rechazadas:any;
   public page:number=0;
@@ -38,23 +38,28 @@ export class SolicitudRechazadasComponent implements OnInit {
         });
         //para saber si exiten 
         
-        this.arreglo=this.Administrador.length
-        localStorage.setItem('cantidad_rechazadas',this.arreglo)
-        console.log(this.arreglo)
+       
       });
       
     } catch (error) {
       alert("No se puedo conectar con la base de Datos ");
       
     }
-    this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
+
   }
 
-  cambiarpagina(e:PageEvent){
-    this.desde = e.pageIndex * e.pageSize;
-    this.hasta = this.desde + e.pageSize;
-      
-  }
+// paginador
+  siguiente_pagina_solicitud_rechazadas(){
+    this.page+=4;
+   }
+  
+   atras_pagina_Solicitud_rechazas(){
+     if(this.page>0){
+      this.page-=4;
+     }
+    }
+
+
 // cambiar estado a no artista
   convertToArtist  (administrador) {
     this.administradorService.updateRol_rechazado(administrador);
@@ -76,6 +81,11 @@ export class SolicitudRechazadasComponent implements OnInit {
     console.log(search);
 
   }
+
+    //paginas de solicitud
+
+  
+  
   
 
 }

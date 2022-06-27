@@ -95,11 +95,13 @@ export class SolicitudAceptadasComponent implements OnInit {
     localStorage.removeItem('cantidad_ACEP');
   }
 */
+/*
   cambiarpagina(e:PageEvent){
     this.desde = e.pageIndex * e.pageSize;
     this.hasta = this.desde + e.pageSize;
       
   }
+ */ 
 // cambiar estado a no artista
 /*
   convertToArtist  (administrador) {
@@ -124,5 +126,17 @@ export class SolicitudAceptadasComponent implements OnInit {
     //console.log(search);
   }
 
+  // paginacion de paginas
+  siguiente_pagina_solicitud_aceptadas(){
+    this.page+=5;
+   }
+
+   atras_pagina_Solicitud_aceptadas(){
+     if(this.page>0){
+      this.page-=5;
+     }
+    
+
+   }
 
 }

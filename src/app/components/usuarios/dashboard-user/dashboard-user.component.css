@@ -12,29 +12,66 @@
   margin-left: 5px;
 }
 .barras{
-  margin-left: 30px;
+
  margin-top: 20px;
   height: 50px;
   line-height: 50px;
-  
+
 }
+
 .barras h2{
 text-align: center;
 }
 .barras2{
+
+
   
   border:5px solid #666;
   
+}
+.container{
+
+  margin-bottom: 20px;
+  padding-bottom: 50px;
+  height: auto;
+  
+  
+}
+.barras_canciones{
+  height: 310px;
+  border:5px solid #666;
+}
+.datos_albumes{
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.table{
+  border:5px solid #666; 
 }
 .d-flex {
   height: 100%;
   width: 300px;
  
 }
-.dasboard_completo{
-  display: flex;
-}
+
 .legend-items{
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+
+.todo_dashboard{
+display: flex;
+}
+.menu{
+ 
+  width: auto;
+}
+.todo_dashboard{
+  width: 100%;
+  height: auto;
+
+}
+.dasboard_completo{
+  width: 100%;
 }

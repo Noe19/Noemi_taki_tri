@@ -1,63 +1,84 @@
-<app-header-artist></app-header-artist>
-<div class="Contenedos_todos_los_albumes ">
-  <app-sidenav-user></app-sidenav-user>
-  <div class="container col-lg-12 col-sm-12 col-md-12">
-   
+<div class="Completo_create_albumes">
+  <div class="menu">
+    <app-sidenav-user></app-sidenav-user>
+  </div>
 
-
-
-    <h2>Crea todos tus Albumes</h2>
-    <p>Este módulo te permite crear álbumes musicales
-        <hr>
-    <div class="form-group " >
-
+  <div class="Contenedos_todos_los_albumes ">
  
-      <form class="formulario_generos" (ngSubmit)="crear_Albumes()" [formGroup]="Albumesforms">
-        <div class="form-group">
-        
-          <img [src]="imgURL"  class="imagenes_albumes" with="100" height="100">
-          <br>
-          <input type="file" class="form-control-file" accept="image/*" (change)="selectChange($event)" ><br>
+    <app-header-artist></app-header-artist>
+    <div class="container col-lg-12 col-sm-12 col-md-12">
+     
   
   
-        </div>
-        <div class="formulario_crear_albumes">
-          <label >Nombre del Álbum</label>
-
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Albumes" required formControlName="name" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="albumes_nuevo_no_valido" >
-        
-        </div>
-      <label class="error" *ngIf="albumes_nuevo_no_valido"  >{{albumesmio()}}</label> 
-        <br>
-        <label >Autor</label>
-        <div class="input-group mb-3">
-         
-          <input type="text" class="form-control" placeholder="Autor" required formControlName="author" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="autor_nuevo_no_valido">
-        </div>
-        <label class="error" *ngIf="autor_nuevo_no_valido"  >{{autormio()}}</label> 
-        <br>
-        <label > Año</label>
-        <div class="input-group mb-3">
-       
-          <input type="text" class="form-control" placeholder="Año" required formControlName="year" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="anio_nuevo_no_valido">
-        </div>
-        <label class="error" *ngIf="anio_nuevo_no_valido"  >{{aniomio()}}</label> 
-        <button  class="btn btn-primary w-100" [disabled]="!Albumesforms.valid"   type="submit" >Crear</button>
-    
-      </div>
+  
+      <h2>Crea todos tus Albumes</h2>
+      <p>Este módulo te permite crear álbumes musicales
+          <hr>
+          <div class="container">
+            <div class="row">
+              <div class="col col-lg-4">
+               
+              </div>
+              <div class="col col-lg-5">
+                
+              </div>
+              <div class="col1 col-lg-3">
+                <button  routerLink="/generos" type="submit" class=" regesar btn btn-primary w-100">Regresar</button>
+              </div>
+            </div>
+          </div>
+      <div class="form-group " >
+  
    
-
-
-
+        <form class="formulario_generos" (ngSubmit)="crear_Albumes()" [formGroup]="Albumesforms">
+          <div class="form-group">
+          
+            <img [src]="imgURL"  class="imagenes_albumes" with="100" height="100">
+            <br>
+            <input type="file" class="form-control-file" accept="image/*" (change)="selectChange($event)" ><br>
     
-    </form>
-
+    
+          </div>
+          <div class="formulario_crear_albumes">
+            <label >Nombre del Álbum</label>
+  
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Albumes" required formControlName="name" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="albumes_nuevo_no_valido" >
+          
+          </div>
+        <label class="error" *ngIf="albumes_nuevo_no_valido"  >{{albumesmio()}}</label> 
+          <br>
+          <label >Autor</label>
+          <div class="input-group mb-3">
+           
+            <input type="text" class="form-control" placeholder="Autor" required formControlName="author" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="autor_nuevo_no_valido">
+          </div>
+          <label class="error" *ngIf="autor_nuevo_no_valido"  >{{autormio()}}</label> 
+          <br>
+          <label > Año</label>
+          <div class="input-group mb-3">
+         
+            <input type="text" class="form-control" placeholder="Año" required formControlName="year" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="anio_nuevo_no_valido">
+          </div>
+          <label class="error" *ngIf="anio_nuevo_no_valido"  >{{aniomio()}}</label> 
+          <button  class="btn btn-primary w-100" [disabled]="!Albumesforms.valid"   type="submit" >Crear</button>
+      
+        </div>
+     
+  
+  
+  
+      
+      </form>
+  
+    </div>
+  
+  </div>
+  
+   
+  
   </div>
 
 </div>
 
- 
 
-</div>
-<app-footer-sistem></app-footer-sistem>

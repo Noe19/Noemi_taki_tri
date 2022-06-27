@@ -1,18 +1,29 @@
 .contenedos_edit_generos{
+    width: 100%;
+    height: 100vh;
+  
+}
+.Completo_edit_albumes{
+   
     display: flex;
+  
 }
 .formulario_albumes_completo{
-   
-width: auto;
+ 
+width: 100%;
+height: 100%;
+display: flex;
 
- display: flex;
+
 }
 
 .formulario_albumes{
-  
+
    width: 60%;
     margin-top: 10%;
     margin-left: 10%;
+    padding-left: 5%;
+    padding-right: 1%;
 }
 .form-control{
     width:100%;

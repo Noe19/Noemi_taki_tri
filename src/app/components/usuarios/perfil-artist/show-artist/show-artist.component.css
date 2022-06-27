@@ -1,8 +1,11 @@
 .perfil_completo{
-    display: flex;
-    width: auto;
+  
+    width: 100%;
+
+    height: 100vh;
    
 }
+
 .mb-12{
     width: auto;
 }
@@ -73,6 +76,11 @@
   margin-left: 5% !important;
     text-align: right;
 }
+.Completo_show_menu{
+    display: flex;
+    
+    width: 100%;
+}
 @media only screen and (max-width: 1200px) {
 
     .formulario_show_perfil{
@@ -83,6 +91,7 @@
         margin-left: 10%;
        
         margin-top: 7%;
+        height: 100vh;
      
     }  
 }

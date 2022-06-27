@@ -1,12 +1,15 @@
 .Contenedos_todos_los_albumes{
-    display: flex;
-    width: auto;
-    height: auto;
-    max-height: 8024px;
-    min-width: 80%;
+
+    width: 100%;
+    height: 100vh;
+  
 }
-.btn{
-    margin: 10px;
+.Completo_show_albumes{
+    display: flex;
+}
+.gg{
+    font-size: 80% ;  
+    width: 47%;  
 }
 .imagenes_generos{
     width: 220px;
@@ -19,7 +22,7 @@
 }
 .container1{
   
-    width:80%;
+    width:100%;
     height: auto;
    
     padding-left: 5%;
@@ -75,8 +78,8 @@
 
 @media only screen and (max-width: 1200px) {
     .Contenedos_todos_los_albumes{
-        display: flex;
-        width: 80%;
+        
+        width: 100%;
         height: auto;
       
         }

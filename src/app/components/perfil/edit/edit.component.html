@@ -1,39 +1,59 @@
-<app-header-admin></app-header-admin>
-<div class="formulario_editar_completo">
-<app-sidenav></app-sidenav>
-<div class="contenedor_editar_perfil">
+<div class="Completo_edit_pefil_administrador">
+    <div class="menu">
+        <app-sidenav></app-sidenav>
+    </div>
 
-    <h2>Editar Perfil</h2>
-<p>
-    En esta seccion se puede visualizar y editar el  perfil del usuario administrador,el cual cuenta con  información  exclusiva que cuenta  con   un avatar y sus datos personales y los puede modificar en tiempo real.
-</p>
-<hr>
-<form [formGroup]="ediForm" (ngSubmit)="onSubmit()" novalidate class="formulario_editar_perfil">
-  
+    <div class="formulario_editar_completo">
+        <app-header-admin></app-header-admin>
+    <div class="contenedor_editar_perfil">
     
+        <h2>Editar Perfil</h2>
+    <p>
+        Este módulo te permite editar el perfil administrador
+    </p>
     <hr>
-    <div class="mb-3">
-        <label class="form-label">Nombre</label>
-        <input formControlName="name" type="text" class="form-control" required value="name"  ngModel pattern="[a-zA-Z-ñ ]*"  [class.red]="nombre_no_valido">
-        <label class="error"  *ngIf="nombre_no_valido" >{{getErrorMessage_correo()}}</label>      
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Apellido</label>
-        <input formControlName="apellido" type="text" class="form-control" required  ngModel pattern="[a-zA-Z ]*" [class.red]="apellido_no_valido">  
-        <label class="error"  *ngIf="apellido_no_valido" >{{getErrorMessage_apellido()}}</label>       
-    </div>
-    <div class="mb-3">
-        <label class="form-label">Nickname</label>
-        <input formControlName="nickname" type="text" class="form-control" required  ngModel pattern="[a-zA-Z ]*" [class.red]="alias_no_valido">  
-        <label class="error"  *ngIf="alias_no_valido" >{{getErrorMessage_Alias()}}</label>        
-    </div>
-   
-
+    <div class="container">
+        <div class="row">
+          <div class="col col-lg-5">
+          
+          </div>
+          <div class="col col-lg-4">
+            
+          </div>
+          <div class="col1 col-lg-2">
+            <button  routerLink="/show/{{usuario}}" type="submit" class="btn btn-primary w-100">Regresar</button>
+          </div>
+        </div>
+      </div>
+    <form [formGroup]="ediForm" (ngSubmit)="onSubmit()" novalidate class="formulario_editar_perfil">
+      
+        
+        
+        <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input formControlName="name" type="text" class="form-control" required value="name"  ngModel pattern="[a-zA-Z-ñ ]*"  [class.red]="nombre_no_valido">
+            <label class="error"  *ngIf="nombre_no_valido" >{{getErrorMessage_correo()}}</label>      
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Apellido</label>
+            <input formControlName="apellido" type="text" class="form-control" required  ngModel pattern="[a-zA-Z ]*" [class.red]="apellido_no_valido">  
+            <label class="error"  *ngIf="apellido_no_valido" >{{getErrorMessage_apellido()}}</label>       
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Nickname</label>
+            <input formControlName="nickname" type="text" class="form-control" required  ngModel pattern="[a-zA-Z ]*" [class.red]="alias_no_valido">  
+            <label class="error"  *ngIf="alias_no_valido" >{{getErrorMessage_Alias()}}</label>        
+        </div>
+       
     
-    <button type="submit" class="btn btn-primary w-100"  [disabled]="!ediForm.valid">Editar</button>
-    <button  routerLink="/show/{{usuario}}" type="submit" class="btn btn-primary w-100">Regresar</button>
+        
+        <button type="submit" class="btn btn-primary w-100"  [disabled]="!ediForm.valid">Editar</button>
+        
+    
+    </form>
+    </div>
+    </div>
 
-</form>
 </div>
-</div>
-<app-footer-sistem></app-footer-sistem>
+
+
