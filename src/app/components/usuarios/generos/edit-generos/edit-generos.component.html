@@ -43,7 +43,7 @@
   </div>
     <div class="input-group w-100">
    <label class="label_edit">Género</label>
-      <input type="text" class="form-control" placeholder="Generos"  value="Genero_nuevo" required formControlName="Genero_nuevo"  ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="genero_nuevo_no_valido" >
+      <input type="text" class="form-control" placeholder="Generos"  value="Genero_nuevo" required formControlName="Genero_nuevo"  ngModel pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" [class.red]="genero_nuevo_no_valido" >
       <label class="error" *ngIf="genero_nuevo_no_valido"  >{{generomio()}}</label> 
       <button  class="btn btn-primary w-100" [disabled]="!ediForm.valid"   type="submit">EDITAR</button>
     </div>

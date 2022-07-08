@@ -41,7 +41,7 @@ export class EditAlbumesComponent implements OnInit {
       this.albumForm = this.formBuilder.group({
         name: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         imagen:[''],
-        year:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+        year:['',[Validators.required,Validators.pattern(/[0-9].*/)]],
         author:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         id:[''],
         referencia:['']
@@ -143,7 +143,7 @@ return this.albumForm.get('author')?.invalid && this.albumForm.get('author')?.to
     return 'El campo es obligatorio';
   }
  
-  return this.albumForm.get('year')? 'El campo no permite números' : '';  
+  return this.albumForm.get('year')? 'El campo no permite letras' : '';  
 }
 
 get anio_nuevo_no_valido(){

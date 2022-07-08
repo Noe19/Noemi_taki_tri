@@ -37,7 +37,7 @@ const routes: Routes = [
 
   {path:'home',component:WelcomeComponent,canActivate:[PermisoUsuarioGuard]},
   {path:'sobrenosotros',component:SobrenosotrosComponent,canActivate:[PermisoUsuarioGuard]},
-  {path: 'dashboard', component: DashboardComponent ,canActivate:[PermisosGuard]},
+ // {path: 'dashboard', component: DashboardComponent ,canActivate:[PermisosGuard]},
   {path: 'forgot-password', component:ForgotPasswordComponent ,canActivate:[PermisoUsuarioGuard]},
   {path: 'mision-vision', component: MisionVisionComponent ,canActivate:[PermisoUsuarioGuard] },
   {path : 'show/:id',component: ShowComponent,canActivate:[PermisosGuard] },
@@ -57,10 +57,10 @@ const routes: Routes = [
   {path:'Albumes',component:ShowAlbumesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
   {path:'crear-Albumes/:id',component:CreateAlbumesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
   {path:'edit-Albumes/:id',component:EditAlbumesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
-{path:'crear-canciones/:id',component:CreateCancionesComponent},
-{path:'Canciones',component:ShowCancionesComponent},
-{path:'edit-Canciones/:id',component:EditCancionesComponent},
-{path:'Canciones-Albumes/:id',component:CancionPorAlbumComponent},
+{path:'crear-canciones/:id',component:CreateCancionesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
+{path:'Canciones',component:ShowCancionesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
+{path:'edit-Canciones/:id',component:EditCancionesComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
+{path:'Canciones-Albumes/:id',component:CancionPorAlbumComponent,canActivate:[PermisoArtistaGuard,PermisosGuard]},
   { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule,),canActivate:[PermisoUsuarioGuard] },
 
   { path: 'register', loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule),canActivate:[PermisoUsuarioGuard] },

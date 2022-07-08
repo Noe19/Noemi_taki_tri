@@ -1,15 +1,18 @@
 .Contenedos_todos_los_albumes{
 
     width: 100%;
-    height: 100vh;
+    height: auto;
+
   
 }
 .Completo_show_albumes{
     display: flex;
+   
+    width: 100%;
 }
 .gg{
     font-size: 80% ;  
-    width: 47%;  
+    width: 98%;  
 }
 .imagenes_generos{
     width: 220px;
@@ -18,15 +21,23 @@
 }
 .btn{
     margin: 2px;
-    font-size: 80% ;     
+    font-size: 80% ; 
+    margin-left: 5.9px;
+
+}
+.col-3{
+    padding-left: 4%;
+  }
+  .col-2{
+    padding-left: 6%;  
 }
 .container1{
-  
+ 
     width:100%;
-    height: auto;
+    height: 100%;
    
     padding-left: 5%;
-    padding-right: 5%;
+    padding-right: 5.9%;
 }
 
 

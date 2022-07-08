@@ -3,15 +3,15 @@ import { IbaChart } from "./IbaChart.modal"
 export const datos : IbaChart[]=[
 
     {
-        "name": "Canciones Pop",
-        "value": 300,
+        "name": "Sin ti ",
+        "value": 1,
         "extra": {
           "code": "Quito"
         }
       },
       {
-        "name": "Canciones Pasillo",
-        "value": 550,
+        "name": "Alma en los labios",
+        "value": 1,
         "extra": {
           "code": "Guayaquil"
         }

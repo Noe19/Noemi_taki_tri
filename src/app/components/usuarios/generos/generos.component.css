@@ -3,9 +3,6 @@
     width: 100%;
     height: auto;
 
-
-
-
 }
 .col1{
     margin-left: 25%;
@@ -27,7 +24,7 @@
     padding-left: 7%;
     padding-right: 5%;
    
-
+  
     
    
 }
@@ -61,8 +58,15 @@
 
 }
 .btn{
+    justify-content: end;
     margin: 2px;
     font-size: 80% ;     
+}
+.col-3{
+  padding-left: 3%;
+}
+.col-2{
+    padding-left: 5%;  
 }
 .imagenes_generos{
     width: 200px;

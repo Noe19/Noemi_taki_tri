@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -13,6 +13,8 @@ import { ImagenesAlbumes } from '../create-albumes/imagen_Albumes.modal';
   styleUrls: ['./show-albumes.component.css']
 })
 export class ShowAlbumesComponent implements OnInit {
+  // componente padre
+
   public usuario: any;
   Albumes:Albumes[]=[];
   imagenes:ImagenesAlbumes[]=[];
@@ -94,6 +96,17 @@ export class ShowAlbumesComponent implements OnInit {
     this.Albumesforms.reset();
     this.imgURL="../assets/imagenes/camera.png";
   }
- 
+     // paginacion de paginas
+     siguiente_pagina_album(){
+      this.page+=6;
+     }
+  
+     atras_pagina_album(){
+       if(this.page>0){
+        this.page-=6;
+       }
+      
+  
+     }
 
 }

@@ -112,9 +112,9 @@ getErrorMessage_contrasena() {
          console.log('permiso_artista_login:',this.perfilResf.rol)
 // dependiendo si es artista o es Administrador para que le redirija al dashboard correspondiente.
         if(this.roles_admin=="artista" /*&&  user?.user?.emailVerified==true*/ ){
-          this.router.navigate(["/dashboard-user"]);
+          this.router.navigate(["/show-artist/{{usuario}}"]);
         }else if(this.roles_admin=="administrador"  ){
-          this.router.navigate(['/dashboard']); 
+          this.router.navigate(['/administrador']); 
         }
         
               

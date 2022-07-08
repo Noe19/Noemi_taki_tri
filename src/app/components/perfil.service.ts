@@ -7,6 +7,8 @@ import { RouterLink } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
 import { map } from 'rxjs/operators';
 import { Perfil } from './dashboard/perfil.model';
+import { Generos } from './usuarios/generos/generos.modal';
+import { datos } from './usuarios/dashboard-user/datos.modal';
 interface Country {
   name: string;
   value: number;
@@ -15,10 +17,17 @@ interface Country {
   providedIn: 'root'
 })
 export class PerfilService {
-
+public datos :Generos[];
   constructor(private angularfirestore :AngularFirestore,private storage:AngularFireStorage) { }
 public usuario:any;
 public url:any;
+
+// cantidad de generos
+public number_generos:string=localStorage.getItem('cantidad_de_generos');;
+public num:number;
+
+
+
 
 
   //metodos del crud
@@ -33,21 +42,6 @@ public url:any;
    
  return this.angularfirestore.collection("artist").doc(id).valueChanges()
   }
- // crear un nuevo perfil
- /*
-  createPost(perfil:Perfil){
-    return new Promise<any>((resolve,reject) =>{
-      this.angularfirestore.collection("artist").add(perfil).then((response)=>{
-        console.log(response)
-      },(error)=>{
-        reject(error.message)
-      })
-    })
-
-  }*/
-
-
-
 
 //actualizar
   updatePost(perfil:Perfil,id){
@@ -61,8 +55,14 @@ public url:any;
   }
 
  
-
+  getPostgeneros_total (){
     
+    this.usuario = localStorage.getItem('usuario')
+   
+    return this.angularfirestore.collection("generos",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
+  
+    }
+
 
 
 
@@ -73,6 +73,7 @@ public url:any;
   }
 // datos  barras 
 private data: Country[] = [
+
   {
     "name": "Artista",
     "value": 15
@@ -92,27 +93,19 @@ private data: Country[] = [
 ];
 
 // datos
-private dataGeneros: Country[] = [
+
+public dataGeneros: Country[] = [
+
   {
-    "name": "San Juanito",
-    "value": 15
+    "name": "Generos",
+    "value":parseInt(this.number_generos)
   },
-  {
-    "name": "Bachata",
-    "value": 20
-  },
-  {
-    "name": "Pasillo",
-    "value": 29
-  },
-    {
-    "name": "Pop",
-    "value": 36
-  }
+  
 ];
 
 
 get countryData() {
+ 
   return this.data;
 }
 

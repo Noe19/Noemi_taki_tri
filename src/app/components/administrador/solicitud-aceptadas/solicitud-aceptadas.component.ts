@@ -40,7 +40,7 @@ export class SolicitudAceptadasComponent implements OnInit {
           };
         });
         this.arreglo=this.Administrador.length;
-        localStorage.setItem('cantidad_aprobadas',this.arreglo);
+     //   localStorage.setItem('cantidad_aprobadas',this.arreglo);
       });
       
     } catch (error) {

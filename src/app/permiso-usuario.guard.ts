@@ -33,10 +33,12 @@ private afAuth : AngularFireAuth,private router : Router
     
 // Se valida se es artista o administrador para que pueda navegar en las diferentes paginas
      if(this.roles_=="artista" ){
-       this.router.navigate(["/dashboard-user"]);
+      this.usuario = localStorage.getItem('usuario');
+       this.router.navigate(["/show-artist/{{usuario}}"]);
+      
        return false;
      }else if(this.roles_=="administrador"  ){
-       this.router.navigate(['/dashboard']); 
+       this.router.navigate(['/administrador']); 
        return false;
      }
     

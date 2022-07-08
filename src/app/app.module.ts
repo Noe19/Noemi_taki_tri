@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
 import { AuthService } from './auth/service/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,9 +24,7 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
 //login
-
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { MisionVisionComponent } from './pages/mision-vision/mision-vision.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
@@ -37,9 +33,7 @@ import { ShowComponent } from './components/perfil/show/show.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { EditComponent } from './components/perfil/edit/edit.component';
-
 import { SidenavComponent } from './sidenav/sidenav.component';
-
 import { AdministradorComponent } from './components/administrador/administrador.component';
 import { SolicitudComponent } from './components/usuarios/solicitud/solicitud.component';
 import { GenerosComponent } from './components/usuarios/generos/generos.component';
@@ -74,10 +68,6 @@ import { PipeGenerosPipe } from './components/usuarios/generos/pipe-generos.pipe
 import { FiltrarAlbumesPipe } from './components/usuarios/Albumes/filtrar-albumes.pipe';
 import { FiltrarCancionesPipe } from './components/usuarios/canciones/filtrar-canciones.pipe';
 import { CancionPorAlbumComponent } from './components/usuarios/canciones/cancion-por-album/cancion-por-album.component';
-
-
-
-
 
 
 
@@ -155,16 +145,7 @@ import { CancionPorAlbumComponent } from './components/usuarios/canciones/cancio
     MatFormFieldModule,
     MatIconModule,
     NgxChartsModule,
-   
-    
-    
-    
 
-    
- 
-    
-  
-  
   ],
   providers: [],
   bootstrap: [AppComponent]

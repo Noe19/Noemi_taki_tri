@@ -50,29 +50,54 @@ export class GenerosService {
   }
 
   getPostgeneros (){
+    
     this.usuario = localStorage.getItem('usuario')
    
     return this.db.collection("generos",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
   
     }
-    
 
-    getodosgeneros(refi){
+    getodosgeneros(){
+      this.usuario = localStorage.getItem('usuario')
+   
+    return this.db.collection("generos",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges() 
+    }
+    
+/*
+   getodosgeneros(){
       this.usuario = localStorage.getItem('usuario')
    console.log('path',refi)
-    console.log( this.db.collection("generos",ref => ref.where('referencia', '==', refi)).snapshotChanges() )
+    console.log( this.db.collection("generos",ref => ref.where('Genero_nuevo', '==', refi)).snapshotChanges() )
     }
-
+*/
     getgenerosbyId(id){
    
       return this.db.collection("generos").doc(id).valueChanges()
        }
+// verificar 
+    getVerificarGenero(genero_verificar){
+      this.usuario = localStorage.getItem('usuario')
+    //  console.log('genen',genero_verificar)
+      return this.db.collection("generos",ref => ref.where('Genero_nuevo', '==', genero_verificar).where('artista_id', '==', this.usuario) ).snapshotChanges()
+    
 
+    }
       
-
+   
 
 
   cargarimagenesGeneroFirebase(imagenes: ImagenesGeneros[], generos: Generos) {
+ 
+  if(imagenes.length==0){
+    Swal.fire({
+      icon: 'error',
+      title: 'Genero no creado, por favor ingrese todos los datos o el género ya existe ',
+      confirmButtonText: 'Aceptar',
+      allowOutsideClick: false,
+
+    })
+  }
+  
     const storage = getStorage();
     for (const item of imagenes) {
       let generosimg = generos.Genero_nuevo;
@@ -82,7 +107,7 @@ export class GenerosService {
      
       const path=`${this.CarpetaImagenes}/${this.usuario}/${generos.Genero_nuevo}`;
    
-      this.getodosgeneros(path)
+  //    this.getodosgeneros(generos.Genero_nuevo)
 
       
 
@@ -140,9 +165,7 @@ export class GenerosService {
   }
   }
 
-  todos_generos(){
-
-  }  
+    
   async guadarImagenGeneros(generos: { Genero_nuevo: string, imagenUrl: string, artista_id: string,referencia:string,id:string}): Promise<any> {
   
     try {
@@ -158,6 +181,7 @@ export class GenerosService {
         if (result.value) {
           //this.router.navigate(['/generos']);
           console.log(true, 'si funcioa');
+          console.log('creacion de generos ',generos.Genero_nuevo==generos.Genero_nuevo)
 
         }
 
@@ -218,7 +242,9 @@ export class GenerosService {
 
 
     create(albumImg: Generos, urlImg,referencia1) {
-      const id = this.db.createId();
+     
+     
+     /* const id = this.db.createId();
       
       this.speakerCollection.doc(id).set({ 
         id,
@@ -229,7 +255,7 @@ export class GenerosService {
        
         
       });
-      
+      */
     }add(generosImg: Generos, _file,isChanged) {
       console.log('cambio',isChanged)
       if (isChanged){

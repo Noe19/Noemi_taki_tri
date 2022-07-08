@@ -50,12 +50,12 @@ export class SolicitudRechazadasComponent implements OnInit {
 
 // paginador
   siguiente_pagina_solicitud_rechazadas(){
-    this.page+=4;
+    this.page+=3;
    }
   
    atras_pagina_Solicitud_rechazas(){
      if(this.page>0){
-      this.page-=4;
+      this.page-=3;
      }
     }
 

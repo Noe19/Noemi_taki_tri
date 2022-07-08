@@ -41,19 +41,19 @@
   
     <div class="input-group mb-5">
       <label for="text" class="input_label_edit">Álbum</label>
-      <input type="text" class="form-control" placeholder="Album" required formControlName="name" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="albumes_nuevo_no_valido" >    
+      <input type="text" class="form-control" placeholder="Album" required formControlName="name" ngModel pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" [class.red]="albumes_nuevo_no_valido" >    
       <label class="error" *ngIf="albumes_nuevo_no_valido"  >{{albumesmio()}}</label> 
       <br>
     </div>
     <div class="input-group mb-5">
       <label for="text" class="input_label_edit">Autor</label>
-      <input type="text" class="form-control" placeholder="Autor" required formControlName="author" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="autor_nuevo_no_valido" >
+      <input type="text" class="form-control" placeholder="Autor" required formControlName="author" ngModel pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" [class.red]="autor_nuevo_no_valido" >
       <label class="error" *ngIf="autor_nuevo_no_valido"  >{{autormio()}}</label> 
       <br>
     </div>
     <div class="input-group mb-5">
       <label for="text" class="input_label_edit">Año</label>
-      <input type="text" class="form-control" placeholder="Año" required formControlName="year" ngModel pattern="[a-zA-Z-ñ ]*" [class.red]="anio_nuevo_no_valido">
+      <input type="text" class="form-control" placeholder="Año" required formControlName="year" ngModel pattern="^0[1-9]|[1-9]\d$" [class.red]="anio_nuevo_no_valido">
       <label class="error" *ngIf="anio_nuevo_no_valido"  >{{aniomio()}}</label> 
       <br>
     </div>

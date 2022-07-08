@@ -30,7 +30,7 @@ export class CreateAlbumesComponent implements OnInit {
   
       name:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
       author:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
-      year:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]] ,
+      year:['',[Validators.required,Validators.pattern(/[0-9].*/),Validators.maxLength(4),Validators.minLength(4)]] ,
       
     })
   }
@@ -116,7 +116,7 @@ aniomio() {
     return 'El campo es obligatorio';
   }
  
-  return this.Albumesforms.get('year')? 'El campo no permite números' : '';  
+  return this.Albumesforms.get('year')? 'El campo no permite letras' : '';  
 }
 
 get anio_nuevo_no_valido(){

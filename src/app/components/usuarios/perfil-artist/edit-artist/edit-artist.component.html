@@ -8,7 +8,7 @@
 <div>
         <h2>Editar Perfil</h2>
     <p>
-        Este módulo te permite editar el perfil artista
+        Este módulo te permite editar el perfil Artista
         
    </p>
    <hr>
@@ -34,17 +34,17 @@
    
     <div class="mb-3">
         <label class="form-label">Nombre</label>
-        <input formControlName="name" type="text" class="form-control" required value="name"  ngModel pattern="[a-zA-Z-ñ ]*"  [class.red]="nombre_no_valido">
+        <input formControlName="name" type="text" class="form-control" required value="name"  ngModel pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"  [class.red]="nombre_no_valido">
         <label class="error"  *ngIf="nombre_no_valido" >{{getErrorMessage_correo()}}</label>      
     </div>
     <div class="mb-3">
         <label class="form-label">Apellido</label>
-        <input formControlName="apellido" type="text" class="form-control" required  ngModel pattern="[a-zA-Z ]*" [class.red]="apellido_no_valido">  
+        <input formControlName="apellido" type="text" class="form-control" required  ngModel pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" [class.red]="apellido_no_valido">  
         <label class="error"  *ngIf="apellido_no_valido" >{{getErrorMessage_apellido()}}</label>       
     </div>
     <div class="mb-3">
         <label class="form-label">Alias</label>
-        <input formControlName="nickname" type="text" class="form-control" required  ngModel pattern="[a-zA-Z ]*" [class.red]="alias_no_valido">  
+        <input formControlName="nickname" type="text" class="form-control" required  ngModel pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" [class.red]="alias_no_valido">  
         <label class="error"  *ngIf="alias_no_valido" >{{getErrorMessage_Alias()}}</label>        
     </div>
    

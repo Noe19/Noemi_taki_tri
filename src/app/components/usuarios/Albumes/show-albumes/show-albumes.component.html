@@ -1,3 +1,4 @@
+<!--  -->
 <div class="Completo_show_albumes">
   <div class="menu">
     <app-sidenav-user></app-sidenav-user>
@@ -7,7 +8,7 @@
   <div class="container1">
     
     <h2>Todos tus Álbumes </h2>
-      <p>Este módulo te permite visualizar todos los Álbumes creados 
+      <p>Este módulo te permite visualizar todos los  álbumes creados 
     <hr>
     <div class="container">
       <div class="row">
@@ -18,7 +19,7 @@
           
         </div>
         <div class="col1 col-lg-3">
-          <button  routerLink="/dashboard-user" type="submit" class=" regesar btn_regresar btn-primary w-100">Regresar</button>
+          <button  routerLink="/generos" type="submit" class=" regesar btn_regresar btn-primary w-100">Regresar</button>
         </div>
       </div>
     </div>
@@ -41,11 +42,12 @@
           
        
           
-          <a routerLink="/crear-canciones/{{albumes.id}}" class="btn btn-success w-80"> Crear Canción</a>
-          <a routerLink="/Canciones-Albumes/{{albumes.id}}" class="btn btn-secondary w-80"> Ver Canciones</a>
-          <button routerLink="/edit-Albumes/{{albumes.id}}" class="gg btn btn-primary " >Editar</button>
-          <button type="button" class=" gg btn btn-danger"
-          (click)="eliminar_genero(albumes)">Eliminar</button>
+          <a routerLink="/crear-canciones/{{albumes.id}}" class="btn btn-success w-98"> Crear Canción</a>
+          <a routerLink="/Canciones-Albumes/{{albumes.id}}" class="btn btn-secondary w-98"> Ver Canciones</a>
+          <button routerLink="/edit-Albumes/{{albumes.id}}" class="gg btn btn-primary  " >Editar</button>
+         
+         <!--<button type="button" class=" gg btn btn-danger"
+          (click)="eliminar_genero(albumes)">Eliminar</button> --> 
   
   
   
@@ -60,7 +62,27 @@
   
   </div>
   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+       
+        <button class="btn btn-secondary" (click)="atras_pagina_album()" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+        </svg></button>
+      </div>
+      <div class="col-7">
+       
+      </div>
+      <div class="col-2">
+        <button class="btn btn-secondary" (click)="siguiente_pagina_album() " [disabled]="( todoslosalbumes | filtrarAlbumes:page:search).length<=0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+          <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+        </svg></button> 
+  
+      </div>
+    </div>
   </div>
+  </div>
+  
   </div>
 </div>
 

@@ -21,7 +21,7 @@
           
         </div>
         <div class="col1 col-lg-3">
-          <button  routerLink="/dashboard-user" type="submit" class=" regesar btn_regresar btn-primary w-100">Regresar</button>
+          <button  routerLink="/show-artist/{{usuario}}" type="submit" class=" regesar btn_regresar btn-primary w-100">Regresar</button>
         </div>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <div class="form_soli">
       <div class="mb-3">
           <label class="form-label">Nombre Artístico</label>
-          <input formControlName="nombre_artistico" type="text" class="form-control" required placeholder="Nombre Artístico" ngModel pattern="[a-zA-Z-ñ ]*"  [class.red]="nombreArtistico_no_valido">
+          <input formControlName="nombre_artistico" type="text" class="form-control" required placeholder="Nombre Artístico" ngModel pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$"  [class.red]="nombreArtistico_no_valido">
           <label class="error"  *ngIf="nombreArtistico_no_valido" >{{getErrorMessage_nombre()}}</label>  
         </div>
       <div class="mb-3">    
@@ -73,7 +73,7 @@
    
   <h4>Mensajes de estado de Solicitud</h4> 
   <p>
-    En este módulo puedes visualizar los mensajes de el estado de tu solicitud
+    En este módulo te permite visualizar  los mensajes de el estado de tu solicitud
   <hr>
   <input type="text" class="form-control mb-2" placeholder="Buscar por mensaje" #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
          
@@ -100,8 +100,12 @@
       </div>
      
     </div>
-    <button class="btn btn-primary" (click)="atras_pagina_mensaje_solicitud()" >Anterior</button>
-    <button class="btn btn-primary" (click)="siguiente_pagina_mensaje_solicitud() " [disabled]="(MensajeSolicitud  | filtro:page:search).length<1">Siguiente</button> 
+    <button class="btn btn-secondary" (click)="atras_pagina_mensaje_solicitud()" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg></button>
+    <button class="btn btn-secondary" (click)="siguiente_pagina_mensaje_solicitud() " [disabled]="(MensajeSolicitud  | filtro:page:search).length<1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+    </svg></button> 
    
   </div>
   

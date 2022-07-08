@@ -27,7 +27,8 @@ public rol_admin:any;
 public cantidad_aprobadas:any;
 public cantidad_de_solicitud:any;
 public cantidad_solicitud_rechazadas:any;
- 
+public permiso_artista:any;
+public coincidencia_encontrada:any;
 constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router) { 
   this.fotoperfil = this.fb.group({   
     imagen:[''],
@@ -57,9 +58,11 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
 
    
   this.rol_admin = localStorage.getItem('roles');
-  this.cantidad_aprobadas=localStorage.getItem('cantidad_aprobadas');
-  this.cantidad_de_solicitud=localStorage.getItem('cantidad');
-  this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
+  //this.cantidad_aprobadas=localStorage.getItem('cantidad_aprobadas');
+  //this.cantidad_de_solicitud=localStorage.getItem('cantidad');
+  //this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
+  this.permiso_artista=localStorage.getItem('permiso');
+  this.coincidencia_encontrada=localStorage.getItem('verificar_generos')
 }
 
   async salir(){
@@ -73,6 +76,7 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
    console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
    console.log('usuario que salio',this.usuario)
    console.log('rol',this.rol_admin)
+   
    localStorage.clear();
   }
 

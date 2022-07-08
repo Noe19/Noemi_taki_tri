@@ -7,10 +7,10 @@ export class FiltrarAlbumesPipe implements PipeTransform {
 
   transform(albumes: Albumes[],page:number=0,search:string=''): Albumes[] {
     if(search.length===0){
-      return albumes.slice(page,page+5);
+      return albumes.slice(page,page+6);
     }
     const filtradoMensaje = albumes.filter(mensaje_estad0 => mensaje_estad0.name.includes(search));
-   return filtradoMensaje.slice(page,page+5);
+   return filtradoMensaje.slice(page,page+6);
   }
   }
 

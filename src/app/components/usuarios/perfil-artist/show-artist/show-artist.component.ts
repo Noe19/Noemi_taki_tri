@@ -6,6 +6,8 @@ import { FormGroup,FormBuilder, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { url } from 'inspector';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AdministradorService } from 'src/app/components/administrador/administrador.service';
+import { Administrador } from 'src/app/components/administrador/administrador.model';
 
 
 @Component({
@@ -22,13 +24,13 @@ public url:any;
 public roles_admin:any;
 // variable de administrador 
 public admin : any;
-
+Administrador: Administrador[];
  perfilResf:any;
  public editForm: FormGroup;
-
+ public arreglos:any;
 constructor(private perfilService:PerfilService,public formBuilder:FormBuilder,
     private activeRoute: ActivatedRoute,private angularfirestore :AngularFirestore,
-    private router: Router) { 
+    private router: Router,private Aceptar:AdministradorService) { 
 
       this.ediForm = this.formBuilder.group({
         name: [''],
@@ -43,7 +45,19 @@ constructor(private perfilService:PerfilService,public formBuilder:FormBuilder,
 
   ngOnInit(): void {
   
-    
+    this.Aceptar.getPost_artistas_guard_aceptados().subscribe((res) =>{
+      this.Administrador = res.map((e) =>{
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as Administrador)
+        };
+      });
+
+      this.arreglos=this.Administrador.length;
+      localStorage.setItem('permiso',this.arreglos) 
+      //console.log('guardian',this.permiso_artista=localStorage.getItem('permiso'))
+     
+    } );
     
    // this.usuario = localStorage.getItem('usuario')
    

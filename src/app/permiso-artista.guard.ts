@@ -20,6 +20,7 @@ export class PermisoArtistaGuard implements CanActivate {
   public permiso:any;
   public permiso_artista_rol:any;
   perfilResf:any;
+  public permiso_artista:any;
   public arreglos:any;
   public rol_artista="artist";
   Administrador: Administrador[]
@@ -71,7 +72,7 @@ this.permiso_artista_rol=localStorage.getItem('artista_rol');
   }
   */
 
-
+////////////////////////////////////////////////////////////////////////////////////
     this.Aceptar.getPost_artistas_guard_aceptados().subscribe((res) =>{
       this.Administrador = res.map((e) =>{
         return {
@@ -81,12 +82,14 @@ this.permiso_artista_rol=localStorage.getItem('artista_rol');
       });
 
       this.arreglos=this.Administrador.length;
-      //para saber si exiten
+      localStorage.setItem('permiso',this.arreglos) 
+      console.log('guardian',this.permiso_artista=localStorage.getItem('permiso'))
+
      
      
       
     } );
-
+////////////////////////////////////////////////////////////////////////////////////////
    // this.valor_aceptacion=localStorage.getItem('artista_aceptado');
   //  console.log('valor',this.valor_aceptacion)
  /*   
@@ -108,9 +111,9 @@ this.permiso_artista_rol=localStorage.getItem('artista_rol');
       return false
     }
 */
-
+this.permiso_artista=localStorage.getItem('permiso')
  
-if(this.arreglos>0){
+if(this.permiso_artista>0){
      
  
 

@@ -6,6 +6,7 @@ import { Generos } from './generos.modal';
 import { GenerosService } from './generos.service';
 import { AlbumesService } from '../Albumes/albumes.service';
 import Swal from 'sweetalert2';
+import { Albumes } from '../Albumes/create-albumes/albumes.modal';
 @Component({
   selector: 'app-generos',
   templateUrl: './generos.component.html',
@@ -18,6 +19,9 @@ export class GenerosComponent implements OnInit {
   imagenes:ImagenesGeneros[]=[];
  imgURL="../assets/imagenes/camera.png";
   file:any;
+
+  public v:any;
+
  
   //generos:Generos[];
   public imagen:any;
@@ -26,12 +30,17 @@ export class GenerosComponent implements OnInit {
  public page:number=0;
  public search:string="";
  
-  
   public url:any;
-  
+  public data:Generos[]
   public generosforms : FormGroup;
+  public cuantos_generos_tengo:any;
+  public mio:any;
+  //Albumes
+  public Albumesforms : FormGroup;
+  todoslosalbumes:Albumes[];
   
-  
+  //variable para controlar el storge
+  private control_genero:any;
 
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService,private albumService:AlbumesService) {
     this.generosforms=this.fb.group({
@@ -43,28 +52,38 @@ export class GenerosComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.GenerosImg.getPostgeneros().subscribe((res) =>{
-      this.imagen=res;
-      
-      this.todoslosgeneros = res.map((e) =>{
-        this.url=this.todoslosgeneros
-       // console.log('url_generos',this.url)
-        return {
-          
-          id: e.payload.doc.id,      
-          ...(e.payload.doc.data() as Generos)
-          
-        };
+    this.usuario = localStorage.getItem('usuario')
+      this.GenerosImg.getPostgeneros().subscribe((res) =>{
+        this.imagen=res;
        
+        this.todoslosgeneros = res.map((e) =>{
+      
+          this.url=this.todoslosgeneros
+         
+      
+          return {
+            
+            id: e.payload.doc.id,      
+            ...(e.payload.doc.data() as Generos)
+            
+          };
+         
+         
+        });
+      
+     //  localStorage.setItem('cuantos',this.cuantos_generos_tengo)
+   
        
       });
     
-     
-     
-    });
-  }
-  
 
+  }
+
+public todos(){
+  this.data= this.todoslosgeneros
+  console.log('todos los datos',this.data)
+  
+}
   // // buscador 
    onSearchMensaje(search:string){
     this.page=0;
@@ -83,7 +102,8 @@ export class GenerosComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Estoy seguro,eliminar!'
     }).then((result) => {
-      if (result.isConfirmed) {
+      console.log('cuantos generos tengo',this.todoslosgeneros.length)
+      if (result.isConfirmed ) {
         
         Swal.fire(
           'Eliminado!',
@@ -107,7 +127,18 @@ export class GenerosComponent implements OnInit {
     console.log('genero,pasado',Generos.id)
 
   }
- 
+    // paginacion de paginas
+    siguiente_pagina_mensaje_solicitud(){
+      this.page+=6;
+     }
+  
+     atras_pagina_mensaje_solicitud(){
+       if(this.page>0){
+        this.page-=6;
+       }
+      
+  
+     }
 
 
 }
