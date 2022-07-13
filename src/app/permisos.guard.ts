@@ -23,7 +23,7 @@ private afAuth : AngularFireAuth,private router : Router
      // estes es para saber si no esta autenticado se redirija en autentificacion. en el register
      if(!isAuthenticated ){
         
-        this.router.navigate(['register']);
+        this.router.navigate(['home']);
       }
 
       return isAuthenticated  ;

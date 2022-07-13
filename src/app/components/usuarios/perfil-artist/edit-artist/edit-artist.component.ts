@@ -95,7 +95,8 @@ ngOnInit(): void {
         
       });
     }
-    this.router.navigate(['/dashboard-user']); 
+    this.usuario = localStorage.getItem('usuario')
+    this.router.navigate(['/show-artist/{{usuario}}']); 
    
   }
 

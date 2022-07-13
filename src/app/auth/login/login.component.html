@@ -34,7 +34,7 @@
    
    
     <div class="card_login p-4 ">
-      <form [formGroup]="loginForm"  (ngSubmit)="onLogin()">       
+      <form [formGroup]="loginForm"  (ngSubmit)="onLogin() ">       
         <input maxlength="50"   class="form-control m-2" type="email" placeholder="Correo electrónico" formControlName="email" name="email" required value="email" [class.green]="correo" [class.red]="correo_no_valido">
         <label class="error_mensaje"  id="email" [class.red]="correo_no_valido" *ngIf="correo_no_valido">{{getErrorMessage_correo()}}</label>
       

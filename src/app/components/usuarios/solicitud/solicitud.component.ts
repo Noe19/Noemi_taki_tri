@@ -18,6 +18,7 @@ export class SolicitudComponent   {
   public hora:any;
   public search:string="";
   url:any; 
+  public value:any;
   solicitud:Solicitud[]=[];
   MensajeSolicitud:MensajeSolicitud[]=[];
   document:DocumentosSolicitud[]=[];
@@ -25,7 +26,7 @@ export class SolicitudComponent   {
   file:any;
   Administrador: Administrador[]
   
-
+public cuantos_existen:number;
 
   public solicitudlForm:FormGroup;
   constructor(private solicitudService:SolicitudService,public formBuilder:FormBuilder,
@@ -49,7 +50,8 @@ export class SolicitudComponent   {
         
         this.MensajeSolicitud = res.map((e) =>{
         
-        
+     this.cuantos_existen =this.MensajeSolicitud.length
+   
           return {
           
             id: e.payload.doc.id,
@@ -67,12 +69,7 @@ export class SolicitudComponent   {
     
   
   }
-/*
-  async onSubmit() {
-    this.solicitudService.createPost(this.solicitudlForm.value)
-    this.router.navigate(['/dashboard-user'])
-  }
-  */
+    
   selectChange(event:any){
        //traer la imagens
     //console.log(event.target.files);
@@ -114,9 +111,9 @@ export class SolicitudComponent   {
        
      };
      console.log('cargar',cargar)
-    
+     this.usuario = localStorage.getItem('usuario')
      this.solicitudService.cargardocumentosGeneroFirebase(this.document,cargar);
-     this.router.navigate(['/dashboard-user']);
+     this.router.navigate(['/show-artist/{{usuario}}']);
      console.log(this.solicitudlForm.value,'url',cargar)
      console.log(this.solicitudlForm.value.nacionalidad)
     

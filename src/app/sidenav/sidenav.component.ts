@@ -71,14 +71,16 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
 async salir(){
   //limpiando de la cache
 // localStorage.clear();
- localStorage.clear();
+ 
  
  //this.auth.logout();
  await this.afAuth.signOut();
- this.router.navigate(['/register']);   
+ this.router.navigate(['/home']);   
  console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
  console.log('usuario que salio',this.usuario)
  console.log('rol',this.rol_admin)
-
+ localStorage.clear();
 }
+
+refresh(): void { window.location.reload(); }
 }

@@ -50,6 +50,7 @@ if(this.arreglos>0){
      
 
   }
+  /*
   Swal.fire({
     icon: 'warning',
     title: 'Envia solicitud para ser parte de taki-tri',
@@ -57,7 +58,7 @@ if(this.arreglos>0){
     allowOutsideClick: false,
 
   })
- // this.router.navigate(['/solicitud'])
+ */
   return true; 
      
      

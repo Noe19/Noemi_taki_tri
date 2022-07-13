@@ -74,6 +74,7 @@ getErrorMessage_contrasena() {
 }
 //iniciar sesion 
   async onLogin(){
+
     console.log('form->',this.loginForm.value)
     console.log('id',this.loginForm.get.name)
     const {email,password} = this.loginForm.value;
@@ -81,43 +82,40 @@ getErrorMessage_contrasena() {
       const user:any = await this.authSvc.login(email,password);
       if(user ){ 
         this.verificado = user?.user?.emailVerified
-        console.log('usurio_verificado',this.verificado)
-        console.log('usurio_unico',user?.user?.email)
+        //console.log('usurio_verificado',this.verificado)
+       // console.log('usurio_unico',user?.user?.email)
         // usuario de forma global, solo vale hacer una sola (setItem)-> 
         localStorage.setItem('usuario', user?.user?.uid);
-       // localStorage.setItem('verificacion',user?.user?.emailVerified);
-        //valor de verifivacion
-       // this.router.navigate(['/dashboard']);
-
-
-
-        /*
-        para que si es Administrador nos diriga a dashboard del Administrador
-        if(user?.user?.uid=='FE1Uu1rE6NWRyCaNPIU81zNhSst1'){
-          this.router.navigate(['/dashboard']);
-        }else{
-          this.router.navigate(["/dashboard-user"]); 
-        }
-         */ 
-       // this.router.navigate(['/dashboard']);  
-       // para saber que Rol es 
+      
        this.usuario = localStorage.getItem('usuario')
         this.authSvc.getPostbyId(this.usuario).subscribe( res =>{ 
         this.perfilResf = res ;
         // Genero la variable global para saber que usuario soy 
         //localStorage.removeItem('roles');
+       
          localStorage.setItem('roles',this.perfilResf.rol) 
          this.roles_admin=localStorage.getItem('roles')
          
-         console.log('permiso_artista_login:',this.perfilResf.rol)
+        // console.log('permiso_artista_login:',this.perfilResf.rol)
 // dependiendo si es artista o es Administrador para que le redirija al dashboard correspondiente.
-        if(this.roles_admin=="artista" /*&&  user?.user?.emailVerified==true*/ ){
+         switch(this.roles_admin){
+          case "artista":{
+            this.router.navigate(["/show-artist/{{usuario}}"]);
+            break; 
+          }
+
+          case "administrador":{
+            this.router.navigate(['/administrador']); 
+          }
+         }
+
+       /* if(this.roles_admin=="artista"  ){
           this.router.navigate(["/show-artist/{{usuario}}"]);
         }else if(this.roles_admin=="administrador"  ){
           this.router.navigate(['/administrador']); 
         }
         
-              
+        */      
       })       
        // Termina el rol 
       } else{
@@ -134,10 +132,13 @@ getErrorMessage_contrasena() {
      
       
     }
+
   }
  
 // navegacion
 async ngOnInit(){
+  
+ 
   console.log ('Navar');
   this.user = await this.authSvc.getCurrentUser();
   console.log('usuario_devuelto',this.user)
@@ -153,24 +154,7 @@ async ngOnInit(){
 
    
 }
-/*
- salir(){
-   //limpiando de la cache
-  localStorage.clear();
-       
-  console.log('saliendo_inicio' ) ;
-  return this.afAuth.signOut();
- 
-  
-}
-*/
-/*
-onLogin(){ 
- // console.log('Inicio_sesion',this.loginForm.value);
- const {email,password}=this.loginForm.value;
- this.authSvc.login(email,password)
 
-}*/
 
 
 

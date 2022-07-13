@@ -41,7 +41,7 @@ export class EditAlbumesComponent implements OnInit {
       this.albumForm = this.formBuilder.group({
         name: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         imagen:[''],
-        year:['',[Validators.required,Validators.pattern(/[0-9].*/)]],
+        year:['',[Validators.required,Validators.pattern(/[0-9].*/),Validators.maxLength(4),Validators.minLength(4)]],
         author:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         id:[''],
         referencia:['']

@@ -34,7 +34,7 @@
        
         <div class="input-group mb-3">
           <label >Nombre de la Canción</label>
-          <input type="text" class="form-control" placeholder="Nombre canción" required formControlName="song_nombre" ngModel pattern="^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$" [class.red]="canciones_nuevo_no_valido">
+          <input type="text" class="form-control" placeholder="Nombre canción" required formControlName="song_nombre" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" [class.red]="canciones_nuevo_no_valido">
           <label class="error" *ngIf="canciones_nuevo_no_valido"  >{{cancionmio()}}</label> 
           <button  class="btn btn-primary w-100" [disabled]="!cancionesforms.valid"   type="submit">Crear</button>
        

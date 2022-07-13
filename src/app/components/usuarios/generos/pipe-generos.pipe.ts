@@ -5,13 +5,13 @@ import { Generos } from './generos.modal';
   name: 'pipeGeneros'
 })
 export class PipeGenerosPipe implements PipeTransform {
-
+public page:number=0;
   transform(generos: Generos[],page:number=0,search:string=''): Generos[] {
     if(search.length===0){
       return generos.slice(page,page+6);
     }
-    const filtradoMensaje = generos.filter(mensaje_estad0 => mensaje_estad0.Genero_nuevo.includes(search));
-   return filtradoMensaje.slice(page,page+6);
+    const filtrageneros = generos.filter(todos_generos => todos_generos.Genero_nuevo.includes(search));
+   return filtrageneros.slice(page,page+6);
   }
 
 }

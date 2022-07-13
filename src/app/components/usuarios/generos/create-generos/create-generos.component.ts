@@ -50,14 +50,10 @@ export class CreateGenerosComponent implements OnInit {
  public page:number=0;
  public search:string="";
  //varible que tiene el valor de la coincidencia
- public coincidencia:any;
- public ultimoDato:any;
- // variable que dentra los datos
- public coincidencia_encontrada:any;
-public nombre:any;
-  public data:Generos[]
+ public genreNames: string[] = [];
+ Generos:Generos[]= [];
   // array de todos los generos 
-  public nuevoaaray:any;
+
 
   public Genero_nuevo_veri:any;
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService) {
@@ -72,6 +68,18 @@ public nombre:any;
 
  
   ngOnInit(): void {
+    this.GenerosImg.getPostgeneros().subscribe((res) =>{
+      this.Generos = res.map((e) =>{   
+        return {
+          
+          id: e.payload.doc.id,      
+          ...(e.payload.doc.data() as Generos)
+          
+        };
+      });
+     
+      
+    });
   
     
   }
@@ -102,51 +110,38 @@ public nombre:any;
 
   }
   crear_generos(){
-    //this.GenerosImg.add(this.generosforms.value,this._file)
-     // los datos String del formulario
-     
-     let  cargar:any={
-       Genero_nuevo:this.generosforms.value.Genero_nuevo,
-      
-       
+// validacion de generos 
+    for (let i = 0; i < this.Generos.length; i++) {
+      this.genreNames.push(this.Generos[i].Genero_nuevo)
+    }
+    console.log("generos completos: ", this.Generos);
+    console.log("generos nopmbres: ", this.genreNames);
+    let incluyeGenero = this.genreNames.includes(this.generosforms.get('Genero_nuevo').value);
+    if(incluyeGenero){
+
+        Swal.fire({
+    position: 'center',
+    icon: 'error',
+    title: 'Genero ya existe',
+    showConfirmButton: false,
+    timer: 1500
+  })
+    }
+    
+    else{
+
+      let  cargar:any={
+        Genero_nuevo:this.generosforms.value.Genero_nuevo,
+      };
  
-     };
-     ///// para traer la informacion de generos///////////////
-
-     this.GenerosImg.getPostgeneros().subscribe((res) =>{
-    
-     
-      this.todoslosgeneros = res.map((e) =>{
-    
-        
-       
-    
-        return {
-          
-          id: e.payload.doc.id,      
-          ...(e.payload.doc.data() as Generos)
-          
-        };
-       
-       
-
-      });
-
-      this.todoslosgeneros.forEach(element => {
-        console.log('todos los elementos',element.Genero_nuevo)
-        
-      });
-    
-
  
+   
+      this.GenerosImg.cargarimagenesGeneroFirebase(this.imagenes,cargar);
+      this.router.navigate(['/generos']);
+  }
      
-    });
-
-
-     this.GenerosImg.cargarimagenesGeneroFirebase(this.imagenes,cargar);
-     this.router.navigate(['/generos']);
-    // console.log(this.generosforms.value,'url',cargar)
-    // console.log(this.generosforms.value.Genero_nuevo)
+     
+   
     
    }
 

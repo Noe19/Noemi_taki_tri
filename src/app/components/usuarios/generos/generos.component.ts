@@ -19,6 +19,7 @@ export class GenerosComponent implements OnInit {
   imagenes:ImagenesGeneros[]=[];
  imgURL="../assets/imagenes/camera.png";
   file:any;
+  public length:number;
 
   public v:any;
 

@@ -4,7 +4,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, CanActivate, GuardsCheckStart, 
 import { AnyNaptrRecord } from 'dns';
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
-import { Z_FULL_FLUSH } from 'zlib';
+
 import { Administrador } from './components/administrador/administrador.model';
 import { AdministradorService } from './components/administrador/administrador.service';
 

@@ -49,40 +49,6 @@ export class EditGenerosComponent implements OnInit {
  
 
   ngOnInit() {
-    //console.log('verificando_datos',this.generosforms.value)
-   /* this.GenerosImg.getGeneros().subscribe(res=>{
-      this.todoslosgeneros =[];
-      res.forEach((element:Generos)=>{
-        this.todoslosgeneros.push({
-          ...element
-        })
-
-      })
-    })
-    console.log('generos',this.todoslosgeneros)
-*/
-/*
-this.GenerosImg.getPostgeneros().subscribe((res) =>{
-  this.imagen=res;
-  
-  this.todoslosgeneros = res.map((e) =>{
-    this.url=this.todoslosgeneros
-    //console.log(this.url)
-    return {
-      
-      id: e.payload.doc.id,      
-      ...(e.payload.doc.data() as Generos)
-      
-    };
-   
-   
-  });
-
- 
- 
-});
-*/
-
  console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'))
 // this.usuario = localStorage.getItem('usuario')
  
@@ -105,47 +71,9 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
    
   }
 
- /* 
-  selectChange(event:any){
-    //traer la imagens
-    console.log('edit_mio',event.target.files);
-    //para visualizar la imagen que vamos a subir
-    if(event.target.files.length>0){
-      this.file=event.target.files;
-      // para que pueda leer el ti`po de dato
-      let reader= new FileReader();
-      reader.readAsDataURL(this.file[0]);
-      reader.onloadend =(event:any)=>{
-        this.imgURL= event.target.result;
-        this.imagenes.push({
-          imagen:this.file[0]
-        })
-
-      }
-
-    }else{
-      this.imgURL;
-       
-    }
-
-  }
-*/
+ 
   onSubmit(){
- /*   
- console.log('dato',this.ediForm.value);
-   // los datos String del formulario
-   let  cargar:any={
-    Genero_nuevo:this.ediForm.value.Genero_nuevo,
-    
-
-  };
-  this.GenerosImg.cargarimagenesGeneroFirebase(this.imagenes,cargar);
-  this.router.navigate(['/generos']);
-  console.log('2segunda',this.ediForm.value,'url',cargar)
-  */
-  // datos de editar
-
-  
+ 
   this.GenerosImg.add(this.ediForm.value, this._file,this.isChanged)
   console.log(this.ediForm.value)
   this.isChanged = false;
@@ -181,5 +109,6 @@ this.GenerosImg.getPostgeneros().subscribe((res) =>{
 get genero_nuevo_no_valido(){
   return this.ediForm.get('Genero_nuevo')?.invalid && this.ediForm.get('Genero_nuevo')?.touched
 }
+
 
 }

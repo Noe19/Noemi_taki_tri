@@ -63,16 +63,20 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
   //this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
   this.permiso_artista=localStorage.getItem('permiso');
   this.coincidencia_encontrada=localStorage.getItem('verificar_generos')
+  sessionStorage.removeItem('roles');
+  sessionStorage.removeItem('permiso');
+  sessionStorage.removeItem('verificar_generos');
 }
-
+refresh(): void { window.location.reload(); }
   async salir(){
+   
     //limpiando de la cache
   // localStorage.clear();
    localStorage.clear();
    
    //this.auth.logout();
    await this.afAuth.signOut();
-   this.router.navigate(['/register']);   
+   this.router.navigate(['/home']);   
    console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
    console.log('usuario que salio',this.usuario)
    console.log('rol',this.rol_admin)
@@ -80,4 +84,5 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
    localStorage.clear();
   }
 
+ 
 }
