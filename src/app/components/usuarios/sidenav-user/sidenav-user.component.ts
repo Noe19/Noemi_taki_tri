@@ -7,6 +7,7 @@ import { PerfilService } from '../../perfil.service';
 import { imagen } from './imagen.modal';
 import { map } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GenerosService } from '../generos/generos.service';
 @Component({
   selector: 'app-sidenav-user',
   templateUrl: './sidenav-user.component.html',
@@ -29,7 +30,7 @@ public cantidad_de_solicitud:any;
 public cantidad_solicitud_rechazadas:any;
 public permiso_artista:any;
 public coincidencia_encontrada:any;
-constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router) { 
+constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router,public generos:GenerosService) { 
   this.fotoperfil = this.fb.group({   
     imagen:[''],
     name: [''],
@@ -50,10 +51,12 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
         
         this.imagen = this.perfilRef.imagen
         this.name=this.perfilRef.name
+        localStorage.setItem('UserAuthor',this.name);
         console.log('this.ima',this.imagen)
+
     
-    
-     // }
+        this.generos.author_mio(this.perfilRef.name);
+        
     })
 
    
@@ -62,12 +65,20 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
   //this.cantidad_de_solicitud=localStorage.getItem('cantidad');
   //this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
   this.permiso_artista=localStorage.getItem('permiso');
-  this.coincidencia_encontrada=localStorage.getItem('verificar_generos')
+ // this.coincidencia_encontrada=localStorage.getItem('verificar_generos')
   sessionStorage.removeItem('roles');
   sessionStorage.removeItem('permiso');
-  sessionStorage.removeItem('verificar_generos');
+ // sessionStorage.removeItem('verificar_generos');
 }
-refresh(): void { window.location.reload(); }
+/*
+nameGenero(nombre_Ge){
+  this.generos.author_mio(nombre_Ge);
+  console.log('dd',nombre_Ge)
+  return nombre_Ge
+
+}
+*/
+//refresh(): void { window.location.reload(); }
   async salir(){
    
     //limpiando de la cache

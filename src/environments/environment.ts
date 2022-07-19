@@ -8,14 +8,12 @@ export const environment = {
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   //configuracion de la API DE FIREBASE
   firebaseConfig : {
-    apiKey: "AIzaSyDwXPCKY12Zj1qwGbYPFTYIgRGH3qwkxGc",
-    authDomain: "takitesis.firebaseapp.com",
-    databaseURL: "https://takitesis-default-rtdb.firebaseio.com",
-    projectId: "takitesis",
-    storageBucket: "takitesis.appspot.com",
-    messagingSenderId: "116911246151",
-    appId: "1:116911246151:web:57e388f0a00e0555bfda62",
-    measurementId: "G-GT409M7ZJF"
+    apiKey: "AIzaSyD_MdB7V84IYoY9yggWQ3yCWmEJMylIpO8",
+  authDomain: "borrador-a0724.firebaseapp.com",
+  projectId: "borrador-a0724",
+  storageBucket: "borrador-a0724.appspot.com",
+  messagingSenderId: "177835894815",
+  appId: "1:177835894815:web:c20484a66ef6ec27068d2a"
   },
 };
 

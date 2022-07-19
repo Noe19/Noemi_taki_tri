@@ -93,4 +93,17 @@ export class ShowCancionesComponent implements OnInit {
 
   }
 
+  //paginas de solicitud
+siguiente_pagina_solicitud(){
+  this.page+=5;
+ }
+
+ atras_pagina_Solicitud(){
+   if(this.page>0){
+    this.page-=5;
+   }
+  
+
+ }
+
 }

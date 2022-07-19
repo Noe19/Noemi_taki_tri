@@ -4,6 +4,7 @@ import { PermisosGuard } from './permisos.guard';
 
 describe('PermisosGuard', () => {
   let guard: PermisosGuard;
+  let usuario:any;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -13,4 +14,7 @@ describe('PermisosGuard', () => {
   it('should be created', () => {
     expect(guard).toBeTruthy();
   });
+  
+
+
 });

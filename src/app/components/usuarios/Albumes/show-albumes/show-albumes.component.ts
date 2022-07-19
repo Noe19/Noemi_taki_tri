@@ -109,4 +109,16 @@ export class ShowAlbumesComponent implements OnInit {
   
      }
 
+     //pasar los datos de album a canciones
+     obtenerdatosAlbumes(album_name,genre_name,author,imageURL){
+     
+      //console.log('albumnomae',nombreGe.author)
+      //console.log('albumnomaennn',nombreGe.album_name)
+      //localStorage.setItem("nameGenero",nombreGe);
+      localStorage.setItem("album_name",album_name);
+      localStorage.setItem("genre_name",genre_name);
+      localStorage.setItem("author",author);
+      localStorage.setItem("imageURL",imageURL);  
+    }
+
 }

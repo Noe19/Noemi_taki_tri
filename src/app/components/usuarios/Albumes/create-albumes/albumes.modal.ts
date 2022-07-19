@@ -3,11 +3,11 @@ export interface Albumes {
       
    
     id:string;
-    genero_name:string;
+    genre_name:string;
     name:string;
     author:string;
     year:string;
-    imagen:string; 
-    referencia:string;
+    imageURL:string; 
+    image_reference:string;
     artista_id:string;
 }

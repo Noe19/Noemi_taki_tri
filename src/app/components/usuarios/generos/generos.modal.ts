@@ -1,10 +1,10 @@
-import { GenerosComponent } from "./generos.component";
-import { GenerosService } from "./generos.service";
 
-export interface Generos {   
-    Genero_nuevo:string;
-    artista_id:string;
+
+export interface Generos { 
+    author:string;   
+    authorId:string;
     id:string;
-    imagenUrl:string;
-    referencia:string;   
+    imageURL:string;
+    image_reference:string; 
+    name:string;  
 }

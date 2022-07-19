@@ -8,7 +8,7 @@ import { AuthService } from '../auth/service/auth.service';
 import { map } from 'rxjs/operators';
 import { Perfil } from './dashboard/perfil.model';
 import { Generos } from './usuarios/generos/generos.modal';
-import { datos } from './usuarios/dashboard-user/datos.modal';
+
 interface Country {
   name: string;
   value: number;
@@ -71,49 +71,5 @@ public num:number;
     return this.angularfirestore.collection("artist").doc(perfil.id).delete();
 
   }
-// datos  barras 
-private data: Country[] = [
-
-  {
-    "name": "Artista",
-    "value": 15
-  },
-  {
-    "name": "Géneros",
-    "value": 20
-  },
-  {
-    "name": "Albumes",
-    "value": 29
-  },
-    {
-    "name": "Canciones",
-    "value": 36
-  }
-];
-
-// datos
-
-public dataGeneros: Country[] = [
-
-  {
-    "name": "Generos",
-    "value":parseInt(this.number_generos)
-  },
-  
-];
-
-
-get countryData() {
- 
-  return this.data;
-}
-
-get countryData1(){
-  return this.dataGeneros;
-}
-
-
-
 
 }

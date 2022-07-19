@@ -10,7 +10,7 @@ public page:number=0;
     if(search.length===0){
       return generos.slice(page,page+6);
     }
-    const filtrageneros = generos.filter(todos_generos => todos_generos.Genero_nuevo.includes(search));
+    const filtrageneros = generos.filter(todos_generos => todos_generos.name.includes(search));
    return filtrageneros.slice(page,page+6);
   }
 

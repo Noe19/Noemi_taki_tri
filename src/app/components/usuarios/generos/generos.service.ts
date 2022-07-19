@@ -12,6 +12,7 @@ import { Generos } from './generos.modal';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { error } from 'console';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { Administrador } from '../../administrador/administrador.model';
 declare var $: any;
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,12 @@ export class GenerosService {
   private generosCollection: AngularFirestoreCollection<Generos>
   public usuario: any;
   public usuario1:any;
+  //editar albumes
+  administrador: Administrador[]
   constructor(private db: AngularFirestore, private router: Router,private storage: AngularFireStorage) {
     // menciona que me traiga la coleccion que esta en base de datos llamado..
-    this.generosCollection = db.collection<Generos>('generos');
-    this.speakerCollection = db.collection("generos");
+    this.generosCollection = db.collection<Generos>('genres');
+    this.speakerCollection = db.collection("genres");
     this.speakerList = this.speakerCollection.valueChanges();
   }
   
@@ -53,14 +56,14 @@ export class GenerosService {
     
     this.usuario = localStorage.getItem('usuario')
    
-    return this.db.collection("generos",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
+    return this.db.collection("genres",ref => ref.where('authorId', '==', this.usuario)).snapshotChanges()
   
     }
 
     getodosgeneros(){
       this.usuario = localStorage.getItem('usuario')
    
-    return this.db.collection("generos",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges() 
+    return this.db.collection("genres",ref => ref.where('authorId', '==', this.usuario)).snapshotChanges() 
     }
     
 /*
@@ -72,16 +75,15 @@ export class GenerosService {
 */
     getgenerosbyId(id){
    
-      return this.db.collection("generos").doc(id).valueChanges()
+      return this.db.collection("genres").doc(id).valueChanges()
        }
-// verificar 
-    getVerificarGenero(genero_verificar){
-      this.usuario = localStorage.getItem('usuario')
-    //  console.log('genen',genero_verificar)
-      return this.db.collection("generos",ref => ref.where('Genero_nuevo', '==', genero_verificar).where('artista_id', '==', this.usuario) ).snapshotChanges()
-    
+// verificar el nombre del autor 
+author_mio(nomAuthor){
+  const nombAuthor = nomAuthor;
+  console.log('nombre del autor',nombAuthor)
+  return nombAuthor;
 
-    }
+}
       
    
 
@@ -100,12 +102,12 @@ export class GenerosService {
   
     const storage = getStorage();
     for (const item of imagenes) {
-      let generosimg = generos.Genero_nuevo;
-      console.log('nombre_imagen', generos.Genero_nuevo);
+      let generosimg = generos.name;
+      console.log('nombre_imagen', generos.name);
       
       // para que la imagen se guarde con el nombre del generos y si hay espacio se unan y no halla problemas
      
-      const path=`${this.CarpetaImagenes}/${this.usuario}/${generos.Genero_nuevo}`;
+      const path=`${this.CarpetaImagenes}/${this.usuario}/${generos.name}`;
    
   //    this.getodosgeneros(generos.Genero_nuevo)
 
@@ -144,10 +146,10 @@ export class GenerosService {
           
 // aqui estan los datos que se enviar a la base de datos con la imagen
    
-            Genero_nuevo: generos.Genero_nuevo,
-            imagenUrl: item.url,
-            artista_id: this.usuario,
-            referencia:path,
+            name: generos.name,
+            imageURL: item.url,
+            authorId: this.usuario,
+            image_reference:path,
             id:id,
            
            
@@ -165,8 +167,10 @@ export class GenerosService {
   }
   }
 
+
+
     
-  async guadarImagenGeneros(generos: { Genero_nuevo: string, imagenUrl: string, artista_id: string,referencia:string,id:string}): Promise<any> {
+  async guadarImagenGeneros(generos: { name: string, imageURL: string, authorId: string,image_reference:string,id:string}): Promise<any> {
   
     try {
 
@@ -181,18 +185,20 @@ export class GenerosService {
         if (result.value) {
           //this.router.navigate(['/generos']);
           console.log(true, 'si funcioa');
-          console.log('creacion de generos ',generos.Genero_nuevo==generos.Genero_nuevo)
+         // console.log('creacion de generos ',generos.Genero_nuevo==generos.Genero_nuevo)
 
         }
 
       })
       const  id = this.db.createId(); 
-  
-      return await this.db.collection('generos').doc(id).set({id,
-        Genero_nuevo: generos.Genero_nuevo,
-        imagenUrl:generos.imagenUrl,
-        artista_id:generos.artista_id,
-        referencia:generos.referencia});
+  const nomg =localStorage.getItem('UserAuthor');
+  console.log('dato antes de pasar',this.author_mio(nomg))
+      return await this.db.collection('genres').doc(id).set({id,
+        name: generos.name,
+        imageURL:generos.imageURL,
+        authorId:generos.authorId,
+        author:nomg,
+        image_reference:generos.image_reference});
 
         
 
@@ -211,7 +217,7 @@ export class GenerosService {
   // eliminar generos en storage y firestore
   public eliminar_generos_total(gen:Generos):Promise<any>{
   const storage = getStorage();
-  const refgeneros = ref(storage, gen.referencia)
+  const refgeneros = ref(storage, gen.image_reference)
   deleteObject(refgeneros).then(()=>{
     
     //Swal.fire('EXITO','la imagen se elimino correctamente','success');
@@ -243,19 +249,7 @@ export class GenerosService {
 
     create(albumImg: Generos, urlImg,referencia1) {
      
-     
-     /* const id = this.db.createId();
-      
-      this.speakerCollection.doc(id).set({ 
-        id,
-        Genero_nuevo: albumImg.Genero_nuevo,
-        imagenUrl:albumImg.imagenUrl,
-        artista_id:albumImg.artista_id,
-        referencia:albumImg.referencia
-       
-        
-      });
-      */
+    
     }add(generosImg: Generos, _file,isChanged) {
       console.log('cambio',isChanged)
       if (isChanged){
@@ -263,15 +257,12 @@ export class GenerosService {
     
       this.usuario1 = localStorage.getItem('usuario')
       console.log('lll',this.usuario1)
-      const filePath = this.CarpetaImagenes1+this.usuario1+'/'+generosImg.Genero_nuevo;
-      console.log("imagenGeneros/"+this.usuario+'/'+generosImg.Genero_nuevo)
+      const filePath = this.CarpetaImagenes1+this.usuario1+'/'+generosImg.name;
+      console.log("imagenGeneros/"+this.usuario+'/'+generosImg.name)
       const ref = this.storage.ref(filePath);
       ref.put(_file).then(() => {
         ref.getDownloadURL().subscribe(url => {
-         /* this.url2=url
-          generosImg.id
-          console.log('id',generosImg.Genero_nuevo)
-          */
+       
           console.log('id',generosImg.id)
           this.url2=url
          //  esto es para que se edite la imagen
@@ -289,8 +280,8 @@ export class GenerosService {
       });
     } // cieere del if 
     else{
-      this.update(generosImg,generosImg.imagenUrl,generosImg.referencia)
-      console.log('ubiaccion',generosImg.referencia)
+      this.update(generosImg,generosImg.imageURL,generosImg.image_reference)
+      console.log('ubiaccion',generosImg.image_reference)
     }
      
     
@@ -298,31 +289,36 @@ export class GenerosService {
 
 
    update(albumImg: Generos, urlImg,referencia) {
-    console.log('id_update',albumImg.id,albumImg.imagenUrl)
+   // console.log('id_update',albumImg.id,albumImg.imageURL)
     console.log('referencia',referencia)
  try {
    
   
-  if(albumImg.referencia==referencia){
+  if(albumImg.image_reference==referencia){
     
     this.speakerCollection
     .doc(albumImg.id)
-   .update({ Genero_nuevo: albumImg.Genero_nuevo, imagenUrl: urlImg, artista_id: albumImg.artista_id,referencia:albumImg.referencia });
-    console.log('datos abtes de enviar1' ,albumImg.imagenUrl  )  
+   .update({ name: albumImg.name, imageURL: urlImg, authorId: albumImg.authorId,image_reference:albumImg.image_reference});
+    console.log('datos abtes de enviar1' ,albumImg.imageURL  );
+     
+   
 
+      
+        // return this.angularfirestore.collection("request",ref => ref.where('rol', '==', 'rechazado')).snapshotChanges()
+    
 
   }else{
     this.speakerCollection
     .doc(albumImg.id)
-    .update({ Genero_nuevo: albumImg.Genero_nuevo, imagenUrl: urlImg, artista_id: albumImg.artista_id,referencia });
-    console.log('datos abtes de enviar' ,albumImg.Genero_nuevo  )  
+    .update({ name: albumImg.name, imageURL: urlImg, authorId: albumImg.authorId });
+    console.log('datos abtes de enviar' ,albumImg.name  )  
 
   }
  
   Swal.fire({
     position: 'top-end',
     icon: 'success',
-    title: 'Genero Editado correctamente'+':'+albumImg.Genero_nuevo,
+    title: 'Genero Editado correctamente'+':'+albumImg.name,
     showConfirmButton: false,
     timer: 1500
   })
@@ -334,11 +330,13 @@ export class GenerosService {
   Swal.fire({
     position: 'top-end',
     icon: 'error',
-    title: 'Genero no editado'+':'+albumImg.Genero_nuevo,
+    title: 'Genero no editado'+':'+albumImg.name,
     showConfirmButton: false,
     timer: 1500
   }) 
 } 
+
+/////////////////////
 
   }
 

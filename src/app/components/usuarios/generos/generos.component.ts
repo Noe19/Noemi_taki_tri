@@ -7,6 +7,7 @@ import { GenerosService } from './generos.service';
 import { AlbumesService } from '../Albumes/albumes.service';
 import Swal from 'sweetalert2';
 import { Albumes } from '../Albumes/create-albumes/albumes.modal';
+import { ShowartistComponent } from '../perfil-artist/show-artist/show-artist.component';
 @Component({
   selector: 'app-generos',
   templateUrl: './generos.component.html',
@@ -22,6 +23,8 @@ export class GenerosComponent implements OnInit {
   public length:number;
 
   public v:any;
+  //public nombre author;
+  public nomauthor :any;
 
  
   //generos:Generos[];
@@ -44,6 +47,7 @@ export class GenerosComponent implements OnInit {
   private control_genero:any;
 
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService,private albumService:AlbumesService) {
+    
     this.generosforms=this.fb.group({
   
       Genero_nuevo:['',[Validators.required]],
@@ -52,7 +56,7 @@ export class GenerosComponent implements OnInit {
     })
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void {   
     this.usuario = localStorage.getItem('usuario')
       this.GenerosImg.getPostgeneros().subscribe((res) =>{
         this.imagen=res;
@@ -80,11 +84,18 @@ export class GenerosComponent implements OnInit {
 
   }
 
+  obtenerGenero(nombreGe){
+    console.log('generosnomae',nombreGe)
+    localStorage.setItem("nameGenero",nombreGe);
+
+  }
+
 public todos(){
   this.data= this.todoslosgeneros
   console.log('todos los datos',this.data)
   
 }
+
   // // buscador 
    onSearchMensaje(search:string){
     this.page=0;
@@ -140,6 +151,8 @@ public todos(){
       
   
      }
+     // generos
+     
 
 
 }

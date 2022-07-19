@@ -39,22 +39,7 @@ Toast = Swal.mixin({
         imagen:['']
       })
     }
-/*
-  ngOnInit(): void {
-    //console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'))
-    this.usuario = localStorage.getItem('usuario')
- 
-    const id = this.activeRoute.snapshot.paramMap.get('id');
-    this.perfilService.getPostbyId(id).subscribe(res =>{
-      this.perfilRef = res;
-      this.ediForm = this.formBuilder.group({
-        name: [this.perfilRef.name],
-        apellido : [this.perfilRef.apellido],
-        nickname : [this.perfilRef.nickname]
-      })
-    })
-  }
-*/
+
 ngOnInit(): void {
   this.usuario = localStorage.getItem('usuario')
   const id = this.activeRoute.snapshot.paramMap.get(this.usuario)

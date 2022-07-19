@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { GenerosService } from '../../generos/generos.service';
 import { AlbumesService } from '../albumes.service';
 import { Albumes } from './albumes.modal';
@@ -21,6 +22,9 @@ export class CreateAlbumesComponent implements OnInit {
   albumes:Albumes[]=[];
   imagenes:ImagenesAlbumes[]=[];
  
+   //varible que tiene el valor de la coincidencia
+ public albumesNames: string[] = [];
+ Albumes:Albumes[]=[];
   file:any;
   
   constructor( private activeRoute: ActivatedRoute,private fb:FormBuilder,private GenerosImg:GenerosService,private router:Router,private albumService:AlbumesService) { 
@@ -31,26 +35,69 @@ export class CreateAlbumesComponent implements OnInit {
       name:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
       author:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
       year:['',[Validators.required,Validators.pattern(/[0-9].*/),Validators.maxLength(4),Validators.minLength(4)]] ,
+   
       
     })
   }
 
   ngOnInit(): void {
-    console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'))
+    console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'));
+    this.albumService.getPostAlbumes().subscribe((res) =>{
+     
+      
+      this.Albumes = res.map((e) =>{
+       
+      
+        return {
+          
+          id: e.payload.doc.id,      
+          ...(e.payload.doc.data() as Albumes)
+          
+        };
+       
+       
+      });
+    
+     
+     
+    });
   
   }
   crear_Albumes()
 {    
+  // validacion de generos 
+  for (let i = 0; i < this.Albumes.length; i++) {
+    this.albumesNames.push(this.Albumes[i].name)
+  }
+  console.log("albumes completos: ", this.Albumes.length);
+
+  console.log("generos nopmbres: ", this.albumesNames);
+ 
+  let incluyeGenero = this.albumesNames.includes(this.Albumesforms.get('name').value);
+  console.log('repetido',incluyeGenero)
+  
+  if(incluyeGenero){
+
+    Swal.fire({
+position: 'center',
+icon: 'error',
+title: 'Album ya existe',
+showConfirmButton: false,
+timer: 1500
+})
+}
+
+else{
      let  cargar:any={
+      
        name:this.Albumesforms.value.name,
        author:this.Albumesforms.value.author,
        year:this.Albumesforms.value.year,
-       genero_name:this.activeRoute.snapshot.paramMap.get('id')
       
-      
- 
+     
      };
-     console.log(this.Albumesforms.value)
+     
+
      
      
      this.albumService.cargarimagenesAlbumesFirebase(this.imagenes,cargar);
@@ -58,7 +105,7 @@ export class CreateAlbumesComponent implements OnInit {
      console.log(this.Albumesforms.value,'url',cargar)
      console.log(this.Albumesforms.value.name)
     
-   
+    }  
 }
 selectChange(event:any){
   //traer la imagens

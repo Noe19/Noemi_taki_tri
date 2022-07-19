@@ -59,9 +59,9 @@ export class CreateGenerosComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService) {
     this.generosforms=this.fb.group({
   
-      Genero_nuevo:['',[Validators.required]],
-      artista_id:[localStorage.getItem('usuario'),[Validators.required]],
-      referencia:[''] ,
+      name:['',[Validators.required]],
+      author_id:[localStorage.getItem('usuario'),[Validators.required]],
+      image_reference:[''] ,
       
     })
    }
@@ -112,11 +112,11 @@ export class CreateGenerosComponent implements OnInit {
   crear_generos(){
 // validacion de generos 
     for (let i = 0; i < this.Generos.length; i++) {
-      this.genreNames.push(this.Generos[i].Genero_nuevo)
+      this.genreNames.push(this.Generos[i].name)
     }
     console.log("generos completos: ", this.Generos);
     console.log("generos nopmbres: ", this.genreNames);
-    let incluyeGenero = this.genreNames.includes(this.generosforms.get('Genero_nuevo').value);
+    let incluyeGenero = this.genreNames.includes(this.generosforms.get('name').value);
     if(incluyeGenero){
 
         Swal.fire({
@@ -131,7 +131,7 @@ export class CreateGenerosComponent implements OnInit {
     else{
 
       let  cargar:any={
-        Genero_nuevo:this.generosforms.value.Genero_nuevo,
+        name:this.generosforms.value.name,
       };
  
  
@@ -160,14 +160,14 @@ export class CreateGenerosComponent implements OnInit {
 
   // VALIDACIONES DE CREAR GENEROS
 getErrorMessage_genero_nuevo(){
-  if (this.generosforms.get('Genero_nuevo')?.hasError('required')) {
+  if (this.generosforms.get('name')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
  
-  return this.generosforms.get('Genero_nuevo')? 'El campo no permite números' : '';
+  return this.generosforms.get('name')? 'El campo no permite números' : '';
 }
 get genero_nuevo_no_valido(){
-  return this.generosforms.get('Genero_nuevo')?.invalid && this.generosforms.get('Genero_nuevo')?.touched
+  return this.generosforms.get('name')?.invalid && this.generosforms.get('name')?.touched
 }
 
 

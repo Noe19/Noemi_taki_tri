@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 import { cancionSolicitud } from '../cancion.modal';
 import { CancionService } from '../cancion.service';
 import { Mp3Solicitud } from '../mp3.modal';
@@ -20,7 +21,9 @@ export class CreateCancionesComponent implements OnInit {
   file:any;
   
   public cancionesforms : FormGroup;
-  //editar
+  //Vericar que no se crea otro cancion
+  public songsNames: string[] = [];
+  Songs:cancionSolicitud[]= [];
   
   isChanged = false;
   @ViewChild("file")
@@ -32,7 +35,7 @@ export class CreateCancionesComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private cancionService:CancionService,private activeRoute: ActivatedRoute) {
     this.cancionesforms=this.fb.group({
   
-      song_nombre:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+      song_name:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
       artista_id:[localStorage.getItem('usuario'),[Validators.required]],
       song_reference:[''] ,
 
@@ -42,7 +45,9 @@ export class CreateCancionesComponent implements OnInit {
 
  
   ngOnInit(): void {
-    console.log('id_editable_cancion',this.activeRoute.snapshot.paramMap.get('id'))
+   // console.log('id_editable_cancion',this.activeRoute.snapshot.paramMap.get('id'));
+
+
   }
 
   selectChange(event:any){
@@ -71,11 +76,17 @@ export class CreateCancionesComponent implements OnInit {
 
   }
   crear_canciones(){
-   //this.GenerosImg.add(this.generosforms.value,this._file)
-    // los datos String del formulario
-    console.log('id_albumesne caciones',this.activeRoute.snapshot.paramMap.get('id'))
+    // validacion de generos 
+    
+
+
+  
+   // console.log('id_albumesne caciones',this.activeRoute.snapshot.paramMap.get('id'));
+
+
+
     let  cargar:any={
-      song_nombre:this.cancionesforms.value.song_nombre,
+      song_name:this.cancionesforms.value.song_name,
       album_id:this.activeRoute.snapshot.paramMap.get('id')
       
 
@@ -83,9 +94,10 @@ export class CreateCancionesComponent implements OnInit {
     this.cancionService.cargarimagenesCancionesFirebase(this.imagenes,cargar);
     this.router.navigate(['/Canciones']);
     console.log(this.cancionesforms.value,'url',cargar)
-    console.log(this.cancionesforms.value.song_nombre)
+    console.log(this.cancionesforms.value.song_name)
    
-  }
+  
+}
 
   limpiarform(){
     this.cancionesforms.reset();
@@ -93,15 +105,15 @@ export class CreateCancionesComponent implements OnInit {
   }
   //VALIDACIONES DE AÑO DE ALBUMES
 cancionmio() {
-  if (this.cancionesforms.get('song_nombre')?.hasError('required')) {
+  if (this.cancionesforms.get('song_name')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
  
-  return this.cancionesforms.get('song_nombre')? 'El campo no permite números' : '';  
+  return this.cancionesforms.get('song_name')? 'El campo no permite números' : '';  
 }
 
 get canciones_nuevo_no_valido(){
-return this.cancionesforms.get('song_nombre')?.invalid && this.cancionesforms.get('song_nombre')?.touched
+return this.cancionesforms.get('song_name')?.invalid && this.cancionesforms.get('song_name')?.touched
 }
 
 }

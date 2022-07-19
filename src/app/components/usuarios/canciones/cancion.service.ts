@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { cancionSolicitud } from './cancion.modal';
 import { Mp3Solicitud } from './mp3.modal';
 import Swal from 'sweetalert2';
+import { constants } from 'buffer';
 
 
 @Injectable({
@@ -25,8 +26,8 @@ export class CancionService {
   public usuario1:any;
   constructor(private db: AngularFirestore, private router: Router,private storage: AngularFireStorage) {
     // menciona que me traiga la coleccion que esta en base de datos llamado..
-    this.cancionesCollection = db.collection<cancionSolicitud>('canciones');
-    this.speakerCollection = db.collection("canciones");
+    this.cancionesCollection = db.collection<cancionSolicitud>('songs');
+    this.speakerCollection = db.collection("songs");
     this.speakerList = this.speakerCollection.valueChanges();
   }
 
@@ -36,25 +37,25 @@ export class CancionService {
     getPostcanciones (){
       this.usuario = localStorage.getItem('usuario')
      
-      return this.db.collection("canciones",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
+      return this.db.collection("songs",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
     
       }
 
       getgenerosbyId(id){
    
-        return this.db.collection("canciones").doc(id).valueChanges()
+        return this.db.collection("songs").doc(id).valueChanges()
          }
 
     
   cargarimagenesCancionesFirebase(imagenes: Mp3Solicitud[], cancion: cancionSolicitud) {
     const storage = getStorage();
     for (const item of imagenes) {
-      let generosimg = cancion.song_nombre;
-      console.log('nombre_imagen', cancion.song_nombre);
+      let generosimg = cancion.song_name;
+      console.log('nombre_imagen', cancion.song_name);
       
       // para que la imagen se guarde con el nombre del generos y si hay espacio se unan y no halla problemas
       this.usuario = localStorage.getItem('usuario');
-      const path=`${this.CarpetaImagenes}/${this.usuario}/${cancion.song_nombre}`;      
+      const path=`${this.CarpetaImagenes}/${this.usuario}/${cancion.song_name}`;      
       const storageResf = ref(storage, path);
       // a cargar la imagen
       const uploadImg = uploadBytesResumable(storageResf, item.mp3);
@@ -85,8 +86,8 @@ export class CancionService {
           this.guadarImagenGeneros({
 // aqui estan los datos que se enviar a la base de datos con la imagen
    
-            song_nombre: cancion.song_nombre,
-            imagenUrl: item.url,
+            song_name: cancion.song_name,
+            songURL: item.url,
             artista_id: this.usuario,
             song_reference:path,
             id:id,
@@ -120,7 +121,7 @@ public eliminar_canciones_total(gen:cancionSolicitud):Promise<any>{
 
   }
     
-async guadarImagenGeneros(cancionSolicitud: {song_nombre: string, imagenUrl: string, artista_id: string,song_reference:string,id:string, album_id:string}): Promise<any> {
+async guadarImagenGeneros(cancionSolicitud: {song_name: string, songURL: string, artista_id: string,song_reference:string,id:string, album_id:string}): Promise<any> {
   
   try {
 
@@ -140,12 +141,25 @@ async guadarImagenGeneros(cancionSolicitud: {song_nombre: string, imagenUrl: str
 
     })
     const  id = this.db.createId(); 
-    return await this.db.collection('canciones').doc(id).set({id,
-      song_nombre: cancionSolicitud.song_nombre,
-      imageURL:cancionSolicitud.imagenUrl,
+    const album_name=localStorage.getItem('album_name');
+    console.log('verificar',album_name)
+    const author=localStorage.getItem('author');;
+    const genre_name=localStorage.getItem('genre_name');;
+    const imageURL=localStorage.getItem('imageURL');;
+
+    return await this.db.collection('songs').doc(id).set({id,
+      song_name: cancionSolicitud.song_name,
+      songURL:cancionSolicitud.songURL,
       artista_id:cancionSolicitud.artista_id,
       song_reference:cancionSolicitud.song_reference,
-      album_id:cancionSolicitud.album_id});
+      album_id:cancionSolicitud.album_id,
+      album_name:album_name,
+      author:author,
+      genre_name:genre_name,
+      imageURL:imageURL,
+
+
+    });
 
       
 
@@ -178,11 +192,15 @@ create(albumImg:cancionSolicitud, urlImg,referencia1) {
   
   this.speakerCollection.doc(id).set({ 
     id,
-    song_nombre: albumImg.song_nombre,
-    imageURL:albumImg.imageURL,
+    song_name: albumImg.song_name,
+    songURL:albumImg.songURL,
     id_artista:albumImg. id_artista,
-    song_reference:albumImg. id_artista,
+    song_reference:albumImg.song_reference,
     album_id:albumImg.album_id,
+    author:albumImg.album_id,
+    album_name:albumImg.album_name,
+    genre_name:albumImg.genre_name,
+    imageURL:albumImg.imageURL,
    
     
   });
@@ -194,7 +212,7 @@ create(albumImg:cancionSolicitud, urlImg,referencia1) {
 
   this.usuario1 = localStorage.getItem('usuario')
   console.log('lll',this.usuario1)
-  const filePath = 'imagenCancion/'+this.usuario1+'/'+generosImg.song_nombre;
+  const filePath = 'imagenCancion/'+this.usuario1+'/'+generosImg.song_name;
  // console.log("imagenGeneros/"+this.usuario+'/'+generosImg.song_nombre)
   const ref = this.storage.ref(filePath);
   ref.put(_file).then(() => {
@@ -221,7 +239,7 @@ create(albumImg:cancionSolicitud, urlImg,referencia1) {
   });
 } // cieere del if 
 else{
-  this.update(generosImg,generosImg.imageURL,generosImg.song_reference)
+  this.update(generosImg,generosImg.songURL,generosImg.song_reference)
   console.log('ubiaccion',generosImg.song_reference)
 }
  
@@ -239,13 +257,13 @@ try {
 if(albumImg.song_reference==referencia){
   this.usuario = localStorage.getItem('usuario');
 console.log('entre1',albumImg.id)
-console.log('entre2',albumImg.song_nombre)
+console.log('entre2',albumImg.song_name)
 console.log('entre3',urlImg)
 console.log('entre6',albumImg.album_id)
 console.log('entre4',this.usuario)
 console.log('entre5',albumImg.song_reference)
 //console.log('que pasa',this.speakerCollection.doc(albumImg.id).update({ song_nombre: albumImg.song_nombre, imageURL: albumImg.imageURL, id_artista: albumImg.id_artista,song_reference:albumImg.song_reference,album_id:albumImg.id}))
-this.speakerCollection.doc(albumImg.id).update({ song_nombre: albumImg.song_nombre, imageURL: urlImg, id_artista: this.usuario,song_reference:albumImg.song_reference,album_id:albumImg.album_id});
+this.speakerCollection.doc(albumImg.id).update({ song_name: albumImg.song_name, songURL: urlImg, id_artista: this.usuario,song_reference:albumImg.song_reference,album_id:albumImg.album_id});
 console.log('datos abtes de enviar1' ,albumImg.imageURL  )  
 
 
@@ -253,15 +271,15 @@ console.log('datos abtes de enviar1' ,albumImg.imageURL  )
   this.usuario = localStorage.getItem('usuario');
   console.log('se creo nuevo')
 this.speakerCollection.doc(albumImg.id)
-.update({ song_nombre: albumImg.song_nombre, imageURL: urlImg, id_artista: this.usuario,song_reference:albumImg.song_reference,album_id:albumImg.id });
-console.log('datos abtes de enviar' ,albumImg.song_nombre )  
+.update({ song_name: albumImg.song_name, songURL: urlImg, id_artista: this.usuario,song_reference:albumImg.song_reference,album_id:albumImg.album_id });
+console.log('datos abtes de enviar' ,albumImg.song_name )  
 
 }
 
 Swal.fire({
 position: 'top-end',
 icon: 'success',
-title: 'Cancion Editado correctamente'+':'+albumImg.song_nombre,
+title: 'Cancion Editado correctamente'+':'+albumImg.song_name,
 showConfirmButton: false,
 timer: 1500
 })
@@ -274,7 +292,7 @@ this.router.navigate(['/Canciones']);
 Swal.fire({
 position: 'top-end',
 icon: 'error',
-title: 'Cancion no editado'+':'+albumImg.song_nombre+error,
+title: 'Cancion no editado'+':'+albumImg.song_name+error,
 showConfirmButton: false,
 timer: 1500
 }) 
@@ -284,7 +302,7 @@ timer: 1500
 
 todas_las_canciones_por_albumes(id_album){
   this.usuario = localStorage.getItem('usuario')
-  return this.db.collection("canciones",ref => ref.where('album_id', '==', id_album).where('artista_id', '==', this.usuario) ).snapshotChanges()
+  return this.db.collection("songs",ref => ref.where('album_id', '==', id_album).where('artista_id', '==', this.usuario) ).snapshotChanges()
 
   }
  

@@ -33,8 +33,8 @@ export class EditCancionesComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private CancionService:CancionService, private activeRoute: ActivatedRoute
     ,public formBuilder:FormBuilder) {
       this.ediForm = this.formBuilder.group({
-        song_nombre: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
-        imageURL:[''],
+        song_name: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+        songURL:[''],
         id_artista:[''],
         song_reference:['']
 
@@ -50,11 +50,11 @@ export class EditCancionesComponent implements OnInit {
      this.CancionService.getgenerosbyId(id2).subscribe(res =>{
        this. generosRef = res;
        console.log('no se donde esta el erroc',this.generosRef.imageURL)
-       this.url = this.generosRef.imageURL
+       this.url = this.generosRef.songURL
        this.ediForm = this.formBuilder.group({
         
-        song_nombre: [this.generosRef.song_nombre],
-         imageURL: [this.generosRef.imageURL],
+        song_name: [this.generosRef.song_name],
+         songURL: [this.generosRef.songURL],
         artista_id:[this.generosRef.artista_id],
         id:[this.generosRef.id], 
         song_reference:[this.generosRef.song_reference],
@@ -91,14 +91,14 @@ export class EditCancionesComponent implements OnInit {
      }
 // Validaciones de editar canciones 
 cancionmio() {
-  if (this.ediForm.get('song_nombre')?.hasError('required')) {
+  if (this.ediForm.get('song_name')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
  
-  return this.ediForm.get('song_nombre')? 'El campo no permite números' : '';  
+  return this.ediForm.get('song_name')? 'El campo no permite números' : '';  
 }
 
 get cancion_nombre_nuevo_no_valido(){
-return this.ediForm.get('song_nombre')?.invalid && this.ediForm.get('song_nombre')?.touched
+return this.ediForm.get('song_name')?.invalid && this.ediForm.get('song_name')?.touched
 }
 }

@@ -10,7 +10,7 @@ export class FiltrarCancionesPipe implements PipeTransform {
     if(search.length===0){
       return  todoslascanciones.slice(page,page+5);
     }
-    const filtradoMensaje = todoslascanciones.filter(mensaje_estad0 => mensaje_estad0.song_nombre.includes(search));
+    const filtradoMensaje = todoslascanciones.filter(mensaje_estad0 => mensaje_estad0.song_name.includes(search));
    return filtradoMensaje.slice(page,page+5);
   }
   }

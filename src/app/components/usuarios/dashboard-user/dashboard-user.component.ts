@@ -11,8 +11,7 @@ import { GenerosComponent } from '../generos/generos.component';
 import { GenerosService } from '../generos/generos.service';
 import { MensajeSolicitud } from '../solicitud/mensaje.modal';
 import { SolicitudService } from '../solicitud/solicitud.service';
-import { datos } from './datos.modal';
-import { IbaChart } from './IbaChart.modal';
+
 // importaciones de barras 
 
 
@@ -35,30 +34,17 @@ export class DashboardUserComponent implements OnInit {
   public arreglos:any;
   public permiso_artista:any;
   //segundo ejemplo
-  data: IbaChart[]=[];
-  view: [number, number] = [400, 200];
-  colorScheme = {
-    domain: ['#5AA454', '#C7B42C', '#AAAAAA']
-  }
+  
 
-  // options
-  showXAxis: boolean = true;
-  showYAxis: boolean = true;
-  gradient: boolean = true;
-  showLegend: boolean = true;
-  showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Country';
-  showYAxisLabel: boolean = true;
-  yAxisLabel: string = 'Population';
-  legendTitle: string = 'Years';
+
 
  
   constructor(public afAuth :AngularFireAuth,private router : Router,private firestore :AngularFirestore,private solicitud:SolicitudService,private perfil :PerfilService,private Aceptar:AdministradorService) { 
-    Object.assign(this, {datos })
+   
   }
 
   ngOnInit(): void {
-    this.data=datos
+   
     this.usuario = localStorage.getItem('usuario')
     this.roles_admin = localStorage.getItem('roles')
     this.valor_aceptacion=localStorage.getItem('artista_aceptado');
@@ -99,35 +85,14 @@ export class DashboardUserComponent implements OnInit {
 
 
 //
-view3: [number, number] = [550, 300];
-view1: [number, number] = [450, 300];
-// options
-
-showLabels: boolean = true;
-isDoughnut: boolean = false;
 
 
 
-get single() {
-  return this.perfil.countryData;
-}
-
-get single1(){
-  return this.perfil.countryData1;
-}
 
 
-onSelect(data: any): void {
-  console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-}
 
-onActivate(data: any): void {
-  console.log('Activate', JSON.parse(JSON.stringify(data)));
-}
 
-onDeactivate(data: any): void {
-  console.log('Deactivate', JSON.parse(JSON.stringify(data)));
-}
+
 
 
 

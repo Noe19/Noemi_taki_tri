@@ -12,6 +12,7 @@ import { ImagenesAlbumes } from './create-albumes/imagen_Albumes.modal';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { error } from 'console';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { GenerosService } from '../generos/generos.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,13 +22,14 @@ export class AlbumesService {
   private CarpetaImagenes_Albumes = "imagenAlbumes";
   private albumesCollection: AngularFirestoreCollection<Albumes>
   public usuario: any;
+  public nombreGenero:any;
  
-  constructor(private db: AngularFirestore, private router: Router,private storage: AngularFireStorage) {
+  constructor(private db: AngularFirestore, private router: Router,private storage: AngularFireStorage,public gen:GenerosService) {
      // menciona que me traiga la coleccion que esta en base de datos llamado..
-    this.albumesCollection = db.collection<Albumes>('albumes');
+    this.albumesCollection = db.collection<Albumes>('albums');
     //
     //this.generosCollection = db.collection<Generos>('generos');
-    this.speakerCollection = db.collection("albumes");
+    this.speakerCollection = db.collection("albums");
     this.speakerList = this.speakerCollection.valueChanges();
    }
 
@@ -35,22 +37,31 @@ export class AlbumesService {
    getPostAlbumes (){
     this.usuario = localStorage.getItem('usuario')
    
-    return this.db.collection("albumes",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
+    return this.db.collection("albums",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
   
     }
  // un solo documento
  getPostbyId_album(id){
    
-  return this.db.collection("albumes").doc(id).valueChanges()
+  return this.db.collection("albums").doc(id).valueChanges()
   
    }
+   //dato del nombre del genero
+   //dato del genero
+   /*
+getnameGnero(name){
+  console.log('nomge',name)
+
+  return name;
+
+}
    
- 
+ */
        //eliminar
          // eliminar generos en storage y firestore
   public eliminar_generos_total(gen:Albumes):Promise<any>{
     const storage = getStorage();
-    const refgeneros = ref(storage, gen.referencia)
+    const refgeneros = ref(storage, gen.image_reference)
     deleteObject(refgeneros).then(()=>{
      // Swal.fire('EXITO','la imagen se elimino correctamente','success');
   
@@ -96,8 +107,7 @@ export class AlbumesService {
              //this.update(generos, item.url,path);
             // console.log('datos update',this.update(generosImg, url,filePath))
             
-        
-                 
+       
              
            const  id = this.db.createId(); 
           this.guadarImagenAlbum({
@@ -107,9 +117,9 @@ export class AlbumesService {
                 author:album.author,
                 year:album.year,
                 id:id,
-                imagen: item.url,
-                referencia:path,
-                genero_name:album.genero_name,
+                imageURL: item.url,
+                image_reference:path,
+                genero_name:album.genre_name,
                 artista_id:this.usuario,
 
           } )
@@ -126,7 +136,7 @@ export class AlbumesService {
 
 
   //
-  async guadarImagenAlbum(album_tdo: { name: string, author: string, year: string,id:string,referencia:string,imagen:string,genero_name:string,artista_id:string}): Promise<any> {
+  async guadarImagenAlbum(album_tdo: { name: string, author: string, year: string,id:string,image_reference:string,imageURL:string,genero_name:string,artista_id:string}): Promise<any> {
   
     try {
  
@@ -146,15 +156,19 @@ export class AlbumesService {
 
       })
       const  id = this.db.createId(); 
+      
+      this.nombreGenero=localStorage.getItem('nameGenero');
+    
+    
       this.usuario = localStorage.getItem('usuario');
-      return await this.db.collection('albumes').doc(id).set({id,
+      return await this.db.collection('albums').doc(id).set({id,
       
         name:album_tdo.name,
         author:album_tdo.author,
         year:album_tdo.year,
-      referencia:album_tdo.referencia,
-       imagen:album_tdo.imagen,
-      genero_name:album_tdo.genero_name,
+      image_reference:album_tdo.image_reference,
+       imageURL:album_tdo.imageURL,
+      genre_name:this.nombreGenero,
       artista_id:this.usuario});
 
         
@@ -176,23 +190,17 @@ export class AlbumesService {
   file;
   name = "";
 
-
-
-
- 
-
-
     create(albumImg: Albumes, urlImg,referencia1) {
       const id = this.db.createId();
       
       this.speakerCollection.doc(id).set({ 
         name:albumImg.name,
-        imagen:albumImg.imagen,   
+        imageURL:albumImg.imageURL,   
         author:albumImg.author,
         year:albumImg.year,
         id:albumImg.id,
-        genero_name:albumImg.genero_name,
-        referencia:albumImg.referencia,
+        genre_name:albumImg.genre_name,
+        image_reference:albumImg.image_reference,
         artista_id:albumImg.artista_id
 
         
@@ -232,8 +240,8 @@ export class AlbumesService {
       });
     } // cieere del if 
     else{
-      this.update(albumImg,albumImg.imagen,albumImg.referencia)
-      console.log('ubiaccion',albumImg.referencia)
+      this.update(albumImg,albumImg.imageURL,albumImg.image_reference)
+      console.log('ubiaccion',albumImg.image_reference)
     }
      
     
@@ -241,10 +249,10 @@ export class AlbumesService {
 
 
    update(albumImg: Albumes, urlImg,referencia) {
-    console.log('id_update',albumImg.id,albumImg.imagen)
+    console.log('id_update',albumImg.id,albumImg.imageURL)
     console.log('referencia',referencia)
    
-  if(albumImg.referencia==referencia){
+  if(albumImg.image_reference==referencia){
     console.log('id_para ediatr',albumImg.id)
     /*
     this.speakerCollection
@@ -252,14 +260,14 @@ export class AlbumesService {
    .update({ name: albumImg.name, imagen: urlImg,year:albumImg.year,author:albumImg.author });
     console.log('datos abtes de enviar1' ,albumImg.imagen  )*/
     
-    this.speakerCollection.doc(albumImg.id).update({  name: albumImg.name, imagen: urlImg,year:albumImg.year,author:albumImg.author,referencia:albumImg.referencia });
+    this.speakerCollection.doc(albumImg.id).update({  name: albumImg.name, imageURL: urlImg,year:albumImg.year,author:albumImg.author,image_reference:albumImg.image_reference });
     console.log('datos abtes de enviar1' ,albumImg.name  )   
 
 
   }else{
     this.speakerCollection
     .doc(albumImg.id)
-    .update({ name: albumImg.name, imagen: urlImg,year:albumImg.year,author:albumImg.author });
+    .update({ name: albumImg.name, imageURL: urlImg,year:albumImg.year,author:albumImg.author });
     console.log('datos abtes de enviar' ,albumImg.name  )  
 
   }

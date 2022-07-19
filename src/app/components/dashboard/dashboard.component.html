@@ -8,19 +8,7 @@
       <div class="col-7">
         <div class="barras">
           <h2>Datos de TAKI-TRI</h2>
-          <div class="barras2">
-           <ngx-charts-advanced-pie-chart 
-           [view]="view3"
-           scheme="cool"
-           [results]="single"
-           
-           [gradient]="gradient"
-           (select)="onSelect($event)"
-           (activate)="onActivate($event)"
-           (deactivate)="onDeactivate($event)"
-           >
-         </ngx-charts-advanced-pie-chart>   
-        </div>
+        
         </div>
       </div> 
         
@@ -35,23 +23,7 @@
           <h2>Datos de Canciones</h2>
           <div class="barras_canciones">
            
-  <ngx-charts-bar-vertical
-  [view]="view"
 
-  [results]="data"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  [legendTitle]="legendTitle"
-  (select)="onSelect($event)"
-  (activate)="onActivate($event)"
-  (deactivate)="onDeactivate($event)">
-</ngx-charts-bar-vertical>
         </div>
        
         </div>

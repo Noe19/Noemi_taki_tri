@@ -8,6 +8,7 @@ import { url } from 'inspector';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AdministradorService } from 'src/app/components/administrador/administrador.service';
 import { Administrador } from 'src/app/components/administrador/administrador.model';
+import { GenerosService } from '../../generos/generos.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ Administrador: Administrador[];
  public arreglos:any;
 constructor(private perfilService:PerfilService,public formBuilder:FormBuilder,
     private activeRoute: ActivatedRoute,private angularfirestore :AngularFirestore,
-    private router: Router,private Aceptar:AdministradorService) { 
+    private router: Router,private Aceptar:AdministradorService,public generos:GenerosService) { 
 
       this.ediForm = this.formBuilder.group({
         name: [''],
@@ -59,19 +60,10 @@ constructor(private perfilService:PerfilService,public formBuilder:FormBuilder,
      
     } );
     
-   // this.usuario = localStorage.getItem('usuario')
+
    
 
- /*
-    this.perfilService.getPost().subscribe((res) =>{
-      this.Perfil = res.map((e) =>{
-        return {
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as Perfil)
-        };
-      });
-    });
-*/
+
 
 this.usuario = localStorage.getItem('usuario')
 this.roles_admin=localStorage.getItem('roles')
@@ -80,8 +72,7 @@ const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
 this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
   
   this.perfilRef = res;
-  //console.log('permiso', this.perfilRef.name)
-  //if(this.perfilRef.rol=='administrador'){
+
     
     this.url = this.perfilRef.imagen
     this.ediForm = this.formBuilder.group({
@@ -94,42 +85,16 @@ this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
      
       
     })
-/*
-    if(this.perfilRef.name=='admi'){
-      console.log('permiso')
-    }else
-    console.log('denegado')
+   // this.nameGenero(this.perfilRef.name)
 
-*/
-
- // }
 })
 
 
-
-
-
-// ocurrencia
-
-
-
-/*
-this.usuario = localStorage.getItem('usuario')
-const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
-this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
-  this.perfilRef = res;
-  this.ediForm = this.formBuilder.group({
-    name: [this.perfilRef.name],
-    apellido: [this.perfilRef.apellido],
-    nickname: [this.perfilRef.nickname]
-  })
-})
-  
-
-*/
 
   
   }
+
+
 }
 
 

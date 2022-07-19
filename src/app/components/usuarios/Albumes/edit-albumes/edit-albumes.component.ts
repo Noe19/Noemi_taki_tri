@@ -40,11 +40,11 @@ export class EditAlbumesComponent implements OnInit {
     ,public formBuilder:FormBuilder, private Alb:AlbumesService) {
       this.albumForm = this.formBuilder.group({
         name: ['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
-        imagen:[''],
+        imageURL:[''],
         year:['',[Validators.required,Validators.pattern(/[0-9].*/),Validators.maxLength(4),Validators.minLength(4)]],
         author:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
         id:[''],
-        referencia:['']
+        image_reference:['']
 
            
       })
@@ -63,14 +63,14 @@ export class EditAlbumesComponent implements OnInit {
  console.log('pasar',id2)
  this.Alb.getPostbyId_album(id2).subscribe(res =>{
    this. generosRef = res;
-   this.url = this.generosRef.imagen
-   console.log(this.generosRef.imagen)
+   this.url = this.generosRef.imageURL
+   console.log(this.generosRef.imageURL)
    this.albumForm = this.formBuilder.group({
     
      name: [this.generosRef.name],  
     id:[this.generosRef.id], 
-    imagen:[this.generosRef.imagen],
-    referencia:[this.generosRef.referencia],
+    imageURL:[this.generosRef.imageURL],
+    image_reference:[this.generosRef.image_reference],
     year:[this.generosRef.year],
     author:[this.generosRef.author]
 

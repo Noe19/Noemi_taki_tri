@@ -29,6 +29,8 @@ export class SolicitudComponent   {
 public cuantos_existen:number;
 
   public solicitudlForm:FormGroup;
+  //variable de ngif para mostrar la mensaje de solicitud
+  public mostar=0;
   constructor(private solicitudService:SolicitudService,public formBuilder:FormBuilder,
     private activeRoute: ActivatedRoute,
     private router: Router)  {
@@ -45,12 +47,19 @@ public cuantos_existen:number;
         })
        }
   ngOnInit(): void {
-  
+   this.mostar=0;
       this.solicitudService.gettodos_los_mensajes_de_rechazados().subscribe((res) =>{
         
         this.MensajeSolicitud = res.map((e) =>{
         
      this.cuantos_existen =this.MensajeSolicitud.length
+     console.log('tengo mensajes',this.MensajeSolicitud)
+     if(this.cuantos_existen>=0){
+      
+      this.mostar=1;
+      console.log('valor',this.mostar)
+       }
+       
    
           return {
           
@@ -64,8 +73,7 @@ public cuantos_existen:number;
       
       });
       
-      
-     //console.log('array')
+    
     
   
   }

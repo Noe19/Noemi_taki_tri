@@ -43,7 +43,7 @@
             </div>
             <div class="input-group mb-3">
               <label class="label_genero" >Género</label>
-              <input type="text" class="form-control" placeholder="Generos" required formControlName="Genero_nuevo" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$"  [class.red]="genero_nuevo_no_valido" >
+              <input type="text" class="form-control" placeholder="Generos" required formControlName="name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$"  [class.red]="genero_nuevo_no_valido" >
               <label class="error"  *ngIf="genero_nuevo_no_valido" >{{getErrorMessage_genero_nuevo()}}</label>   
               <button  class="btn btn-primary w-100" [disabled]="!generosforms.valid"    type="submit">Crear</button>
             </div>

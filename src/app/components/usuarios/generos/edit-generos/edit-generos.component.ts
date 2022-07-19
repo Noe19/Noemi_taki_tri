@@ -33,9 +33,9 @@ export class EditGenerosComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService, private activeRoute: ActivatedRoute
     ,public formBuilder:FormBuilder) {
       this.ediForm = this.formBuilder.group({
-        Genero_nuevo:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
-        imagenUrl:[''],
-        artista_id:[''],
+        name:['',[Validators.required,Validators.pattern(/[a-zA-Z].*/)]],
+        imageURL:[''],
+        authorId:[''],
         id:[''],
       
         
@@ -55,14 +55,14 @@ export class EditGenerosComponent implements OnInit {
  const id2 = this.activeRoute.snapshot.paramMap.get('id');
  this.GenerosImg.getgenerosbyId(id2).subscribe(res =>{
    this. generosRef = res;
-   this.url = this.generosRef.imagenUrl
+   this.url = this.generosRef.imageURL
    this.ediForm = this.formBuilder.group({
     
-     Genero_nuevo: [this.generosRef.Genero_nuevo],
-     imagenUrl: [this.generosRef.imagenUrl],
-    artista_id:[this.generosRef.artista_id],
+     name: [this.generosRef.name],
+     imageURL: [this.generosRef.imageURL],
+    authorId:[this.generosRef.authorId],
     id:[this.generosRef.id], 
-    referencia:[this.generosRef.referencia]   
+    image_reference:[this.generosRef.image_reference]   
   
    })
    console.log('valueid',this.generosRef.id)
@@ -99,15 +99,15 @@ export class EditGenerosComponent implements OnInit {
 
     // VALIDACIONES DE CREAR GENEROS
     generomio() {
-      if (this.ediForm.get('Genero_nuevo')?.hasError('required')) {
+      if (this.ediForm.get('name')?.hasError('required')) {
         return 'El campo es obligatorio';
       }
      
-      return this.ediForm.get('Genero_nuevo')? 'El campo no permite números' : '';  
+      return this.ediForm.get('name')? 'El campo no permite números' : '';  
     }
 
 get genero_nuevo_no_valido(){
-  return this.ediForm.get('Genero_nuevo')?.invalid && this.ediForm.get('Genero_nuevo')?.touched
+  return this.ediForm.get('name')?.invalid && this.ediForm.get('name')?.touched
 }
 
 
