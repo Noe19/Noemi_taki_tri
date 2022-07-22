@@ -142,10 +142,11 @@ async guadarImagenGeneros(cancionSolicitud: {song_name: string, songURL: string,
     })
     const  id = this.db.createId(); 
     const album_name=localStorage.getItem('album_name');
-    console.log('verificar',album_name)
-    const author=localStorage.getItem('author');;
-    const genre_name=localStorage.getItem('genre_name');;
-    const imageURL=localStorage.getItem('imageURL');;
+    console.log('verificar',album_name);
+    const author=localStorage.getItem('author');
+    const genre_name=localStorage.getItem('genre_name');
+    const imageURL=localStorage.getItem('imageURL');
+    const genre_id=localStorage.getItem('genre_id')
 
     return await this.db.collection('songs').doc(id).set({id,
       song_name: cancionSolicitud.song_name,
@@ -157,6 +158,7 @@ async guadarImagenGeneros(cancionSolicitud: {song_name: string, songURL: string,
       author:author,
       genre_name:genre_name,
       imageURL:imageURL,
+      genre_id:genre_id,
 
 
     });
@@ -201,6 +203,7 @@ create(albumImg:cancionSolicitud, urlImg,referencia1) {
     album_name:albumImg.album_name,
     genre_name:albumImg.genre_name,
     imageURL:albumImg.imageURL,
+    genre_id:albumImg.genre_id,
    
     
   });

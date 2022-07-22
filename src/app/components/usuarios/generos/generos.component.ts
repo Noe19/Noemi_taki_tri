@@ -8,6 +8,10 @@ import { AlbumesService } from '../Albumes/albumes.service';
 import Swal from 'sweetalert2';
 import { Albumes } from '../Albumes/create-albumes/albumes.modal';
 import { ShowartistComponent } from '../perfil-artist/show-artist/show-artist.component';
+import { ShowCancionesComponent } from '../canciones/show-canciones/show-canciones.component';
+import { CancionService } from '../canciones/cancion.service';
+import { cancionSolicitud } from '../canciones/cancion.modal';
+import { update } from 'firebase/database';
 @Component({
   selector: 'app-generos',
   templateUrl: './generos.component.html',
@@ -42,11 +46,14 @@ export class GenerosComponent implements OnInit {
   //Albumes
   public Albumesforms : FormGroup;
   todoslosalbumes:Albumes[];
-  
-  //variable para controlar el storge
-  private control_genero:any;
 
-  constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService,private albumService:AlbumesService) {
+  
+  //variable para controlar las canciones
+  public cancionesid: string[] = [];
+   cancioSolicitud:cancionSolicitud[];
+  private control_canciones:any;
+
+  constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService,private albumService:AlbumesService,private cancion :CancionService) {
     
     this.generosforms=this.fb.group({
   
@@ -56,7 +63,9 @@ export class GenerosComponent implements OnInit {
     })
    }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {  
+
+/////////////////////////////////
     this.usuario = localStorage.getItem('usuario')
       this.GenerosImg.getPostgeneros().subscribe((res) =>{
         this.imagen=res;
@@ -84,6 +93,7 @@ export class GenerosComponent implements OnInit {
 
   }
 
+//crear album pasar el genero que corresponde
   obtenerGenero(nombreGe){
     console.log('generosnomae',nombreGe)
     localStorage.setItem("nameGenero",nombreGe);
@@ -103,29 +113,17 @@ public todos(){
       //console.log(search);
   }
 
+
+
   eliminar_genero(Generos){
-    
-    Swal.fire({
-      title: 'Estas seguro en eliminar ?',
-      text: "¡No podrás revertir esto!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Estoy seguro,eliminar!'
-    }).then((result) => {
-      console.log('cuantos generos tengo',this.todoslosgeneros.length)
-      if (result.isConfirmed ) {
-        
-        Swal.fire(
-          'Eliminado!',
-          'Informacion eliminado correctamente',
-          'success'
-        )
+   
+    //  console.log('cuantos generos tengo',this.todoslosgeneros.length)
+     
+       
         this.GenerosImg.eliminar_generos_total(Generos);
         
-      }
-    })
+     
+  
    // this.GenerosImg.eliminar_generos_total(Generos);
 
   }
@@ -151,8 +149,61 @@ public todos(){
       
   
      }
-     // generos
+     //recursividad
+     recursividad(){
+      const ultimo = localStorage.getItem('id_genero_actualizar');
+      
+    //this.GenerosImg.updateCancione(ultimo);
+   
      
+    }   
+
+     //hacer consulta
+     consulta(){
+      
+     for (let i = 0; i < this.cancioSolicitud.length; i++) {
+       // this.recursividad(this.control_canciones,this.cancioSolicitud.length)             
+        this.cancionesid.push(this.cancioSolicitud[i].id)
+        this.control_canciones = this.cancioSolicitud[i].id
+        console.log("id_unico....: ",this.control_canciones); 
+       // localStorage.setItem('id_genero_actualizar',this.control_canciones) ;
+     }
+
+       this.recursividad()
+    
+     }
+
+     modificar(id){
+      console.log('id_modi',id)
+      localStorage.setItem('cuantos',id)
+      return id
+     // this.GenerosImg.updateCancione(id);
+     }
+
+
+     //eliminar comprobar
+     obtenercanciones(id_genero){
+      
+      this.GenerosImg.enviar(id_genero)
+   
+      this.GenerosImg.enviar(id_genero).subscribe((res) =>{ 
+        const cuantos =res.length     
+      
+        //this.consulta(this.cancioSolicitud.length)
+      console.log('cuantas albumes',cuantos);
+      
+      this.modificar(cuantos)
+   
+      });  
+ 
+      
+
+     }
+
+    
+
+     
+  
 
 
 }

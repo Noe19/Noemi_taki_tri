@@ -46,31 +46,59 @@ export class AlbumesService {
   return this.db.collection("albums").doc(id).valueChanges()
   
    }
-   //dato del nombre del genero
-   //dato del genero
-   /*
-getnameGnero(name){
-  console.log('nomge',name)
+ 
+  public eliminar_generos_total(gen:Albumes){
 
-  return name;
-
-}
+    
+    /////////////
+    Swal.fire({
+      title: 'Estas seguro en eliminar ?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Estoy seguro,eliminar!'
+    }).then((result) => {
    
- */
-       //eliminar
-         // eliminar generos en storage y firestore
-  public eliminar_generos_total(gen:Albumes):Promise<any>{
-    const storage = getStorage();
-    const refgeneros = ref(storage, gen.image_reference)
-    deleteObject(refgeneros).then(()=>{
-     // Swal.fire('EXITO','la imagen se elimino correctamente','success');
+      if (result.isConfirmed ) {
+        const mio = localStorage.getItem('cuantos_canciones');
+        const m=1;
+        console.log('eliminar',mio);
+         
+       if(parseInt(mio)<=0){
+   
+        const storage = getStorage();
+        const refgeneros = ref(storage, gen.image_reference)
+        deleteObject(refgeneros).then(()=>{
+       
+      
+        }).catch((error)=>{
+          console.log('no se elimino la imagen',error)
+      
+        });
+        this.albumesCollection.doc(gen.id).delete();
+         Swal.fire(
+          'Eliminado!',
+          'Informacion eliminado correctamente',
+          'success'
+        )
   
-    }).catch((error)=>{
-      console.log('no se elimino la imagen',error)
-  
-    });
-    return this.albumesCollection.doc(gen.id).delete();
-  
+      }else{
+        Swal.fire(
+          'No es posible eliminar el Álbum!',
+          'Este Álbum tiene canciones ',
+          'warning'
+        )
+
+      }
+       
+        
+        
+      }
+    })
+
+
     }
   
    // para cargar imagens e enviar a firestore 
@@ -121,6 +149,7 @@ getnameGnero(name){
                 image_reference:path,
                 genero_name:album.genre_name,
                 artista_id:this.usuario,
+                genre_id:album.genre_id
 
           } )
           console.log('ruta de imagen ', path)
@@ -135,8 +164,8 @@ getnameGnero(name){
   }
 
 
-  //
-  async guadarImagenAlbum(album_tdo: { name: string, author: string, year: string,id:string,image_reference:string,imageURL:string,genero_name:string,artista_id:string}): Promise<any> {
+  // Crear álbumes
+  async guadarImagenAlbum(album_tdo: { name: string, author: string, year: string,id:string,image_reference:string,imageURL:string,genero_name:string,artista_id:string,genre_id:string}): Promise<any> {
   
     try {
  
@@ -169,7 +198,8 @@ getnameGnero(name){
       image_reference:album_tdo.image_reference,
        imageURL:album_tdo.imageURL,
       genre_name:this.nombreGenero,
-      artista_id:this.usuario});
+      artista_id:this.usuario,
+       genre_id:album_tdo.genre_id});
 
         
 
@@ -180,9 +210,9 @@ getnameGnero(name){
     }
 
   }
-  // editar 
+
   
-  // editar generos
+  // editar albumes
 
   url1: any =
     "https://i.pinimg.com/564x/65/df/2c/65df2c922e64c61235162ab7c0924d3c.jpg";
@@ -201,16 +231,15 @@ getnameGnero(name){
         id:albumImg.id,
         genre_name:albumImg.genre_name,
         image_reference:albumImg.image_reference,
-        artista_id:albumImg.artista_id
+        artista_id:albumImg.artista_id,
+        genre_id:albumImg.genre_id,
 
         
       });
       
     }add(albumImg: Albumes, _file,isChanged) {
       console.log('cambio',isChanged)
-      if (isChanged){
-
-    
+      if (isChanged){   
       this.usuario = localStorage.getItem('usuario')
       console.log('lll',this.usuario)
       const filePath = 'imagenAlbumes'+'/'+this.usuario+'/'+albumImg.name;
@@ -218,10 +247,7 @@ getnameGnero(name){
       const ref = this.storage.ref(filePath);
       ref.put(_file).then(() => {
         ref.getDownloadURL().subscribe(url => {
-         /* this.url2=url
-          generosImg.id
-          console.log('id',generosImg.Genero_nuevo)
-          */
+        
           console.log('id',albumImg.id)
          // this.url2=url
          //  esto es para que se edite la imagen
@@ -247,18 +273,14 @@ getnameGnero(name){
     
   }
 
-
+//Codigo para actualizar los albumes 
    update(albumImg: Albumes, urlImg,referencia) {
     console.log('id_update',albumImg.id,albumImg.imageURL)
     console.log('referencia',referencia)
    
   if(albumImg.image_reference==referencia){
     console.log('id_para ediatr',albumImg.id)
-    /*
-    this.speakerCollection
-    .doc(albumImg.id)
-   .update({ name: albumImg.name, imagen: urlImg,year:albumImg.year,author:albumImg.author });
-    console.log('datos abtes de enviar1' ,albumImg.imagen  )*/
+   
     
     this.speakerCollection.doc(albumImg.id).update({  name: albumImg.name, imageURL: urlImg,year:albumImg.year,author:albumImg.author,image_reference:albumImg.image_reference });
     console.log('datos abtes de enviar1' ,albumImg.name  )   
@@ -286,6 +308,12 @@ getnameGnero(name){
 
  
 console.log('aqui es el problema')
+  }
+
+  // traer todas las cancion que pertenecen a ese album
+  enviar(id){
+    return this.db.collection("songs",ref => ref.where('album_id', '==', id)).snapshotChanges();
+
   }
 
 }

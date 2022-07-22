@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async } from '@firebase/util';
 
 import { DashboardUserComponent } from './dashboard-user.component';
-
+const assert = require('assert');
+const firebase = require ('@fibase/testing');
+const MY_PROYECTO ="takitesis";
 describe('DashboardUserComponent', () => {
   let component: DashboardUserComponent;
   let fixture: ComponentFixture<DashboardUserComponent>;
@@ -19,7 +22,10 @@ describe('DashboardUserComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('NOga',async () => {
+    const db =firebase.initializaTestApp({projectId:MY_PROYECTO}).firebase();
+    const testDoc =db.collection('generos').doc("testDoc");
+    await firebase.assertSucceeds(testDoc.get());
+   // expect(component).toBeTruthy();
   });
 });

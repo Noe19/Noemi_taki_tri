@@ -26,6 +26,8 @@
     </div>
   </div>
 </div>
+
+
   
     <div class="container col-lg-12 col-md-12 col-sm-12">
       <input type="text" class="hola" placeholder="Buscar por nombre de Género " #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
@@ -39,10 +41,11 @@
         <h3>{{nomauthor}}</h3>
         
         <a routerLink="/crear-Albumes/{{generos.id}}" (click)="obtenerGenero(generos.name)" class="btn btn-success w-100">Crear Álbum</a>
-        <button routerLink="/edit-generos/{{generos.id}}"  class="btn btn-primary w-100" >Editar</button>
+        <button routerLink="/edit-generos/{{generos.id}}"   class="btn btn-primary w-100" >Editar</button>
         
-<!--     <button type="button" class="btn btn-danger btn-sm"
-          (click)="eliminar_genero(generos)">Eliminar</button> -->
+        
+    <button type="button" class="btn btn-danger w-100"
+          (click)="eliminar_genero(generos)" (click)="obtenercanciones(generos.id)">Eliminar</button> 
    
 
 
@@ -77,6 +80,8 @@
   </div>
 </div>
 
+
+ 
 </div>
 
 

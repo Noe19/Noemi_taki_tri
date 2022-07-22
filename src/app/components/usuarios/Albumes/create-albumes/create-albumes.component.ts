@@ -93,6 +93,7 @@ else{
        name:this.Albumesforms.value.name,
        author:this.Albumesforms.value.author,
        year:this.Albumesforms.value.year,
+       genre_id:this.activeRoute.snapshot.paramMap.get('id')
       
      
      };

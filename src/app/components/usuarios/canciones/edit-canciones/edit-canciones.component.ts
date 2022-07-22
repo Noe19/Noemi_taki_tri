@@ -43,6 +43,7 @@ export class EditCancionesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'))
     // this.usuario = localStorage.getItem('usuario')
      

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { cancionSolicitud } from '../../canciones/cancion.modal';
 import { ImagenesGeneros } from '../create-generos/imagenesGeneros.modal';
 import { Generos } from '../generos.modal';
 import { GenerosService } from '../generos.service';
@@ -29,6 +30,8 @@ export class EditGenerosComponent implements OnInit {
   files: Set<File> = new Set();
   
   _file;
+    // array de todas las canciones
+    todoslascanciones:cancionSolicitud[]=[];
 
   constructor(private router:Router,private fb:FormBuilder,private GenerosImg:GenerosService, private activeRoute: ActivatedRoute
     ,public formBuilder:FormBuilder) {
@@ -67,11 +70,26 @@ export class EditGenerosComponent implements OnInit {
    })
    console.log('valueid',this.generosRef.id)
  })
-  //this.imagenes_generos =this.generosRef.imagenUrl
-   
+
+/*
+  this.GenerosImg.busqueda_id_genre().subscribe(res=>{
+      this.todoslascanciones = res.map((e) =>{
+      
+        console.log('todas las canciones',this.todoslascanciones.length)
+     
+      return {
+        
+        id: e.payload.doc.id,      
+        ...(e.payload.doc.data() as cancionSolicitud)
+        
+      };
+     
+    });
+  })
+  */  
   }
 
- 
+
   onSubmit(){
  
   this.GenerosImg.add(this.ediForm.value, this._file,this.isChanged)
@@ -109,6 +127,9 @@ export class EditGenerosComponent implements OnInit {
 get genero_nuevo_no_valido(){
   return this.ediForm.get('name')?.invalid && this.ediForm.get('name')?.touched
 }
+
+/// TRAER
+
 
 
 }

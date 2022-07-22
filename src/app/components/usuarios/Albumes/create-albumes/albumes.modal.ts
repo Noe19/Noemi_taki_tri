@@ -10,4 +10,5 @@ export interface Albumes {
     imageURL:string; 
     image_reference:string;
     artista_id:string;
+    genre_id:string,
 }

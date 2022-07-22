@@ -44,12 +44,12 @@
           
        
           
-          <a routerLink="/crear-canciones/{{albumes.id}}" (click)="obtenerdatosAlbumes(albumes.name,albumes.genre_name,albumes.author,albumes.imageURL)" class="btn btn-success w-98"> Crear Canción</a>
+          <a routerLink="/crear-canciones/{{albumes.id}}" (click)="obtenerdatosAlbumes(albumes.name,albumes.genre_name,albumes.author,albumes.imageURL,albumes.genre_id)" class="btn btn-success w-98"> Crear Canción</a>
           <a routerLink="/Canciones-Albumes/{{albumes.id}}" class="btn btn-secondary w-98"> Ver Canciones</a>
           <button routerLink="/edit-Albumes/{{albumes.id}}" class="gg btn btn-primary  " >Editar</button>
          
-         <!--<button type="button" class=" gg btn btn-danger"
-          (click)="eliminar_genero(albumes)">Eliminar</button> --> 
+         <button type="button" class=" gg btn btn-danger"
+          (click)="eliminar_genero(albumes)" (click)="obtenerCanciones(albumes.id)">Eliminar</button> 
   
   
   

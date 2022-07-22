@@ -59,28 +59,9 @@ export class ShowAlbumesComponent implements OnInit {
     });
   }
   eliminar_genero(Albumes){
-    Swal.fire({
-      title: 'Estas seguro en eliminar ?',
-      text: "¡No podrás revertir esto!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Estoy seguro,eliminar!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        
-        Swal.fire(
-          'Eliminado!',
-          'Informacion eliminado correctamente',
-          'success'
-        )
-        this.AlbumImg.eliminar_generos_total(Albumes);
-        
-      }
-    })
-  
 
+    this.AlbumImg.eliminar_generos_total(Albumes);
+   
   }
 
    // // buscador 
@@ -110,8 +91,8 @@ export class ShowAlbumesComponent implements OnInit {
      }
 
      //pasar los datos de album a canciones
-     obtenerdatosAlbumes(album_name,genre_name,author,imageURL){
-     
+     obtenerdatosAlbumes(album_name,genre_name,author,imageURL,genre_id){
+    // console.log('generi',genre_id)
       //console.log('albumnomae',nombreGe.author)
       //console.log('albumnomaennn',nombreGe.album_name)
       //localStorage.setItem("nameGenero",nombreGe);
@@ -119,6 +100,31 @@ export class ShowAlbumesComponent implements OnInit {
       localStorage.setItem("genre_name",genre_name);
       localStorage.setItem("author",author);
       localStorage.setItem("imageURL",imageURL);  
+      localStorage.setItem('genre_id',genre_id);
     }
+
+    //consulta para saber cuantas canciones tenemos 
+    obtenerCanciones(id_albumes){
+
+      this.AlbumImg.enviar(id_albumes)
+   
+      this.AlbumImg.enviar(id_albumes).subscribe((res) =>{ 
+        const cuantos_canciones_tengo =res.length     
+      
+        //this.consulta(this.cancioSolicitud.length)
+      console.log('cuantas canciones',cuantos_canciones_tengo);
+      
+      this.obtenercuantasCanciones(cuantos_canciones_tengo)
+   
+      });  
+
+    }
+
+    obtenercuantasCanciones(id){
+      console.log('id_modi_cancion',id)
+      localStorage.setItem('cuantos_canciones',id)
+      return id
+     // this.GenerosImg.updateCancione(id);
+     }
 
 }

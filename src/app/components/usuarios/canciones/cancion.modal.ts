@@ -13,5 +13,6 @@ export interface cancionSolicitud {
     album_name:string;
     author:string;
     genre_name:string;
+    genre_id:string;
 
  }

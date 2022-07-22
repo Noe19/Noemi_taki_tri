@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { timeStamp } from 'console';
 import Swal from 'sweetalert2';
+import { cancionSolicitud } from '../../canciones/cancion.modal';
 import { Generos } from '../generos.modal';
 import { GenerosService } from '../generos.service';
 import { ImagenesGeneros } from './imagenesGeneros.modal';
@@ -52,7 +53,7 @@ export class CreateGenerosComponent implements OnInit {
  //varible que tiene el valor de la coincidencia
  public genreNames: string[] = [];
  Generos:Generos[]= [];
-  // array de todos los generos 
+
 
 
   public Genero_nuevo_veri:any;
@@ -109,6 +110,8 @@ export class CreateGenerosComponent implements OnInit {
     }
 
   }
+
+  
   crear_generos(){
 // validacion de generos 
     for (let i = 0; i < this.Generos.length; i++) {
@@ -117,6 +120,7 @@ export class CreateGenerosComponent implements OnInit {
     console.log("generos completos: ", this.Generos);
     console.log("generos nopmbres: ", this.genreNames);
     let incluyeGenero = this.genreNames.includes(this.generosforms.get('name').value);
+    
     if(incluyeGenero){
 
         Swal.fire({
@@ -145,7 +149,8 @@ export class CreateGenerosComponent implements OnInit {
     
    }
 
-  
+ // traer todos los id 
+
 
       
       

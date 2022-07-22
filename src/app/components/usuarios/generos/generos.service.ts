@@ -30,6 +30,8 @@ export class GenerosService {
   public usuario1:any;
   //editar albumes
   administrador: Administrador[]
+  // canciones 
+  public actualizar_genre :any;
   constructor(private db: AngularFirestore, private router: Router,private storage: AngularFireStorage) {
     // menciona que me traiga la coleccion que esta en base de datos llamado..
     this.generosCollection = db.collection<Generos>('genres');
@@ -215,21 +217,66 @@ author_mio(nomAuthor){
   
 
   // eliminar generos en storage y firestore
-  public eliminar_generos_total(gen:Generos):Promise<any>{
-  const storage = getStorage();
-  const refgeneros = ref(storage, gen.image_reference)
-  deleteObject(refgeneros).then(()=>{
-    
-    //Swal.fire('EXITO','la imagen se elimino correctamente','success');
+  public eliminar_generos_total(gen:Generos){
+   const m =0;
+    /////////////
+    Swal.fire({
+      title: 'Estas seguro en eliminar ?',
+      text: "¡No podrás revertir esto!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Estoy seguro,eliminar!'
+    }).then((result) => {
+    //  console.log('cuantos generos tengo',this.todoslosgeneros.length)
+      if (result.isConfirmed ) {
+        const mio = localStorage.getItem('cuantos');
+        const m=1;
+        console.log('eliminar',mio);
+         
+       if(parseInt(mio)<=0){
+   
+        const storage = getStorage();
+        const refgeneros = ref(storage, gen.image_reference)
+        deleteObject(refgeneros).then(()=>{
+               
+        }).catch((error)=>{
+          console.log('no se elimino la imagen',error)
+      
+        });
+      
+      
+       
+         this.generosCollection.doc(gen.id).delete();
+         Swal.fire(
+          'Eliminado!',
+          'Informacion eliminado correctamente',
+          'success'
+        )
+  
+      }else{
+        Swal.fire(
+          'No es posible eliminar el Género!',
+          'Este genero tiene albumes ',
+          'warning'
+        )
 
-  }).catch((error)=>{
-    console.log('no se elimino la imagen',error)
+      }
+       
+        
+        
+      }
+    })
 
-  });
+     
 
+    /////////////////////
+  
 
  
-  return this.generosCollection.doc(gen.id).delete();
+   
+    return m; 
 
   }
 
@@ -300,9 +347,18 @@ author_mio(nomAuthor){
     .doc(albumImg.id)
    .update({ name: albumImg.name, imageURL: urlImg, authorId: albumImg.authorId,image_reference:albumImg.image_reference});
     console.log('datos abtes de enviar1' ,albumImg.imageURL  );
-     
+    //para que se actualice las canciones
+   // this.obtener_id(albumImg.name,albumImg.id);
    
-
+  /*   
+     this.db
+      .collection("songs")
+      .doc("o3BK0ddWb4jSopZfhqGT")
+      .update({
+        genre_name: albumImg.name,
+      
+      })
+*/
       
         // return this.angularfirestore.collection("request",ref => ref.where('rol', '==', 'rechazado')).snapshotChanges()
     
@@ -311,7 +367,9 @@ author_mio(nomAuthor){
     this.speakerCollection
     .doc(albumImg.id)
     .update({ name: albumImg.name, imageURL: urlImg, authorId: albumImg.authorId });
-    console.log('datos abtes de enviar' ,albumImg.name  )  
+    console.log('datos abtes de enviar' ,albumImg.name  ) 
+    //para que se actualice 
+   // this.obtener_id(albumImg.name,albumImg.id); 
 
   }
  
@@ -336,10 +394,58 @@ author_mio(nomAuthor){
   }) 
 } 
 
-/////////////////////
+
 
   }
 
+  //actualizar canciones 
+  updateCancione(id){
+
+    return this.db
+      .collection("songs")
+      .doc(id)
+      .update({
+        genre_name: 'Cumbia',
+      
+      })
+
+  }
+
+  // modifcar las 
+  /*
+  obtener_id(nombre_genre,id_genre){
+    localStorage.setItem('actualizar_genero','')
+    localStorage.setItem('actualizar_genero',id_genre);
+
+    console.log('genero_id',id_genre,'nombre a modificar',nombre_genre)
+ 
+    //return this.db.collection("songs",ref => ref.where('genre_id', '==', id_genre)).snapshotChanges(); 
+  }
+  */
+/*
+  busqueda_id_genre(){
+    this.actualizar_genre = localStorage.getItem('actualizar_genero')  
+   return this.db.collection("songs",ref => ref.where('genre_id', '==', this.actualizar_genre)).snapshotChanges()
+
+  }
+*/
+  
+//ultimo  intento de canciones
+/*
+hacer_consulta(){
+  this.usuario = localStorage.getItem('usuario')
+   
+  return this.db.collection("songs",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
+
+}
+*/
+
+
+// servicio de busqueda de albumes hacia generos
+
+enviar(id){
+  return this.db.collection("albums",ref => ref.where('genre_id', '==', id)).snapshotChanges() 
+}
 
   
 
