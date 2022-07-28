@@ -36,13 +36,13 @@
 
     <div class="card_login p-4 ">
         <form  [formGroup]="registerForm" (ngSubmit)="onRegister()">
-      <input maxlength="10" class="form-control m-2" type="name" placeholder="Nombre" formControlName="name" name="name" required [class.red]="nombre_no_valido" [class.green]="nombre" >
+      <input maxlength="10" class="form-control m-2" type="name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" placeholder="Nombre" formControlName="name" name="name" required [class.red]="nombre_no_valido" [class.green]="nombre" >
       <label class="error_mensaje" id="email" [class.red]="nombre_no_valido" *ngIf="nombre_no_valido">{{getErrorMessage_nombre()}}</label>
       
-      <input  maxlength="10"class="form-control m-2" type="name" placeholder="Apellido" formControlName="apellido" name="apellido" required [class.red]="apellido_no_valido"[class.green]="apellido" >
+      <input  maxlength="10"class="form-control m-2" type="name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" placeholder="Apellido" formControlName="apellido" name="apellido" required [class.red]="apellido_no_valido"[class.green]="apellido" >
       <label class="error_mensaje" id="email" [class.red]="apellido_no_valido" *ngIf="apellido_no_valido">{{getErrorMessage_apellido()}}</label>
       
-      <input maxlength="10" class="form-control m-2" type="name" placeholder="Alias" formControlName="nickname" name="nickname" required  [class.red]="nickname_no_valido" [class.green]="nickname">
+      <input maxlength="10" class="form-control m-2" type="name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" placeholder="Alias" formControlName="nickname" name="nickname" required  [class.red]="nickname_no_valido" [class.green]="nickname">
       <label class="error_mensaje" id="email" [class.red]="nickname_no_valido" *ngIf="nickname_no_valido">{{getErrorMessage_nickname()}}</label>
       
       <input maxlength="10"  class="form-control m-2" type="date" placeholder="Fecha de nacimiento" formControlName="fecha_nacimiento" name="fecha_nacimiento" required [class.red]="fecha_no_valido" [class.green]="fecha">

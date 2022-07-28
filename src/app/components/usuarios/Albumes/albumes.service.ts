@@ -316,4 +316,16 @@ console.log('aqui es el problema')
 
   }
 
+  // pruebas unitarias
+  async crearAlbumes(DatosAlbumes){
+    const  id = this.db.createId(); 
+    await this.db.collection('albums').doc(id).set({id,
+      name: DatosAlbumes.name,
+      author:DatosAlbumes.author,
+      year:DatosAlbumes.year,
+      imageURL:DatosAlbumes.imageURL
+      
+      });
+    }
+      
 }

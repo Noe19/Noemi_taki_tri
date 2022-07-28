@@ -36,13 +36,13 @@
       <div class="card-body col-lg-12 col-md-12 col-sm-12   ">
         <img class="imagenes_generos" [src]="generos.imageURL" alt="">
        
-        <h3>Genero ecuatoriano</h3>
+        <h3>Género ecuatoriano</h3>
         <h2 class="card-title">{{generos.name}}</h2>
         <h3>{{nomauthor}}</h3>
         
         <a routerLink="/crear-Albumes/{{generos.id}}" (click)="obtenerGenero(generos.name)" class="btn btn-success w-100">Crear Álbum</a>
-        <button routerLink="/edit-generos/{{generos.id}}"   class="btn btn-primary w-100" >Editar</button>
-        
+     <!--   <button routerLink="/edit-generos/{{generos.id}}"   class="btn btn-primary w-100" >Editar</button>
+        --> 
         
     <button type="button" class="btn btn-danger w-100"
           (click)="eliminar_genero(generos)" (click)="obtenercanciones(generos.id)">Eliminar</button> 

@@ -1,7 +1,7 @@
 import { FiltroSolicitudPipe } from './filtro-solicitud.pipe';
 
 describe('FiltroSolicitudPipe', () => {
-  it('create an instance', () => {
+  it('Mostrar notificaciones ', () => {
     const pipe = new FiltroSolicitudPipe();
     expect(pipe).toBeTruthy();
   });

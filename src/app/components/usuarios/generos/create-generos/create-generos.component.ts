@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { timeStamp } from 'console';
 import Swal from 'sweetalert2';
-import { cancionSolicitud } from '../../canciones/cancion.modal';
+
 import { Generos } from '../generos.modal';
 import { GenerosService } from '../generos.service';
 import { ImagenesGeneros } from './imagenesGeneros.modal';
@@ -36,6 +36,7 @@ export class CreateGenerosComponent implements OnInit {
   file:any;
   
   public generosforms : FormGroup;
+
   //editar
   public albumForm: FormGroup;
   isChanged = false;
@@ -65,10 +66,14 @@ export class CreateGenerosComponent implements OnInit {
       image_reference:[''] ,
       
     })
+    
    }
 
  
   ngOnInit(): void {
+
+  
+    
     this.GenerosImg.getPostgeneros().subscribe((res) =>{
       this.Generos = res.map((e) =>{   
         return {
@@ -83,7 +88,10 @@ export class CreateGenerosComponent implements OnInit {
     });
   
     
+
   }
+
+
 
   selectChange(event:any){
     //traer la imagens

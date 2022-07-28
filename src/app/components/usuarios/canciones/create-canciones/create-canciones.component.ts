@@ -46,6 +46,21 @@ export class CreateCancionesComponent implements OnInit {
  
   ngOnInit(): void {
    // console.log('id_editable_cancion',this.activeRoute.snapshot.paramMap.get('id'));
+    const id=this.activeRoute.snapshot.paramMap.get('id');
+    this.cancionService.getPostcancionesid(id).subscribe((res) =>{
+           
+      this.Songs = res.map((e) =>{
+      
+        console.log(this.url)
+        console.log('url_cancion',this.Songs)     
+        return {         
+          id: e.payload.doc.id,      
+          ...(e.payload.doc.data() as cancionSolicitud)
+          
+        };      
+      });     
+    });
+
 
 
   }
@@ -76,15 +91,14 @@ export class CreateCancionesComponent implements OnInit {
 
   }
   crear_canciones(){
-    // validacion de generos 
+    for (let i = 0; i < this.Songs.length; i++) {
+      this.songsNames.push(this.Songs[i].song_name)
+    }
+    console.log("generos completos: ", this.Songs);
+    console.log("generos nopmbres: ", this.songsNames);
+    let incluyeGenero = this.songsNames.includes(this.cancionesforms.get('song_name').value);
     
-
-
-  
-   // console.log('id_albumesne caciones',this.activeRoute.snapshot.paramMap.get('id'));
-
-
-
+  if (incluyeGenero){
     let  cargar:any={
       song_name:this.cancionesforms.value.song_name,
       album_id:this.activeRoute.snapshot.paramMap.get('id')
@@ -95,6 +109,10 @@ export class CreateCancionesComponent implements OnInit {
     this.router.navigate(['/Canciones']);
     console.log(this.cancionesforms.value,'url',cargar)
     console.log(this.cancionesforms.value.song_name)
+
+}
+    
+  
    
   
 }

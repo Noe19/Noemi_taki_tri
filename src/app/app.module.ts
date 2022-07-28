@@ -69,6 +69,7 @@ import { FiltrarAlbumesPipe } from './components/usuarios/Albumes/filtrar-albume
 import { FiltrarCancionesPipe } from './components/usuarios/canciones/filtrar-canciones.pipe';
 import { CancionPorAlbumComponent } from './components/usuarios/canciones/cancion-por-album/cancion-por-album.component';
 
+////////
 
 
 
@@ -147,7 +148,9 @@ import { CancionPorAlbumComponent } from './components/usuarios/canciones/cancio
     NgxChartsModule,
 
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

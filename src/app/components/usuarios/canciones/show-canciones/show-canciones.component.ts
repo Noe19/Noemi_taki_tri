@@ -37,25 +37,17 @@ export class ShowCancionesComponent implements OnInit {
   ngOnInit(): void {
 
     this.cancionService.getPostcanciones().subscribe((res) =>{
-      this.imagen=res;
-      
+      this.imagen=res;     
       this.todoslascanciones = res.map((e) =>{
         this.url=this.todoslascanciones
         console.log(this.url)
-        console.log('url_cancion',this.todoslascanciones)
-      
-        return {
-          
+        console.log('url_cancion',this.todoslascanciones)     
+        return {         
           id: e.payload.doc.id,      
           ...(e.payload.doc.data() as cancionSolicitud)
           
-        };
-       
-       
-      });
-    
-     
-     
+        };      
+      });     
     });
  
    

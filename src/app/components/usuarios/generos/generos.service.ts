@@ -447,6 +447,17 @@ enviar(id){
   return this.db.collection("albums",ref => ref.where('genre_id', '==', id)).snapshotChanges() 
 }
 
+
+ async crearGenero(DatosGeneros){
+  const  id = this.db.createId(); 
+  await this.db.collection('genres').doc(id).set({id,
+    name: DatosGeneros.name,
+    imageURL:DatosGeneros.imageURL
+    
+    });
+
+
+}
   
 
 }

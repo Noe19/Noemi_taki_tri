@@ -308,5 +308,23 @@ todas_las_canciones_por_albumes(id_album){
   return this.db.collection("songs",ref => ref.where('album_id', '==', id_album).where('artista_id', '==', this.usuario) ).snapshotChanges()
 
   }
- 
+
+   // pruebas unitarias
+   async creaCancion(DatosCancion){
+    const  id = this.db.createId(); 
+    await this.db.collection('songs').doc(id).set({id,
+      song_name: DatosCancion.song_name,
+      songURL:DatosCancion.songURL,
+      
+      });
+    }
+
+    //validar nombre cancion
+    getPostcancionesid(id){
+      this.usuario = localStorage.getItem('usuario')
+        
+   // console.log( this.db.collection(`usuario/${this.usuario}`,ref => ref.where('rol', '==', 'artistista')).snapshotChanges())
+   return this.db.collection("songs",ref => ref.where('artista_id', '==', this.usuario).where('album_id', '==', id) ).snapshotChanges()
+      
+    }
 }

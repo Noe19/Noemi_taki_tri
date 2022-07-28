@@ -1,7 +1,7 @@
 import { PipeGenerosPipe } from './pipe-generos.pipe';
 
 describe('PipeGenerosPipe', () => {
-  it('create an instance', () => {
+  it('Buscador de Generos', () => {
     const pipe = new PipeGenerosPipe();
     expect(pipe).toBeTruthy();
   });

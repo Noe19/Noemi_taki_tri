@@ -38,16 +38,16 @@
           <h2>{{albumes.name}}</h2><br>
           <label>Género:{{albumes.genre_name}}</label><br>
           <label>Nombre:{{albumes.name}}</label><br>
-          <label > Año:{{albumes.year}}</label><br>
+         
           <label >Autor:{{albumes.author}}</label><br>
-
+          <label > Año:{{albumes.year}}</label><br>
           
        
           
           <a routerLink="/crear-canciones/{{albumes.id}}" (click)="obtenerdatosAlbumes(albumes.name,albumes.genre_name,albumes.author,albumes.imageURL,albumes.genre_id)" class="btn btn-success w-98"> Crear Canción</a>
           <a routerLink="/Canciones-Albumes/{{albumes.id}}" class="btn btn-secondary w-98"> Ver Canciones</a>
-          <button routerLink="/edit-Albumes/{{albumes.id}}" class="gg btn btn-primary  " >Editar</button>
-         
+          <!--<button routerLink="/edit-Albumes/{{albumes.id}}" class="gg btn btn-primary  " >Editar</button>
+          -->
          <button type="button" class=" gg btn btn-danger"
           (click)="eliminar_genero(albumes)" (click)="obtenerCanciones(albumes.id)">Eliminar</button> 
   
