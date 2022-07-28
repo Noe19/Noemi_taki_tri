@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   //configuracion de la API DE FIREBASE
-  firebaseConfig : {
+  firebase : {
     apiKey: "AIzaSyDwXPCKY12Zj1qwGbYPFTYIgRGH3qwkxGc",
     authDomain: "takitesis.firebaseapp.com",
     databaseURL: "https://takitesis-default-rtdb.firebaseio.com",
