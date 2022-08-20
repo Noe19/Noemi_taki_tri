@@ -69,9 +69,9 @@ export class CreateAlbumesComponent implements OnInit {
   for (let i = 0; i < this.Albumes.length; i++) {
     this.albumesNames.push(this.Albumes[i].name)
   }
-  console.log("albumes completos: ", this.Albumes.length);
+ // console.log("albumes completos: ", this.Albumes.length);
 
-  console.log("generos nopmbres: ", this.albumesNames);
+ // console.log("generos nopmbres: ", this.albumesNames);
  
   let incluyeGenero = this.albumesNames.includes(this.Albumesforms.get('name').value);
   console.log('repetido',incluyeGenero)
@@ -81,7 +81,7 @@ export class CreateAlbumesComponent implements OnInit {
     Swal.fire({
 position: 'center',
 icon: 'error',
-title: 'Album ya existe',
+title: 'Álbum ya existe',
 showConfirmButton: false,
 timer: 1500
 })

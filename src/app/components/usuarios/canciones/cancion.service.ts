@@ -48,6 +48,15 @@ export class CancionService {
 
     
   cargarimagenesCancionesFirebase(imagenes: Mp3Solicitud[], cancion: cancionSolicitud) {
+    if(imagenes.length==0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Canción no creado, por favor ingrese todos los datos includo una cancion mp3',
+        confirmButtonText: 'Aceptar',
+        allowOutsideClick: false,
+  
+      })
+    }
     const storage = getStorage();
     for (const item of imagenes) {
       let generosimg = cancion.song_name;
@@ -74,10 +83,9 @@ export class CancionService {
           console.log('url_name', cancion.id)
          
           if (cancion.id) {
-            // console.log(this.update(generosImg, url,filePath))
+         
             console.log('entre')
-             //this.update(generos, item.url,path);
-            // console.log('datos update',this.update(generosImg, url,filePath))
+        
             
            } else {
              
@@ -127,7 +135,7 @@ async guadarImagenGeneros(cancionSolicitud: {song_name: string, songURL: string,
 
     Swal.fire({
       icon: 'success',
-      title: 'Se subio correctamente la cancion',
+      title: 'Se subió correctamente la canción',
       confirmButtonText: 'Aceptar',
       allowOutsideClick: false,
 
@@ -220,13 +228,7 @@ create(albumImg:cancionSolicitud, urlImg,referencia1) {
   const ref = this.storage.ref(filePath);
   ref.put(_file).then(() => {
     ref.getDownloadURL().subscribe(url => {
-     /* this.url2=url
-      generosImg.id
-      console.log('id',generosImg.Genero_nuevo)
-      */
-     // console.log('id_llll',generosImg.album_id)
-     // this.url2=url
-     //  esto es para que se edite la imagen
+    
       if (generosImg.id) {
         console.log('url_cancion',url)
        // console.log(this.update(generosImg, url,filePath))
@@ -251,12 +253,10 @@ else{
 
 
 update(albumImg: cancionSolicitud, urlImg,referencia) {
-//console.log('id_update',albumImg.id,urlImg)
-//console.log('referencia',referencia)
+
 try {
 
-//console.log('referencia_cancionnnn',albumImg.song_reference)
-//console.log('pasar_referecia',referencia)
+
 if(albumImg.song_reference==referencia){
   this.usuario = localStorage.getItem('usuario');
 console.log('entre1',albumImg.id)
@@ -282,7 +282,7 @@ console.log('datos abtes de enviar' ,albumImg.song_name )
 Swal.fire({
 position: 'top-end',
 icon: 'success',
-title: 'Cancion Editado correctamente'+':'+albumImg.song_name,
+title: 'Canción editado correctamente'+':'+albumImg.song_name,
 showConfirmButton: false,
 timer: 1500
 })
@@ -295,7 +295,7 @@ this.router.navigate(['/Canciones']);
 Swal.fire({
 position: 'top-end',
 icon: 'error',
-title: 'Cancion no editado'+':'+albumImg.song_name+error,
+title: 'Canción no editado'+':'+albumImg.song_name+error,
 showConfirmButton: false,
 timer: 1500
 }) 

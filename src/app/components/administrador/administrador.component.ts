@@ -38,7 +38,7 @@ export class AdministradorComponent implements OnInit  {
  
 
 // no tocar
-  Administrador: Administrador[]
+  Administrador: Administrador[]=[]
   
   constructor(private administradorService:AdministradorService,public formBuilder:FormBuilder,
     private activeRoute: ActivatedRoute,
@@ -73,11 +73,7 @@ export class AdministradorComponent implements OnInit  {
     }
 
   }
-  //this.cantidad_de_solicitud=localStorage.getItem('cantidad');
-    
-
-
-  //cantidad_de_solicitud:number=localStorage.getItem('cantidad_de_solicitud');
+ 
  
 
  
@@ -86,7 +82,7 @@ export class AdministradorComponent implements OnInit  {
     this.administradorService.updateRol(administrador);
     //alert("usted ha cambia el rol correctamente");
     Swal.fire({
-      title: 'Aceptó correctamente al Artista , ahora ya es parte de Taki-Tri',
+      title: 'Aceptó correctamente al Artista , ahora ya es parte de TakiTri',
       icon: 'success',     
       showCloseButton: true, 
       cancelButtonAriaLabel: 'Thumbs down',
@@ -103,9 +99,9 @@ export class AdministradorComponent implements OnInit  {
       const { value: text } = await Swal.fire({
         input: 'textarea',
         inputLabel: '¿Por qué no aceptas al usuario artista?',
-        inputPlaceholder: 'Type your message here...',
+        inputPlaceholder: 'Ecribe la razón',
         inputAttributes: {
-          'aria-label': 'Type your message here'
+          'aria-label': 'Ecribe la razón',
         },
         showCancelButton: true
       })
@@ -128,7 +124,7 @@ export class AdministradorComponent implements OnInit  {
         console.log('usuario_mensaje',administrador.artista_id)
         this.firestore.collection("mensaje").doc(id).set({"id_usuario":administrador.artista_id,"mensaje":text,"hora": this.hora})
         Swal.fire({
-          title: 'Rechazo correctamente al Artista , no es parte de Taki-Tri',
+          title: 'Rechazo correctamente al Artista , no es parte de TakiTri',
           icon: 'success',     
           showCloseButton: true, 
           cancelButtonAriaLabel: 'Thumbs down',
@@ -152,12 +148,12 @@ export class AdministradorComponent implements OnInit  {
 
 //paginas de solicitud
 siguiente_pagina_solicitud(){
-  this.page+=4;
+  this.page+=5;
  }
 
  atras_pagina_Solicitud(){
    if(this.page>0){
-    this.page-=4;
+    this.page-=5;
    }
   
 

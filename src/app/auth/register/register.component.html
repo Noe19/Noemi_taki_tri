@@ -51,16 +51,20 @@
       <input maxlength="50" required class="form-control m-2" type="email" placeholder="Correo electrónico"  formControlName="email"  name="email" value="email" value="email" [class.red]="correo_no_valido" [class.green]="correo" >
       <label class="error_mensaje" id="email" [class.red]="correo_no_valido" *ngIf="correo_no_valido">{{getErrorMessage_correo()}}</label>
    
-      <input class="error_mensaje"  maxlength="30" required class="form-control m-2" type="password" placeholder="Contraseña" formControlName="password"  name="password" value="password"  required [class.red]="contrasena_no_valido" [class.green]="contrasena">
-      <label class="error_mensaje"  id="email" [class.red]="contrasena_no_valido" *ngIf="contrasena_no_valido">{{getErrorMessage_contrasena()}}</label>
-             
+      <input [type]="hide ? 'password' : 'text'" maxlength="30" class="form-control m-2" type="password" placeholder="contraseña" formControlName="password" name="password" required value="password"  required [class.green]="contrasena" [class.red]="contrasena_no_valido"   >
+        
+      <label class="error_mensaje"  id="email" [class.red]="contrasena_no_valido" *ngIf="contrasena_no_valido">{{getErrorMessage_contrasena()}}     </label>
+    
+      <div  class= "ver"  (click)="hide = !hide"><u>{{hide ? 'ver  contraseña ' : 'ocultar contraseña'}}</u>
+     
+      </div>   
         <br>
         <button  class="btn" type="submit" [disabled]="registerForm.invalid" >Registrarse</button>
         
         <br>
         <br>
     </form>
-    <label>Si ya tienes cuenta en Taki-tri <a [routerLink]="['/login']"> <ul>Inicio de Sesión</ul></a></label>
+    <label>Si ya tienes cuenta en TakiTri <a [routerLink]="['/login']"> <ul>Inicio de Sesión</ul></a></label>
            
     </div>
    

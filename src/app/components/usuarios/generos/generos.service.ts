@@ -68,13 +68,7 @@ export class GenerosService {
     return this.db.collection("genres",ref => ref.where('authorId', '==', this.usuario)).snapshotChanges() 
     }
     
-/*
-   getodosgeneros(){
-      this.usuario = localStorage.getItem('usuario')
-   console.log('path',refi)
-    console.log( this.db.collection("generos",ref => ref.where('Genero_nuevo', '==', refi)).snapshotChanges() )
-    }
-*/
+
     getgenerosbyId(id){
    
       return this.db.collection("genres").doc(id).valueChanges()
@@ -95,7 +89,7 @@ author_mio(nomAuthor){
   if(imagenes.length==0){
     Swal.fire({
       icon: 'error',
-      title: 'Genero no creado, por favor ingrese todos los datos o el género ya existe ',
+      title: 'Género no creado, por favor ingrese todos los datos incluido una imagen en formanto jpg ',
       confirmButtonText: 'Aceptar',
       allowOutsideClick: false,
 
@@ -258,7 +252,7 @@ author_mio(nomAuthor){
       }else{
         Swal.fire(
           'No es posible eliminar el Género!',
-          'Este genero tiene albumes ',
+          'Este genero tiene álbumes ',
           'warning'
         )
 
@@ -347,20 +341,7 @@ author_mio(nomAuthor){
     .doc(albumImg.id)
    .update({ name: albumImg.name, imageURL: urlImg, authorId: albumImg.authorId,image_reference:albumImg.image_reference});
     console.log('datos abtes de enviar1' ,albumImg.imageURL  );
-    //para que se actualice las canciones
-   // this.obtener_id(albumImg.name,albumImg.id);
-   
-  /*   
-     this.db
-      .collection("songs")
-      .doc("o3BK0ddWb4jSopZfhqGT")
-      .update({
-        genre_name: albumImg.name,
-      
-      })
-*/
-      
-        // return this.angularfirestore.collection("request",ref => ref.where('rol', '==', 'rechazado')).snapshotChanges()
+    
     
 
   }else{
@@ -368,8 +349,7 @@ author_mio(nomAuthor){
     .doc(albumImg.id)
     .update({ name: albumImg.name, imageURL: urlImg, authorId: albumImg.authorId });
     console.log('datos abtes de enviar' ,albumImg.name  ) 
-    //para que se actualice 
-   // this.obtener_id(albumImg.name,albumImg.id); 
+  
 
   }
  
@@ -411,34 +391,7 @@ author_mio(nomAuthor){
 
   }
 
-  // modifcar las 
-  /*
-  obtener_id(nombre_genre,id_genre){
-    localStorage.setItem('actualizar_genero','')
-    localStorage.setItem('actualizar_genero',id_genre);
-
-    console.log('genero_id',id_genre,'nombre a modificar',nombre_genre)
  
-    //return this.db.collection("songs",ref => ref.where('genre_id', '==', id_genre)).snapshotChanges(); 
-  }
-  */
-/*
-  busqueda_id_genre(){
-    this.actualizar_genre = localStorage.getItem('actualizar_genero')  
-   return this.db.collection("songs",ref => ref.where('genre_id', '==', this.actualizar_genre)).snapshotChanges()
-
-  }
-*/
-  
-//ultimo  intento de canciones
-/*
-hacer_consulta(){
-  this.usuario = localStorage.getItem('usuario')
-   
-  return this.db.collection("songs",ref => ref.where('artista_id', '==', this.usuario)).snapshotChanges()
-
-}
-*/
 
 
 // servicio de busqueda de albumes hacia generos

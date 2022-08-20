@@ -1,13 +1,11 @@
 export const environment = {
   firebase: {
-    projectId: 'takitesis',
-    appId: '1:116911246151:web:57e388f0a00e0555bfda62',
-    databaseURL: 'https://takitesis-default-rtdb.firebaseio.com',
-    storageBucket: 'takitesis.appspot.com',
-    apiKey: 'AIzaSyDwXPCKY12Zj1qwGbYPFTYIgRGH3qwkxGc',
-    authDomain: 'takitesis.firebaseapp.com',
-    messagingSenderId: '116911246151',
-    measurementId: 'G-GT409M7ZJF',
+    apiKey: "AIzaSyD_MdB7V84IYoY9yggWQ3yCWmEJMylIpO8",
+  authDomain: "borrador-a0724.firebaseapp.com",
+  projectId: "borrador-a0724",
+  storageBucket: "borrador-a0724.appspot.com",
+  messagingSenderId: "177835894815",
+  appId: "1:177835894815:web:c20484a66ef6ec27068d2a"
   },
   production: true
 };

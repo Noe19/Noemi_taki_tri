@@ -91,7 +91,7 @@ ngOnInit(): void {
       return 'El campo es obligatorio';
     }
    
-    return this.ediForm.get('name')? 'No se aceptan numeros' : '';
+    return this.ediForm.get('name')? 'No se aceptan números' : '';
   }
   get nombre_no_valido(){
     return this.ediForm.get('name')?.invalid && this.ediForm.get('name')?.touched
@@ -102,7 +102,7 @@ getErrorMessage_apellido(){
     return 'El campo es obligatorio';
   }
  
-  return this.ediForm.get('apellido')? 'No se aceptan numeros' : '';
+  return this.ediForm.get('apellido')? 'No se aceptan números' : '';
 }
 get apellido_no_valido(){
   return this.ediForm.get('apellido')?.invalid && this.ediForm.get('apellido')?.touched
@@ -113,7 +113,7 @@ getErrorMessage_Alias(){
     return 'El campo es obligatorio';
   }
  
-  return this.ediForm.get('nickname')? 'No se aceptan numeros' : '';
+  return this.ediForm.get('nickname')? 'No se aceptan números' : '';
 }
 get alias_no_valido(){
   return this.ediForm.get('nickname')?.invalid && this.ediForm.get('apellido')?.touched

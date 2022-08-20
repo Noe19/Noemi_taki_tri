@@ -9,16 +9,25 @@
     display: flex;
 }
 .container{
-    width: 75%;
-    padding-left: 5%;
-    padding-right: 5%;
+    width: 100%;
+    
 }
 .container h2{
     text-align: center;
     font-size: 180% ;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.container p{
+    padding-left: 5%;
+    padding-right: 5%;
+   
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .formulario_generos{
     display: flex;
+    margin-left: 15%;
 }
 .imagenes_albumes{
     margin-top: 30%;

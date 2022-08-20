@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { url } from 'inspector';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 @Component({
@@ -31,7 +32,7 @@ public admin : any;
 
 constructor(private perfilService:PerfilService,public formBuilder:FormBuilder,
     private activeRoute: ActivatedRoute,private angularfirestore :AngularFirestore,
-    private router: Router,private storage:AngularFireStorage) { 
+    private storage:AngularFireStorage,private fb:FormBuilder,public afAuth :AngularFireAuth,private router : Router) { 
 
       this.ediForm = this.formBuilder.group({
         name: [''],
@@ -47,19 +48,10 @@ constructor(private perfilService:PerfilService,public formBuilder:FormBuilder,
   
     
     
-   // this.usuario = localStorage.getItem('usuario')
+   
    
 
- /*
-    this.perfilService.getPost().subscribe((res) =>{
-      this.Perfil = res.map((e) =>{
-        return {
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as Perfil)
-        };
-      });
-    });
-*/
+
 try {
   this.usuario = localStorage.getItem('usuario')
 this.roles_admin=localStorage.getItem('roles')
@@ -68,10 +60,10 @@ const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
 this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
   
   this.perfilRef = res;
-  //console.log('permiso', this.perfilRef.name)
-  //if(this.perfilRef.rol=='administrador'){
+
     
     this.url = this.perfilRef.imagen
+    localStorage.setItem('perfil_foto_admin',this.url)
     this.ediForm = this.formBuilder.group({
       
       name: [this.perfilRef.name],
@@ -81,13 +73,7 @@ this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
      
      
     })
-/*
-    if(this.perfilRef.name=='admi'){
-      console.log('permiso')
-    }else
-    console.log('denegado')
 
-*/
 
  // }
 
@@ -102,30 +88,11 @@ this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
 
 
 
-// ocurrencia
-
-
-
-/*
-this.usuario = localStorage.getItem('usuario')
-const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
-this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
-  this.perfilRef = res;
-  this.ediForm = this.formBuilder.group({
-    name: [this.perfilRef.name],
-    apellido: [this.perfilRef.apellido],
-    nickname: [this.perfilRef.nickname]
-  })
-})
-  
-
-*/
 
 
   
   }
-  // imagen
-     // crear un  imagen 
+  
      @ViewChild("file") file;
      files: Set<File> = new Set();
  
@@ -159,7 +126,7 @@ this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
     const reader = new FileReader();
     reader.onload = () => {
       this.urlimg = reader.result;
-      console.log('imagen', this.urlimg)
+   //   console.log('imagen', this.urlimg)
     };
     if (target.files.length > 0) {
       this._file = target.files[0];

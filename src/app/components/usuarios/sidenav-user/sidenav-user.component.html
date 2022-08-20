@@ -1,17 +1,30 @@
-
-<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" >
-    <a href="#" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-      <h2 class="titulo">Artista</h2>
- <br>
-        <img [src]="this.imagen" class="avatar_perfil">
-        <h4 class="nombre">{{this.name}}</h4>
+<body id="body-pd" class="todo bg-dark">
+  <header class="header" id="header">
+      <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+      <svg class="bi " width="20" height="16"></svg>
+  </header>
+  <div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+      <a href="#" class="nav-link text-white"  >
+ 
        
-     
       </a>
-  <hr>
-  <ul class="nav nav-pills flex-column mb-auto">
-    <li>
+      <div  class="redonde "id=foto >
+      <img [src]="this.perfil_foto" class="avatar_perfil" *ngIf="mostrar==1 else mensaje" >
+      <ng-template #mensaje class="foto_alterna">
+        <h6 style="color: white; margin-left: 60px;">Cargando imagen... </h6>
+        <div class="loader">
+         
+        </div>
+    
+        </ng-template>
+      </div>
+      <br>
+     <h4 class="nombre"> Artista :{{this.name}}</h4>
+      <hr>
+      <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li>
    
         <a routerLink="/show-artist/{{usuario}}" class="nav-link text-white">
           <svg class="bi me-2" width="16" height="60"></svg>
@@ -23,39 +36,45 @@
         </a>
       </li>
 
-    
-    <li>
-      <a routerLink="/generos" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="60"></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-disc-fill" viewBox="0 0 16 16">
-          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-6 0a2 2 0 1 0-4 0 2 2 0 0 0 4 0zM4 8a4 4 0 0 1 4-4 .5.5 0 0 0 0-1 5 5 0 0 0-5 5 .5.5 0 0 0 1 0zm9 0a.5.5 0 1 0-1 0 4 4 0 0 1-4 4 .5.5 0 0 0 0 1 5 5 0 0 0 5-5z"/>
-        </svg>
-        Géneros
-      </a>
-    </li>
-    <li>
-      <a routerLink="/Albumes" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="60"></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-player-fill" viewBox="0 0 16 16">
-          <path d="M8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-          <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm1 2h6a1 1 0 0 1 1 1v2.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm3 12a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-        </svg>
-        Álbumes
-      </a>
-    </li>
-    <li>
-      <a routerLink="/Canciones" class="nav-link text-white">
-        <svg class="bi me-2" width="16" height="60"></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-        </svg>
-      Canciones
-      </a>
-    </li>
+  
+     
+      
+        <li>
+          <a routerLink="/generos" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="60"></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-disc-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-6 0a2 2 0 1 0-4 0 2 2 0 0 0 4 0zM4 8a4 4 0 0 1 4-4 .5.5 0 0 0 0-1 5 5 0 0 0-5 5 .5.5 0 0 0 1 0zm9 0a.5.5 0 1 0-1 0 4 4 0 0 1-4 4 .5.5 0 0 0 0 1 5 5 0 0 0 5-5z"/>
+            </svg>
+            Géneros
+          </a>
+        </li>
+        <li>
+          <a routerLink="/Albumes" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="60"></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-player-fill" viewBox="0 0 16 16">
+              <path d="M8 12a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+              <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm1 2h6a1 1 0 0 1 1 1v2.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm3 12a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+            </svg>
+            Álbumes
+          </a>
+        </li>
 
+        
+        <li>
+          <a routerLink="/Canciones" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="60"></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
+              <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+              <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+              <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+              <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          Canciones
+          </a>
+        </li>
+
+        
+        
     <li>
       <a routerLink="/solicitud" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="60"></svg>
@@ -65,19 +84,29 @@
       Solicitud
       </a>
     </li>
-    <li  >
-      <a routerLink="/administrador" class="nav-link text-white" (click)="salir()" >
-        <svg class="bi me-2" width="16" height="60"></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-          <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-        </svg>
-      Salir
-      </a>
-    </li>
+
+
+
+
+
+    
+      <li  >
+        <a routerLink="/administrador" class="nav-link text-white" (click)="salir()"  (click)="doble_salir()" >
+          <svg class="bi me-2" width="16" height="60"></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+          </svg>
+        Salir
+        </a>
+      </li>
+    
+   
+    
+    <li>
+    </ul>
+    <br>
   
-  <li>
-  </ul>
-
-</div>
-
+          
+      </nav>
+  </div>

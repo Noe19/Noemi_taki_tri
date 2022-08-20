@@ -47,7 +47,7 @@ export class CreateCancionesComponent implements OnInit {
   ngOnInit(): void {
    // console.log('id_editable_cancion',this.activeRoute.snapshot.paramMap.get('id'));
     const id=this.activeRoute.snapshot.paramMap.get('id');
-    this.cancionService.getPostcancionesid(id).subscribe((res) =>{
+    this.cancionService.getPostcanciones().subscribe((res) =>{
            
       this.Songs = res.map((e) =>{
       
@@ -66,9 +66,7 @@ export class CreateCancionesComponent implements OnInit {
   }
 
   selectChange(event:any){
-    //traer la imagens
-    //console.log(event.target.files);
-    //para visualizar la imagen que vamos a subir
+    
      this.isChanged=false;
     if(event.target.files.length>0){
       
@@ -94,28 +92,40 @@ export class CreateCancionesComponent implements OnInit {
     for (let i = 0; i < this.Songs.length; i++) {
       this.songsNames.push(this.Songs[i].song_name)
     }
-    console.log("generos completos: ", this.Songs);
-    console.log("generos nopmbres: ", this.songsNames);
+   // console.log("generos completos: ", this.Songs);
+   // console.log("generos nopmbres: ", this.songsNames);
     let incluyeGenero = this.songsNames.includes(this.cancionesforms.get('song_name').value);
     
   if (incluyeGenero){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Esta canciÓn ya es parte de un álbum',
+      showConfirmButton: false,
+      timer: 1500
+      })
+  }else{
     let  cargar:any={
       song_name:this.cancionesforms.value.song_name,
       album_id:this.activeRoute.snapshot.paramMap.get('id')
       
-
+  
     };
     this.cancionService.cargarimagenesCancionesFirebase(this.imagenes,cargar);
     this.router.navigate(['/Canciones']);
     console.log(this.cancionesforms.value,'url',cargar)
     console.log(this.cancionesforms.value.song_name)
 
+  }
+  
+    
+
 }
     
   
    
   
-}
+
 
   limpiarform(){
     this.cancionesforms.reset();

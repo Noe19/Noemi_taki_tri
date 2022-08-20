@@ -35,42 +35,7 @@ export class PermisoArtistaGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
 // Este modulo es para dar permiso si ya tiene la solicitud aprobada 
-      /*
-      const usuario_ingresado =  this.activeRoute.snapshot.paramMap.get(this.usuario)
-      this.usuario = localStorage.getItem('usuario')
-      this.roles_artista=localStorage.getItem('roles')
-      const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
 
-this.soliService.getPostbyId(this.usuario).subscribe( res =>{
-  
-  this.perfilResf = res;
- // console.log('permiso', this.perfilRef.name)
-  //if(this.perfilRef.rol=='administrador'){
-    
-    this.permiso = this.perfilResf.rol
-    console.log('permiso', this.perfilResf.id_usuario);
-    localStorage.setItem('artista_rol',this.perfilResf.rol)
-})
-this.permiso_artista_rol=localStorage.getItem('artista_rol');
- console.log('artistarol',this.permiso_artista_rol==this.rol_artista)
-      if( this.permiso_artista_rol==this.rol_artista){
-
-        alert('usted es miembro de taki-tri');
-        return true;
-      
-       
-
-      }
-
-      alert('por favor enviar un solicitud para que sea parte de taki-tri');
-      this.router.navigate(['/dashboard-user'])
-      return true
-
-
-
-     
-  }
-  */
 
 ////////////////////////////////////////////////////////////////////////////////////
     this.Aceptar.getPost_artistas_guard_aceptados().subscribe((res) =>{
@@ -89,28 +54,7 @@ this.permiso_artista_rol=localStorage.getItem('artista_rol');
      
       
     } );
-////////////////////////////////////////////////////////////////////////////////////////
-   // this.valor_aceptacion=localStorage.getItem('artista_aceptado');
-  //  console.log('valor',this.valor_aceptacion)
- /*   
-    if(this.valor_aceptacion==='true'){
- 
-      return true;
-  
-    }
-    else{
-      
-      Swal.fire({
-        icon: 'warning',
-        title: 'Envia tu solicitud para tener acceso completo de Taki-Tri',
-        confirmButtonText: 'Aceptar',
-        allowOutsideClick: false,
 
-      })
-      this.router.navigate(['/dashboard-user'])
-      return false
-    }
-*/
 this.permiso_artista=localStorage.getItem('permiso')
  
 if(this.permiso_artista>0){
@@ -123,7 +67,7 @@ if(this.permiso_artista>0){
   }
   Swal.fire({
     icon: 'warning',
-    title: 'Envia solicitud para ser parte de taki-tri',
+    title: 'Envia solicitud para ser parte de TakiTri',
     confirmButtonText: 'Aceptar',
     allowOutsideClick: false,
 

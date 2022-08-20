@@ -1,8 +1,11 @@
 .Contenedos_todos_los_generos{
 
     width: 100%;
-    height: auto;
+    height: 100%;
 
+}
+html{
+    scroll-behavior: smooth;
 }
 .col1{
     margin-left: 25%;
@@ -47,7 +50,7 @@
    
 }
 .hola{
-    width: 96.5%;
+    width: 90.5%;
     margin-left: 1.5%;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;

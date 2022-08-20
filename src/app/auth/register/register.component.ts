@@ -32,14 +32,7 @@ export class RegisterComponent implements OnInit {
 }); 
   
   
-/*
-   registerForm = new FormGroup({
-    email: new FormControl(''),
-    password :new FormControl(''),
 
-  });
-
-*/
 
 
 registerForm : FormGroup;
@@ -67,7 +60,7 @@ public isLogged = false;
 
 speakerCollection: AngularFirestoreCollection<User>;
 
-
+hide = true;
 
 //validacion de nombres
   get nombre (){
@@ -83,7 +76,7 @@ getErrorMessage_nombre() {
   if (this.registerForm.get('name')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
-  return this.registerForm.get('name')? 'No es Nombre valido' : '';
+  return this.registerForm.get('name')? 'No es Nombre válido' : '';
 }
   
 //validacion de apellido
@@ -100,7 +93,7 @@ getErrorMessage_apellido() {
   if (this.registerForm.get('apellido')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
-  return this.registerForm.get('apellido')? 'No es Apellido valido' : '';
+  return this.registerForm.get('apellido')? 'No es Apellido válido' : '';
 }
   
 // validacion nickname
@@ -117,7 +110,7 @@ getErrorMessage_nickname() {
   if (this.registerForm.get('nickname')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
-  return this.registerForm.get('nickname')? 'No es Nickname valido' : '';
+  return this.registerForm.get('nickname')? 'No es un alias válido' : '';
 }
   
 
@@ -135,7 +128,7 @@ getErrorMessage_fecha() {
   if (this.registerForm.get('fecha_nacimiento')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
-  return this.registerForm.get('fecha_nacimiento')? 'No es una fecha  valido' : '';
+  return this.registerForm.get('fecha_nacimiento')? 'No es una fecha  válida' : '';
 }
   
 
@@ -173,20 +166,16 @@ getErrorMessage_contrasena() {
   if (this.registerForm.get('password')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
-  return this.registerForm.get('password')? 'No es contraseña valido' : '';
+  return this.registerForm.get('password')? 'No es contraseña válido' : '';
 }
 //mensaje de error para correo 
 
 
   async onRegister(){
-      //console.log('registrado->',this.registerForm.value);
      
-      
-     // const{email,password} = this.registerForm.value;
-      //this.authSvc.register(email,password);
 
 
-      console.log('form->',this.registerForm.value)
+      //console.log('form->',this.registerForm.value)
     const {email,password,name} = this.registerForm.value;
     const id = this.firestore.createId();
     
@@ -194,8 +183,8 @@ getErrorMessage_contrasena() {
     try {
       const user:any = await this.authSvc.register(email,password,name);
       if(user ){ 
-        console.log('usurio_nombre',this.registerForm.get('name')?.value)
-        console.log('usurio_id',user?.user?.uid)
+    //    console.log('usurio_nombre',this.registerForm.get('name')?.value)
+    //    console.log('usurio_id',user?.user?.uid)
        
       
         // usuario de forma global, solo vale hacer una sola (setItem)-> 
@@ -215,19 +204,11 @@ getErrorMessage_contrasena() {
            this.router.navigate(['/register']);
       
          });
-        /*
-        this.firestore.collection("artist").add({"id":user?.user?.uid,"nombre": this.registerForm.get('name')?.value,"apellido":this.registerForm.get('apellido')?.value,"nickname":this.registerForm.get('nickname')?.value,
-        "fecha_nacimiento":this.registerForm.get('fecha_nacimiento')?.value,"email":this.registerForm.get('email')?.value}).then(()=>{
-          alert("usuario ingresado con exito");
-         }).catch(err =>{
-           console.log(err)
-      
-         })
-         */
+       
        // alert('Usted se ha registrado con exito, revisaremos sus datos , para que pueda ingresar debe esperara 24h');
        this.Toast.fire({
         icon: 'success',
-        title: 'Se ha registrado con exito'
+        title: 'Se ha registrado con éxito'
         
       });
        this.router.navigate(['/login']);
@@ -235,7 +216,7 @@ getErrorMessage_contrasena() {
       } else{
         this.Toast.fire({
           icon: 'error',
-          title: 'No se registro con exito ,intente nuevamente'
+          title: 'No se registro con éxito ,intente nuevamente'
           
         });
         this.router.navigate(['/register']);

@@ -33,7 +33,7 @@ export class GenerosComponent implements OnInit {
  
   //generos:Generos[];
   public imagen:any;
-  todoslosgeneros:Generos[];
+  todoslosgeneros:Generos[]=[];
  //buscador
  public page:number=0;
  public search:string="";
@@ -139,12 +139,12 @@ public todos(){
   }
     // paginacion de paginas
     siguiente_pagina_mensaje_solicitud(){
-      this.page+=6;
+      this.page+=3;
      }
   
      atras_pagina_mensaje_solicitud(){
        if(this.page>0){
-        this.page-=6;
+        this.page-=3;
        }
       
   

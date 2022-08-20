@@ -1,44 +1,81 @@
-.componente_canciones{
-    display: flex;
-}
-.crear_canciones{
-    width: 100%;
+.componente_generos{
 
+    width: 100%;
+    height: 100vh;
+   
+ }
+ 
+ .input-group{
+    margin-top: 8%;
+  
+    display: inline-block;
+    width: 50%;
+ 
+    margin-left: 5%;
+  
+ }
+ .imagenes_generos{
+    width:150px;
+     height:150px;
+     border-radius:150px;
+     border:5px solid #666;
+     margin-right: 0.1%;
+ }
+ .crear_generos{
+ 
     display: inline;
     padding-left: 5%;
     padding-right: 5%;
-}
-.crear_canciones h2{
+    width: 80%;
+    margin-left: 5%;
+    
+    
+ 
+ }
+ .crear_generos h2{
     text-align: center;
     align-items: center;
-}
-.formulario_generos{
+ }
+ .crear_generos p{
+    padding-left: 5%;
+    padding-right: 5%;
+   
+    margin-left: 5%;
+    margin-right: 5%;
+ }
+ 
+ .formulario_generos{
+    margin-top: 50px;
+    margin-left: 10%; 
+ 
     display: flex;
-    width: 80%;
-    margin-top: 20%;
-    margin-left: 10%;
-}
-.btn{
+    
+ 
+ 
+ }
+ .form-control{
+    width: 100%;
+ }
+ 
+ .form-group{
+    margin-top: 50px;
+    
+ }
+ .btn{
     margin-top: 3%;
     display: inline-block;
-}
-.form-control{
-    width: 100%;
-}
-.input-group{
-    width: 60%;
-    display: inline-block;   
-    padding-left: 5%;
-
-}
-.form-control-file{
-    margin-top: 10%;
-}
-.error{
+ }
+ .col1{
+    margin-left: 1%;
+ }
+ .error{
     color: red;
-    
-   
  }
  .red{
     border-color: red; 
+ }
+ .Completo_create_generos{
+    display: flex;
+     height: auto;
+    width: 100%;
  }

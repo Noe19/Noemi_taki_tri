@@ -23,7 +23,7 @@ export class SolicitudAceptadasComponent implements OnInit {
   public search:string="";
   // alertas diseñadas 
   Swal = require('sweetalert2');
-  Administrador: Administrador[]
+  Administrador: Administrador[]=[]
   constructor(private administradorService:AdministradorService,public formBuilder:FormBuilder,
     private activeRoute: ActivatedRoute,
     private router: Router) { }
@@ -51,73 +51,8 @@ export class SolicitudAceptadasComponent implements OnInit {
 
   }
 
-   // toda la lista de solicitudes rechazadas 
-   /*    
-   Rechazadas(){
-    this.administradorService.getPost_rechazadas().subscribe((res) =>{
-        
-      this.Administrador = res.map((e) =>{
-        return {
-        
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as Administrador)
-        };
-       
-      });
-     
-      this.arreglo=this.Administrador.length
-      console.log('cuantashay',this.arreglo)
-     localStorage.setItem('cantidad',this.arreglo);
-    
-    
-    });
-    this.cantidad_aprobadas=localStorage.getItem('cantidad');
-    localStorage.removeItem('cantidad');
-  } 
- 
-  Aceptadas(){
-    this.administradorService.getPost_no_artista().subscribe((res) =>{
-        
-      this.Administrador = res.map((e) =>{
-        return {
-        
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as Administrador)
-        };
-       
-      });
-      this.arreglo=this.Administrador.length
-     localStorage.setItem('cantidad_ACEP',this.arreglo);
-    
-    
-    }); 
-    this.cantidad_aprobadas=localStorage.getItem('cantidad_ACEP');
-    localStorage.removeItem('cantidad_ACEP');
-  }
-*/
-/*
-  cambiarpagina(e:PageEvent){
-    this.desde = e.pageIndex * e.pageSize;
-    this.hasta = this.desde + e.pageSize;
-      
-  }
- */ 
-// cambiar estado a no artista
-/*
-  convertToArtist  (administrador) {
-    this.administradorService.updateRol_no_artist(administrador);
-    //alert("usted ha cambia el rol correctamente");
-    Swal.fire({
-      title: 'Rechazo correctamente al Artista ,ya no es parte de Taki-Tri',
-      icon: 'success',     
-      showCloseButton: true, 
-      cancelButtonAriaLabel: 'Thumbs down',
-    })
-  } catch (error) {
-
-    alert("No se puedo acepta la solicitud , intente más luego"); 
-  }
-*/
+   
+  
   //buscador de solicitudes acptadas
  
   onSearchSolicitud_Aceptadas(search:string){

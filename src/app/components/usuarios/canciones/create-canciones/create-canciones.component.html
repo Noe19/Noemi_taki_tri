@@ -1,52 +1,62 @@
-<app-header-artist></app-header-artist>
-<div class="componente_canciones">
+<div class="Completo_create_generos">
+
+  <div class="menu">
     <app-sidenav-user></app-sidenav-user>
-    <div class="crear_canciones">
-    <h2>Crear Canciones </h2>
-    <p>
-      Este módulo te permite subir canciones a tus álbumes
-    <hr>
-    <div class="container">
-      <div class="row">
-        <div class="col col-lg-3">
-         
-        </div>
-        <div class="col col-lg-5">
-          
-        </div>
-        <div class="col1 col-lg-3">
-          <button  routerLink="/Albumes" type="submit" class=" regesar btn btn-primary w-100">Regresar</button>
+  </div>
+
+  <div class="componente_generos">
+    <app-header-artist></app-header-artist>
+      <div class="crear_generos">
+        <div>
+      <h2>Crear Canciones </h2>
+      <p>
+        Este módulo te permite subir canciones a tus álbumes
+      </p>
+      <hr>
+      <div class="container">
+        <div class="row">
+          <div class="col col-lg-1">
+           
+          </div>
+          <div class="col col-lg-6">
+            
+          </div>
+          <div class="col1 col-lg-3">
+            <button  routerLink="/Albumes" type="submit" class=" regesar btn btn-primary w-100">Regresar</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="form-group " >
-
-
-      <form class="formulario_generos" (ngSubmit)="crear_canciones()" [formGroup]="cancionesforms">
-        <div class="form-group">
         
-          <audio [src]="imgURL" with="100" height="100"></audio>
-          <input type="file" class="form-control-file" accept="audio/*" (change)="selectChange($event)" ><br>
+    </div>
+      <div class="form-group " >
   
-            
+        <form class="formulario_generos" (ngSubmit)="crear_canciones()" [formGroup]="cancionesforms">
+          <div class="form-group">
+          
+            <audio [src]="imgURL" with="100" height="100"></audio>
+            <input type="file" class="form-control-file" accept="audio/*" (change)="selectChange($event)" ><br>
+    
+              
+    
+          </div>
+         
+          <div class="input-group mb-3">
+            <label >Nombre de la Canción</label>
+            <input type="text" class="form-control" maxlength="25" minlength="3" placeholder="nombre " required formControlName="song_name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" [class.red]="canciones_nuevo_no_valido">
+            <label class="error" *ngIf="canciones_nuevo_no_valido"  >{{cancionmio()}}</label> 
+            <button  class="btn btn-primary w-100" [disabled]="!cancionesforms.valid"   type="submit">Crear</button>
+         
+          </div>
+    
   
-        </div>
-       
-        <div class="input-group mb-3">
-          <label >Nombre de la Canción</label>
-          <input type="text" class="form-control" maxlength="25" minlength="3" placeholder="Nombre canción" required formControlName="song_name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" [class.red]="canciones_nuevo_no_valido">
-          <label class="error" *ngIf="canciones_nuevo_no_valido"  >{{cancionmio()}}</label> 
-          <button  class="btn btn-primary w-100" [disabled]="!cancionesforms.valid"   type="submit">Crear</button>
-       
-        </div>
   
-
-
-
-      
+        
+    
+      </form>
   
-    </form>
-
+  
+    </div>
+  
   </div>
-</div>
+  </div>
 </div>

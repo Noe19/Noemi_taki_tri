@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./solicitud-rechazadas.component.css']
 })
 export class SolicitudRechazadasComponent implements OnInit {
-  Administrador: Administrador[];
+  Administrador: Administrador[]=[];
   pageSize=5;
   desde:number=0;
   hasta: number=4;
@@ -50,12 +50,12 @@ export class SolicitudRechazadasComponent implements OnInit {
 
 // paginador
   siguiente_pagina_solicitud_rechazadas(){
-    this.page+=3;
+    this.page+=5;
    }
   
    atras_pagina_Solicitud_rechazas(){
      if(this.page>0){
-      this.page-=3;
+      this.page-=5;
      }
     }
 

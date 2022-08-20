@@ -37,15 +37,23 @@
       <form [formGroup]="loginForm"  (ngSubmit)="onLogin() ">       
         <input maxlength="50"   class="form-control m-2" type="email" placeholder="Correo electrónico" formControlName="email" name="email" required value="email" [class.green]="correo" [class.red]="correo_no_valido">
         <label class="error_mensaje"  id="email" [class.red]="correo_no_valido" *ngIf="correo_no_valido">{{getErrorMessage_correo()}}</label>
+     
+        
+       
+        <input [type]="hide ? 'password' : 'text'" maxlength="30" class="form-control m-2" type="password" placeholder="contraseña" formControlName="password" name="password" required value="password"  required [class.green]="contrasena" [class.red]="contrasena_no_valido"   >
+        
+        <label class="error_mensaje"  id="email" [class.red]="contrasena_no_valido" *ngIf="contrasena_no_valido">{{getErrorMessage_contrasena()}}     </label>
       
-
-        <input maxlength="30" class="form-control m-2" type="password" placeholder="Contraseña" formControlName="password" name="password" required value="password"  required [class.green]="contrasena" [class.red]="contrasena_no_valido">
-        <label class="error_mensaje"  id="email" [class.red]="contrasena_no_valido" *ngIf="contrasena_no_valido">{{getErrorMessage_contrasena()}}</label>
+        <div  class= "ver"  (click)="hide = !hide"><u>{{hide ? 'ver  contraseña ' : 'ocultar contraseña'}}</u>
+       
+        </div>
+       
+      
+        <br>
       <br>
-
         <label><a [routerLink]="['/forgot-password']"><u>Recuperar contraseña</u></a></label>
         <br>
-        <button class="btn" type="submit" [disabled]="loginForm.invalid">Inicio de Sesión</button>
+        <button class="btn" type="submit" [disabled]="loginForm.invalid" >Inicio de Sesión</button>
         
         <br>
         <br>
@@ -58,4 +66,6 @@
   </div>
 
 </div>
+
+
 

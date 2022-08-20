@@ -23,7 +23,7 @@ export class ShowAlbumesComponent implements OnInit {
  
   //generos:Generos[];
   public imagen:any;
-  todoslosalbumes:Albumes[];
+  todoslosalbumes:Albumes[]=[];
  //buscador
  public page:number=0;
  public search:string="";
@@ -79,12 +79,12 @@ export class ShowAlbumesComponent implements OnInit {
   }
      // paginacion de paginas
      siguiente_pagina_album(){
-      this.page+=6;
+      this.page+=3;
      }
   
      atras_pagina_album(){
        if(this.page>0){
-        this.page-=6;
+        this.page-=3;
        }
       
   
@@ -121,7 +121,7 @@ export class ShowAlbumesComponent implements OnInit {
     }
 
     obtenercuantasCanciones(id){
-      console.log('id_modi_cancion',id)
+    //  console.log('id_modi_cancion',id)
       localStorage.setItem('cuantos_canciones',id)
       return id
      // this.GenerosImg.updateCancione(id);

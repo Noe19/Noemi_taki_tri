@@ -1,52 +1,101 @@
 .sidebar-header{
-    background: rebeccapurple;
-    width: 250px;
+  background: rebeccapurple;
+  width: 350px;
+}
+html{
+  scroll-behavior: smooth;
 }
 .list-unstyled {
-    background: red;
-    width: 250px;
-    height: 100%;
+  background: red;
+  width: 250px;
+  height: 100%;
 }
 .d-flex {
-    height: 100%;
-    width: 300px;
-    display: flex;
-    
+  height: 100%;
+  width: 300px;
+  display: flex;
+  
 }
 .navbar-brand{
-    display:contents;
-  
+  display:contents;
+
+}
+.avatar_perfil{
+  width:105px;
+  height:105px;
+  border-radius:150px;
+  border:5px solid #666;
+  text-align: center;
+  margin-left: 40px;
+
+}
+.bi{
+  text-align: center;
+}
+.home{
+    text-decoration: none;
+    color: aliceblue;
   }
-  .avatar_perfil{
-    width:80px;
-    height:80px;
-    border-radius:150px;
-    border:5px solid #666;
-    text-align: center;
-    margin-left: 40px;
+  .nav-link{
+   
+    color: aliceblue;
+  }
+  .titulo{
+    margin-left: 50px;
+  }
+  .nombre{
+    color: white;
+    padding: 2px;
+   
+    margin-left: 78px; 
+    display: inline;
+  }
+
+.l-navbar{
+width: 250px;
+
+}
+.todo{
+width: 300px;
+
+}
+.nav{
+padding-top: 60px;
+padding-left: 20px;
+}
+.loader {
+  margin-left: 50px;
+  text-align: center;
+  align-items: center;
  
-  }
-  .home{
-      text-decoration: none;
-      color: aliceblue;
-    }
-    .nav-link{
-      color: aliceblue;
-    }
-    .titulo{
-      margin-left: 50px;
-    }
-    .nombre{
-      padding: 2px;
-      margin-left: 57px; 
-    }
+   border: 10px solid #f3f3f3;
+   border-radius: 50%;
+   border-top: 10px solid #3498db;
+   width: 90px;
+   height: 90px;
+   -webkit-animation: spin 2s linear infinite; /* Safari */
+   animation: spin 2s linear infinite;
+ }
+ .h6{
+  color: white;
+  margin-left: 40px;
+ }
+ .foto_alteran{
+  margin-left: 40px;
+ }
+ .redonde{
+  height: 130px;
+ }
+ 
+ /* Safari */
+ @-webkit-keyframes spin {
+   0% { -webkit-transform: rotate(0deg); }
+   100% { -webkit-transform: rotate(360deg); }
+ }
+ 
+ @keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+ }
 
-    @media only screen and (min-width: 1500px) {
-
-      .d-flex{
-        height: 100vh;
-         background-color: blueviolet;
-         color: red; 
-       
-      }  
-  }
+  

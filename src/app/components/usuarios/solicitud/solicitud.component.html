@@ -1,5 +1,5 @@
 
-<div class="Completo_solicitud">
+<div class="Completo_solicitud  bg-dark">
   <div class="menu">
     <app-sidenav-user></app-sidenav-user>
   </div>
@@ -40,13 +40,13 @@
     <div class="form_soli">
       <div class="mb-3">
           <label class="form-label">Nombre Artístico</label>
-          <input formControlName="nombre_artistico" type="text" class="form-control" required placeholder="Nombre Artístico" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$"  [class.red]="nombreArtistico_no_valido">
+          <input  maxlength="25" minlength="3" formControlName="nombre_artistico" type="text" class="form-control" required placeholder="nombre artístico" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$"  [class.red]="nombreArtistico_no_valido">
           <label class="error"  *ngIf="nombreArtistico_no_valido" >{{getErrorMessage_nombre()}}</label>  
         </div>
       <div class="mb-3">    
           <label class="form-label">Número de Cédula</label>
          
-          <input maxlength="10" minlength="10" formControlName="nacionalidad" type="text" class="form-control" required placeholder="Cédula" ngModel pattern="^0[0-9]|[0-9]\d$" [class.red]="cedula_no_valido">
+          <input maxlength="10" minlength="10" formControlName="nacionalidad" type="text" class="form-control" required placeholder="cédula" ngModel pattern="^0[0-9]|[0-9]\d$" [class.red]="cedula_no_valido">
           <label class="error"  *ngIf="cedula_no_valido" >{{getErrorMessage_cedula()}}</label>  
         </div>
       <div class="form-group">
@@ -58,7 +58,7 @@
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked disabled required  >
           <label class="form-check-label" for="flexCheckChecked">
-              Acepto Terminos y Condiciones
+              Acepto términos y Condiciones
           </label>
         </div>
   
@@ -102,25 +102,43 @@
        
       </div>
       
-     
+     <br>
    
-    <button class="btn btn-secondary" (click)="atras_pagina_mensaje_solicitud()" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-      <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-    </svg></button>
-    <button class="btn btn-secondary" (click)="siguiente_pagina_mensaje_solicitud() " [disabled]="(MensajeSolicitud  | filtro:page:search).length<1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-      <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-    </svg></button> 
+ 
    
+
+    <!---->
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+         
+          <button class="btn btn-secondary" (click)="atras_pagina_mensaje_solicitud()" > <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+          </svg></button>
+        </div>
+        <div class="col-7">
+         
+        </div>
+        <div class="col-2">
+          <button class="btn btn-secondary" (click)="siguiente_pagina_mensaje_solicitud() "  [disabled]="(MensajeSolicitud  | filtro:page:search).length<1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+          </svg></button> 
+    
+        </div>
+      </div>
+    </div>
   </div>
+  <ng-template #mensaje>
+    <h3 class="">
+       No hay mensajes ...
+        </h3>
+    </ng-template>
 </div>  
 
-<ng-template #mensaje>
-  <h3 class="">
-     No hay mensajes ...
-      </h3>
-  </ng-template>
+
 
   </div>
+</div>
 </div>
 
 

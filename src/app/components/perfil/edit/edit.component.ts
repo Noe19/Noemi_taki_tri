@@ -39,22 +39,7 @@ Swal = require('sweetalert2');
         imagen:['']
       })
     }
-/*
-  ngOnInit(): void {
-    //console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'))
-    this.usuario = localStorage.getItem('usuario')
- 
-    const id = this.activeRoute.snapshot.paramMap.get('id');
-    this.perfilService.getPostbyId(id).subscribe(res =>{
-      this.perfilRef = res;
-      this.ediForm = this.formBuilder.group({
-        name: [this.perfilRef.name],
-        apellido : [this.perfilRef.apellido],
-        nickname : [this.perfilRef.nickname]
-      })
-    })
-  }
-*/
+
 ngOnInit(): void {
   this.usuario = localStorage.getItem('usuario')
   const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
@@ -78,7 +63,7 @@ ngOnInit(): void {
     try {
       this.usuario = localStorage.getItem('usuario')
       const id =this.activeRoute.snapshot.paramMap.get(this.usuario);
-      console.log('imagen',this.ediForm.value)
+   //   console.log('imagen',this.ediForm.value)
      this.perfilService.updatePost(this.ediForm.value,this.usuario);
      
      this.Toast.fire({
@@ -105,7 +90,7 @@ ngOnInit(): void {
       return 'El campo es obligatorio';
     }
    
-    return this.ediForm.get('name')? 'No se aceptan numeros' : '';
+    return this.ediForm.get('name')? 'No se aceptan números' : '';
   }
   get nombre_no_valido(){
     return this.ediForm.get('name')?.invalid && this.ediForm.get('name')?.touched
@@ -116,7 +101,7 @@ getErrorMessage_apellido(){
     return 'El campo es obligatorio';
   }
  
-  return this.ediForm.get('apellido')? 'No se aceptan numeros' : '';
+  return this.ediForm.get('apellido')? 'No se aceptan números' : '';
 }
 get apellido_no_valido(){
   return this.ediForm.get('apellido')?.invalid && this.ediForm.get('apellido')?.touched
@@ -127,7 +112,7 @@ getErrorMessage_Alias(){
     return 'El campo es obligatorio';
   }
  
-  return this.ediForm.get('nickname')? 'No se aceptan numeros' : '';
+  return this.ediForm.get('nickname')? 'No se aceptan números' : '';
 }
 get alias_no_valido(){
   return this.ediForm.get('nickname')?.invalid && this.ediForm.get('apellido')?.touched

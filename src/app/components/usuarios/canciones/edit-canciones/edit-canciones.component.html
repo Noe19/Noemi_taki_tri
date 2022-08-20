@@ -45,6 +45,7 @@
     <div class="input-group mb-3">
       <input type="text"  maxlength="25" minlength="3" class="form-control" placeholder="Cancion" required formControlName="song_name"  ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" [class.red]="cancion_nombre_nuevo_no_valido">
       <label class="error" *ngIf="cancion_nombre_nuevo_no_valido"  >{{cancionmio()}}</label> 
+     
       <br>
       <br>
       

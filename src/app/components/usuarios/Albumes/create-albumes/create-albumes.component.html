@@ -11,15 +11,15 @@
   
   
   
-      <h2>Crea todos nuevos Álbumes</h2>
+      <h2>Crear  nuevos Álbumes</h2>
       <p>Este módulo te permite crear álbumes musicales
           <hr>
           <div class="container">
             <div class="row">
-              <div class="col col-lg-4">
+              <div class="col col-lg-1">
                
               </div>
-              <div class="col col-lg-5">
+              <div class="col col-lg-6">
                 
               </div>
               <div class="col1 col-lg-3">
@@ -43,7 +43,7 @@
             <label >Nombre del Álbum</label>
   
           <div class="input-group mb-3">
-            <input type="text" maxlength="25" minlength="3" class="form-control" placeholder="Albumes" required formControlName="name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" [class.red]="albumes_nuevo_no_valido" >
+            <input type="text" maxlength="25" minlength="3" class="form-control" placeholder="álbumes" required formControlName="name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" [class.red]="albumes_nuevo_no_valido" >
           
           </div>
         <label class="error" *ngIf="albumes_nuevo_no_valido"  >{{albumesmio()}}</label> 
@@ -51,14 +51,14 @@
           <label >Autor</label>
           <div class="input-group mb-3">
            
-            <input type="text" maxlength="25"  minlength="3" class="form-control" placeholder="Autor" required formControlName="author" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" [class.red]="autor_nuevo_no_valido">
+            <input type="text" maxlength="25"  minlength="3" class="form-control" placeholder="autor" required formControlName="author" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$" [class.red]="autor_nuevo_no_valido">
           </div>
           <label class="error" *ngIf="autor_nuevo_no_valido"  >{{autormio()}}</label> 
           <br>
           <label > Año</label>
           <div class="input-group mb-3">
          
-            <input type="text" maxlength="4" minlength="4" class="form-control" placeholder="Año" required formControlName="year" ngModel pattern="^0[1-9]|[1-9]\d$" [class.red]="anio_nuevo_no_valido">
+            <input type="text" maxlength="4" minlength="4" class="form-control" placeholder="año" required formControlName="year" ngModel pattern="^0[1-2-3-4-5-6-7-9-0]|[1-2-3-4-5-6-7-9-0]\d$" [class.red]="anio_nuevo_no_valido">
           </div>
           <label class="error" *ngIf="anio_nuevo_no_valido"  >{{aniomio()}}</label> 
           <button  class="btn btn-primary w-100" [disabled]="!Albumesforms.valid"   type="submit" >Crear</button>

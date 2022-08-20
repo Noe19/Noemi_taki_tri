@@ -26,30 +26,14 @@ export class SolicitudService {
     return this.db.collection("mensaje",ref => ref.where('id_usuario', '==', this.usuario)).snapshotChanges()
     }
   
-  /*
-  createPost(solicitud:Solicitud){
-   // this.usuario = localStorage.getItem('usuario')
-      //const id = this.angularfirestore.createId();
-     // this.angularfirestore.collection("request").doc(this.usuario).set({solicitud});
-    return new Promise<any>((resolve,reject) =>{
-      this.angularfirestore.collection("request").add(solicitud).then((response)=>{
-       
-        
-      },(error)=>{
-        reject(error.message)
-      })
-    
-    })
 
-  }
-  */
 
   
   cargardocumentosGeneroFirebase(documentos: DocumentosSolicitud[], solicitud: Solicitud) {
     if(documentos.length==0){
       Swal.fire({
         icon: 'error',
-        title: 'Solicitud no Enviada, por favor enviar todos los datos ',
+        title: 'Solicitud no Enviada, por favor enviar todos los datos incluido el documento formato pdf',
         confirmButtonText: 'Aceptar',
         allowOutsideClick: false,
 
@@ -95,7 +79,7 @@ export class SolicitudService {
             
 
           } )
-          console.log('nacion',item.url)
+        //  console.log('nacion',item.url)
           
         })
 

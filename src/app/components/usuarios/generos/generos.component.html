@@ -31,21 +31,21 @@
   
     <div class="container col-lg-12 col-md-12 col-sm-12">
       <input type="text" class="hola" placeholder="Buscar por nombre de Género " #textSearch (keyup)="onSearchMensaje(textSearch.value)"/>
-      <div class="row">
-    <div class="card col-lg-12 col-md-12 col-sm-12 " style="width: 16rem;" *ngFor="let generos of todoslosgeneros | pipeGeneros:page:search let i= index">
+      <div class="row"><!--*ngFor="let albumes of todoslosalbumes | filtrarAlbumes:page:search let i= index"-->
+    <div class="card col-lg-12 col-md-12 col-sm-12 " style="width: 16rem; " *ngFor="let genr of todoslosgeneros | pipeGeneros:page:search let i= index">
       <div class="card-body col-lg-12 col-md-12 col-sm-12   ">
-        <img class="imagenes_generos" [src]="generos.imageURL" alt="">
+        <img class="imagenes_generos" [src]="genr.imageURL" alt="">
        
         <h3>Género ecuatoriano</h3>
-        <h2 class="card-title">{{generos.name}}</h2>
+        <h2 class="card-title">{{genr.name}}</h2>
         <h3>{{nomauthor}}</h3>
         
-        <a routerLink="/crear-Albumes/{{generos.id}}" (click)="obtenerGenero(generos.name)" class="btn btn-success w-100">Crear Álbum</a>
+        <a routerLink="/crear-Albumes/{{genr.id}}" (click)="obtenerGenero(genr.name)" class="btn btn-success w-100">Crear Álbum</a>
      <!--   <button routerLink="/edit-generos/{{generos.id}}"   class="btn btn-primary w-100" >Editar</button>
         --> 
         
     <button type="button" class="btn btn-danger w-100"
-          (click)="eliminar_genero(generos)" (click)="obtenercanciones(generos.id)">Eliminar</button> 
+          (click)="eliminar_genero(genr)" (click)="obtenercanciones(genr.id)">Eliminar</button> 
    
 
 

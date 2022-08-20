@@ -19,13 +19,13 @@
     <hr>
     <div class="container">
       <div class="row">
-        <div class="col col-lg-4">
+        <div class="col col-lg-7">
          
         </div>
-        <div class="col col-lg-6">
+        <div class="col col-lg-2">
           
         </div>
-        <div class="col1 col-lg-2">
+        <div class="col1 col-lg-3">
           <button  routerLink="/Albumes" type="submit" class=" regesar btn btn-primary w-100">Regresar</button>
         </div>
       </div>
@@ -38,6 +38,9 @@
             <th scope="col">#</th>
             <th scope="col">Canción</th>
        
+           
+            <th scope="col">Género</th>
+            <th scope="col">Álbum</th>
             <th scope="col">Mp3</th>
             <th scope="col">Gestionar</th>
         
@@ -48,9 +51,11 @@
           <tr *ngFor="let CancionesSolicitud of   todoslascanciones | filtrarCanciones:page:search  let i= index ">
             <td>{{page+i+1}}</td>
             <td>{{CancionesSolicitud.song_name}}</td>
-        
+            <td>{{CancionesSolicitud.genre_name}}</td>
+            <td>{{CancionesSolicitud.album_name}}</td>
      
             <td><audio [src]="CancionesSolicitud.songURL" controls></audio></td>
+          
             <td><button type="button" class="btn btn-danger"
               (click)="eliminar_cancion(CancionesSolicitud)">Eliminar</button></td>
               <td><button routerLink="/edit-Canciones/{{CancionesSolicitud.id}}" class="btn btn-primary" >Editar</button></td>

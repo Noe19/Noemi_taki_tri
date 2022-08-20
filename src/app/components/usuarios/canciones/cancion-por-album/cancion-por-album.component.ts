@@ -36,7 +36,7 @@ export class CancionPorAlbumComponent implements OnInit {
   constructor(private router:Router,private fb:FormBuilder,private cancionService:CancionService,private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'))
+    //console.log('id_editable',this.activeRoute.snapshot.paramMap.get('id'))
     // this.usuario = localStorage.getItem('usuario')
      
      const id2 = this.activeRoute.snapshot.paramMap.get('id');
@@ -45,8 +45,8 @@ export class CancionPorAlbumComponent implements OnInit {
       
       this.todoslascanciones = res.map((e) =>{
         this.url=this.todoslascanciones
-        console.log(this.url)
-        console.log('url_cancion',this.todoslascanciones)
+       // console.log(this.url)
+       // console.log('url_cancion',this.todoslascanciones)
       
         return {
           
@@ -99,13 +99,13 @@ export class CancionPorAlbumComponent implements OnInit {
     //paginas de solicitud
 siguiente_pagina_solicitud(){
  
-  this.page+=5;
+  this.page+=4;
  }
 
  atras_pagina_Solicitud(){
    if(this.page>0){
    
-    this.page-=5;
+    this.page-=4;
    }
   
 

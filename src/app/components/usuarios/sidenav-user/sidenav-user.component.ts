@@ -30,6 +30,9 @@ public cantidad_de_solicitud:any;
 public cantidad_solicitud_rechazadas:any;
 public permiso_artista:any;
 public coincidencia_encontrada:any;
+public perfil_foto:any;
+public mostrar:any
+public foto_alternativa:any;
 constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private perfilService:PerfilService,public afAuth :AngularFireAuth,private router : Router,public generos:GenerosService) { 
   this.fotoperfil = this.fb.group({   
     imagen:[''],
@@ -40,16 +43,28 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
 }
 
   ngOnInit(): void {
+    this.foto_alternativa="https://c.tenor.com/FBeNVFjn-EkAAAAC/ben-redblock-loading.gif";
+
+    this.perfil_foto =localStorage.getItem('perfil_foto');
+    //console.log('llego',this.perfil_foto)
+
+  this.mostrar =0
+    if(this.perfil_foto){
+      this.mostrar=1
+     
+    }
+
     const id = this.activeRoute.snapshot.paramMap.get(this.usuario)
     this.usuario = localStorage.getItem('usuario');
-    //console.log('ggggdsss',this.usuario)
+   
     this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
   
       this.perfilRef = res;
-      //console.log('permiso', this.perfilRef.name)
-      //if(this.perfilRef.rol=='administrador'){
+     
         
         this.imagen = this.perfilRef.imagen
+      //  localStorage.setItem('perfil_foto',this.imagen)
+       
         this.name=this.perfilRef.name
         localStorage.setItem('UserAuthor',this.name);
         console.log('this.ima',this.imagen)
@@ -61,31 +76,22 @@ constructor(private activeRoute: ActivatedRoute,private fb:FormBuilder,private p
 
    
   this.rol_admin = localStorage.getItem('roles');
-  //this.cantidad_aprobadas=localStorage.getItem('cantidad_aprobadas');
-  //this.cantidad_de_solicitud=localStorage.getItem('cantidad');
-  //this.cantidad_solicitud_rechazadas=localStorage.getItem('cantidad_rechazadas');
+
   this.permiso_artista=localStorage.getItem('permiso');
- // this.coincidencia_encontrada=localStorage.getItem('verificar_generos')
+
   sessionStorage.removeItem('roles');
   sessionStorage.removeItem('permiso');
- // sessionStorage.removeItem('verificar_generos');
+ 
 }
-/*
-nameGenero(nombre_Ge){
-  this.generos.author_mio(nombre_Ge);
-  console.log('dd',nombre_Ge)
-  return nombre_Ge
 
-}
-*/
-//refresh(): void { window.location.reload(); }
+
+
   async salir(){
    
-    //limpiando de la cache
-  // localStorage.clear();
+   
    localStorage.clear();
    
-   //this.auth.logout();
+   
    await this.afAuth.signOut();
    this.router.navigate(['/home']);   
    console.log('saliendo_inicio123' ,this.afAuth.signOut()) ;
@@ -93,6 +99,12 @@ nameGenero(nombre_Ge){
    console.log('rol',this.rol_admin)
    
    localStorage.clear();
+  }
+
+  doble_salir(){
+    localStorage.clear();
+    localStorage.clear();
+
   }
 
  

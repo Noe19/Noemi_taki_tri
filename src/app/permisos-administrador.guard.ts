@@ -23,17 +23,7 @@ export class PermisosAdministradorGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       this.usuario = localStorage.getItem('usuario')
 
-      // este guard es para  que solo puedan entrar a la ruta de administrador 
-
-      
-      //const usuario_ingresado =  this.activeRoute.snapshot.paramMap.get(this.usuario) 
-    /* const rol = this.perfilService.getPostbyId(this.usuario).subscribe( res =>{ 
-        this.perfilResf = res ;
-         localStorage.setItem('roles',this.perfilResf.rol) 
-         this.roles_admin=localStorage.getItem('roles')
-         //console.log('permiso_artista:',this.roles_admin)
-       
-      })*/
+   
       
       this.roles_admin=localStorage.getItem('roles')
       console.log('verificar',this.roles_admin)
@@ -46,16 +36,7 @@ export class PermisosAdministradorGuard implements CanActivate {
 
       }
       return false
-     // this.router.navigate(['/dashboard-user'])
-      
-      /*
-      if(this.perfilResf.name=='admi'){
-        console.log('permiso')
-        return true;
-      }else
-      console.log('denegado')
-      return false;
-      */
+    
   }
 
   

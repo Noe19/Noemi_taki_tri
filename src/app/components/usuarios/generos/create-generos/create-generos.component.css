@@ -35,6 +35,8 @@
 .crear_generos h2{
    text-align: center;
    align-items: center;
+   text-align: center;
+   font-size: 180% ;
 }
 .crear_generos p{
    padding-left: 5%;
@@ -78,4 +80,9 @@
    display: flex;
     height: auto;
    width: 100%;
+}
+.container h2{
+   text-align: center;
+   font-size: 180% ;
+
 }

@@ -40,7 +40,7 @@ if(this.arreglos>0){
      
   Swal.fire({
     icon: 'warning',
-    title: 'Tu ya  eres parte de Taki-Tri, tu solicitud fue aceptada',
+    title: 'Tu ya  eres parte de TakiTri, tu solicitud fue aceptada',
     confirmButtonText: 'Aceptar',
     allowOutsideClick: false,
 

@@ -160,7 +160,7 @@ public cuantos_existen:number;
     return 'El campo es obligatorio';
   }
  
-  return this.solicitudlForm.get('nombre_artistico')? 'No se aceptan numeros' : '';
+  return this.solicitudlForm.get('nombre_artistico')? 'No se aceptan números' : '';
 }
 get nombreArtistico_no_valido(){
   return this.solicitudlForm.get('nombre_artistico')?.invalid && this.solicitudlForm.get('nombre_artistico')?.touched
@@ -171,7 +171,7 @@ getErrorMessage_cedula(){
     return 'El campo es obligatorio';
   }
  
-  return this.solicitudlForm.get('nacionalidad')? 'El campo debe tener 10 numeros' : '';
+  return this.solicitudlForm.get('nacionalidad')? 'El campo debe tener 10 números' : '';
 }
 get cedula_no_valido(){
   return this.solicitudlForm.get('nacionalidad')?.invalid && this.solicitudlForm.get('nacionalidad')?.touched

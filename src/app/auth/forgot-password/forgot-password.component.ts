@@ -28,7 +28,7 @@ userEmail = new FormControl('',[Validators.email]);
       Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'El correo se envio correctamente',
+        title: 'El correo se envió correctamente',
         showConfirmButton: false,
         timer: 1500
       })

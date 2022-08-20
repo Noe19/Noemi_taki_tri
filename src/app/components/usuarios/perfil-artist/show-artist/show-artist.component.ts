@@ -75,6 +75,7 @@ this.perfilService.getPostbyId(this.usuario).subscribe( res =>{
 
     
     this.url = this.perfilRef.imagen
+    localStorage.setItem('perfil_foto',this.url)
     this.ediForm = this.formBuilder.group({
       
       name: [this.perfilRef.name],

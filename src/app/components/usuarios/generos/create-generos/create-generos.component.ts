@@ -97,12 +97,14 @@ export class CreateGenerosComponent implements OnInit {
     //traer la imagens
     //console.log(event.target.files);
     //para visualizar la imagen que vamos a subir
+    console.log('nnn',event)
      this.isChanged=false;
     if(event.target.files.length>0){
       
       this.file=event.target.files;
       // para que pueda leer el ti`po de dato
       let reader= new FileReader();
+     
       reader.readAsDataURL(this.file[0]);
       reader.onloadend =(event:any)=>{
         this.imgURL= event.target.result;
@@ -134,7 +136,7 @@ export class CreateGenerosComponent implements OnInit {
         Swal.fire({
     position: 'center',
     icon: 'error',
-    title: 'Genero ya existe',
+    title: 'Género ya existe',
     showConfirmButton: false,
     timer: 1500
   })

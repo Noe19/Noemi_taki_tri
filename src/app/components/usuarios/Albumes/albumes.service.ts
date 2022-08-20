@@ -103,6 +103,15 @@ export class AlbumesService {
   
    // para cargar imagens e enviar a firestore 
    cargarimagenesAlbumesFirebase(imagenes: ImagenesAlbumes[], album: Albumes) {
+    if(imagenes.length==0){
+      Swal.fire({
+        icon: 'error',
+        title: 'Álbum no creado, por favor ingrese todos los datos incluido una imagen en formato jpg',
+        confirmButtonText: 'Aceptar',
+        allowOutsideClick: false,
+  
+      })
+    }
     this.usuario = localStorage.getItem('usuario')
     const storage = getStorage();
     for (const item of imagenes) {
@@ -171,7 +180,7 @@ export class AlbumesService {
  
       Swal.fire({
         icon: 'success',
-        title: 'se registro con exito tu Album',
+        title: 'Se registro con éxito tu Álbum',
         confirmButtonText: 'Aceptar',
         allowOutsideClick: false,
 
@@ -279,25 +288,25 @@ export class AlbumesService {
     console.log('referencia',referencia)
    
   if(albumImg.image_reference==referencia){
-    console.log('id_para ediatr',albumImg.id)
+   // console.log('id_para ediatr',albumImg.id)
    
     
     this.speakerCollection.doc(albumImg.id).update({  name: albumImg.name, imageURL: urlImg,year:albumImg.year,author:albumImg.author,image_reference:albumImg.image_reference });
-    console.log('datos abtes de enviar1' ,albumImg.name  )   
+   // console.log('datos abtes de enviar1' ,albumImg.name  )   
 
 
   }else{
     this.speakerCollection
     .doc(albumImg.id)
     .update({ name: albumImg.name, imageURL: urlImg,year:albumImg.year,author:albumImg.author });
-    console.log('datos abtes de enviar' ,albumImg.name  )  
+  //  console.log('datos abtes de enviar' ,albumImg.name  )  
 
   }
   // mensaje de alerta que se edito el album
   Swal.fire({
     position: 'top-end',
     icon: 'success',
-    title: 'Albumes Editado correctamente'+':'+albumImg.name,
+    title: 'Álbum Editado correctamente'+':'+albumImg.name,
     showConfirmButton: false,
     timer: 1500
   })

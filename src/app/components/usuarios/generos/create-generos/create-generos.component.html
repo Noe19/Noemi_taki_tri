@@ -8,17 +8,17 @@
       <app-header-artist></app-header-artist>
         <div class="crear_generos">
           <div>
-        <h2>Crear nuevos Género</h2>
+        <h2>Crear nuevos Géneros</h2>
         <p>
           Este módulo te permite crear nuevos géneros
         </p>
         <hr>
         <div class="container">
           <div class="row">
-            <div class="col col-lg-4">
+            <div class="col col-lg-1">
              
             </div>
-            <div class="col col-lg-4">
+            <div class="col col-lg-6">
               
             </div>
             <div class="col1 col-lg-3">
@@ -43,7 +43,7 @@
             </div>
             <div class="input-group mb-3">
               <label class="label_genero" >Género</label>
-              <input type="text" maxlength="25" minlength="3" class="form-control" placeholder="Generos" required formControlName="name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$"  [class.red]="genero_nuevo_no_valido" >
+              <input type="text" maxlength="25" minlength="3" class="form-control" placeholder="géneros" required formControlName="name" ngModel pattern="^[a-zA-Z\s\u00F1\u00D1\u00E0-\u00FC]+$"  [class.red]="genero_nuevo_no_valido" >
               <label class="error"  *ngIf="genero_nuevo_no_valido" >{{getErrorMessage_genero_nuevo()}}</label>   
               <button  class="btn btn-primary w-100" [disabled]="!generosforms.valid"    type="submit">Crear</button>
             </div>

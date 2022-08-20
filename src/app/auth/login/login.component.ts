@@ -5,6 +5,7 @@ import { AuthService } from '../service/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {NavigationEnd,ActivatedRoute} from '@angular/router';
 import { PerfilService } from 'src/app/components/perfil.service';
+import { type } from 'os';
 
 @Component({
   selector: 'app-login',
@@ -14,16 +15,9 @@ import { PerfilService } from 'src/app/components/perfil.service';
 })
 export class LoginComponent implements OnInit {
 
-/*
-  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password :new FormControl(''),
-
-  });
-  */
+public n :any;
   loginForm: FormGroup;
-  //constructor(){}
- //constructor(private authSvc : AuthService,private router : Router) { }
+ 
  public verificado:any;
  public user :any;
  public usuario:any;
@@ -41,7 +35,7 @@ export class LoginComponent implements OnInit {
 
  }
 
- 
+ hide = true;
  //validacion de correo
 
  get correo (){
@@ -54,7 +48,7 @@ getErrorMessage_correo() {
   if (this.loginForm.get('email')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
-  return this.loginForm.get('email')? 'No es email valido' : '';
+  return this.loginForm.get('email')? 'No es email válido' : '';
 }
 
  //validacion de password
@@ -70,34 +64,30 @@ getErrorMessage_contrasena() {
   if (this.loginForm.get('password')?.hasError('required')) {
     return 'El campo es obligatorio';
   }
-  return this.loginForm.get('password')? 'No es contraseña valida' : '';
+  return this.loginForm.get('password')? 'No es contraseña válida' : '';
 }
 //iniciar sesion 
   async onLogin(){
 
-    console.log('form->',this.loginForm.value)
-    console.log('id',this.loginForm.get.name)
+   // console.log('form->',this.loginForm.value)
+   // console.log('id',this.loginForm.get.name)
     const {email,password} = this.loginForm.value;
     try {
       const user:any = await this.authSvc.login(email,password);
       if(user ){ 
         this.verificado = user?.user?.emailVerified
-        //console.log('usurio_verificado',this.verificado)
-       // console.log('usurio_unico',user?.user?.email)
-        // usuario de forma global, solo vale hacer una sola (setItem)-> 
+       
         localStorage.setItem('usuario', user?.user?.uid);
       
        this.usuario = localStorage.getItem('usuario')
         this.authSvc.getPostbyId(this.usuario).subscribe( res =>{ 
         this.perfilResf = res ;
-        // Genero la variable global para saber que usuario soy 
-        //localStorage.removeItem('roles');
+     
        
          localStorage.setItem('roles',this.perfilResf.rol) 
          this.roles_admin=localStorage.getItem('roles')
          
-        // console.log('permiso_artista_login:',this.perfilResf.rol)
-// dependiendo si es artista o es Administrador para que le redirija al dashboard correspondiente.
+
          switch(this.roles_admin){
           case "artista":{
             this.router.navigate(["/show-artist/{{usuario}}"]);
@@ -105,17 +95,11 @@ getErrorMessage_contrasena() {
           }
 
           case "administrador":{
-            this.router.navigate(['/administrador']); 
+            this.router.navigate(["/show/{{usuario}}"]); 
           }
          }
 
-       /* if(this.roles_admin=="artista"  ){
-          this.router.navigate(["/show-artist/{{usuario}}"]);
-        }else if(this.roles_admin=="administrador"  ){
-          this.router.navigate(['/administrador']); 
-        }
-        
-        */      
+          
       })       
        // Termina el rol 
       } else{
@@ -124,11 +108,11 @@ getErrorMessage_contrasena() {
       
       }
    
-// termino la idea
+
     }
      catch (error) {
       this.loginForm.reset();
-     // console.log(error)
+    
      
       
     }
@@ -138,10 +122,10 @@ getErrorMessage_contrasena() {
 // navegacion
 async ngOnInit(){
   
- 
-  console.log ('Navar');
+  localStorage.clear();
+ // console.log ('Navar');
   this.user = await this.authSvc.getCurrentUser();
-  console.log('usuario_devuelto',this.user)
+ // console.log('usuario_devuelto',this.user)
 
   if(this.user ){
     this.isLogged=true;
@@ -155,7 +139,24 @@ async ngOnInit(){
    
 }
 
-
+ async myFuction(){
+  //const ver = document.getElementById("noe");
+   this.n=1;
+ 
+  const ver = document.querySelector(".noe");
+ // console.log(ver)
+  ver.addEventListener("click",function(){
+   // console.log(this.nextElementSibling.type)
+    if(this.nextElementSibling.type==="password"){
+      this.nextElementSibling.type="text";
+    //  console.log('aqui')
+   
+    }else{
+      this.nextElementSibling.type="password";
+      
+    }
+  })
+}
 
 
 }

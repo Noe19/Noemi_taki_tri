@@ -18,7 +18,7 @@ export class SendEmailComponent implements OnInit {
   }
   //metodo para que se verifique el email.
   onSendEmail():void{
-    Swal.fire('Se ha enviado el correo de verificacion ')
+    Swal.fire('Se ha enviado el correo de verificación ')
     this.authSvc.sendVerificationEmail();
     
 
