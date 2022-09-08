@@ -1,4 +1,4 @@
-<em> # TakiTri </em>
+<h1 align="center">TakiTri </h1>
 
 Tesis 💻
 ---------------------TRABAJO FINAL PREVIA LA OBTENCIÓN DEL TÍTULO PROFESIONAL-----------------------
