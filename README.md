@@ -5,7 +5,7 @@ Tesis 💻
   <p align="left">
    <img src="https://img.shields.io/badge/Tesis-EN%20Frontend-green">
    </p>
-Integrantes: 
+Integrante: 
 Denisse Cumbal
  
 ![image](https://user-images.githubusercontent.com/65981417/189234403-182ff235-e36f-4f18-8d8b-7bb8c0854353.png)
@@ -17,5 +17,8 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [Firebase]-Base de Datos 
 
 
-Video Explicativo
+Video :Manual de Usuario (video Explicativo)
 https://www.youtube.com/watch?v=KX-hZYJr1JY
+
+
+
