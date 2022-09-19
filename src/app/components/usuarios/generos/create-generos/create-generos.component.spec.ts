@@ -9,16 +9,14 @@ describe('Pruebas Genero mio', () =>{
 
 
 it('Prueba de Genero', () =>{
- /* 
+ 
   fixture = TestBed.createComponent(GenerosService);
   component = fixture.componentInstance;
   const datos_generos = {name: "Pasillo",
   imageURL:"https://firebasestorage.googleapis.com/v0/b/takitesis.appspot.com/o/imagenGeneros%2F8dOfzRCcaJeCBk0SjI6mRxSmTZA2%2FPasillo?alt=media&token=bcbbcb9a-6afd-4daa-a8e9-b891e713aad4"};
   const verification = component.crearGenero(datos_generos);
   expect(verification).toBeTruthy();
-*/
-  let veri = true
-  expect(veri).toBeTruthy()
+
 })
 
 })
